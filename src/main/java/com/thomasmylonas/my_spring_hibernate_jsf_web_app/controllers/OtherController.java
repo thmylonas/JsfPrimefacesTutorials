@@ -9,7 +9,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Controller
 @RequestMapping(path = "/")
 public class OtherController implements WebMvcConfigurer {
-    //    @RequestMapping(method = RequestMethod.GET, produces = "text/xhtml")
 
     @RequestMapping(path = "other", method = RequestMethod.GET)
     public String getMainApp() {
