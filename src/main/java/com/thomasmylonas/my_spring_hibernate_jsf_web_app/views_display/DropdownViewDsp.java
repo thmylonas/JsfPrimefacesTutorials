@@ -31,7 +31,7 @@ public class DropdownViewDsp implements Serializable {
         map.put("Denver", "Denver");
         data.put("USA", map);
 
-        map = new HashMap<String, String>();
+        map = new HashMap<>();
         map.put("Berlin", "Berlin");
         map.put("Munich", "Munich");
         map.put("Frankfurt", "Frankfurt");
