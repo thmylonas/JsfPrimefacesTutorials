@@ -20,7 +20,6 @@
             <property name="javax.persistence.jdbc.password" value="aaaa"/>
         </properties>
 
-
     </persistence-unit>
 
     <!-- Other PersistenceUnits can be added -->
