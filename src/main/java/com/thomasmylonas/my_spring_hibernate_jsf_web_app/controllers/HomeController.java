@@ -18,13 +18,13 @@ public class HomeController implements WebMvcConfigurer {
         return "home";
     }
 
-    @RequestMapping(path = "home/java", method = RequestMethod.GET)
+    @RequestMapping(path = "home/student", method = RequestMethod.GET)
     public String getJava() {
-        return "java";
+        return "student";
     }
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
-//    @RequestMapping(method = RequestMethod.GET)
+//    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String getMainApp() {
         return "home";
     }
