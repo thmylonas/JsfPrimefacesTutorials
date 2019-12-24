@@ -31,7 +31,7 @@ public class DataAccessConfig {
         emfb.setDataSource(dataSource);
         emfb.setJpaVendorAdapter(jpaVendorAdapter);
 
-        emfb.setPackagesToScan("com.thomasmylonas.petstore_api_web_app");
+        emfb.setPackagesToScan("com.thomasmylonas.my_spring_hibernate_jsf_web_app");
         return emfb;
     }
 
