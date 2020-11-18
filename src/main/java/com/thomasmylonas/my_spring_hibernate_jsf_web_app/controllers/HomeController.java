@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class HomeController implements WebMvcConfigurer {
     //    @RequestMapping(method = RequestMethod.GET, produces = "text/xhtml")
 
-//    @RequestMapping(path = {"home", "/"}, method = RequestMethod.GET)
+    //    @RequestMapping(path = {"home", "/"}, method = RequestMethod.GET)
     @RequestMapping(path = {"home"}, method = RequestMethod.GET)
     public String getHome() {
 //        return "/WEB-INF/views/home.xhtml";
@@ -27,6 +27,15 @@ public class HomeController implements WebMvcConfigurer {
     @RequestMapping(method = RequestMethod.GET)
     public String getMainApp() {
         return "home";
+    }
+
+    @RequestMapping(path = "/insert", method = RequestMethod.GET)
+//    @RequestMapping(method = RequestMethod.GET)
+    public String getJavaAndInsert() {
+
+
+
+        return "java";
     }
 
     @Override

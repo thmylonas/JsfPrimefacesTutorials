@@ -3,7 +3,8 @@ package com.thomasmylonas.my_spring_hibernate_jsf_web_app.models;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
+@Entity(name = "STUDENT")
+//@Table(schema = "schooldb", name = "STUDENT")
 public class Student {
 
     @Id
