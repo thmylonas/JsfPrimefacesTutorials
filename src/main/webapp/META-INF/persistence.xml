@@ -1,49 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
+    <!--xmlns="http://java.sun.com/xml/ns/persistence" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0"-->
 
-    <persistence-unit name="School_PU">
-        <description>A Persistence Unit connected with the School_DB</description>
+    <persistence-unit name="School_PU"> <!-- transaction-type="JTA" -->
+
+        <description>A PersistenceUnit for the database: School_DB</description>
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>jdbc/oracledb</jta-data-source>
+        <!--
+        <class>package.of.EntityClass1</class>
+        <class>package.of.EntityClass2</class>
+        -->
+
         <properties>
-            <property name="javax.persistence.schema-generation.database.action" value="create"/>
-            <!-- No Oracle12cDialect: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect"/>
-
+            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:schooldb"/>
             <!--
-                    jndiObjectFactoryBean.setResourceRef(true);
-
-            No hibernate.transaction.jta.platform:
-            org.springframework.beans.factory.BeanCreationException:
-            Error creating bean with name 'entityManagerFactoryBean'
-            defined in com.thomasmylonas.my_spring_hibernate_jsf_web_app.config.RootConfig:
-            Invocation of init method failed; nested exception is javax.persistence.PersistenceException:
-            [PersistenceUnit: Petstore_PU] Unable to build Hibernate SessionFactory;
-            nested exception is org.hibernate.HibernateException: DdlTransactionIsolatorJtaImpl could not locate
-            TransactionManager to suspend any current transaction; base JtaPlatform impl
-            (org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform@29c43795)?
-            ******
-            org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactoryBean'
-            defined in com.thomasmylonas.my_spring_hibernate_jsf_web_app.config.RootConfig: Invocation of init method failed;
-            nested exception is javax.persistence.PersistenceException: [PersistenceUnit: Petstore_PU]
-            Unable to build Hibernate SessionFactory; nested exception is org.hibernate.engine.jndi.JndiException:
-            Unable to lookup JNDI name [java:appserver/TransactionManager]
+            <property name="javax.persistence.jdbc.user" value="schooldb"/>
+            <property name="javax.persistence.jdbc.password" value="aaaa"/>
             -->
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
             <!--
-            org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'entityManagerFactoryBean'
-            defined in class path resource [com/thomasmylonas/my_spring_hibernate_jsf_web_app/config/WebConfig.class]:
-            Unsatisfied dependency expressed through method 'entityManagerFactoryBean' parameter 0; nested exception
-            is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'javax.sql.DataSource'
-            available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-
-            org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name
-            'entityManagerFactoryBean' defined in com.thomasmylonas.my_spring_hibernate_jsf_web_app.config.DataAccessConfig:
-            Unsatisfied dependency expressed through method 'entityManagerFactoryBean' parameter 0; nested exception is
-            org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'javax.sql.DataSource'
-            available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+            *** Old configuration - values: "create, create-drop", "update", validate ***
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
             -->
 
             <property name="hibernate.transaction.jta.platform"
@@ -51,39 +35,5 @@
         </properties>
     </persistence-unit>
 
+    <!-- Other PersistenceUnits can be added -->
 </persistence>
-
-        <!--
-        org.springframework.beans.factory.BeanCreationException: Error creating bean with name
-        'entityManagerFactoryBean' defined in com.thomasmylonas.my_spring_hibernate_jsf_web_app.config.RootConfig:
-        Invocation of init method failed; nested exception is javax.persistence.PersistenceException:
-        [PersistenceUnit: Petstore_PU] Unable to build Hibernate SessionFactory;
-        nested exception is org.hibernate.engine.jndi.JndiException:
-        Unable to lookup JNDI name [java:appserver/TransactionManager]
-        -->
-        <!--<?xml version="1.0" encoding="UTF-8" ?>-->
-        <!--<persistence xmlns="http://java.sun.com/xml/ns/persistence"-->
-        <!--             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
-        <!--             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"-->
-        <!--             version="2.0">-->
-
-        <!--    <persistence-unit name="SchoolDB_PU">-->
-
-        <!--        <description>A PersistenceUnit for the database: SchoolDB</description>-->
-        <!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
-        <!--        &lt;!&ndash; <jta-data-source>jdbc/MyDataSource</jta-data-source>&ndash;&gt;-->
-        <!--        &lt;!&ndash; <class>package.of.EntityClass</class> &ndash;&gt;-->
-
-        <!--        <properties>-->
-        <!--            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect"/>-->
-        <!--            <property name="hibernate.hbm2ddl.auto" value="validate"/>-->
-        <!--            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>-->
-        <!--            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:schooldb"/>-->
-        <!--            <property name="javax.persistence.jdbc.user" value="tom"/>-->
-        <!--            <property name="javax.persistence.jdbc.password" value="aaaa"/>-->
-        <!--        </properties>-->
-
-        <!--    </persistence-unit>-->
-
-        <!--    &lt;!&ndash; Other PersistenceUnits can be added &ndash;&gt;-->
-        <!--</persistence>-->

@@ -87,9 +87,8 @@ public class DataAccessConfig {
     public DataSource dataSource() {
 
         JndiObjectFactoryBean jndiObjectFactoryBean = new JndiObjectFactoryBean();
-        jndiObjectFactoryBean.setJndiName("jdbc/oracledb");
+        jndiObjectFactoryBean.setJndiName("jdbc/oracledb"); // Alternative name: "java:comp/env/jdbc/oracledb"
         jndiObjectFactoryBean.setResourceRef(true); // Default value: false
-        //jndiObjectFactoryBean.setJndiName("java:comp/env/jdbc/oracledb");
         jndiObjectFactoryBean.setProxyInterface(javax.sql.DataSource.class);
         //jndiObjectFactoryBean.setLookupOnStartup(false); // Default value: true
         try {

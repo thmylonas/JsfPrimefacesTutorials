@@ -1,5 +1,8 @@
 package com.thomasmylonas.my_spring_hibernate_jsf_web_app.config;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 import javax.sql.DataSource;
@@ -8,24 +11,19 @@ class DataAccessConfigTest {
 
     private DataAccessConfig dataAccessConfig;
 
-    @org.junit.jupiter.api.BeforeEach
+    @BeforeEach
     void setUp() {
         dataAccessConfig = new DataAccessConfig();
     }
 
-    @org.junit.jupiter.api.AfterEach
+    @AfterEach
     void tearDown() {
         dataAccessConfig = null;
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void dataSource() {
-//        DataSource actual = dataAccessConfig.dataSource();
-//        Assertions.assertNotNull(actual);
-//        Assertions.assertNull(actual);
+        DataSource actual = dataAccessConfig.dataSource();
+        Assertions.assertNotNull(actual);
     }
 }
-
-/*
-javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-*/
