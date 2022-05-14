@@ -1,18 +1,16 @@
 package com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.views_backing_beans;
 
-import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.repositories.StudentAltRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+/**
+ * I don't know yet if and how this class will be used
+ */
 @Component
-public class StudentBackingBean {
+public class StudentAltModel {
 
-    @Autowired
-    private StudentAltRepository studentAltRepository;
-
-    private Integer id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String motherName;
@@ -21,22 +19,11 @@ public class StudentBackingBean {
     private Integer absences;
     private Integer departmentId;
 
-    public StudentBackingBean() {
-//        this.id = studentAltRepository.getOne(1).getId();
-//        this.firstName = studentAltRepository.getOne(1).getFirstName();
-//        this.lastName = studentAltRepository.getOne(1).getLastName();
-//        this.motherName = studentAltRepository.getOne(1).getMotherName();
-//        this.fatherName = studentAltRepository.getOne(1).getFatherName();
-//        this.dateOfBirth = studentAltRepository.getOne(1).getDateOfBirth();
-//        this.absences = studentAltRepository.getOne(1).getAbsences();
-//        this.departmentId = studentAltRepository.getOne(1).getDepartmentId();
-    }
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -94,5 +81,19 @@ public class StudentBackingBean {
 
     public void setDepartmentId(Integer departmentId) {
         this.departmentId = departmentId;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentAltModel{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", motherName='" + motherName + '\'' +
+                ", fatherName='" + fatherName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", absences=" + absences +
+                ", departmentId=" + departmentId +
+                '}';
     }
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>StudentAlt Page</title>
+</head>
+<body>
+
+<h2>StudentAlt Page (Student alternative)</h2>
+
+<form action="" method="get">
+    <div>
+        <label for="id">Enter the studentAlt id</label>
+        <input id="id" type="text" placeholder="Enter the studentAlt id..."/>
+    </div>
+    <div>
+        <input type="submit" name="Find studentAlt"/>
+    </div>
+</form>
+<br/>
+
+<!-- Work to be done -->
+
+<span th:text="${studentAltService}"></span>
+
+<span th:text="${studentAltService.id}"></span>
+<span th:text="${studentAltService.firstName}"></span>
+<span th:text="${studentAltService.lastName}"></span>
+<span th:text="${studentAltService.motherName}"></span>
+<span th:text="${studentAltService.fatherName}"></span>
+<span th:text="${studentAltService.dateOfBirth}"></span>
+<span th:text="${studentAltService.absences}"></span>
+<span th:text="${studentAltService.departmentId}"></span>
+
+</body>
+</html>
