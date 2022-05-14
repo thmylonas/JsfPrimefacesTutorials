@@ -1,4 +1,4 @@
-package com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.views_backing_beans;
+package com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.models;
 
 import org.springframework.stereotype.Component;
 
