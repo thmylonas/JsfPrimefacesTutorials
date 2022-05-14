@@ -1,30 +1,36 @@
-package com.thomasmylonas.my_spring_hibernate_jsf_web_app.models;
+package com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.views_backing_beans;
 
-import javax.persistence.*;
+import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.repositories.StudentAltRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
-@Entity(name = "STUDENT")
-//@Table(schema = "schooldb", name = "STUDENT")
-public class Student {
+@Component
+public class StudentBackingBean {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID", updatable = false, nullable = false)
+    @Autowired
+    private StudentAltRepository studentAltRepository;
+
     private Integer id;
-    @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
-    @Column(name = "LAST_NAME", nullable = false)
     private String lastName;
-    @Column(name = "MOTHER_NAME", nullable = false)
     private String motherName;
-    @Column(name = "FATHER_NAME", nullable = false)
     private String fatherName;
-    @Column(name = "DATE_OF_BIRTH", nullable = false)
     private Date dateOfBirth;
-    @Column(name = "ABSENCES", nullable = false)
     private Integer absences;
-    @Column(name = "DEPARTMENT_ID", nullable = false)
     private Integer departmentId;
+
+    public StudentBackingBean() {
+//        this.id = studentAltRepository.getOne(1).getId();
+//        this.firstName = studentAltRepository.getOne(1).getFirstName();
+//        this.lastName = studentAltRepository.getOne(1).getLastName();
+//        this.motherName = studentAltRepository.getOne(1).getMotherName();
+//        this.fatherName = studentAltRepository.getOne(1).getFatherName();
+//        this.dateOfBirth = studentAltRepository.getOne(1).getDateOfBirth();
+//        this.absences = studentAltRepository.getOne(1).getAbsences();
+//        this.departmentId = studentAltRepository.getOne(1).getDepartmentId();
+    }
 
     public Integer getId() {
         return id;
@@ -88,19 +94,5 @@ public class Student {
 
     public void setDepartmentId(Integer departmentId) {
         this.departmentId = departmentId;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", motherName='" + motherName + '\'' +
-                ", fatherName='" + fatherName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", absences=" + absences +
-                ", departmentId=" + departmentId +
-                '}';
     }
 }

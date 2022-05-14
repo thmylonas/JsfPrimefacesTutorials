@@ -1,42 +1,44 @@
-package com.thomasmylonas.my_spring_hibernate_jsf_web_app.views_backingbeans;
+package com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities;
 
-import com.thomasmylonas.my_spring_hibernate_jsf_web_app.daos.StudentDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
+import javax.persistence.*;
 import java.util.Date;
 
-@Component
-public class StudentBackingBean {
+@Entity(name = "StudentAlt")
+@Table(name = "student_alt", schema = "schooldb")
+public class StudentAlt {
 
-//    @Autowired
-//    private StudentDao studentDao;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_generator")
+    @SequenceGenerator(name = "student_generator", sequenceName = "student_sequence", allocationSize = 1)
+    @Column(name = "id")
+    private Long id;
 
-    private Integer id;
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "mother_name")
     private String motherName;
+
+    @Column(name = "father_name")
     private String fatherName;
+
+    @Column(name = "date_of_birth")
     private Date dateOfBirth;
+
+    @Column(name = "absences")
     private Integer absences;
+
+    @Column(name = "department_id")
     private Integer departmentId;
 
-    public StudentBackingBean() {
-//        this.id = studentDao.getOne(1).getId();
-//        this.firstName = studentDao.getOne(1).getFirstName();
-//        this.lastName = studentDao.getOne(1).getLastName();
-//        this.motherName = studentDao.getOne(1).getMotherName();
-//        this.fatherName = studentDao.getOne(1).getFatherName();
-//        this.dateOfBirth = studentDao.getOne(1).getDateOfBirth();
-//        this.absences = studentDao.getOne(1).getAbsences();
-//        this.departmentId = studentDao.getOne(1).getDepartmentId();
-    }
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -94,5 +96,19 @@ public class StudentBackingBean {
 
     public void setDepartmentId(Integer departmentId) {
         this.departmentId = departmentId;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentAlt{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", motherName='" + motherName + '\'' +
+                ", fatherName='" + fatherName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", absences=" + absences +
+                ", departmentId=" + departmentId +
+                '}';
     }
 }

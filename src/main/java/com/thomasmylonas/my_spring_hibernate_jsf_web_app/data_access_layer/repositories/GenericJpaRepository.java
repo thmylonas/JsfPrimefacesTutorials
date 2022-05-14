@@ -1,13 +1,11 @@
-package com.thomasmylonas.petstore_api_web_app.data_access.daos;
-
-import org.springframework.data.repository.Repository;
+package com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.repositories;
 
 import javax.persistence.EntityManager;
 
 /**
  * Interface for generic CRUD operations on a repository for a specific type
  */
-public interface GenericJpaDao<T, ID> extends Repository<T, ID> {
+public interface GenericJpaRepository<T, ID> {
 
     /**
      * Returns a reference to the entity with the given identifier. Depending on how the JPA persistence provider is
@@ -43,7 +41,7 @@ public interface GenericJpaDao<T, ID> extends Repository<T, ID> {
      * @param entity must not be {@literal null}.
      * @return the saved entity will never be {@literal null}.
      */
-    <S extends T> S save(S entity);
+    <R extends T> R save(R entity);
 
     /**
      * Saves all given entities.
@@ -52,21 +50,21 @@ public interface GenericJpaDao<T, ID> extends Repository<T, ID> {
      * @return the saved entities will never be {@literal null}.
      * @throws IllegalArgumentException in case the given entity is {@literal null}.
      */
-    <S extends T> Iterable<S> saveAll(Iterable<S> entities);
+    <R extends T> Iterable<R> saveAll(Iterable<R> entities);
 
     /**
      * Update the entity with the given entity, with the same id.
      *
      * @param entity must not be {@literal null}.
      */
-    <S extends T> S update(S entity);
+    <R extends T> R update(R entity);
 
     /**
      * Update the entity with the given entity, with the given id.
      *
      * @param entity must not be {@literal null}.
      */
-    <S extends T> void update(S entity, ID id);
+    <R extends T> void update(R entity, ID id);
 
     /**
      * Deletes the entity with the given id.

@@ -7,7 +7,7 @@
          id="WebApp_ID" version="3.0">
 
     <display-name>
-        Web Application with Spring MVC, Hibernate/JPA, Thymeleaf, Bootstrap, JSF, Primefaces, Maven (no archetype)
+        Web Application with Spring MVC, Hibernate/JPA, JSF, Primefaces, Maven (no archetype)
     </display-name>
 
     <listener>
@@ -88,8 +88,11 @@
         <welcome-file/>
     </welcome-file-list>
 
+    <!--
+    Without this, the DataSource cannot be found in JNDI
+    -->
     <resource-ref>
-        <description>A database for Petstore</description>
+        <description>A database for Schools</description>
         <res-ref-name>jdbc/oracledb</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
 <Context reloadable="true">
+
     <!--
+    Alternative options
+    **********************
     java:comp/env/
     driverClassName="oracle.jdbc.driver.OracleDriver"
-    driverClassName="oracle.jdbc.OracleDriver"
     -->
     <Resource
             name="jdbc/oracledb"
@@ -16,13 +18,20 @@
             password="aaaa"
             maxTotal="20"
             maxIdle="10"
-            maxWaitMillis="-1"/>
+            maxWaitMillis="-1"
+            minPoolSize="2"
+            maxPoolSize="60"
+            initialPoolSize="15"
+            autoCommit="false"/>
 
-    <!--<ResourceLink
-            global="jdbc/oracledb"
+    <!--
+    https://tomcat.apache.org/tomcat-9.0-doc/config/globalresources.html
+    ***********************************************************************
+    <ResourceLink
             name="jdbc/oracledb"
-            type="javax.sql.Datasource"/>-->
-
+            global="jdbc/oracledb"
+            type="javax.sql.Datasource"/>
+    -->
 </Context>
 
         <!--

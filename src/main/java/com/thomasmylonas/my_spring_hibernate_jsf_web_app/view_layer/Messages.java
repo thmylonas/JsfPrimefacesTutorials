@@ -1,4 +1,4 @@
-package com.thomasmylonas.my_spring_hibernate_jsf_web_app;
+package com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer;
 
 import java.io.IOException;
 import java.io.InputStream;
