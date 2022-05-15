@@ -1,4 +1,4 @@
-package com.thomasmylonas.my_spring_hibernate_jsf_web_app.views_display;
+package com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.views_backing_beans;
 
 import org.springframework.stereotype.Component;
 
@@ -10,9 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class DropdownViewDsp implements Serializable {
+public class DropdownBackingBean implements Serializable {
 
-    private Map<String, Map<String, String>> data = new HashMap<String, Map<String, String>>();
+    private final Map<String, Map<String, String>> data = new HashMap<>();
     private String country;
     private String city;
     private Map<String, String> countries;
@@ -20,6 +20,7 @@ public class DropdownViewDsp implements Serializable {
 
     @PostConstruct
     public void init() {
+
         countries = new HashMap<String, String>();
         countries.put("USA", "USA");
         countries.put("Germany", "Germany");
@@ -73,6 +74,7 @@ public class DropdownViewDsp implements Serializable {
     }
 
     public void onCountryChange() {
+
         if (country != null && !country.equals("")) {
             cities = data.get(country);
         } else {
@@ -81,13 +83,13 @@ public class DropdownViewDsp implements Serializable {
     }
 
     public void displayLocation() {
+
         FacesMessage msg;
         if (city != null && country != null) {
             msg = new FacesMessage("Selected", city + " of " + country);
         } else {
             msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid", "City is not selected.");
         }
-
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }

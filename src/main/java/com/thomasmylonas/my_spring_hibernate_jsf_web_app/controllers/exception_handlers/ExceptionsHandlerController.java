@@ -1,7 +1,7 @@
-package com.thomasmylonas.my_spring_hibernate_jsf_web_app.exception_handlers.handlers;
+package com.thomasmylonas.my_spring_hibernate_jsf_web_app.controllers.exception_handlers;
 
-import com.thomasmylonas.my_spring_hibernate_jsf_web_app.models.ErrorStatus;
-import com.thomasmylonas.my_spring_hibernate_jsf_web_app.exception_handlers.exceptions.ResourceNotFoundException;
+import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.models.ErrorStatus;
+import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

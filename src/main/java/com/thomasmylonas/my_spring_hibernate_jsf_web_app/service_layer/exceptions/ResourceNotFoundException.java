@@ -1,4 +1,4 @@
-package com.thomasmylonas.my_spring_hibernate_jsf_web_app.exception_handlers.exceptions;
+package com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
 
