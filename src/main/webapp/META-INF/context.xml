@@ -2,12 +2,6 @@
 
 <Context reloadable="true">
 
-    <!--
-    Alternative options
-    **********************
-    java:comp/env/
-    driverClassName="oracle.jdbc.driver.OracleDriver"
-    -->
     <Resource
             name="jdbc/oracledb"
             type="javax.sql.DataSource"
@@ -24,20 +18,4 @@
             initialPoolSize="15"
             autoCommit="false"/>
 
-    <!--
-    https://tomcat.apache.org/tomcat-9.0-doc/config/globalresources.html
-    ***********************************************************************
-    <ResourceLink
-            name="jdbc/oracledb"
-            global="jdbc/oracledb"
-            type="javax.sql.Datasource"/>
-    -->
 </Context>
-
-        <!--
-        org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactoryBean'
-        defined in com.thomasmylonas.my_spring_hibernate_jsf_web_app.config.DataAccessConfig: Invocation of init method failed;
-        nested exception is java.lang.UnsupportedClassVersionError: oracle/jdbc/OracleDriver has been compiled by a more
-        recent version of the Java Runtime (class file version 54.0), this version of the Java Runtime only recognizes
-        class file versions up to 52.0
-        -->

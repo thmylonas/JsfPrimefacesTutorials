@@ -5,8 +5,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
@@ -24,16 +26,20 @@ public class StudentAltRepository implements GenericJpaRepository<StudentAlt, Lo
 
     private final Logger LOGGER = LogManager.getLogger(getClass().getName());
 
-    //@PersistenceContext
-    private final EntityManager EM;
-    private final Transaction TX;
+    private EntityManager EM;
+    private Transaction TX;
 
     @Autowired
-    private EntityManagerFactory emf;
+    private LocalContainerEntityManagerFactoryBean entityManagerFactoryBean;
 
-    public StudentAltRepository() {
-        EM = emf.createEntityManager();
-        TX = (Transaction) EM.getTransaction();
+    @PostConstruct
+    private void init() {
+
+        EntityManagerFactory emf = entityManagerFactoryBean.getObject();
+        if (emf != null) {
+            EM = emf.createEntityManager();
+            TX = (Transaction) EM.getTransaction();
+        }
     }
 
     @Override
