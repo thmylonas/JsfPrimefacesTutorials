@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components"
@@ -81,8 +82,8 @@
         </ui:define>
 
         <ui:define name="right_section_image">
-            <ui:param name="pathToJavaServerFacesJpg"
-                      value="#{imagesService.getImagesEnum('JAVA_SERVER_FACES_IMAGE').imageFullNameWithPath}"/>
+            <c:set var="pathToJavaServerFacesJpg"
+                   value="#{imagesService.getImagesEnum('JAVA_SERVER_FACES_IMAGE').imageFullNameWithPath}"/>
             <!--pathToJavaServerFacesJpg == 'images/java_frameworks/JavaServerFaces.jpg'-->
             <p:graphicImage value="#{resource[pathToJavaServerFacesJpg]}"
                             alt="#{msg['page_level1.right_section.image_alt.jsf']}"

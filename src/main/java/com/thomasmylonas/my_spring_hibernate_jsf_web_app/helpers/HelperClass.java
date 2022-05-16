@@ -4,6 +4,7 @@ import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.models._g
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
@@ -136,5 +137,19 @@ public abstract class HelperClass {
      */
     public static <T> String displayArrayToString(T[] array, String[] delimPrefixSuffix, boolean displayLongFloatSigns) {
         return displayListToString(Arrays.stream(array).collect(Collectors.toList()), delimPrefixSuffix, displayLongFloatSigns);
+    }
+
+    /**
+     * @param list         ********************************************************
+     * @param indexesArray ********************************************************
+     * @param <T>          ********************************************************
+     * @return ********************************************************
+     */
+    public static <T> List<T> filterListByIndexes(List<T> list, Integer[] indexesArray) {
+
+        List<Integer> filteredIndexesList = Arrays.stream(indexesArray).filter(index -> (index >= 0 && index < list.size())).collect(Collectors.toList());
+        return isArrayNullOrEmpty(indexesArray) || isListNullOrEmpty(list) ?
+                Collections.emptyList() :
+                filteredIndexesList.stream().map(list::get).collect(Collectors.toList());
     }
 }
