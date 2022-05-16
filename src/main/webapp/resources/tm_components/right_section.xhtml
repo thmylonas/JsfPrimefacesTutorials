@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+<h:body>
+
+    <ui:composition>
+
+        <cc:interface/>
+
+        <cc:implementation>
+
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <div class="right_section_title_facelets">
+                        <ui:insert name="right_section_title">
+                            <h:outputText value="Right Section Title"/>
+                        </ui:insert>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <div class="right_section_image_wrapper_facelets">
+                        <ui:insert name="right_section_image"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <ui:insert name="right_section_content"/>
+                </div>
+            </div>
+
+        </cc:implementation>
+
+    </ui:composition>
+
+</h:body>
+</html>

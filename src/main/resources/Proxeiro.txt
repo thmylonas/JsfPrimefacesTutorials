@@ -22,6 +22,19 @@ MySpringHibernateJsfWebApp_war_exploded -> MySpringHibernateJsfWebApp
 @PersistenceContext
 private EntityManager EM;
 ----------------------------------------
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonHtmlAttributesService': Invocation of init method failed; nested exception is java.lang.NullPointerException: inStream parameter is null
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160) ~[spring-beans-5.3.19.jar:5.3.19]
+Caused by: java.lang.NullPointerException: inStream parameter is null
+	at java.util.Objects.requireNonNull(Objects.java:246) ~[?:?]
+	at java.util.Properties.load(Properties.java:407) ~[?:?]
+	at com.thomasmylonas.my_spring_hibernate_jsf_web_app.helpers.HelperClass.loadPropertiesFile(HelperClass.java:72) ~[classes/:?]
+	at com.thomasmylonas.my_spring_hibernate_jsf_web_app.helpers.HelperClass.getPropertyValueFromProperties(HelperClass.java:87) ~[classes/:?]
+	at com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.models._base.AbstractModel.getPropertyValueFromProperties(AbstractModel.java:23) ~[classes/:?]
+	at com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.models._base.AbstractModel.<init>(AbstractModel.java:15) ~[classes/:?]
+	at com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.models.jsf_models.ComponentsAttribute.<init>(ComponentsAttribute.java:13) ~[classes/:?]
+	at com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services.CommonHtmlAttributesService.initCommonEventHandlerAttributesList(CommonHtmlAttributesService.java:153) ~[classes/:?]
+	at com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services.CommonHtmlAttributesService.init(CommonHtmlAttributesService.java:102) ~[classes/:?]
+----------------------------------------
 @Repository //(value = "studentAltRepository") // With this, 2 beans are created
 
 git rm -r --cached .idea/

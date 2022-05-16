@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components">
+
+<h:body>
+
+    <ui:composition template="../../../templates/pages_level2_template.xhtml">
+
+        <ui:define name="metadata_desc">
+            <meta name="description" content="JavaServer Faces: HTML Tag Library (h Taglib) - h:selectManyCheckbox"/>
+        </ui:define>
+
+        <ui:define name="head_page_title">
+            <title>JavaServer Faces: HTML Tag Library (h Taglib) - h:selectManyCheckbox</title>
+        </ui:define>
+
+        <ui:define name="center_section_title">
+            <tm:special_link
+                    link_url="#{msg['main_components_url.vdldocs.prefix']}selectManyCheckbox#{msg['main_components_url.vdldocs.suffix']}"
+                    link_text="JavaServer Faces: HTML Tag Library (h Taglib) - &lt;h:selectManyCheckbox&gt;"
+                    link_tooltip="#{msg['main_components_url.vdldocs.prefix']}selectManyCheckbox#{msg['main_components_url.vdldocs.suffix']}"
+                    target_blank="_blank" link_style="center_section_title_link_facelets"/>
+        </ui:define>
+
+        <ui:define name="center_section_content">
+
+            <p>
+                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <div>
+                <tm:special_link
+                        link_url="#{msg['main_components_url.html.prefix']}HtmlSelectManyCheckbox#{msg['main_components_url.suffix']}"
+                        link_text="javax.faces.component.html.HtmlSelectManyCheckbox"
+                        link_tooltip="#{msg['main_components_url.html.prefix']}HtmlSelectManyCheckbox#{msg['main_components_url.suffix']}"
+                        target_blank="_blank" link_style="api_package_class_facelets"/>
+                <span>
+                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <tm:special_link
+                            link_url="#{msg['main_components_url.prefix']}UISelectMany#{msg['main_components_url.suffix']}"
+                            link_text="javax.faces.component.UISelectMany"
+                            link_tooltip="#{msg['main_components_url.prefix']}UISelectMany#{msg['main_components_url.suffix']}"
+                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                </span>
+                <span>
+                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <tm:special_link
+                            link_url="#{msg['main_components_url.prefix']}UIInput#{msg['main_components_url.suffix']}"
+                            link_text="javax.faces.component.UIInput"
+                            link_tooltip="#{msg['main_components_url.prefix']}UIInput#{msg['main_components_url.suffix']}"
+                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                </span>
+                <span>
+                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <tm:special_link
+                            link_url="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
+                            link_text="javax.faces.component.UIOutput"
+                            link_tooltip="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
+                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                </span>
+            </div>
+
+            <p>
+                <h:outputText value="&lt;h:selectManyCheckbox&gt; attributes list:"
+                              styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <h:dataTable value="#{htmlSelectManyCheckboxBackingBean.selectManyCheckboxAttributesList}"
+                         var="selectManyCheckboxAttribute" border="1">
+                <f:facet name="header">&lt;h:selectManyCheckbox&gt; attributes list</f:facet>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    #{selectManyCheckboxAttribute.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Required</f:facet>
+                    #{selectManyCheckboxAttribute.required}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Default Value</f:facet>
+                    #{selectManyCheckboxAttribute.defaultValue}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Type</f:facet>
+                    #{selectManyCheckboxAttribute.type}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Description</f:facet>
+                    #{selectManyCheckboxAttribute.description}
+                </h:column>
+            </h:dataTable>
+
+            <p>
+                <h:outputText value="&lt;h:selectManyCheckbox&gt; examples:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+
+            <tm:examples_header title="Example from 'TutorialsPoint'"
+                                title_link="https://www.tutorialspoint.com/jsf/jsf_selectmanycheckbox_tag.htm"
+                                render_link="true" notes=""
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <div class="example_site_links_wrapper_facelets">
+                    <tm:special_link
+                            link_url="https://www.tutorialspoint.com/jsf/jsf_selectmanycheckbox_tag.htm"
+                            link_text="TutorialsPoint Link"
+                            link_tooltip="https://www.tutorialspoint.com/jsf/jsf_selectmanycheckbox_tag.htm"
+                            target_blank="_blank" link_style="example_site_link_facelets"/>
+                </div>
+                <br/>
+
+                <h:form>
+                    <h:selectManyCheckbox id="smcbTutorialsPoint"
+                                          value="#{htmlSelectManyCheckboxBackingBean.itemDataValues}"
+                                          styleClass="select_many_checkbox_style_facelets">
+                        <f:selectItem itemLabel="Item 1" itemValue="Item value 1"/>
+                        <f:selectItem itemLabel="Item 2" itemValue="Item value 2"/>
+                        <f:selectItem itemLabel="Item 3" itemValue="Item value 3"/>
+                        <f:selectItem itemLabel="Item 4" itemValue="Item value 4"/>
+                        <f:selectItem itemLabel="Item 5" itemValue="Item value 5"/>
+                    </h:selectManyCheckbox>
+                    <br/><br/>
+                    <h:commandButton value="Display item values">
+                        <f:ajax execute="smcbTutorialsPoint"
+                                render=":#{component.namingContainer.parent.namingContainer.clientId}:tutorialsPointOutputId"/>
+                    </h:commandButton>
+                </h:form>
+
+                <br/>
+
+                <h:panelGrid columns="1">
+                    <tm:example_info id="tutorialsPointOutputId"
+                                     example_label="Item values hardcoded with 'f:selectItem': "
+                                     example_value="#{htmlSelectManyCheckboxBackingBean.displayItemValues(htmlSelectManyCheckboxBackingBean.itemDataValues)}"
+                                     example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+                </h:panelGrid>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example from 'Faces.Liferay.Dev'"
+                                title_link="https://faces.liferay.dev/jsf-showcase/-/jsf-tag/h/selectmanycheckbox/general"
+                                render_link="true" notes=""
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <div class="example_site_links_wrapper_facelets">
+                    <tm:special_link
+                            link_url="https://faces.liferay.dev/jsf-showcase/-/jsf-tag/h/selectmanycheckbox/general"
+                            link_text="Faces.Liferay.Dev Link"
+                            link_tooltip="https://faces.liferay.dev/jsf-showcase/-/jsf-tag/h/selectmanycheckbox/general"
+                            target_blank="_blank" link_style="example_site_link_facelets"/>
+                </div>
+
+                <h:form>
+                    <p><h:message for="smcbFacesLiferay" styleClass="error_messages_both_templ_frames"/></p>
+
+                    <p>
+                        <h:selectBooleanCheckbox value="#{htmlSelectManyCheckboxBackingBean.valueRequired}">
+                            <f:ajax/>
+                        </h:selectBooleanCheckbox>
+                        <h:outputText value="Value required" styleClass="value_required_facelets"/>
+                    </p>
+
+                    <h:selectManyCheckbox id="smcbFacesLiferay"
+                                          value="#{htmlSelectManyCheckboxBackingBean.itemDataNoPreSelectValues}"
+                                          required="#{htmlSelectManyCheckboxBackingBean.valueRequired}"
+                                          layout="pageDirection" styleClass="select_many_checkbox_style_facelets"
+                                          requiredMessage="The 'h:selectManyCheckbox' must have a value. Please select an item from the list!">
+                        <f:selectItem itemLabel="Item 1" itemValue="Item value 1"
+                                      itemDescription="Item 1 - Description"/>
+                        <f:selectItem itemLabel="Item 2" itemValue="Item value 2"
+                                      itemDescription="Item 2 - Description"/>
+                        <f:selectItem itemLabel="Item 3" itemValue="Item value 3"
+                                      itemDescription="Item 3 - Description"/>
+                        <f:selectItem itemLabel="Item 4" itemValue="Item value 4"
+                                      itemDescription="Item 4 - Description"/>
+                        <f:selectItem itemLabel="Item 5" itemValue="Item value 5"
+                                      itemDescription="Item 5 - Description"/>
+                        <f:selectItem itemLabel="Item 6" itemValue="Item value 6"
+                                      itemDescription="Item 6 - Description"/>
+                    </h:selectManyCheckbox>
+                    <br/><br/>
+                    <h:commandButton value="Display item values">
+                        <f:ajax execute="@form" render="@form"/>
+                    </h:commandButton>
+
+                    <br/><br/>
+
+                    <h:panelGrid columns="1">
+                        <tm:example_info id="modelValue"
+                                         example_label="Item values hardcoded with 'f:selectItem': "
+                                         example_value="#{htmlSelectManyCheckboxBackingBean.displayItemValues(htmlSelectManyCheckboxBackingBean.itemDataNoPreSelectValues)}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+                    </h:panelGrid>
+                </h:form>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example from 'Mkyong' &amp; 'StackOverflow Wiki'"
+                                title_link="https://mkyong.com/jsf2/jsf-2-checkboxes-example"
+                                render_link="true" notes=""
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <div class="example_site_links_wrapper_facelets">
+                    <tm:special_link
+                            link_url="https://mkyong.com/jsf2/jsf-2-checkboxes-example"
+                            link_text="MKyong Link"
+                            link_tooltip="https://mkyong.com/jsf2/jsf-2-checkboxes-example"
+                            target_blank="_blank" link_style="example_site_link_facelets"/>
+                    <br/>
+                    <tm:special_link
+                            link_url="https://stackoverflow.com/tags/selectonemenu/info"
+                            link_text="StackOverflow Wiki Link"
+                            link_tooltip="https://stackoverflow.com/tags/selectonemenu/info"
+                            target_blank="_blank" link_style="example_site_link_facelets"/>
+                </div>
+
+                <!--
+                TODO:
+                1. From here until the end of the file, the code has to be changed according to the new design
+                in the "_alt_jsf_h_select_many_checkbox.xhtml"
+                2. Use an array of 'SelectItem' SelectItem[] (with 'SelectItemGroup' java class), wherever it can be applied:
+                <p>
+                    <h:outputText
+                            value="#. The 'h:selectXxxx' values are generated by an array of 'SelectItem' SelectItem[] (with 'SelectItemGroup' java class) with 'f:selectItems':"
+                            styleClass="examples_cases_titles_both_templ_frames"/>
+                </p>
+                <h:selectXxxx id="xxxMkyong#"
+                              value="#{htmlSelectXxxxBackingBean.selectItemGroupsArrayValues}"
+                              styleClass="select_xxx_xxx_style_facelets">
+                    <f:selectItems value="#{htmlSelectXxxxBackingBean.selectItemGroupsArray}"/>
+                </h:selectXxxx>
+                3. Check/Fix all the page about the functionality
+                4. In some "h:selectXxxx" components the "required" attribute does not work
+                (Possible reason is the common use of "AbstractHtmlSelectsBackingBean::valueRequired" in these "h:selectXxxx" components)
+                -->
+                <h:form>
+                    <h:panelGroup id="smcbMkyong" layout="block">
+                        <p>
+                            <h:outputText
+                                    value="1. The 'h:selectManyCheckbox' values are hard-coded with 'f:selectItem':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <h:selectManyCheckbox id="smcbMkyong1"
+                                              value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksHardCodedValues}"
+                                              styleClass="select_many_checkbox_style_facelets">
+                            <f:selectItem itemLabel="Java Label" itemValue="Java Value"/>
+                            <f:selectItem itemLabel="Spring Framework Label" itemValue="Spring Framework Value"/>
+                            <f:selectItem itemLabel="Hibernate Label" itemValue="Hibernate Value"/>
+                            <f:selectItem itemLabel="JSF Framework Label" itemValue="JSF Framework Value"/>
+                        </h:selectManyCheckbox>
+
+                        <br/>
+
+                        <p>
+                            <h:outputText
+                                    value="2. The 'h:selectManyCheckbox' values are generated by an array of 'SelectItem' SelectItem[] (with attrs: value, label) with 'f:selectItems':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <h:selectManyCheckbox id="smcbMkyong2"
+                                              value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksWithSelectItemsValueLabelArrayValues}"
+                                              styleClass="select_many_checkbox_style_facelets">
+                            <f:selectItems
+                                    value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksSelectItemsValueLabelArray}"/>
+                        </h:selectManyCheckbox>
+
+                        <br/>
+
+                        <p>
+                            <h:outputText
+                                    value="3. The 'h:selectManyCheckbox' values are generated by an array of 'SelectItem' SelectItem[] (with attr: value) with 'f:selectItems':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <h:selectManyCheckbox id="smcbMkyong3"
+                                              value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksWithSelectItemsValueArrayValues}"
+                                              styleClass="select_many_checkbox_style_facelets">
+                            <f:selectItems
+                                    value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksSelectItemsValueArray}"/>
+                        </h:selectManyCheckbox>
+
+                        <br/>
+
+                        <p>
+                            <h:outputText
+                                    value="4. The 'h:selectManyCheckbox' values are generated by an array of 'SelectItem' SelectItem[] (with all attrs) with 'f:selectItems':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <p><h:message for="smcbMkyong4" styleClass="error_messages_both_templ_frames"/></p>
+                        <h:selectManyCheckbox id="smcbMkyong4"
+                                              value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksWithSelectItemsAllAttrsArrayValues}"
+                                              styleClass="select_many_checkbox_style_facelets" required="true"
+                                              requiredMessage="The 'h:selectManyCheckbox' must have a value. Please select an item from the list!">
+                            <f:selectItems
+                                    value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksSelectItemsAllAttrsArray}"/>
+                        </h:selectManyCheckbox>
+
+                        <br/>
+
+                        <p>
+                            <h:outputText
+                                    value="5. The 'h:selectManyCheckbox' values are generated by a String array String[] with 'f:selectItems':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <h:selectManyCheckbox id="smcbMkyong5"
+                                              value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksWithStringValuesArrayValues}"
+                                              styleClass="select_many_checkbox_style_facelets">
+                            <f:selectItems
+                                    value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksStringValuesArray}"/>
+                        </h:selectManyCheckbox>
+
+                        <br/>
+
+                        <p>
+                            <h:outputText
+                                    value="6. The 'h:selectManyCheckbox' values are generated by a Map (itemLabel, itemValue) with 'f:selectItems':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <h:selectManyCheckbox id="smcbMkyong6"
+                                              value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksWithLabelValueMapValues}"
+                                              styleClass="select_many_checkbox_style_facelets">
+                            <f:selectItems value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksLabelValueMap}"/>
+                        </h:selectManyCheckbox>
+
+                        <br/>
+
+                        <p>
+                            <h:outputText
+                                    value="7. The 'h:selectManyCheckbox' values are generated by a Map (itemValue, itemLabel) with 'f:selectItems':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <h:selectManyCheckbox id="smcbMkyong7"
+                                              value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksWithValueLabelMapValues}"
+                                              styleClass="select_many_checkbox_style_facelets">
+                            <f:selectItems
+                                    value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksValueLabelMap.entrySet()}"
+                                    var="entry" itemLabel="#{entry.value}" itemValue="#{entry.key}"/>
+                        </h:selectManyCheckbox>
+
+                        <br/>
+
+                        <p>
+                            <h:outputText
+                                    value="8. The 'h:selectManyCheckbox' values are generated by an Object array with 'f:selectItems':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <h:selectManyCheckbox id="smcbMkyong8"
+                                              value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksWithObjectArrayValues}"
+                                              styleClass="select_one_radio_style_facelets">
+                            <f:selectItems value="#{htmlSelectManyCheckboxBackingBean.javaFrameworksLabelValueArray}"
+                                           var="bean" itemLabel="#{bean.itemLabel}" itemValue="#{bean.itemValue}"/>
+                        </h:selectManyCheckbox>
+                    </h:panelGroup>
+
+                    <br/><br/>
+
+                    <h:commandButton value="Display Java Frameworks values">
+                        <!--<f:ajax execute="smcbMkyong1 smcbMkyong2 smcbMkyong3 smcbMkyong4 smcbMkyong5 smcbMkyong6 smcbMkyong7 smcbMkyong8"
+                                render="mkyongOutputId1 mkyongOutputId2 mkyongOutputId3 mkyongOutputId4 mkyongOutputId5 mkyongOutputId6 mkyongOutputId7 mkyongOutputId8 smcbMkyong1 smcbMkyong2 smcbMkyong3 smcbMkyong4 smcbMkyong5 smcbMkyong6 smcbMkyong7 smcbMkyong8"/>-->
+                        <f:ajax execute="smcbMkyong" render="mkyongOutputId smcbMkyong"/>
+                        <!--<f:ajax execute="@form" render="@form"/>-->
+                        <!--<f:ajax execute="@form" render="mkyongOutputId"/>-->
+                        <!--<f:ajax execute="@form"
+                                render="mkyongOutputId1 mkyongOutputId2 mkyongOutputId3 mkyongOutputId4 mkyongOutputId5 mkyongOutputId6 mkyongOutputId7 mkyongOutputId8 smcbMkyong1 smcbMkyong2 smcbMkyong3 smcbMkyong4 smcbMkyong5 smcbMkyong6 smcbMkyong7 smcbMkyong8"/>-->
+                    </h:commandButton>
+                    <h:commandButton value="Reset Java Frameworks values"
+                                     action="#{htmlSelectManyCheckboxBackingBean.resetValues}"
+                                     styleClass="smcb_reset_btn_facelets">
+                        <!--<f:ajax execute="smcbMkyong1 smcbMkyong2 smcbMkyong3 smcbMkyong4 smcbMkyong5 smcbMkyong6 smcbMkyong7 smcbMkyong8"
+                                render="mkyongOutputId1 mkyongOutputId2 mkyongOutputId3 mkyongOutputId4 mkyongOutputId5 mkyongOutputId6 mkyongOutputId7 mkyongOutputId8 smcbMkyong1 smcbMkyong2 smcbMkyong3 smcbMkyong4 smcbMkyong5 smcbMkyong6 smcbMkyong7 smcbMkyong8"/>-->
+                        <!--<f:ajax execute="smcbMkyong" render="mkyongOutputId smcbMkyong"/>-->
+                        <f:ajax execute="@form" render="@form"/>
+                    </h:commandButton>
+
+                    <br/><br/>
+
+                    <h:panelGrid columns="1" id="mkyongOutputId">
+                        <tm:example_info id="mkyongOutputId1"
+                                         example_label="1. Java Frameworks hardcoded with 'f:selectItem': "
+                                         example_value="#{htmlSelectManyCheckboxBackingBean.displayItemValues(htmlSelectManyCheckboxBackingBean.javaFrameworksHardCodedValues)}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+
+                        <tm:example_info id="mkyongOutputId2"
+                                         example_label="2. Java Frameworks by an array of 'SelectItem' SelectItem[] (with attrs: value, label) with 'f:selectItems': "
+                                         example_value="#{htmlSelectManyCheckboxBackingBean.displayItemValues(htmlSelectManyCheckboxBackingBean.javaFrameworksWithSelectItemsValueLabelArrayValues)}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+
+                        <tm:example_info id="mkyongOutputId3"
+                                         example_label="3. Java Frameworks by an array of 'SelectItem' SelectItem[] (with attr: value) with 'f:selectItems': "
+                                         example_value="#{htmlSelectManyCheckboxBackingBean.displayItemValues(htmlSelectManyCheckboxBackingBean.javaFrameworksWithSelectItemsValueArrayValues)}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+
+                        <tm:example_info id="mkyongOutputId4"
+                                         example_label="4. Java Frameworks by an array of 'SelectItem' SelectItem[] (with all attrs) with 'f:selectItems': "
+                                         example_value="#{htmlSelectManyCheckboxBackingBean.displayItemValues(htmlSelectManyCheckboxBackingBean.javaFrameworksWithSelectItemsAllAttrsArrayValues)}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+
+                        <tm:example_info id="mkyongOutputId5"
+                                         example_label="5. Java Frameworks by a String array String[] with 'f:selectItems': "
+                                         example_value="#{htmlSelectManyCheckboxBackingBean.displayItemValues(htmlSelectManyCheckboxBackingBean.javaFrameworksWithStringValuesArrayValues)}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+
+                        <tm:example_info id="mkyongOutputId6"
+                                         example_label="6. Java Frameworks by a Map (itemLabel, itemValue) with 'f:selectItems': "
+                                         example_value="#{htmlSelectManyCheckboxBackingBean.displayItemValues(htmlSelectManyCheckboxBackingBean.javaFrameworksWithLabelValueMapValues)}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+
+                        <tm:example_info id="mkyongOutputId7"
+                                         example_label="7. Java Frameworks by a Map (itemValue, itemLabel) with 'f:selectItems': "
+                                         example_value="#{htmlSelectManyCheckboxBackingBean.displayItemValues(htmlSelectManyCheckboxBackingBean.javaFrameworksWithValueLabelMapValues)}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+
+                        <tm:example_info id="mkyongOutputId8"
+                                         example_label="8. Java Frameworks by an Object array with 'f:selectItems': "
+                                         example_value="#{htmlSelectManyCheckboxBackingBean.displayItemValues(htmlSelectManyCheckboxBackingBean.javaFrameworksWithObjectArrayValues)}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+                    </h:panelGrid>
+                </h:form>
+            </div>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+</html>
+
+        <!--
+        Old links
+        https://javaserverfaces.github.io/docs/2.3/vdldocs/facelets/h/selectManyCheckbox.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlSelectManyCheckbox.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/UISelectMany.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/UIInput.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/UIOutput.html
+
+        New links
+        https://docs.oracle.com/javaee/7/javaserver-faces-2-2/vdldocs-facelets/h/selectManyCheckbox.html
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/html/HtmlSelectManyCheckbox
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/UISelectMany
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/UIInput
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/UIOutput
+        -->

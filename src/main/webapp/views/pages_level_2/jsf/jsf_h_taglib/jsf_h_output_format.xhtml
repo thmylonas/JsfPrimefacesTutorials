@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components">
+
+<h:body>
+
+    <ui:composition template="../../../templates/pages_level2_template.xhtml">
+
+        <ui:define name="metadata_desc">
+            <meta name="description" content="JavaServer Faces: HTML Tag Library (h Taglib) - h:outputFormat"/>
+        </ui:define>
+
+        <ui:define name="head_page_title">
+            <title>JavaServer Faces: HTML Tag Library (h Taglib) - h:outputFormat</title>
+        </ui:define>
+
+        <ui:define name="center_section_title">
+            <tm:special_link
+                    link_url="#{msg['main_components_url.vdldocs.prefix']}outputFormat#{msg['main_components_url.vdldocs.suffix']}"
+                    link_text="JavaServer Faces: HTML Tag Library (h Taglib) - &lt;h:outputFormat&gt;"
+                    link_tooltip="#{msg['main_components_url.vdldocs.prefix']}outputFormat#{msg['main_components_url.vdldocs.suffix']}"
+                    target_blank="_blank" link_style="center_section_title_link_facelets"/>
+        </ui:define>
+
+        <ui:define name="center_section_content">
+
+            <p>
+                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <div>
+                <tm:special_link
+                        link_url="#{msg['main_components_url.html.prefix']}HtmlOutputFormat#{msg['main_components_url.suffix']}"
+                        link_text="javax.faces.component.html.HtmlOutputFormat"
+                        link_tooltip="#{msg['main_components_url.html.prefix']}HtmlOutputFormat#{msg['main_components_url.suffix']}"
+                        target_blank="_blank" link_style="api_package_class_facelets"/>
+                <span>
+                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <tm:special_link
+                            link_url="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
+                            link_text="javax.faces.component.UIOutput"
+                            link_tooltip="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
+                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                </span>
+            </div>
+
+            <p>
+                <h:outputText value="&lt;h:outputFormat&gt; attributes list:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <h:dataTable value="#{htmlOutputFormatBackingBean.outputFormatAttributesList}"
+                         var="outputFormatAttribute" border="1">
+                <f:facet name="header">&lt;h:outputFormat&gt; attributes list</f:facet>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    #{outputFormatAttribute.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Required</f:facet>
+                    #{outputFormatAttribute.required}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Default Value</f:facet>
+                    #{outputFormatAttribute.defaultValue}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Type</f:facet>
+                    #{outputFormatAttribute.type}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Description</f:facet>
+                    #{outputFormatAttribute.description}
+                </h:column>
+            </h:dataTable>
+
+            <p>
+                <h:outputText value="&lt;h:outputFormat&gt; examples:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+
+            <tm:examples_header title="Without the use of BackingBean"
+                                render_link="false"
+                                notes="In this case we use in attribute 'value', a String with the {0}, {1} as parameters."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:outputFormat value="parameter 1: {0}, parameter 2: {1}" styleClass="output_format_style_facelets">
+                    <f:param value="Item 1"/>
+                    <f:param value="Item 2"/>
+                </h:outputFormat>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="With the use of BackingBean"
+                                render_link="false"
+                                notes="In this case we bind the attribute 'value', with a String field in a BackingBean as: #{htmlOutputFormatBackingBean.fieldValue} (the String field contains the {0}, {1} as parameters)."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:outputFormat value="#{htmlOutputFormatBackingBean.textWith2Params}"
+                                styleClass="output_format_style_facelets">
+                    <f:param value="Item 1"/>
+                    <f:param value="Item 2"/>
+                </h:outputFormat>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="With the use of BackingBean, and styled parameters"
+                                render_link="false"
+                                notes="In this case we bind the attribute 'value', with a String field in a BackingBean as: #{htmlOutputFormatBackingBean.fieldValue} (the String field contains the {0}, {1} as parameters). In this case also the parameters are in CSS-style also. The CSS can be put in the parameters in the String field of the BackingBean."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:outputFormat value="#{htmlOutputFormatBackingBean.textWith2StyledParams}"
+                                styleClass="output_format_style_facelets"
+                                escape="false">
+                    <f:param value="Item 1"/>
+                    <f:param value="Item 2"/>
+                </h:outputFormat>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="With the use of BackingBean and 1 parameter"
+                                render_link="false"
+                                notes="In this case we bind the attribute 'value', with a String field in a BackingBean as: #{htmlOutputFormatBackingBean.fieldValue} (the String field contains the {0} as parameter)."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:outputFormat value="#{htmlOutputFormatBackingBean.textHello}"
+                                styleClass="output_format_style_facelets">
+                    <f:param value="Thomas Mylonas"/>
+                </h:outputFormat>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="The use of 'escape' attribute"
+                                render_link="false"
+                                notes="The attribute escape=#{htmlOutputFormatBackingBean.escapeTrue} (or attribute 'escape' is skipped) means that the special characters will be escaped, which means that they will be displayed as exactly they are, and NOT what they mean! E.g. the characters #{htmlOutputFormatBackingBean.egSpecialChars} if escaped they will be displayed as they are. The attribute escape=#{htmlOutputFormatBackingBean.escapeFalse} means that the special characters will NOT be escaped, which means that they will NOT be displayed as exactly they are, but they will display what they mean! E.g. the characters #{htmlOutputFormatBackingBean.egSpecialChars} if NOT escaped they will be combined to mean #{htmlOutputFormatBackingBean.lessThan} #{htmlOutputFormatBackingBean.greaterThan}."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:outputFormat value="#{htmlOutputFormatBackingBean.textHelloEscaped}"
+                                styleClass="output_format_style_facelets"
+                                escape="true">
+                    <f:param value="Thomas Mylonas"/>
+                </h:outputFormat>
+            </div>
+            <div class="examples_contents_facelets">
+                <h:outputFormat value="#{htmlOutputFormatBackingBean.textHelloNotEscaped}"
+                                styleClass="output_format_style_facelets"
+                                escape="false">
+                    <f:param value="Thomas Mylonas"/>
+                </h:outputFormat>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Not rendering the HTML 'input' tag (text type), escaping characters"
+                                render_link="false"
+                                notes="The attribute escape=#{htmlOutputFormatBackingBean.escapeTrue} (or attribute 'escape' is skipped) means that the special characters will be escaped, which means that they will be displayed as exactly they are, and NOT what they mean! E.g. all the characters in the following example if escaped they will be displayed as they are, and they will NOT render the 'input' tag (text type), that in HTML they mean."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:outputFormat value="#{htmlOutputFormatBackingBean.htmlInput}"
+                                styleClass="output_format_style_facelets">
+                    <f:param value="text"/>
+                    <f:param value="size='30'"/>
+                </h:outputFormat>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Rendering the HTML 'input' tag (text type), NOT escaping characters"
+                                render_link="false"
+                                notes="The attribute escape=#{htmlOutputFormatBackingBean.escapeFalse} means that the special characters will NOT be escaped, which means that they will NOT be displayed as exactly they are, but they will display what they mean! E.g. all the characters in the following example if NOT escaped they will be combined and they will render the 'input' tag (text type), that in HTML they mean."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:outputFormat value="#{htmlOutputFormatBackingBean.htmlInput}"
+                                styleClass="output_format_style_facelets"
+                                escape="false">
+                    <f:param value="text"/>
+                    <f:param value="size='30'"/>
+                </h:outputFormat>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Rendering the HTML 'input' tag (button type), NOT escaping characters"
+                                render_link="false"
+                                notes="The attribute escape=#{htmlOutputFormatBackingBean.escapeFalse} means that the special characters will NOT be escaped, which means that they will NOT be displayed as exactly they are, but they will display what they mean! E.g. all the characters in the following example if NOT escaped they will be combined and they will render the 'input' tag (button type), that in HTML they mean."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:outputFormat value="#{htmlOutputFormatBackingBean.htmlInput}"
+                                styleClass="output_format_style_facelets"
+                                escape="false">
+                    <f:param value="button"/>
+                    <f:param value="value='Click Me'"/>
+                </h:outputFormat>
+            </div>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+</html>
+
+        <!--
+        Old links
+        https://javaserverfaces.github.io/docs/2.3/vdldocs/facelets/h/outputFormat.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlOutputFormat.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/UIOutput.html
+
+        New links
+        https://docs.oracle.com/javaee/7/javaserver-faces-2-2/vdldocs-facelets/h/outputFormat.html
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/html/HtmlOutputFormat
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/UIOutput
+        -->

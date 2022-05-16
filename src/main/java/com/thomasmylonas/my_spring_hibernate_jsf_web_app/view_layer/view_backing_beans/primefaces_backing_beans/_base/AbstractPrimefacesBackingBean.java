@@ -1,0 +1,6 @@
+package com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.view_backing_beans.primefaces_backing_beans._base;
+
+import com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.view_backing_beans._base.AbstractBackingBean;
+
+public abstract class AbstractPrimefacesBackingBean extends AbstractBackingBean {
+}

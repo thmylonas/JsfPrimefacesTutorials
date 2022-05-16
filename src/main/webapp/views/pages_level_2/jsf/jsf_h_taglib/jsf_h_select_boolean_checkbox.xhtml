@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components">
+
+<!--
+TODO:
+1. Check/Fix all the page about the functionality
+2. In some "h:selectXxxx" components the "required" attribute does not work
+(Possible reason is the common use of "AbstractHtmlSelectsBackingBean::valueRequired" in these "h:selectXxxx" components)
+-->
+<h:body>
+
+    <ui:composition template="../../../templates/pages_level2_template.xhtml">
+
+        <ui:define name="metadata_desc">
+            <meta name="description" content="JavaServer Faces: HTML Tag Library (h Taglib) - h:selectBooleanCheckbox"/>
+        </ui:define>
+
+        <ui:define name="head_page_title">
+            <title>JavaServer Faces: HTML Tag Library (h Taglib) - h:selectBooleanCheckbox</title>
+        </ui:define>
+
+        <ui:define name="center_section_title">
+            <tm:special_link
+                    link_url="#{msg['main_components_url.vdldocs.prefix']}selectBooleanCheckbox#{msg['main_components_url.vdldocs.suffix']}"
+                    link_text="JavaServer Faces: HTML Tag Library (h Taglib) - &lt;h:selectBooleanCheckbox&gt;"
+                    link_tooltip="#{msg['main_components_url.vdldocs.prefix']}selectBooleanCheckbox#{msg['main_components_url.vdldocs.suffix']}"
+                    target_blank="_blank" link_style="center_section_title_link_facelets"/>
+        </ui:define>
+
+        <ui:define name="center_section_content">
+
+            <p>
+                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <div>
+                <tm:special_link
+                        link_url="#{msg['main_components_url.html.prefix']}HtmlSelectBooleanCheckbox#{msg['main_components_url.suffix']}"
+                        link_text="javax.faces.component.html.HtmlSelectBooleanCheckbox"
+                        link_tooltip="#{msg['main_components_url.html.prefix']}HtmlSelectBooleanCheckbox#{msg['main_components_url.suffix']}"
+                        target_blank="_blank" link_style="api_package_class_facelets"/>
+                <span>
+                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <tm:special_link
+                            link_url="#{msg['main_components_url.prefix']}UISelectBoolean#{msg['main_components_url.suffix']}"
+                            link_text="javax.faces.component.UISelectBoolean"
+                            link_tooltip="#{msg['main_components_url.prefix']}UISelectBoolean#{msg['main_components_url.suffix']}"
+                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                </span>
+                <span>
+                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <tm:special_link
+                            link_url="#{msg['main_components_url.prefix']}UIInput#{msg['main_components_url.suffix']}"
+                            link_text="javax.faces.component.UIInput"
+                            link_tooltip="#{msg['main_components_url.prefix']}UIInput#{msg['main_components_url.suffix']}"
+                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                </span>
+                <span>
+                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <tm:special_link
+                            link_url="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
+                            link_text="javax.faces.component.UIOutput"
+                            link_tooltip="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
+                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                </span>
+            </div>
+
+            <p>
+                <h:outputText value="&lt;h:selectBooleanCheckbox&gt; attributes list:"
+                              styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <h:dataTable value="#{htmlSelectBooleanCheckboxBackingBean.selectBooleanCheckboxAttributesList}"
+                         var="selectBooleanCheckboxAttribute" border="1">
+                <f:facet name="header">&lt;h:selectBooleanCheckbox&gt; attributes list</f:facet>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    #{selectBooleanCheckboxAttribute.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Required</f:facet>
+                    #{selectBooleanCheckboxAttribute.required}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Default Value</f:facet>
+                    #{selectBooleanCheckboxAttribute.defaultValue}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Type</f:facet>
+                    #{selectBooleanCheckboxAttribute.type}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Description</f:facet>
+                    #{selectBooleanCheckboxAttribute.description}
+                </h:column>
+            </h:dataTable>
+
+            <p>
+                <h:outputText value="&lt;h:selectBooleanCheckbox&gt; examples:"
+                              styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+
+            <tm:examples_header title="Example from 'TutorialsPoint'"
+                                title_link="https://www.tutorialspoint.com/jsf/jsf_selectbooleancheckbox_tag.htm"
+                                render_link="true" notes=""
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <div class="example_site_links_wrapper_facelets">
+                    <tm:special_link
+                            link_url="https://www.tutorialspoint.com/jsf/jsf_selectbooleancheckbox_tag.htm"
+                            link_text="TutorialsPoint Link"
+                            link_tooltip="https://www.tutorialspoint.com/jsf/jsf_selectbooleancheckbox_tag.htm"
+                            target_blank="_blank" link_style="example_site_link_facelets"/>
+                </div>
+                <br/>
+
+                <h:form>
+                    <h:selectBooleanCheckbox id="sbcbTutorialsPoint"
+                                             value="#{htmlSelectBooleanCheckboxBackingBean.agree}"
+                                             styleClass="select_boolean_checkbox_style_facelets"/>
+                    <h:outputText value="I agree to the terms of the license agreement"
+                                  styleClass="select_boolean_checkbox_text_facelets"/>
+                    <br/><br/>
+                    <h:commandButton value="Submit">
+                        <f:ajax execute="sbcbTutorialsPoint"
+                                render=":#{component.namingContainer.parent.namingContainer.clientId}:tutorialsPointOutputId"/>
+                    </h:commandButton>
+                </h:form>
+
+                <br/>
+
+                <h:panelGrid columns="1">
+                    <tm:example_info id="tutorialsPointOutputId"
+                                     example_label="Display boolean answer: "
+                                     example_value="#{htmlSelectBooleanCheckboxBackingBean.agree}"
+                                     example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+                </h:panelGrid>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example from 'Faces.Liferay.Dev'"
+                                title_link="https://faces.liferay.dev/jsf-showcase/-/jsf-tag/h/selectbooleancheckbox/general"
+                                render_link="true" notes=""
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <div class="example_site_links_wrapper_facelets">
+                    <tm:special_link
+                            link_url="https://faces.liferay.dev/jsf-showcase/-/jsf-tag/h/selectbooleancheckbox/general"
+                            link_text="Faces.Liferay.Dev Link"
+                            link_tooltip="https://faces.liferay.dev/jsf-showcase/-/jsf-tag/h/selectbooleancheckbox/general"
+                            target_blank="_blank" link_style="example_site_link_facelets"/>
+                </div>
+
+                <h:form>
+                    <p><h:message for="sbcbFacesLiferay" styleClass="error_messages_both_templ_frames"/></p>
+                    <h:selectBooleanCheckbox id="sbcbFacesLiferay" value="#{htmlSelectBooleanCheckboxBackingBean.agree}"
+                                             required="true" styleClass="select_boolean_checkbox_style_facelets"/>
+                    <h:outputText value="I agree to the terms of the license agreement"
+                                  styleClass="select_boolean_checkbox_text_facelets"/>
+                    <br/><br/>
+                    <h:commandButton value="Submit">
+                        <f:ajax execute="@form" render="@form"/>
+                    </h:commandButton>
+
+                    <br/><br/>
+
+                    <h:panelGrid columns="1">
+                        <tm:example_info id="modelValue"
+                                         example_label="Display boolean answer: "
+                                         example_value="#{htmlSelectBooleanCheckboxBackingBean.agree}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+                    </h:panelGrid>
+                </h:form>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example from 'Mkyong'"
+                                title_link="https://mkyong.com/jsf2/jsf-2-checkboxes-example"
+                                render_link="true" notes=""
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <div class="example_site_links_wrapper_facelets">
+                    <tm:special_link
+                            link_url="https://mkyong.com/jsf2/jsf-2-checkboxes-example"
+                            link_text="MKyong Link"
+                            link_tooltip="https://mkyong.com/jsf2/jsf-2-checkboxes-example"
+                            target_blank="_blank" link_style="example_site_link_facelets"/>
+                </div>
+
+                <h:form>
+                    <p>
+                        <h:outputText value="1. Agree:" styleClass="examples_cases_titles_both_templ_frames"/>
+                    </p>
+                    <h:selectBooleanCheckbox id="sbcbMkyong1" value="#{htmlSelectBooleanCheckboxBackingBean.agree1}"
+                                             styleClass="select_boolean_checkbox_style_facelets"/>
+                    <h:outputText value="I agree to the terms of the license agreement"
+                                  styleClass="select_boolean_checkbox_text_facelets"/>
+
+                    <br/>
+
+                    <p>
+                        <h:outputText value="2. Agree:" styleClass="examples_cases_titles_both_templ_frames"/>
+                    </p>
+                    <h:selectBooleanCheckbox id="sbcbMkyong2" value="#{htmlSelectBooleanCheckboxBackingBean.agree2}"
+                                             styleClass="select_boolean_checkbox_style_facelets"/>
+                    <h:outputText value="I agree to the terms of the license agreement"
+                                  styleClass="select_boolean_checkbox_text_facelets"/>
+
+                    <br/><br/>
+
+                    <h:commandButton value="Submit">
+                        <f:ajax execute="sbcbMkyong1 sbcbMkyong2" render="mkyongOutputId1 mkyongOutputId2"/>
+                    </h:commandButton>
+                    <h:commandButton value="Reset" action="#{htmlSelectBooleanCheckboxBackingBean.resetValues}"
+                                     styleClass="sbcb_reset_btn_facelets">
+                        <f:ajax execute="sbcbMkyong1 sbcbMkyong2"
+                                render="mkyongOutputId1 mkyongOutputId2 sbcbMkyong1 sbcbMkyong2"/>
+                    </h:commandButton>
+
+                    <br/><br/>
+
+                    <h:panelGrid columns="1">
+                        <tm:example_info id="mkyongOutputId1"
+                                         example_label="Agree 1: "
+                                         example_value="#{htmlSelectBooleanCheckboxBackingBean.agree1}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+                        <tm:example_info id="mkyongOutputId2"
+                                         example_label="Agree 2: "
+                                         example_value="#{htmlSelectBooleanCheckboxBackingBean.agree2}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+                    </h:panelGrid>
+                </h:form>
+            </div>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+</html>
+
+        <!--
+        Old links
+        https://javaserverfaces.github.io/docs/2.3/vdldocs/facelets/h/selectBooleanCheckbox.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlSelectBooleanCheckbox.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/UISelectBoolean.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/UIInput.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/UIOutput.html
+
+        New links
+        https://docs.oracle.com/javaee/7/javaserver-faces-2-2/vdldocs-facelets/h/selectBooleanCheckbox.html
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/html/HtmlSelectBooleanCheckbox
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/UISelectBoolean
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/UIInput
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/UIOutput
+        -->

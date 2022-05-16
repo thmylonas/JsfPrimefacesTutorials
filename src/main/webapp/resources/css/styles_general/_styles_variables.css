@@ -1,0 +1,135 @@
+/* Useful variables */
+
+:root {
+    /* Variables of colors */
+
+    --deep_pink1: rgba(255, 0, 128, 1); /*#FF0080FF*/
+    --deep_pink2: rgba(255, 0, 153, 1); /*#FF0099FF*/
+    --fuchsia1_opacity4: rgba(255, 0, 240, 0.4); /*#FF00F066*/
+    --fuchsia1_no_opacity8: rgba(255, 0, 240, 0.8); /*#FF00F0CC*/
+    --turquoise1_opacity4: rgba(102, 255, 255, 0.4); /*#66FFFF66*/
+    --turquoise1_no_opacity7: rgba(102, 255, 255, 0.7); /*#66FFFFB2*/
+    --turquoise1: rgba(102, 255, 255, 1); /*#66FFFFFF*/
+    --purple1_opacity4: rgba(194, 194, 240, 0.4); /*#C2C2F066*/
+    --purple1_no_opacity6: rgba(194, 194, 240, 0.6); /*#C2C2F099*/
+    --purple1_no_opacity8: rgba(194, 194, 240, 0.8); /*#C2C2F0CC*/
+    --fire_brick1: rgba(179, 0, 0, 1); /*#B30000FF*/
+    --deep_green_shadow: rgba(51, 77, 77, 1); /*#334D4DFF*/
+    --deep_black_shadow: rgba(85, 85, 85, 1); /*#555555FF*/
+    --grey1_opacity3: rgba(170, 170, 170, 0.3); /*#AAAAAA4C*/
+    --grey2: rgba(153, 153, 153, 1); /*#999999FF*/
+
+    /* Simple variables of "font-family" */
+
+    --frank_ruhl_libre: Frank Ruhl Libre;
+    --verdana: Verdana;
+    --linotype_didot: Linotype Didot;
+    --courgette: Courgette;
+    --merienda: Merienda;
+    --sans_serif: sans-serif;
+    --serif: serif;
+
+    /* Composite variables of "font-family" */
+
+    --frank_ruhl_libre_verdana_sans_serif: var(--frank_ruhl_libre), var(--verdana), var(--sans_serif);
+    --linotype_didot_courgette_serif: var(--linotype_didot), var(--courgette), var(--serif);
+    --linotype_didot_courgette_sans_serif: var(--linotype_didot), var(--courgette), var(--sans_serif);
+    --merienda_verdana_sans_serif: var(--merienda), var(--verdana), var(--sans_serif);
+
+    /* Composite variables of "font-family" (Reverse order) */
+
+    --verdana_frank_ruhl_libre_sans_serif: var(--verdana), var(--frank_ruhl_libre), var(--sans_serif);
+    --courgette_linotype_didot_serif: var(--courgette), var(--linotype_didot), var(--serif);
+    --courgette_linotype_didot_sans_serif: var(--courgette), var(--linotype_didot), var(--sans_serif);
+    --verdana_merienda_sans_serif: var(--verdana), var(--merienda), var(--sans_serif);
+}
+
+/* Collections of colors */
+/*
+.not_used_style_pink_collection {
+    color: pink; !* rgba(255, 192, 203, 1) - #FFC0CBFF *!
+    color: lightpink; !* rgba(255, 182, 193, 1) - #FFB6C1FF *!
+    color: hotpink; !* rgba(255, 105, 180, 1) - #FF69B4FF *!
+    color: var(--deep_pink1); !* rgba(255, 0, 128, 1) - #FF0080FF *!
+    color: var(--deep_pink2); !* rgba(255, 0, 153, 1) - #FF0099FF *!
+    color: deeppink; !* rgba(255, 20, 147, 1) - #FF1493FF *!
+    color: var(--fuchsia1_opacity4); !* rgba(255, 0, 240, 0.4) - #FF00F066 *!
+    color: var(--fuchsia1_no_opacity8); !* rgba(255, 0, 240, 0.8) - #FF00F0CC *!
+    color: fuchsia; !* rgba(255, 0, 255, 1) - #FF00FFFF *!
+    color: magenta; !* rgba(255, 0, 255, 1) - #FF00FFFF *!
+    color: violet; !* rgba(238, 130, 238, 1) - #EE82EEFF *!
+}
+
+.not_used_style_turquoise_collection {
+    color: var(--turquoise1_opacity4); !* rgba(102, 255, 255, 0.4) - #66FFFF66 *!
+    color: var(--turquoise1_no_opacity7); !* rgba(102, 255, 255, 0.7) - #66FFFFB2 *!
+    color: var(--turquoise1); !* rgba(102, 255, 255, 1) - #66FFFFFF *!
+    color: turquoise; !* rgba(64, 224, 208, 1) - #40E0D0FF *!
+    color: darkturquoise; !* rgba(0, 206, 209, 1) - #00CED1FF *!
+    color: mediumturquoise; !* rgba(72, 209, 204, 1) - #48D1CCFF *!
+    color: paleturquoise; !* rgba(175, 238, 238, 1) - #AFEEEEFF *!
+}
+
+.not_used_style_purple_collection {
+    color: var(--purple1_opacity4); !* rgba(194, 194, 240, 0.4) - #C2C2F066 *!
+    color: var(--purple1_no_opacity6); !* rgba(194, 194, 240, 0.6) - #C2C2F099 *!
+    color: var(--purple1_no_opacity8); !* rgba(194, 194, 240, 0.8) - #C2C2F0CC *!
+}
+
+.not_used_style_brown_collection {
+    color: var(--fire_brick1); !* rgba(179, 0, 0, 1) - #B30000FF *!
+    color: firebrick; !* rgba(178, 34, 34, 1) - #B22222FF *!
+}
+
+.not_used_style_shadow_collection {
+    color: var(--deep_green_shadow); !* rgba(51, 77, 77, 1) - #334D4DFF *!
+    color: var(--deep_black_shadow); !* rgba(85, 85, 85, 1) - #555555FF *!
+}
+
+.not_used_style_grey_collection {
+    color: var(--grey1_opacity3); !* rgba(170, 170, 170, 0.3) - #AAAAAA4C *!
+    color: var(--grey2); !* rgba(153, 153, 153, 1) - #999999FF *!
+}
+
+.not_used_attributes_order {
+    width: 1px; !*100%*!
+    height: 1px; !*100%*!
+    min-width: 1px;
+    min-height: 1px;
+
+    background: blue url(..) no-repeat fixed;
+    background-color: blue !important;
+    background-image: url(..);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    border: 1px solid blue;
+    border-radius: 1px;
+    box-shadow: 1px 1px 1px blue;
+
+    font-family: "family-name", "family-name", generic-family;
+    font-size: 1px;
+    font-style: normal;
+    font-weight: normal;
+    color: blue;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px blue;
+    white-space: nowrap;
+
+    margin: 1px 1px 1px 1px; !* margin: top right bottom left *!
+    margin-top: 1px !important;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    padding: 1px 1px 1px 1px; !* padding: top right bottom left *!
+    padding-top: 1px !important;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    padding-left: 1px;
+
+    display: block;
+    float: right;
+}
+*/

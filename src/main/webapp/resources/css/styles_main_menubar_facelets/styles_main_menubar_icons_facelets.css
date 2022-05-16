@@ -1,0 +1,346 @@
+/* Styles for "ui-menuitem-icon entries", in "Facelets" */
+
+.ui-menuitem-icon.ai, .ui-menuitem-icon.algorithms, .ui-menuitem-icon.android, .ui-menuitem-icon.apache,
+.ui-menuitem-icon.architecture, .ui-menuitem-icon.artificial_neuronic_networks, .ui-menuitem-icon.bitbucket,
+.ui-menuitem-icon.bootstrap, .ui-menuitem-icon.cms, .ui-menuitem-icon.computational_geometry,
+.ui-menuitem-icon.constraint_satisfaction_problems, .ui-menuitem-icon.contact_info, .ui-menuitem-icon.cpp,
+.ui-menuitem-icon.css, .ui-menuitem-icon.data_structures, .ui-menuitem-icon.data_warehouses_data_mining,
+.ui-menuitem-icon.database_sql, .ui-menuitem-icon.db_technology, .ui-menuitem-icon.digital_design,
+.ui-menuitem-icon.discrete_maths, .ui-menuitem-icon.distributed_systems, .ui-menuitem-icon.ejb, .ui-menuitem-icon.electronics,
+.ui-menuitem-icon.fuzzy_logic, .ui-menuitem-icon.game_theory, .ui-menuitem-icon.genetic_algorithms, .ui-menuitem-icon.git,
+.ui-menuitem-icon.github, .ui-menuitem-icon.glassfish, .ui-menuitem-icon.gradle, .ui-menuitem-icon.hibernate,
+.ui-menuitem-icon.html, .ui-menuitem-icon.http, .ui-menuitem-icon.info_retrieval, .ui-menuitem-icon.intelligent_autonomous_systems,
+.ui-menuitem-icon.java, .ui-menuitem-icon.java_ee, .ui-menuitem-icon.javascript, .ui-menuitem-icon.jax_rs_framework,
+.ui-menuitem-icon.jsf, .ui-menuitem-icon.json, .ui-menuitem-icon.jsp_jstl, .ui-menuitem-icon.linux,
+.ui-menuitem-icon.linux_mint, .ui-menuitem-icon.machine_learning, .ui-menuitem-icon.markup_langs,
+.ui-menuitem-icon.maths, .ui-menuitem-icon.maven, .ui-menuitem-icon.mongo_db, .ui-menuitem-icon.ms_sql_server,
+.ui-menuitem-icon.multi_agent_systems, .ui-menuitem-icon.my_cv, .ui-menuitem-icon.mysql, .ui-menuitem-icon.networks,
+.ui-menuitem-icon.numerical_analysis, .ui-menuitem-icon.oracle_db, .ui-menuitem-icon.os, .ui-menuitem-icon.php,
+.ui-menuitem-icon.planning, .ui-menuitem-icon.primefaces, .ui-menuitem-icon.probability_theory,
+.ui-menuitem-icon.qt_quick, .ui-menuitem-icon.restful_services, .ui-menuitem-icon.scripting_langs,
+.ui-menuitem-icon.servers, .ui-menuitem-icon.servlets_framework, .ui-menuitem-icon.spring_framework,
+.ui-menuitem-icon.sqlite, .ui-menuitem-icon.statistics, .ui-menuitem-icon.systems_signals, .ui-menuitem-icon.thymeleaf,
+.ui-menuitem-icon.tomcat, .ui-menuitem-icon.ubuntu, .ui-menuitem-icon.windows, .ui-menuitem-icon.www, .ui-menuitem-icon.xml,
+.ui-menuitem-icon.xpath, .ui-menuitem-icon.xquery {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.ui-menuitem-icon.ai {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Ai.jpg' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.algorithms {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Rubik.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.android {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Android.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.apache {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Apache.png' ]}) no-repeat !important;
+    margin-top: 5px;
+}
+
+.ui-menuitem-icon.architecture {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Architecture.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.artificial_neuronic_networks {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/ArtificialNeuronicNetworks.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.bitbucket {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Bitbucket.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.bootstrap {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Bootstrap.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.cms {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Cms.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.computational_geometry {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/ComputationalGeometry.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.constraint_satisfaction_problems {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Sudoku.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.contact_info {
+    background: url(#{resource[ 'images/menubar_icons/about/ContactInfo.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.cpp {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Cpp.jpg' ]}) no-repeat !important;
+    margin-top: 2px;
+}
+
+.ui-menuitem-icon.css {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Css.jpg' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.data_structures {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/DataStructures.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.data_warehouses_data_mining {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/DataCube.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.database_sql {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/DatabaseSql.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.db_technology {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/DbTechnology.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.digital_design {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/DigitalDesign.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.discrete_maths {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/DiscreteMaths.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.distributed_systems {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/DistributedSystems.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.ejb {
+    background: url(#{resource[ 'images/menubar_icons/java_frameworks/EnterpriseJavaBeans.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.electronics {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Electronics.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.fuzzy_logic {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/FuzzyLogic.jpg' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.game_theory {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Chess.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.genetic_algorithms {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/GeneticAlgorithms.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.git {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Git.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.github {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/GitHub.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.glassfish {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/GlassFish.png' ]}) no-repeat !important;
+    margin-top: 4px;
+}
+
+.ui-menuitem-icon.gradle {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Gradle.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.hibernate {
+    background: url(#{resource[ 'images/menubar_icons/java_frameworks/Hibernate.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.html {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Html.jpg' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.http {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Http.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.info_retrieval {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/InfoRetrieval.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.intelligent_autonomous_systems {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/IntelligentAutonomousSystems.jpg' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.java {
+    background: url(#{resource[ 'images/menubar_icons/java_frameworks/Java.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.java_ee {
+    background: url(#{resource[ 'images/menubar_icons/java_frameworks/JavaEe.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.javascript {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Javascript.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.jax_rs_framework {
+    background: url(#{resource[ 'images/menubar_icons/java_frameworks/JaxRsFramework.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.jsf {
+    background: url(#{resource[ 'images/menubar_icons/java_frameworks/JavaServerFaces.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.json {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Json.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.jsp_jstl {
+    background: url(#{resource[ 'images/menubar_icons/java_frameworks/JavaServerPages.jpg' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.linux {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Linux.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.linux_mint {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/LinuxMint.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.machine_learning {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/MachineLearning.jpg' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.markup_langs {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/MarkupLangs.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.maths {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Maths.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.maven {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Maven.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.mongo_db {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/MongoDb.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.ms_sql_server {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/MsSqlServer.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.multi_agent_systems {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/MultiAgentSystems.jpg' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.my_cv {
+    background: url(#{resource[ 'images/menubar_icons/about/ThomasMylonas.jpg' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.mysql {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Mysql.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.networks {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Networks.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.numerical_analysis {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/NumericalAnalysis.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.oracle_db {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/OracleDb.jpg' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.os {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Os.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.php {
+    width: 23px !important;
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Php.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.planning {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Planning.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.primefaces {
+    background: url(#{resource[ 'images/menubar_icons/java_frameworks/Primefaces.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.probability_theory {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/ProbabilityTheory.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.qt_quick {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Qt.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.restful_services {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/RestfulServices.png' ]}) no-repeat !important;
+    margin-top: 2px;
+}
+
+.ui-menuitem-icon.scripting_langs {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/ScriptingLangs.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.servers {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Servers.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.servlets_framework {
+    background: url(#{resource[ 'images/menubar_icons/java_frameworks/ServletsFramework.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.spring_framework {
+    background: url(#{resource[ 'images/menubar_icons/java_frameworks/SpringFramework.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.sqlite {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Sqlite.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.statistics {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Statistics.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.systems_signals {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/SystemsSignals.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.thymeleaf {
+    background: url(#{resource[ 'images/menubar_icons/java_frameworks/Thymeleaf.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.tomcat {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Tomcat.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.ubuntu {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Ubuntu.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.windows {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Windows.jpg' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.www {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Www.png' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.xml {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Xml.jpg' ]}) no-repeat !important;
+}
+
+.ui-menuitem-icon.xpath {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/Xpath.png' ]}) no-repeat !important;
+    margin-top: 2px;
+}
+
+.ui-menuitem-icon.xquery {
+    background: url(#{resource[ 'images/menubar_icons/cs_topics/XQuery.png' ]}) no-repeat !important;
+}

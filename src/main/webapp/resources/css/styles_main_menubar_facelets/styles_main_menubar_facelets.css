@@ -1,0 +1,20 @@
+/* Styles for "Main Menubar", in "Facelets" */
+
+/* Main functionality of "Main Menubar" */
+
+.ui-menuitem {
+    /*width: fit-content !important;*/
+    /*background-color: fuchsia;*/
+    white-space: nowrap;
+}
+
+.ui-menubar .ui-menu-child .ui-menuitem-link {
+    width: 95% !important;
+    /*background-color: fuchsia;*/
+    white-space: nowrap;
+}
+
+ul.ui-widget-content.ui-menu-list.ui-menu-child {
+    width: 320px !important;
+    /*min-width: 320px !important;*/
+}

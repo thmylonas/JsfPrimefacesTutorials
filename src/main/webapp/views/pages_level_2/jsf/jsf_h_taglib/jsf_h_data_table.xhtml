@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components">
+
+<h:body>
+
+    <ui:composition template="../../../templates/pages_level2_template.xhtml">
+
+        <ui:define name="metadata_desc">
+            <meta name="description" content="JavaServer Faces: HTML Tag Library (h Taglib) - h:dataTable"/>
+        </ui:define>
+
+        <ui:define name="head_page_title">
+            <title>JavaServer Faces: HTML Tag Library (h Taglib) - h:dataTable</title>
+        </ui:define>
+
+        <ui:define name="center_section_title">
+            <tm:special_link
+                    link_url="#{msg['main_components_url.vdldocs.prefix']}dataTable#{msg['main_components_url.vdldocs.suffix']}"
+                    link_text="JavaServer Faces: HTML Tag Library (h Taglib) - &lt;h:dataTable&gt;"
+                    link_tooltip="#{msg['main_components_url.vdldocs.prefix']}dataTable#{msg['main_components_url.vdldocs.suffix']}"
+                    target_blank="_blank" link_style="center_section_title_link_facelets"/>
+        </ui:define>
+
+        <ui:define name="center_section_content">
+
+            <p>
+                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <div>
+                <tm:special_link
+                        link_url="#{msg['main_components_url.html.prefix']}HtmlDataTable#{msg['main_components_url.suffix']}"
+                        link_text="javax.faces.component.html.HtmlDataTable"
+                        link_tooltip="#{msg['main_components_url.html.prefix']}HtmlDataTable#{msg['main_components_url.suffix']}"
+                        target_blank="_blank" link_style="api_package_class_facelets"/>
+                <span>
+                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <tm:special_link
+                            link_url="#{msg['main_components_url.prefix']}UIData#{msg['main_components_url.suffix']}"
+                            link_text="javax.faces.component.UIData"
+                            link_tooltip="#{msg['main_components_url.prefix']}UIData#{msg['main_components_url.suffix']}"
+                            target_blank="_blank" link_style="api_package_class_facelets"/>
+	            </span>
+            </div>
+
+            <p>
+                <h:outputText value="&lt;h:dataTable&gt; attributes list:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <h:dataTable value="#{htmlDataTableBackingBean.dataTableAttributesList}"
+                         var="dataTableAttribute" border="1">
+                <f:facet name="header">&lt;h:dataTable&gt; attributes list</f:facet>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    #{dataTableAttribute.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Required</f:facet>
+                    #{dataTableAttribute.required}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Default Value</f:facet>
+                    #{dataTableAttribute.defaultValue}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Type</f:facet>
+                    #{dataTableAttribute.type}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Description</f:facet>
+                    #{dataTableAttribute.description}
+                </h:column>
+            </h:dataTable>
+
+            <p>
+                <h:outputText value="&lt;h:dataTable&gt; examples:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <div>
+                <h:dataTable value="#{javaFrameworksBackingBean.javaFrameworks}" var="javaFramework"
+                             border="5" title="Java Frameworks" width="100%">
+                    <h:column>
+                        <f:facet name="header">ID</f:facet>
+                        #{javaFramework.id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Java Framework</f:facet>
+                        #{javaFramework.javaFramework}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Java Edition</f:facet>
+                        #{javaFramework.javaEdition}
+                    </h:column>
+                </h:dataTable>
+            </div>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+</html>
+
+        <!--
+        Old links
+        https://javaserverfaces.github.io/docs/2.3/vdldocs/facelets/h/dataTable.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlDataTable.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/UIData.html
+
+        New links
+        https://docs.oracle.com/javaee/7/javaserver-faces-2-2/vdldocs-facelets/h/dataTable.html
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/html/HtmlDataTable
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/UIData
+        -->

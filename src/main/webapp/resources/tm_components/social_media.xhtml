@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+    <ui:composition>
+
+        <cc:interface>
+            <cc:attribute name="social_media_wrapper_style_class" type="java.lang.String" required="false"
+                          shortDescription="The styleClass for the social_media_wrapper"/>
+        </cc:interface>
+
+        <cc:implementation>
+
+            <div class="#{cc.attrs.social_media_wrapper_style_class}">
+                <tm:special_link
+                        link_url="https://www.linkedin.com/in/thomas-mylonas-6a8613103/"
+                        link_text=""
+                        link_tooltip="https://www.linkedin.com/in/thomas-mylonas-6a8613103/"
+                        target_blank="_blank">
+                    <p:graphicImage value="#{resource['images/social_media/LinkedIn.png']}" alt="LinkedIn"
+                                    styleClass="social_media_facelets"/>
+                </tm:special_link>
+                <tm:special_link
+                        link_url="https://www.facebook.com/profile.php?id=100009890505751"
+                        link_text=""
+                        link_tooltip="https://www.facebook.com/profile.php?id=100009890505751"
+                        target_blank="_blank">
+                    <p:graphicImage value="#{resource['images/social_media/Facebook.png']}" alt="Facebook"
+                                    styleClass="social_media_facelets"/>
+                </tm:special_link>
+                <tm:special_link
+                        link_url="https://www.instagram.com/thmylonas1972"
+                        link_text=""
+                        link_tooltip="https://www.instagram.com/thmylonas1972"
+                        target_blank="_blank">
+                    <p:graphicImage value="#{resource['images/social_media/Instagram.png']}" alt="Instagram"
+                                    styleClass="social_media_facelets"/>
+                </tm:special_link>
+                <tm:special_link
+                        link_url="https://myaccount.google.com/profile?pli=1"
+                        link_text=""
+                        link_tooltip="https://myaccount.google.com/profile?pli=1"
+                        target_blank="_blank">
+                    <p:graphicImage value="#{resource['images/social_media/GooglePlus.png']}" alt="GooglePlus"
+                                    styleClass="social_media_facelets"/>
+                </tm:special_link>
+            </div>
+
+        </cc:implementation>
+
+    </ui:composition>
+
+</h:body>
+</html>

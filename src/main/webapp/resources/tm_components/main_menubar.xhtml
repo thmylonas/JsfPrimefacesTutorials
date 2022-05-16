@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+    <ui:composition>
+
+        <!--<h:outputScript name="js/js_pages_level_1/js_primefaces_facelets/js_menubar_facelets.js"/>-->
+
+        <cc:interface>
+            <cc:attribute name="options_rendered" type="java.lang.Boolean" required="true"
+                          shortDescription="Controls if options in mainMenuBar will be rendered or not"/>
+            <cc:attribute name="main_menubar_style" type="java.lang.String" required="true"
+                          shortDescription="Defines the CSS style of the component"/>
+            <cc:attribute name="render_main_menubar_icons" type="java.lang.Boolean" required="false"
+                          shortDescription="Usage not defined yet"/>
+        </cc:interface>
+
+        <cc:implementation>
+
+            <h:form>
+
+                <p:menubar styleClass="#{cc.attrs.main_menubar_style}" toggleEvent="click">
+
+                    <p:menuitem value="#{msg['page_level1.main_menubar.home']}"
+                                url="#{msg['webapp_link']}home"/>
+
+                    <p:submenu label="#{msg['no_page.main_menubar.programming']}">
+                        <p:menuitem value="#{msg['page_level1.main_menubar.java']}"
+                                    url="#{msg['webapp_link']}java"
+                                    icon="java"/>
+                        <p:submenu label="#{msg['no_page.main_menubar.java_ee']}" icon="java_ee">
+                            <p:submenu label="#{msg['no_page.main_menubar.java_ee_web']}" icon="java_ee">
+                                <p:menuitem value="#{msg['page_level1.main_menubar.servlets_framework']}"
+                                            url="#{msg['webapp_link']}servlets-framework"
+                                            icon="servlets_framework"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.spring_framework']}"
+                                            url="#{msg['webapp_link']}spring-framework"
+                                            icon="spring_framework"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.thymeleaf']}"
+                                            url="#{msg['webapp_link']}thymeleaf"
+                                            icon="thymeleaf"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.jsp_jstl']}"
+                                            url="#{msg['webapp_link']}jsp-jstl"
+                                            icon="jsp_jstl"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.ejb']}"
+                                            url="#{msg['webapp_link']}ejb"
+                                            icon="ejb"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.jax_rs_framework']}"
+                                            url="#{msg['webapp_link']}jax-rs-framework"
+                                            icon="jax_rs_framework"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.jsf']}"
+                                            url="#{msg['webapp_link']}facelets/jsf"
+                                            icon="jsf"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.primefaces']}"
+                                            url="#{msg['webapp_link']}facelets/primefaces"
+                                            icon="primefaces"/>
+                            </p:submenu>
+                            <p:menuitem value="#{msg['page_level1.main_menubar.hibernate_jpa_orm']}"
+                                        url="#{msg['webapp_link']}hibernate-jpa-orm"
+                                        icon="hibernate"/>
+                        </p:submenu>
+                        <p:submenu label="#{msg['no_page.main_menubar.web_devel']}" icon="http">
+                            <p:submenu label="#{msg['no_page.main_menubar.www']}" icon="http">
+                                <p:menuitem value="#{msg['page_level1.main_menubar.www']}"
+                                            url="#{msg['webapp_link']}www"
+                                            icon="www"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.rest']}"
+                                            url="#{msg['webapp_link']}rest"
+                                            icon="restful_services"/>
+                            </p:submenu>
+                            <p:submenu label="#{msg['no_page.main_menubar.markup']}" icon="markup_langs">
+                                <p:menuitem value="#{msg['page_level1.main_menubar.html']}"
+                                            url="#{msg['webapp_link']}html"
+                                            icon="html"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.css']}"
+                                            url="#{msg['webapp_link']}css"
+                                            icon="css"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.xml']}"
+                                            url="#{msg['webapp_link']}xml"
+                                            icon="xml"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.json']}"
+                                            url="#{msg['webapp_link']}json"
+                                            icon="json"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.xquery']}"
+                                            url="#{msg['webapp_link']}xquery"
+                                            icon="xquery"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.xpath']}"
+                                            url="#{msg['webapp_link']}xpath"
+                                            icon="xpath"/>
+                            </p:submenu>
+                            <p:submenu label="#{msg['no_page.main_menubar.script']}" icon="scripting_langs">
+                                <p:menuitem value="#{msg['page_level1.main_menubar.javascript']}"
+                                            url="#{msg['webapp_link']}javascript"
+                                            icon="javascript"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.php']}"
+                                            url="#{msg['webapp_link']}php"
+                                            icon="php"/>
+                            </p:submenu>
+                            <p:menuitem value="#{msg['page_level1.main_menubar.bootstrap']}"
+                                        url="#{msg['webapp_link']}bootstrap"
+                                        icon="bootstrap"/>
+                            <p:menuitem value="#{msg['page_level1.main_menubar.cms']}"
+                                        url="#{msg['webapp_link']}cms"
+                                        icon="cms"/>
+                        </p:submenu>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.android']}"
+                                    url="#{msg['webapp_link']}android"
+                                    icon="android"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.c_cpp']}"
+                                    url="#{msg['webapp_link']}c-cpp"
+                                    icon="cpp"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.qt_quick']}"
+                                    url="#{msg['webapp_link']}qt-quick"
+                                    icon="qt_quick"/>
+                    </p:submenu>
+
+                    <p:submenu label="#{msg['no_page.main_menubar.data_science']}">
+                        <p:menuitem value="#{msg['page_level1.main_menubar.algorithms']}"
+                                    url="#{msg['webapp_link']}algorithms"
+                                    icon="algorithms"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.data_structures']}"
+                                    url="#{msg['webapp_link']}data-structures"
+                                    icon="data_structures"/>
+                        <p:submenu label="#{msg['no_page.main_menubar.db']}" icon="database_sql">
+                            <p:submenu label="#{msg['no_page.main_menubar.db_theory']}" icon="database_sql">
+                                <p:menuitem value="#{msg['page_level1.main_menubar.db_basic_theory_sql']}"
+                                            url="#{msg['webapp_link']}db-basic-theory-sql"
+                                            icon="database_sql"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.db_technology']}"
+                                            url="#{msg['webapp_link']}db-technology"
+                                            icon="db_technology"/>
+                            </p:submenu>
+                            <p:submenu label="#{msg['no_page.main_menubar.dbms']}" icon="oracle_db">
+                                <p:menuitem value="#{msg['page_level1.main_menubar.oracle_db']}"
+                                            url="#{msg['webapp_link']}oracle-db"
+                                            icon="oracle_db"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.ms_sql_server']}"
+                                            url="#{msg['webapp_link']}ms-sql-server"
+                                            icon="ms_sql_server"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.mysql']}"
+                                            url="#{msg['webapp_link']}mysql"
+                                            icon="mysql"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.sqlite']}"
+                                            url="#{msg['webapp_link']}sqlite"
+                                            icon="sqlite"/>
+                            </p:submenu>
+                            <p:submenu label="#{msg['no_page.main_menubar.no_sql']}" icon="mongo_db">
+                                <p:menuitem value="#{msg['page_level1.main_menubar.mongo_db']}"
+                                            url="#{msg['webapp_link']}mongo-db"
+                                            icon="mongo_db"/>
+                            </p:submenu>
+                        </p:submenu>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.info_retrieval']}"
+                                    url="#{msg['webapp_link']}info-retrieval"
+                                    icon="info_retrieval"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.data_warehouses_data_mining']}"
+                                    url="#{msg['webapp_link']}data-warehouses-data-mining"
+                                    icon="data_warehouses_data_mining"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.computational_geometry']}"
+                                    url="#{msg['webapp_link']}computational-geometry"
+                                    icon="computational_geometry"/>
+                        <p:submenu label="#{msg['no_page.main_menubar.maths']}" icon="maths">
+                            <p:menuitem value="#{msg['page_level1.main_menubar.statistics']}"
+                                        url="#{msg['webapp_link']}statistics"
+                                        icon="statistics"/>
+                            <p:menuitem value="#{msg['page_level1.main_menubar.probability_theory']}"
+                                        url="#{msg['webapp_link']}probability-theory"
+                                        icon="probability_theory"/>
+                            <p:menuitem value="#{msg['page_level1.main_menubar.numerical_analysis']}"
+                                        url="#{msg['webapp_link']}numerical-analysis"
+                                        icon="numerical_analysis"/>
+                            <p:menuitem value="#{msg['page_level1.main_menubar.discrete_maths']}"
+                                        url="#{msg['webapp_link']}discrete-maths"
+                                        icon="discrete_maths"/>
+                        </p:submenu>
+                    </p:submenu>
+
+                    <p:submenu label="#{msg['no_page.main_menubar.ai']}">
+                        <p:menuitem value="#{msg['page_level1.main_menubar.intro_to_ai']}"
+                                    url="#{msg['webapp_link']}intro-to-ai"
+                                    icon="ai"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.planning']}"
+                                    url="#{msg['webapp_link']}planning"
+                                    icon="planning"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.intelligent_autonomous_systems']}"
+                                    url="#{msg['webapp_link']}intelligent-autonomous-systems"
+                                    icon="intelligent_autonomous_systems"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.machine_learning']}"
+                                    url="#{msg['webapp_link']}machine-learning"
+                                    icon="machine_learning"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.multi_agent_systems']}"
+                                    url="#{msg['webapp_link']}multi-agent-systems"
+                                    icon="multi_agent_systems"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.game_theory']}"
+                                    url="#{msg['webapp_link']}game-theory"
+                                    icon="game_theory"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.artificial_neuronic_networks']}"
+                                    url="#{msg['webapp_link']}artificial-neuronic-networks"
+                                    icon="artificial_neuronic_networks"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.genetic_algorithms']}"
+                                    url="#{msg['webapp_link']}genetic-algorithms"
+                                    icon="genetic_algorithms"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.fuzzy_logic']}"
+                                    url="#{msg['webapp_link']}fuzzy-logic"
+                                    icon="fuzzy_logic"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.constraint_satisfaction_problems']}"
+                                    url="#{msg['webapp_link']}constraint-satisfaction-problems"
+                                    icon="constraint_satisfaction_problems"/>
+                    </p:submenu>
+
+                    <p:submenu label="#{msg['no_page.main_menubar.systems']}">
+                        <p:submenu label="#{msg['no_page.main_menubar.os']}" icon="os">
+                            <p:menuitem value="#{msg['page_level1.main_menubar.os_basic_theory']}"
+                                        url="#{msg['webapp_link']}os-basic-theory"
+                                        icon="os"/>
+                            <p:menuitem value="#{msg['page_level1.main_menubar.windows']}"
+                                        url="#{msg['webapp_link']}windows"
+                                        icon="windows"/>
+                            <p:submenu label="#{msg['no_page.main_menubar.linux']}" icon="linux">
+                                <p:menuitem value="#{msg['page_level1.main_menubar.ubuntu']}"
+                                            url="#{msg['webapp_link']}ubuntu"
+                                            icon="ubuntu"/>
+                                <p:menuitem value="#{msg['page_level1.main_menubar.linux_mint']}"
+                                            url="#{msg['webapp_link']}linux-mint"
+                                            icon="linux_mint"/>
+                            </p:submenu>
+                        </p:submenu>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.distributed_systems']}"
+                                    url="#{msg['webapp_link']}distributed-systems"
+                                    icon="distributed_systems"/>
+                        <p:submenu label="#{msg['no_page.main_menubar.servers']}" icon="servers">
+                            <p:menuitem value="#{msg['page_level1.main_menubar.servers']}"
+                                        url="#{msg['webapp_link']}servers"
+                                        icon="servers"/>
+                            <p:menuitem value="#{msg['page_level1.main_menubar.apache']}"
+                                        url="#{msg['webapp_link']}apache"
+                                        icon="apache"/>
+                            <p:menuitem value="#{msg['page_level1.main_menubar.tomcat']}"
+                                        url="#{msg['webapp_link']}tomcat"
+                                        icon="tomcat"/>
+                            <p:menuitem value="#{msg['page_level1.main_menubar.glassfish']}"
+                                        url="#{msg['webapp_link']}glassfish"
+                                        icon="glassfish"/>
+                        </p:submenu>
+                        <p:submenu label="#{msg['no_page.main_menubar.vcs']}" icon="git">
+                            <p:menuitem value="#{msg['page_level1.main_menubar.git']}"
+                                        url="#{msg['webapp_link']}git"
+                                        icon="git"/>
+                            <p:menuitem value="#{msg['page_level1.main_menubar.bitbucket']}"
+                                        url="#{msg['webapp_link']}bitbucket"
+                                        icon="bitbucket"/>
+                            <p:menuitem value="#{msg['page_level1.main_menubar.github']}"
+                                        url="#{msg['webapp_link']}github"
+                                        icon="github"/>
+                        </p:submenu>
+                        <p:submenu label="#{msg['no_page.main_menubar.build_tools']}" icon="maven">
+                            <p:menuitem value="#{msg['page_level1.main_menubar.maven']}"
+                                        url="#{msg['webapp_link']}maven"
+                                        icon="maven"/>
+                            <p:menuitem value="#{msg['page_level1.main_menubar.gradle']}"
+                                        url="#{msg['webapp_link']}gradle"
+                                        icon="gradle"/>
+                        </p:submenu>
+                    </p:submenu>
+
+                    <p:submenu label="#{msg['no_page.main_menubar.architecture']}">
+                        <p:menuitem value="#{msg['page_level1.main_menubar.digital_design']}"
+                                    url="#{msg['webapp_link']}digital-design"
+                                    icon="digital_design"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.electronics']}"
+                                    url="#{msg['webapp_link']}electronics"
+                                    icon="electronics"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.architecture']}"
+                                    url="#{msg['webapp_link']}architecture"
+                                    icon="architecture"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.networks']}"
+                                    url="#{msg['webapp_link']}networks"
+                                    icon="networks"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.systems_signals']}"
+                                    url="#{msg['webapp_link']}systems-signals"
+                                    icon="systems_signals"/>
+                    </p:submenu>
+
+                    <p:submenu label="#{msg['no_page.main_menubar.about']}">
+                        <p:menuitem value="#{msg['page_level1.main_menubar.my_cv']}"
+                                    url="#{msg['webapp_link']}my-cv"
+                                    icon="my_cv"/>
+                        <p:menuitem value="#{msg['page_level1.main_menubar.contact_info']}"
+                                    url="#{msg['webapp_link']}contact-info"
+                                    icon="contact_info"/>
+                    </p:submenu>
+
+                    <f:facet name="options">
+                        <p:outputPanel rendered="#{cc.attrs.options_rendered}" styleClass="options">
+                            <p:inputText placeholder="#{msg['no_page.main_menubar.search']}"
+                                         styleClass="options_input_facelets"/>
+                            <p:commandButton type="button" value="Logout" icon="logout_icon_facelets"
+                                             styleClass="options_logout_facelets"/>
+                        </p:outputPanel>
+                    </f:facet>
+
+                </p:menubar>
+
+            </h:form>
+
+        </cc:implementation>
+
+    </ui:composition>
+
+</h:body>
+</html>
+
+        <!--
+        <p:growl id="messages"/>
+        <p:separator/>
+        <p:menubar model="#{menubarBackingBean.mainMenubarModel.menuModel}"
+                   styleClass="#{cc.attrs.main_menubar_style}" toggleEvent="click"></p:menubar>
+       -->

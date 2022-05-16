@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+<h:body>
+
+    <ui:composition>
+
+        <cc:interface>
+            <cc:attribute name="stylesheets_pages" type="java.lang.String" required="true"
+                          shortDescription="Defines the pages' level, to apply the stylesheets"/>
+        </cc:interface>
+
+        <cc:implementation>
+
+            <!-- Stylesheets for general purpose -->
+            <h:outputStylesheet name="css/styles_general/_styles_variables.css"/>
+            <h:outputStylesheet name="css/styles_general/styles_facelets.css"/>
+            <h:outputStylesheet
+                    name="css/styles_components_fragments/styles_components_facelets/styles_center_section_facelets.css"/>
+            <h:outputStylesheet
+                    name="css/styles_components_fragments/styles_components_facelets/styles_top_section_facelets.css"/>
+            <h:outputStylesheet
+                    name="css/styles_components_fragments/styles_components_facelets/styles_bottom_section_facelets.css"/>
+
+            <h:outputStylesheet name="css/styles_main_menubar_facelets/styles_main_menubar_facelets.css"/>
+            <h:outputStylesheet name="css/styles_main_menubar_facelets/styles_main_menubar_icons_facelets.css"/>
+            <h:outputStylesheet name="css/styles_main_menubar_facelets/styles_main_menubar_top_section_facelets.css"/>
+            <h:outputStylesheet
+                    name="css/styles_main_menubar_facelets/styles_main_menubar_bottom_section_facelets.css"/>
+
+            <c:if test="#{cc.attrs.stylesheets_pages.equals('stylesheets_pages_level1')}">
+
+                <!-- Stylesheets for general purpose -->
+                <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+                <h:outputStylesheet
+                        name="css/styles_components_fragments/styles_components_facelets/styles_right_section_facelets.css"/>
+
+                <!-- Stylesheets of "styles_pages_level_1" -->
+                <h:outputStylesheet name="css/styles_pages_level_1/styles_jsf_facelets/styles_jsf_facelets.css"/>
+                <h:outputStylesheet
+                        name="css/styles_pages_level_1/styles_primefaces_facelets/styles_primefaces_facelets.css"/>
+
+            </c:if>
+
+            <c:if test="#{cc.attrs.stylesheets_pages.equals('stylesheets_pages_level2')}">
+
+                <!-- Stylesheets of "styles_pages_level_2" -->
+                <h:outputStylesheet
+                        name="css/styles_pages_level_2/styles_jsf_facelets/styles_jsf_h_taglib_facelets.css"/>
+                <h:outputStylesheet
+                        name="css/styles_pages_level_2/styles_primefaces_facelets/styles_primefaces_data_tables_facelets.css"/>
+
+                <!-- Stylesheets of "styles_pages_level_3" -->
+                <h:outputStylesheet
+                        name="css/styles_pages_level_2/styles_jsf_facelets/styles_jsf_h_taglib_facelets/styles_jsf_h_command_button_facelets.css"/>
+                <h:outputStylesheet
+                        name="css/styles_pages_level_2/styles_jsf_facelets/styles_jsf_h_taglib_facelets/styles_jsf_h_input_text_facelets.css"/>
+                <h:outputStylesheet
+                        name="css/styles_pages_level_2/styles_jsf_facelets/styles_jsf_h_taglib_facelets/styles_jsf_h_output_format_facelets.css"/>
+                <h:outputStylesheet
+                        name="css/styles_pages_level_2/styles_jsf_facelets/styles_jsf_h_taglib_facelets/styles_jsf_h_output_label_facelets.css"/>
+                <h:outputStylesheet
+                        name="css/styles_pages_level_2/styles_jsf_facelets/styles_jsf_h_taglib_facelets/styles_jsf_h_select_boolean_checkbox_facelets.css"/>
+                <h:outputStylesheet
+                        name="css/styles_pages_level_2/styles_jsf_facelets/styles_jsf_h_taglib_facelets/styles_jsf_h_select_many_checkbox_facelets.css"/>
+                <h:outputStylesheet
+                        name="css/styles_pages_level_2/styles_jsf_facelets/styles_jsf_h_taglib_facelets/styles_jsf_h_select_many_listbox_facelets.css"/>
+                <h:outputStylesheet
+                        name="css/styles_pages_level_2/styles_jsf_facelets/styles_jsf_h_taglib_facelets/styles_jsf_h_select_many_menu_facelets.css"/>
+                <h:outputStylesheet
+                        name="css/styles_pages_level_2/styles_jsf_facelets/styles_jsf_h_taglib_facelets/styles_jsf_h_select_one_listbox_facelets.css"/>
+                <h:outputStylesheet
+                        name="css/styles_pages_level_2/styles_jsf_facelets/styles_jsf_h_taglib_facelets/styles_jsf_h_select_one_menu_facelets.css"/>
+                <h:outputStylesheet
+                        name="css/styles_pages_level_2/styles_jsf_facelets/styles_jsf_h_taglib_facelets/styles_jsf_h_select_one_radio_facelets.css"/>
+
+            </c:if>
+
+        </cc:implementation>
+
+    </ui:composition>
+
+</h:body>
+</html>

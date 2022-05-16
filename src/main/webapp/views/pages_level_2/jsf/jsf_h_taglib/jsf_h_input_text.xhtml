@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components">
+
+<h:body>
+
+    <ui:composition template="../../../templates/pages_level2_template.xhtml">
+
+        <ui:define name="metadata_desc">
+            <meta name="description" content="JavaServer Faces: HTML Tag Library (h Taglib) - h:inputText"/>
+        </ui:define>
+
+        <ui:define name="head_page_title">
+            <title>JavaServer Faces: HTML Tag Library (h Taglib) - h:inputText</title>
+        </ui:define>
+
+        <ui:define name="center_section_title">
+            <tm:special_link
+                    link_url="#{msg['main_components_url.vdldocs.prefix']}inputText#{msg['main_components_url.vdldocs.suffix']}"
+                    link_text="JavaServer Faces: HTML Tag Library (h Taglib) - &lt;h:inputText&gt;"
+                    link_tooltip="#{msg['main_components_url.vdldocs.prefix']}inputText#{msg['main_components_url.vdldocs.suffix']}"
+                    target_blank="_blank" link_style="center_section_title_link_facelets"/>
+        </ui:define>
+
+        <ui:define name="center_section_content">
+
+            <p>
+                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <div>
+                <tm:special_link
+                        link_url="#{msg['main_components_url.html.prefix']}HtmlInputText#{msg['main_components_url.suffix']}"
+                        link_text="javax.faces.component.html.HtmlInputText"
+                        link_tooltip="#{msg['main_components_url.html.prefix']}HtmlInputText#{msg['main_components_url.suffix']}"
+                        target_blank="_blank" link_style="api_package_class_facelets"/>
+                <span>
+                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <tm:special_link
+                            link_url="#{msg['main_components_url.prefix']}UIInput#{msg['main_components_url.suffix']}"
+                            link_text="javax.faces.component.UIInput"
+                            link_tooltip="#{msg['main_components_url.prefix']}UIInput#{msg['main_components_url.suffix']}"
+                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                </span>
+                <span>
+                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <tm:special_link
+                            link_url="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
+                            link_text="javax.faces.component.UIOutput"
+                            link_tooltip="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
+                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                </span>
+            </div>
+
+            <p>
+                <h:outputText value="&lt;h:inputText&gt; attributes list:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <h:dataTable value="#{htmlInputTextBackingBean.inputTextAttributesList}"
+                         var="inputTextAttribute" border="1">
+                <f:facet name="header">&lt;h:inputText&gt; attributes list</f:facet>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    #{inputTextAttribute.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Required</f:facet>
+                    #{inputTextAttribute.required}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Default Value</f:facet>
+                    #{inputTextAttribute.defaultValue}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Type</f:facet>
+                    #{inputTextAttribute.type}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Description</f:facet>
+                    #{inputTextAttribute.description}
+                </h:column>
+            </h:dataTable>
+
+            <p>
+                <h:outputText value="&lt;h:inputText&gt; examples:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+
+            <tm:examples_header title="Example for 'title' &amp; 'tabindex' attributes"
+                                render_link="false"
+                                notes="The 'title' attribute displays a small description, which can be used as a tooltip for the 'h:inputText'. The 'tabindex' attribute stores the tab order."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:inputText value="text text text text" styleClass="input_text_style_facelets"
+                             title="'Title' is a tooltip!"
+                             tabindex="1"/>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example for 'rendered' attribute"
+                                render_link="false"
+                                notes="The 'rendered' attribute."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:form id="hideDisplayInputTextForm">
+                    <h:commandButton value="Hide/Display 'h:inputText'"
+                                     action="#{htmlInputTextBackingBean.hideDisplayInputText}"
+                                     styleClass="rendered_hide_display_btn_facelets">
+                        <f:ajax render="hideDisplayInputTextForm"/>
+                    </h:commandButton>
+                    <h:inputText id="hideDisplayInputTextId" value="text text text text"
+                                 styleClass="input_text_style_facelets"
+                                 rendered="#{htmlInputTextBackingBean.rendered}"/>
+                </h:form>
+            </div>
+
+            <!--
+            <tm:examples_header title="Example for 'binding' attribute"
+                                render_link="false"
+                                notes="The 'binding' attribute."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:form id="workWithBindingAttributeForm">
+                    <h:commandButton value="Work with 'binding' attribute"
+                                     action="#{htmlInputTextBackingBean.workWithBindingAttribute}">
+                        <f:ajax render="workWithBindingAttributeForm"/>
+                    </h:commandButton>
+                    <h:inputText id="workWithBindingAttributeInputId"
+                                 value="#{htmlInputTextBackingBean.workWithBindingAttributeOutput}"
+                                 styleClass="input_text_style_facelets"
+                                 binding="#{htmlInputTextBackingBean.htmlInputText}">
+                        <f:ajax render="workWithBindingAttributeOutputId"/>
+                    </h:inputText>
+                    <h:outputText id="workWithBindingAttributeOutputId"
+                                  value="#{htmlInputTextBackingBean.value}"
+                                  styleClass=""/>
+                    value="#{htmlInputTextBackingBean.workWithBindingAttributeOutput}"
+
+                </h:form>
+            </div>
+            -->
+
+            <hr/>
+
+            <tm:examples_header title="Example for 'size' &amp; 'maxlength' attributes"
+                                render_link="false"
+                                notes="The 'size' attribute displays the maximum number of characters used to determine the width of the 'h:inputText'. The 'maxlength' attribute displays the maximum number of characters that may be entered in this field."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:inputText value="1234567890123456789012345678" styleClass="input_text_style_facelets" size="80"
+                             maxlength="28"/>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example for 'onclick' &amp; 'ondblclick' attributes"
+                                render_link="false"
+                                notes="On 'onclick' changes the style of the nearby text. On 'ondblclick' the style of the text returns to the initial state."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:inputText value="text text text text" styleClass="input_text_style_facelets" tabindex="3"
+                             onclick="document.getElementById('red_bold_text_2_facelets').style.color='red'; document.getElementById('red_bold_text_2_facelets').style.fontWeight='bold'"
+                             ondblclick="document.getElementById('red_bold_text_2_facelets').style.color='black'; document.getElementById('red_bold_text_2_facelets').style.fontWeight='normal'"/>
+                <span id="red_bold_text_2_facelets">[Red &amp; bold text]</span>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example for 'onkeydown' &amp; 'ondblclick' attributes"
+                                render_link="false"
+                                notes="On 'onkeydown' an alert popup displays the action &amp; changes the style of the nearby text. On 'ondblclick' the style of the text returns to the initial state."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:inputText value="text text text text" styleClass="input_text_style_facelets" tabindex="2"
+                             onkeydown="window.alert('Key down'); document.getElementById('red_bold_text_facelets').style.color='red'; document.getElementById('red_bold_text_facelets').style.fontWeight='bold'"
+                             ondblclick="document.getElementById('red_bold_text_facelets').style.color='black'; document.getElementById('red_bold_text_facelets').style.fontWeight='normal'"/>
+                <span id="red_bold_text_facelets">[Red &amp; bold text]</span>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example for 'onkeyup' attribute"
+                                render_link="false"
+                                notes="On 'onkeyup' an alert popup displays the action."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:inputText value="text text text text" styleClass="input_text_style_facelets" tabindex="4"
+                             onkeyup="window.alert('Key up');"/>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example for 'onkeypress', 'onmouseup' &amp; 'onmousedown' attributes"
+                                render_link="false"
+                                notes="On 'onkeypress' an alert popup displays the action. On 'onmouseup' an alert popup displays the action. On 'onmousedown' an alert popup displays the action."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:inputText value="text text text text" styleClass="input_text_style_facelets" tabindex="5"
+                             onkeypress="window.alert('Key is pressed')"
+                             onmouseup="window.alert('The mouse has moved up')"
+                             onmousedown="window.alert('The mouse has moved down')"/>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example for 'onmouseover' &amp; 'onmouseout' attributes"
+                                render_link="false"
+                                notes="On 'onmouseover' an alert popup displays the action. On 'onmouseout' an alert popup displays the action."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:inputText value="text text text text" styleClass="input_text_style_facelets" tabindex="6"
+                             onmouseover="window.alert('Mouse move over')"
+                             onmouseout="window.alert('Mouse move out')"/>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example for 'onmousemove' attribute"
+                                render_link="false"
+                                notes="On 'onmousemove' an alert popup displays the action."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:inputText value="text text text text" styleClass="input_text_style_facelets" tabindex="7"
+                             onmousemove="window.alert('The mouse has moved')"/>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example for 'onfocus' &amp; 'onblur' attributes"
+                                render_link="false"
+                                notes="On 'onfocus' an alert popup displays the action. On 'onblur' an alert popup displays the action."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:inputText value="text text text text" styleClass="input_text_style_facelets" tabindex="8"
+                             onfocus="window.alert('The input has gained focus')"
+                             onblur="window.alert('The input has lost focus')"/>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example for 'onselect' &amp; 'onchange' attributes"
+                                render_link="false"
+                                notes="On 'onselect' an alert popup displays the action. On 'onchange' an alert popup displays the action."
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <h:inputText value="text text text text" styleClass="input_text_style_facelets" tabindex="9"
+                             onselect="window.alert('The text is selected')"
+                             onchange="window.alert('The text has changed')"/>
+            </div>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+</html>
+
+        <!--
+        Old links
+        https://javaserverfaces.github.io/docs/2.3/vdldocs/facelets/h/inputText.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlInputText.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/UIInput.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/UIOutput.html
+
+        New links
+        https://docs.oracle.com/javaee/7/javaserver-faces-2-2/vdldocs-facelets/h/inputText.html
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/html/HtmlInputText
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/UIInput
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/UIOutput
+        -->

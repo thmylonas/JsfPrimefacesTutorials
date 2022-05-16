@@ -1,4 +1,4 @@
-package com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.views_backing_beans;
+package com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.view_backing_beans;
 
 import org.springframework.stereotype.Component;
 
@@ -21,12 +21,12 @@ public class DropdownBackingBean implements Serializable {
     @PostConstruct
     public void init() {
 
-        countries = new HashMap<String, String>();
+        countries = new HashMap<>();
         countries.put("USA", "USA");
         countries.put("Germany", "Germany");
         countries.put("Brazil", "Brazil");
 
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         map.put("New York", "New York");
         map.put("San Francisco", "San Francisco");
         map.put("Denver", "Denver");
@@ -38,7 +38,7 @@ public class DropdownBackingBean implements Serializable {
         map.put("Frankfurt", "Frankfurt");
         data.put("Germany", map);
 
-        map = new HashMap<String, String>();
+        map = new HashMap<>();
         map.put("Sao Paulo", "Sao Paulo");
         map.put("Rio de Janerio", "Rio de Janerio");
         map.put("Salvador", "Salvador");
@@ -78,7 +78,7 @@ public class DropdownBackingBean implements Serializable {
         if (country != null && !country.equals("")) {
             cities = data.get(country);
         } else {
-            cities = new HashMap<String, String>();
+            cities = new HashMap<>();
         }
     }
 

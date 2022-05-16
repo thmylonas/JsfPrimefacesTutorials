@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+<h:body>
+
+    <ui:composition>
+
+        <cc:interface>
+            <cc:attribute name="example_label" type="java.lang.String" required="true"
+                          shortDescription="The label of the example"/>
+            <cc:attribute name="example_value" type="java.lang.String" required="true"
+                          shortDescription="The value of the example"/>
+            <cc:attribute name="escape_value" type="java.lang.Boolean" required="false"
+                          shortDescription="Controls if the 'example_value' will be escaped or not"/>
+            <cc:attribute name="example_style" type="java.lang.String" required="false"
+                          shortDescription="The styleClass of the example"/>
+        </cc:interface>
+
+        <cc:implementation>
+
+            <div id="#{cc.clientId}" class="#{cc.attrs.example_style.split(',')[0]}">
+                <h:outputText value="#{cc.attrs.example_label}" styleClass="#{cc.attrs.example_style.split(',')[1]}"/>
+                <h:outputText value="#{cc.attrs.example_value}" escape="#{cc.attrs.escape_value}"
+                              styleClass="#{cc.attrs.example_style.split(',')[2]}"/>
+            </div>
+
+        </cc:implementation>
+
+    </ui:composition>
+
+</h:body>
+</html>

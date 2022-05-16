@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:body>
+
+    <ui:composition template="../../../templates/pages_level2_template.xhtml">
+
+        <ui:define name="metadata_desc">
+            <meta name="description" content="JavaServer Faces: Tricks from others"/>
+        </ui:define>
+
+        <ui:define name="head_page_title">
+            <title>JavaServer Faces: Tricks from others</title>
+        </ui:define>
+
+        <ui:define name="center_section_title">
+            <h:outputText value="JavaServer Faces: Tricks from others"/>
+        </ui:define>
+
+        <ui:define name="center_section_content">
+
+            <p>
+                <h:outputText value="JavaServer Faces: Tricks from others" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+
+            <h:panelGrid id="resourcePanel1" columns="5" rules="all">
+                <ui:repeat var="car" value="#{sortingDataTableBackingBean.cars}">
+                    <h:panelGrid columns="1" rules="none">
+                        <h:outputText value="#{car.id}"/>
+                        <h:outputText value="#{car.brand}"/>
+                    </h:panelGrid>
+                </ui:repeat>
+            </h:panelGrid>
+
+            <br/>
+
+            <h:panelGrid id="resourcePanel2" columns="5" rules="all">
+                <c:forEach var="car" items="#{sortingDataTableBackingBean.cars}">
+                    <h:panelGrid columns="1" rules="none">
+                        <h:outputText value="#{car.id}"/>
+                        <h:outputText value="#{car.brand}"/>
+                    </h:panelGrid>
+                </c:forEach>
+            </h:panelGrid>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+</html>

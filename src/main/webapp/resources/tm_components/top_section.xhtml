@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components">
+
+<h:body>
+
+    <ui:composition>
+
+        <cc:interface/>
+
+        <cc:implementation>
+
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <div class="top_section_titles_wrapper_facelets">
+                        <div class="top_section_title_facelets">
+                            <h:outputText value="#{msg['top_section.title']}"/>
+                        </div>
+                        <div class="top_section_subtitle_facelets">
+                            <h:outputText value="#{msg['top_section.subtitle']}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-g">
+                <div class="ui-g-8">
+                    <tm:temp_shortcuts/>
+                </div>
+                <div class="ui-g-2">
+                    <tm:social_media social_media_wrapper_style_class="social_media_wrapper_facelets"/>
+                </div>
+                <div class="ui-g-2">
+                    <tm:change_lang/>
+                </div>
+            </div>
+
+        </cc:implementation>
+
+    </ui:composition>
+
+</h:body>
+</html>

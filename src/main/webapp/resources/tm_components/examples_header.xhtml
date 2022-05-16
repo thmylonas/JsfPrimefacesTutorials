@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components">
+
+<h:body>
+
+    <ui:composition>
+
+        <cc:interface>
+            <cc:attribute name="title" type="java.lang.String" required="true"
+                          shortDescription="Title of Technology examples"/>
+            <cc:attribute name="title_link" type="java.lang.String" required="false"
+                          shortDescription="Link of Technology examples"/>
+            <cc:attribute name="render_link" type="java.lang.Boolean" required="true"
+                          shortDescription="Controls if link will be rendered or not"/>
+            <cc:attribute name="notes" type="java.lang.String" required="false"
+                          shortDescription="Notes of Technology examples"/>
+            <cc:attribute name="header_style" type="java.lang.String" required="false"
+                          shortDescription="The styleClass of the header"/>
+        </cc:interface>
+
+        <cc:implementation>
+
+            <div class="#{cc.attrs.header_style.split(',')[0]}">
+                <h:outputText value="#{cc.attrs.title}" class="#{cc.attrs.header_style.split(',')[1]}"
+                              rendered="#{not cc.attrs.render_link}"/>
+                <tm:special_link link_url="#{cc.attrs.title_link}" link_text="#{cc.attrs.title}"
+                                 link_tooltip="#{cc.attrs.title_link}" target_blank="_blank"
+                                 rendered="#{cc.attrs.render_link}"
+                                 link_style="#{cc.attrs.header_style.split(',')[2]}"/>
+                <div class="#{cc.attrs.header_style.split(',')[3]}">
+                    <h:outputText value="#{cc.attrs.notes}"/>
+                </div>
+            </div>
+
+        </cc:implementation>
+
+    </ui:composition>
+
+</h:body>
+</html>

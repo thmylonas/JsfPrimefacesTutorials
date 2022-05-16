@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+    <ui:composition>
+
+        <cc:interface>
+            <cc:attribute name="link_url" type="java.lang.String" required="true"
+                          shortDescription="The URL of the link"/>
+            <cc:attribute name="link_text" type="java.lang.String" required="true"
+                          shortDescription="The text of the link"/>
+            <cc:attribute name="link_tooltip" type="java.lang.String" required="false"
+                          shortDescription="The tooltip of the link"/>
+            <cc:attribute name="target_blank" type="java.lang.String" required="false"
+                          shortDescription="Controls if the link is displayed in new page or not"/>
+            <cc:attribute name="link_style" type="java.lang.String" required="false"
+                          shortDescription="The styleClass of the link"/>
+        </cc:interface>
+
+        <cc:implementation>
+
+            <h:outputLink id="linkId"
+                          value="#{cc.attrs.link_url}" styleClass="#{cc.attrs.link_style}"
+                          target="#{cc.attrs.target_blank}">
+                <h:outputText value="#{cc.attrs.link_text}"/>
+                <cc:insertChildren/>
+            </h:outputLink>
+            <p:tooltip for="linkId"
+                       value="#{cc.attrs.link_tooltip}" showEffect="clip" hideEffect="fold" position="bottom"/>
+
+        </cc:implementation>
+
+    </ui:composition>
+
+</h:body>
+</html>

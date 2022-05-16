@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components">
+
+<h:body>
+
+    <ui:composition template="../../../templates/pages_level2_template.xhtml">
+
+        <ui:define name="metadata_desc">
+            <meta name="description" content="JavaServer Faces: HTML Tag Library (h Taglib) - h:outputStylesheet"/>
+        </ui:define>
+
+        <ui:define name="head_page_title">
+            <title>JavaServer Faces: HTML Tag Library (h Taglib) - h:outputStylesheet</title>
+        </ui:define>
+
+        <ui:define name="center_section_title">
+            <tm:special_link
+                    link_url="#{msg['main_components_url.vdldocs.prefix']}outputStylesheet#{msg['main_components_url.vdldocs.suffix']}"
+                    link_text="JavaServer Faces: HTML Tag Library (h Taglib) - &lt;h:outputStylesheet&gt;"
+                    link_tooltip="#{msg['main_components_url.vdldocs.prefix']}outputStylesheet#{msg['main_components_url.vdldocs.suffix']}"
+                    target_blank="_blank" link_style="center_section_title_link_facelets"/>
+        </ui:define>
+
+        <ui:define name="center_section_content">
+
+            <p>
+                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <div>
+                <tm:special_link
+                        link_url="#{msg['main_components_url.html.prefix']}HtmlOutputStylesheet#{msg['main_components_url.suffix']}"
+                        link_text="javax.faces.component.html.HtmlOutputStylesheet (Page not found)"
+                        link_tooltip="#{msg['main_components_url.html.prefix']}HtmlOutputStylesheet#{msg['main_components_url.suffix']}"
+                        target_blank="_blank" link_style="api_package_class_facelets"/>
+                <span>
+                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <tm:special_link
+                            link_url="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
+                            link_text="javax.faces.component.UIOutput"
+                            link_tooltip="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
+                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                </span>
+            </div>
+
+            <p>
+                <h:outputText value="&lt;h:outputStylesheet&gt; attributes list:"
+                              styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <h:dataTable value="#{htmlOutputStylesheetBackingBean.outputStylesheetAttributesList}"
+                         var="outputStylesheetAttribute" border="1">
+                <f:facet name="header">&lt;h:outputStylesheet&gt; attributes list</f:facet>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    #{outputStylesheetAttribute.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Required</f:facet>
+                    #{outputStylesheetAttribute.required}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Default Value</f:facet>
+                    #{outputStylesheetAttribute.defaultValue}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Type</f:facet>
+                    #{outputStylesheetAttribute.type}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Description</f:facet>
+                    #{outputStylesheetAttribute.description}
+                </h:column>
+            </h:dataTable>
+
+            <p>
+                <h:outputText value="&lt;h:outputStylesheet&gt; examples:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+
+            <tm:examples_header title="Example..." render_link="false" notes=""
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                Example contents...
+            </div>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+</html>
+
+        <!--
+        Old links
+        https://javaserverfaces.github.io/docs/2.3/vdldocs/facelets/h/outputStylesheet.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlOutputStylesheet.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/UIOutput.html
+
+        New links
+        https://docs.oracle.com/javaee/7/javaserver-faces-2-2/vdldocs-facelets/h/outputStylesheet.html
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/html/HtmlOutputStylesheet
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/UIOutput
+        -->

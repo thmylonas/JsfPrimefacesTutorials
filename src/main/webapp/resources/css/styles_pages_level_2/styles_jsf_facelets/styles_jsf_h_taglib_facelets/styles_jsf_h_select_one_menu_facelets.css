@@ -1,0 +1,8 @@
+.select_one_menu_style_facelets {
+    border: 1px solid var(--deep_pink1);
+    border-radius: 3px;
+}
+
+.som_reset_btn_facelets {
+    margin-left: 10px;
+}

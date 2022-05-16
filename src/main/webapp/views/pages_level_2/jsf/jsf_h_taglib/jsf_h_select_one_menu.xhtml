@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components">
+
+<h:body>
+
+    <ui:composition template="../../../templates/pages_level2_template.xhtml">
+
+        <ui:define name="metadata_desc">
+            <meta name="description" content="JavaServer Faces: HTML Tag Library (h Taglib) - h:selectOneMenu"/>
+        </ui:define>
+
+        <ui:define name="head_page_title">
+            <title>JavaServer Faces: HTML Tag Library (h Taglib) - h:selectOneMenu</title>
+        </ui:define>
+
+        <ui:define name="center_section_title">
+            <tm:special_link
+                    link_url="#{msg['main_components_url.vdldocs.prefix']}selectOneMenu#{msg['main_components_url.vdldocs.suffix']}"
+                    link_text="JavaServer Faces: HTML Tag Library (h Taglib) - &lt;h:selectOneMenu&gt;"
+                    link_tooltip="#{msg['main_components_url.vdldocs.prefix']}selectOneMenu#{msg['main_components_url.vdldocs.suffix']}"
+                    target_blank="_blank" link_style="center_section_title_link_facelets"/>
+        </ui:define>
+
+        <ui:define name="center_section_content">
+
+            <p>
+                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <div>
+                <tm:special_link
+                        link_url="#{msg['main_components_url.html.prefix']}HtmlSelectOneMenu#{msg['main_components_url.suffix']}"
+                        link_text="javax.faces.component.html.HtmlSelectOneMenu"
+                        link_tooltip="#{msg['main_components_url.html.prefix']}HtmlSelectOneMenu#{msg['main_components_url.suffix']}"
+                        target_blank="_blank" link_style="api_package_class_facelets"/>
+                <span>
+                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <tm:special_link
+                            link_url="#{msg['main_components_url.prefix']}UISelectOne#{msg['main_components_url.suffix']}"
+                            link_text="javax.faces.component.UISelectOne"
+                            link_tooltip="#{msg['main_components_url.prefix']}UISelectOne#{msg['main_components_url.suffix']}"
+                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                </span>
+                <span>
+                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <tm:special_link
+                            link_url="#{msg['main_components_url.prefix']}UIInput#{msg['main_components_url.suffix']}"
+                            link_text="javax.faces.component.UIInput"
+                            link_tooltip="#{msg['main_components_url.prefix']}UIInput#{msg['main_components_url.suffix']}"
+                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                </span>
+                <span>
+                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <tm:special_link
+                            link_url="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
+                            link_text="javax.faces.component.UIOutput"
+                            link_tooltip="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
+                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                </span>
+            </div>
+
+            <p>
+                <h:outputText value="&lt;h:selectOneMenu&gt; attributes list:"
+                              styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+            <h:dataTable value="#{htmlSelectOneMenuBackingBean.selectOneMenuAttributesList}"
+                         var="selectOneMenuAttribute" border="1">
+                <f:facet name="header">&lt;h:selectOneMenu&gt; attributes list</f:facet>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    #{selectOneMenuAttribute.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Required</f:facet>
+                    #{selectOneMenuAttribute.required}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Default Value</f:facet>
+                    #{selectOneMenuAttribute.defaultValue}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Type</f:facet>
+                    #{selectOneMenuAttribute.type}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Description</f:facet>
+                    #{selectOneMenuAttribute.description}
+                </h:column>
+            </h:dataTable>
+
+            <p>
+                <h:outputText value="&lt;h:selectOneMenu&gt; examples:" styleClass="h_taglib_subtitles_facelets"/>
+            </p>
+
+            <tm:examples_header title="Example from 'TutorialsPoint'"
+                                title_link="https://www.tutorialspoint.com/jsf/jsf_selectonemenu_tag.htm"
+                                render_link="true" notes=""
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <div class="example_site_links_wrapper_facelets">
+                    <tm:special_link
+                            link_url="https://www.tutorialspoint.com/jsf/jsf_selectonemenu_tag.htm"
+                            link_text="TutorialsPoint Link"
+                            link_tooltip="https://www.tutorialspoint.com/jsf/jsf_selectonemenu_tag.htm"
+                            target_blank="_blank" link_style="example_site_link_facelets"/>
+                </div>
+                <br/>
+
+                <h:form>
+                    <h:selectOneMenu id="somTutorialsPoint" value="#{htmlSelectOneMenuBackingBean.itemDataValue}"
+                                     styleClass="select_one_menu_style_facelets">
+                        <f:selectItem itemLabel="Item 1" itemValue="Item value 1"/>
+                        <f:selectItem itemLabel="Item 2" itemValue="Item value 2"/>
+                        <f:selectItem itemLabel="Item 3" itemValue="Item value 3"/>
+                        <f:selectItem itemLabel="Item 4" itemValue="Item value 4"/>
+                        <f:selectItem itemLabel="Item 5" itemValue="Item value 5"/>
+                    </h:selectOneMenu>
+                    <br/><br/>
+                    <h:commandButton value="Display item value">
+                        <f:ajax execute="somTutorialsPoint"
+                                render=":#{component.namingContainer.parent.namingContainer.clientId}:tutorialsPointOutputId"/>
+                    </h:commandButton>
+                </h:form>
+
+                <br/>
+
+                <h:panelGrid columns="1">
+                    <tm:example_info id="tutorialsPointOutputId"
+                                     example_label="Item value hardcoded with 'f:selectItem': "
+                                     example_value="#{htmlSelectOneMenuBackingBean.itemDataValue}"
+                                     example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+                </h:panelGrid>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example from 'Faces.Liferay.Dev'"
+                                title_link="https://faces.liferay.dev/jsf-showcase/-/jsf-tag/h/selectonemenu/general"
+                                render_link="true" notes=""
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <div class="example_site_links_wrapper_facelets">
+                    <tm:special_link
+                            link_url="https://faces.liferay.dev/jsf-showcase/-/jsf-tag/h/selectonemenu/general"
+                            link_text="Faces.Liferay.Dev Link"
+                            link_tooltip="https://faces.liferay.dev/jsf-showcase/-/jsf-tag/h/selectonemenu/general"
+                            target_blank="_blank" link_style="example_site_link_facelets"/>
+                </div>
+
+                <h:form>
+                    <p><h:message for="somFacesLiferay" styleClass="error_messages_both_templ_frames"/></p>
+
+                    <p>
+                        <h:selectBooleanCheckbox value="#{htmlSelectOneMenuBackingBean.valueRequired}">
+                            <f:ajax/>
+                        </h:selectBooleanCheckbox>
+                        <h:outputText value="Value required" styleClass="value_required_facelets"/>
+                    </p>
+
+                    <h:selectOneMenu id="somFacesLiferay"
+                                     value="#{htmlSelectOneMenuBackingBean.itemDataNoPreSelectValue}"
+                                     required="#{htmlSelectOneMenuBackingBean.valueRequired}"
+                                     styleClass="select_one_menu_style_facelets"
+                                     requiredMessage="The 'h:selectOneMenu' must have a value. Please select an item from the list!">
+                        <f:selectItem itemLabel="-- Select --" noSelectionOption="true"/>
+                        <f:selectItem itemLabel="Item 1" itemValue="Item value 1"
+                                      itemDescription="Item 1 - Description"/>
+                        <f:selectItem itemLabel="Item 2" itemValue="Item value 2"
+                                      itemDescription="Item 2 - Description"/>
+                        <f:selectItem itemLabel="Item 3" itemValue="Item value 3"
+                                      itemDescription="Item 3 - Description"/>
+                        <f:selectItem itemLabel="Item 4" itemValue="Item value 4"
+                                      itemDescription="Item 4 - Description"/>
+                        <f:selectItem itemLabel="Item 5" itemValue="Item value 5"
+                                      itemDescription="Item 5 - Description"/>
+                        <f:selectItem itemLabel="Item 6" itemValue="Item value 6"
+                                      itemDescription="Item 6 - Description"/>
+                    </h:selectOneMenu>
+                    <br/><br/>
+                    <h:commandButton value="Display item value">
+                        <f:ajax execute="@form" render="@form"/>
+                    </h:commandButton>
+
+                    <br/><br/>
+
+                    <h:panelGrid columns="1">
+                        <tm:example_info id="modelValue"
+                                         example_label="Item value hardcoded with 'f:selectItem': "
+                                         example_value="#{htmlSelectOneMenuBackingBean.itemDataNoPreSelectValue}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+                    </h:panelGrid>
+                </h:form>
+            </div>
+
+            <hr/>
+
+            <tm:examples_header title="Example from 'Mkyong' &amp; 'StackOverflow Wiki'"
+                                title_link="https://mkyong.com/jsf2/jsf-2-dropdown-box-example"
+                                render_link="true" notes=""
+                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents_facelets">
+                <div class="example_site_links_wrapper_facelets">
+                    <tm:special_link
+                            link_url="https://mkyong.com/jsf2/jsf-2-dropdown-box-example"
+                            link_text="MKyong Link"
+                            link_tooltip="https://mkyong.com/jsf2/jsf-2-dropdown-box-example"
+                            target_blank="_blank" link_style="example_site_link_facelets"/>
+                    <br/>
+                    <tm:special_link
+                            link_url="https://stackoverflow.com/tags/selectonemenu/info"
+                            link_text="StackOverflow Wiki Link"
+                            link_tooltip="https://stackoverflow.com/tags/selectonemenu/info"
+                            target_blank="_blank" link_style="example_site_link_facelets"/>
+                </div>
+
+                <!--
+                TODO:
+                1. From here until the end of the file, the code has to be changed according to the new design
+                in the "_alt_jsf_h_select_many_checkbox.xhtml"
+                2. Use an array of 'SelectItem' SelectItem[] (with 'SelectItemGroup' java class), wherever it can be applied:
+                <p>
+                    <h:outputText
+                            value="#. The 'h:selectXxxx' values are generated by an array of 'SelectItem' SelectItem[] (with 'SelectItemGroup' java class) with 'f:selectItems':"
+                            styleClass="examples_cases_titles_both_templ_frames"/>
+                </p>
+                <h:selectXxxx id="xxxMkyong#"
+                              value="#{htmlSelectXxxxBackingBean.selectItemGroupsArrayValue}"
+                              styleClass="select_xxx_xxx_style_facelets">
+                    <f:selectItems value="#{htmlSelectXxxxBackingBean.selectItemGroupsArray}"/>
+                </h:selectXxxx>
+                3. Check/Fix all the page about the functionality
+                4. In some "h:selectXxxx" components the "required" attribute does not work
+                (Possible reason is the common use of "AbstractHtmlSelectsBackingBean::valueRequired" in these "h:selectXxxx" components)
+                -->
+                <h:form>
+                    <h:panelGroup id="somMkyong" layout="block">
+                        <p>
+                            <h:outputText
+                                    value="1. The 'h:selectOneMenu' values are hard-coded with 'f:selectItem':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <h:selectOneMenu id="somMkyong1"
+                                         value="#{htmlSelectOneMenuBackingBean.javaFrameworksHardCodedValue}"
+                                         styleClass="select_one_menu_style_facelets">
+                            <f:selectItem itemLabel="Java Label" itemValue="Java Value"/>
+                            <f:selectItem itemLabel="Spring Framework Label" itemValue="Spring Framework Value"/>
+                            <f:selectItem itemLabel="Hibernate Label" itemValue="Hibernate Value"/>
+                            <f:selectItem itemLabel="JSF Framework Label" itemValue="JSF Framework Value"/>
+                        </h:selectOneMenu>
+
+                        <br/>
+
+                        <p>
+                            <h:outputText
+                                    value="2. The 'h:selectOneMenu' values are generated by an array of 'SelectItem' SelectItem[] (with attrs: value, label) with 'f:selectItems':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <h:selectOneMenu id="somMkyong2"
+                                         value="#{htmlSelectOneMenuBackingBean.javaFrameworksWithSelectItemsValueLabelArrayValue}"
+                                         styleClass="select_one_menu_style_facelets">
+                            <f:selectItems
+                                    value="#{htmlSelectOneMenuBackingBean.javaFrameworksSelectItemsValueLabelArray}"/>
+                        </h:selectOneMenu>
+
+                        <br/>
+
+                        <p>
+                            <h:outputText
+                                    value="3. The 'h:selectOneMenu' values are generated by an array of 'SelectItem' SelectItem[] (with attr: value) with 'f:selectItems':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <h:selectOneMenu id="somMkyong3"
+                                         value="#{htmlSelectOneMenuBackingBean.javaFrameworksWithSelectItemsValueArrayValue}"
+                                         styleClass="select_one_menu_style_facelets">
+                            <f:selectItems
+                                    value="#{htmlSelectOneMenuBackingBean.javaFrameworksSelectItemsValueArray}"/>
+                        </h:selectOneMenu>
+
+                        <br/>
+
+                        <p>
+                            <h:outputText
+                                    value="4. The 'h:selectOneMenu' values are generated by an array of 'SelectItem' SelectItem[] (with all attrs) with 'f:selectItems':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <p><h:message for="somMkyong4" styleClass="error_messages_both_templ_frames"/></p>
+                        <h:selectOneMenu id="somMkyong4"
+                                         value="#{htmlSelectOneMenuBackingBean.javaFrameworksWithSelectItemsAllAttrsArrayValue}"
+                                         styleClass="select_one_menu_style_facelets" required="true"
+                                         requiredMessage="The 'h:selectOneMenu' must have a value. Please select an item from the list!">
+                            <f:selectItems
+                                    value="#{htmlSelectOneMenuBackingBean.javaFrameworksSelectItemsAllAttrsArray}"/>
+                        </h:selectOneMenu>
+
+                        <br/>
+
+                        <p>
+                            <h:outputText
+                                    value="5. The 'h:selectOneMenu' values are generated by a String array String[] with 'f:selectItems':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <h:selectOneMenu id="somMkyong5"
+                                         value="#{htmlSelectOneMenuBackingBean.javaFrameworksWithStringValuesArrayValue}"
+                                         styleClass="select_one_menu_style_facelets">
+                            <f:selectItems
+                                    value="#{htmlSelectOneMenuBackingBean.javaFrameworksStringValuesArray}"/>
+                        </h:selectOneMenu>
+
+                        <br/>
+
+                        <p>
+                            <h:outputText
+                                    value="6. The 'h:selectOneMenu' values are generated by a Map (itemLabel, itemValue) with 'f:selectItems':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <h:selectOneMenu id="somMkyong6"
+                                         value="#{htmlSelectOneMenuBackingBean.javaFrameworksWithLabelValueMapValue}"
+                                         styleClass="select_one_menu_style_facelets">
+                            <f:selectItems value="#{htmlSelectOneMenuBackingBean.javaFrameworksLabelValueMap}"/>
+                        </h:selectOneMenu>
+
+                        <br/>
+
+                        <p>
+                            <h:outputText
+                                    value="7. The 'h:selectOneMenu' values are generated by a Map (itemValue, itemLabel) with 'f:selectItems':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <h:selectOneMenu id="somMkyong7"
+                                         value="#{htmlSelectOneMenuBackingBean.javaFrameworksWithValueLabelMapValue}"
+                                         styleClass="select_one_menu_style_facelets">
+                            <f:selectItems
+                                    value="#{htmlSelectOneMenuBackingBean.javaFrameworksValueLabelMap.entrySet()}"
+                                    var="entry" itemLabel="#{entry.value}" itemValue="#{entry.key}"/>
+                        </h:selectOneMenu>
+
+                        <br/>
+
+                        <p>
+                            <h:outputText
+                                    value="8. The 'h:selectOneMenu' values are generated by an Object array with 'f:selectItems':"
+                                    styleClass="examples_cases_titles_both_templ_frames"/>
+                        </p>
+                        <h:selectOneMenu id="somMkyong8"
+                                         value="#{htmlSelectOneMenuBackingBean.javaFrameworksWithObjectArrayValue}"
+                                         styleClass="select_one_menu_style_facelets">
+                            <f:selectItems value="#{htmlSelectOneMenuBackingBean.javaFrameworksLabelValueArray}"
+                                           var="bean" itemLabel="#{bean.itemLabel}" itemValue="#{bean.itemValue}"/>
+                        </h:selectOneMenu>
+                    </h:panelGroup>
+
+                    <br/><br/>
+
+                    <h:commandButton value="Display Java Framework value">
+                        <f:ajax execute="somMkyong" render="mkyongOutputId somMkyong"/>
+                    </h:commandButton>
+                    <h:commandButton value="Reset Java Framework value"
+                                     action="#{htmlSelectOneMenuBackingBean.resetValues}"
+                                     styleClass="som_reset_btn_facelets">
+                        <f:ajax execute="somMkyong" render="mkyongOutputId somMkyong"/>
+                    </h:commandButton>
+
+                    <br/><br/>
+
+                    <h:panelGrid columns="1" id="mkyongOutputId">
+                        <tm:example_info id="mkyongOutputId1"
+                                         example_label="1. Java Framework hardcoded with 'f:selectItem': "
+                                         example_value="#{htmlSelectOneMenuBackingBean.javaFrameworksHardCodedValue}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+
+                        <tm:example_info id="mkyongOutputId2"
+                                         example_label="2. Java Framework by an array of 'SelectItem' SelectItem[] (with attrs: value, label) with 'f:selectItems': "
+                                         example_value="#{htmlSelectOneMenuBackingBean.javaFrameworksWithSelectItemsValueLabelArrayValue}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+
+                        <tm:example_info id="mkyongOutputId3"
+                                         example_label="3. Java Framework by an array of 'SelectItem' SelectItem[] (with attr: value) with 'f:selectItems': "
+                                         example_value="#{htmlSelectOneMenuBackingBean.javaFrameworksWithSelectItemsValueArrayValue}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+
+                        <tm:example_info id="mkyongOutputId4"
+                                         example_label="4. Java Framework by an array of 'SelectItem' SelectItem[] (with all attrs) with 'f:selectItems': "
+                                         example_value="#{htmlSelectOneMenuBackingBean.javaFrameworksWithSelectItemsAllAttrsArrayValue}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+
+                        <tm:example_info id="mkyongOutputId5"
+                                         example_label="5. Java Framework by a String array String[] with 'f:selectItems': "
+                                         example_value="#{htmlSelectOneMenuBackingBean.javaFrameworksWithStringValuesArrayValue}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+
+                        <tm:example_info id="mkyongOutputId6"
+                                         example_label="6. Java Framework by a Map (itemLabel, itemValue) with 'f:selectItems': "
+                                         example_value="#{htmlSelectOneMenuBackingBean.javaFrameworksWithLabelValueMapValue}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+
+                        <tm:example_info id="mkyongOutputId7"
+                                         example_label="7. Java Framework by a Map (itemValue, itemLabel) with 'f:selectItems': "
+                                         example_value="#{htmlSelectOneMenuBackingBean.javaFrameworksWithValueLabelMapValue}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+
+                        <tm:example_info id="mkyongOutputId8"
+                                         example_label="8. Java Framework by an Object array with 'f:selectItems': "
+                                         example_value="#{htmlSelectOneMenuBackingBean.javaFrameworksWithObjectArrayValue}"
+                                         example_style="example_info_wrapper_both_templ_frames,example_info_label_both_templ_frames,example_info_value_both_templ_frames"/>
+                    </h:panelGrid>
+                </h:form>
+            </div>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+</html>
+
+        <!--
+        Old links
+        https://javaserverfaces.github.io/docs/2.3/vdldocs/facelets/h/selectOneMenu.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlSelectOneMenu.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/UISelectOne.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/UIInput.html
+        https://docs.oracle.com/javaee/7/api/javax/faces/component/UIOutput.html
+
+        New links
+        https://docs.oracle.com/javaee/7/javaserver-faces-2-2/vdldocs-facelets/h/selectOneMenu.html
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/html/HtmlSelectOneMenu
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/UISelectOne
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/UIInput
+        https://jakarta.ee/specifications/faces/2.3/apidocs/javax/faces/component/UIOutput
+        -->

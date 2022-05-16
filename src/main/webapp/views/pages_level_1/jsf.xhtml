@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+    <ui:composition template="../templates/pages_level1_template.xhtml">
+
+        <ui:define name="metadata_desc">
+            <meta name="description" content="#{msg['page_level1.metadata_desc.jsf']}"/>
+        </ui:define>
+
+        <ui:define name="head_page_title">
+            <title>#{msg['page_level1.head_page_title.jsf']}</title>
+        </ui:define>
+
+        <ui:define name="center_section_title">
+            <h:outputText value="#{msg['page_level1.center_section.title.jsf']}"/>
+        </ui:define>
+
+        <ui:define name="center_section_content">
+
+            <p>
+                <h:outputText value="JavaServer Faces Framework topics" styleClass="technology_topics_titles_facelets"/>
+            </p>
+
+            <div class="technology_topics_group_wrapper_facelets">
+                <div>
+                    <tm:special_link
+                            link_url="#{msg['webapp_link']}facelets/jsf-h-taglib"
+                            link_text="HTML Tag Library (h Taglib)"
+                            link_tooltip="#{msg['webapp_link']}facelets/jsf-h-taglib"
+                            target_blank="_blank" link_style="technology_topics_list_facelets"/>
+                </div>
+                <div>
+                    <tm:special_link
+                            link_url="#"
+                            link_text="Core Tag Library (f Taglib)"
+                            link_tooltip="#"
+                            target_blank="_blank" link_style="technology_topics_list_facelets"/>
+                </div>
+                <div>
+                    <tm:special_link
+                            link_url="#"
+                            link_text="Facelets Tag Library (ui Taglib)"
+                            link_tooltip="#"
+                            target_blank="_blank" link_style="technology_topics_list_facelets"/>
+                </div>
+                <div>
+                    <tm:special_link
+                            link_url="#"
+                            link_text="Composite Tag Library (Composite Taglib)"
+                            link_tooltip="#"
+                            target_blank="_blank" link_style="technology_topics_list_facelets"/>
+                </div>
+                <div>
+                    <tm:special_link
+                            link_url="#"
+                            link_text="JSTL Core Tag Library (JSTL Core Taglib)"
+                            link_tooltip="#"
+                            target_blank="_blank" link_style="technology_topics_list_facelets"/>
+                </div>
+                <div>
+                    <tm:special_link
+                            link_url="#"
+                            link_text="JSTL Functions Tag Library (JSTL Functions Taglib)"
+                            link_tooltip="#"
+                            target_blank="_blank" link_style="technology_topics_list_facelets"/>
+                </div>
+            </div>
+
+        </ui:define>
+
+        <ui:define name="right_section_title">
+            <h:outputText value="#{msg['page_level1.right_section.title.jsf']}"/>
+        </ui:define>
+
+        <ui:define name="right_section_image">
+            <ui:param name="pathToJavaServerFacesJpg"
+                      value="#{imagesService.getImagesEnum('JAVA_SERVER_FACES_IMAGE').imageFullNameWithPath}"/>
+            <!--pathToJavaServerFacesJpg == 'images/java_frameworks/JavaServerFaces.jpg'-->
+            <p:graphicImage value="#{resource[pathToJavaServerFacesJpg]}"
+                            alt="#{msg['page_level1.right_section.image_alt.jsf']}"
+                            styleClass="right_section_image_facelets java_server_faces_image_facelets"/>
+        </ui:define>
+
+        <ui:define name="right_section_content">
+            <h:outputText value="#{msg['page_level1.right_section.title.jsf']}: #{msg['right.section.content']}"/>
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+</html>
