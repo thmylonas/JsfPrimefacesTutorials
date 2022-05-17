@@ -109,7 +109,7 @@
     text-decoration: none;
 }
 
-.examples_cases_titles { /* Should be common class in both versions (for now is used only in "Facelets") */
+.examples_cases_titles {
     font-size: 16px;
     font-style: italic;
     font-weight: bold;
@@ -132,7 +132,7 @@
 
 /* Others */
 
-.error_messages { /* Should be common class in both versions (for now is used only in "Facelets") */
+.error_messages {
     background-color: red;
     color: white;
 }
