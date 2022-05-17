@@ -15,7 +15,7 @@
     padding-bottom: 5px;
 }
 
-.copyright_both_templ_frames {
+.copyright {
     font-family: var(--frank_ruhl_libre_verdana_sans_serif);
     font-size: 12px;
     text-shadow: 2px 2px var(--deep_pink1);

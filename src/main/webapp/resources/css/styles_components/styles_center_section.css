@@ -75,7 +75,7 @@
     padding: 8px 10px;
 }
 
-.examples_header_title_both_templ_frames {
+.examples_header_title {
     font-weight: bold;
     color: blue;
     margin-bottom: 10px;
@@ -87,7 +87,7 @@
     text-decoration: none;
 }
 
-.examples_header_notes_both_templ_frames {
+.examples_header_notes {
     color: green;
     margin-top: 5px;
     margin-left: 10px;
@@ -109,30 +109,30 @@
     text-decoration: none;
 }
 
-.examples_cases_titles_both_templ_frames { /* Should be common class in both versions (for now is used only in "Facelets") */
+.examples_cases_titles { /* Should be common class in both versions (for now is used only in "Facelets") */
     font-size: 16px;
     font-style: italic;
     font-weight: bold;
     color: green;
 }
 
-.example_info_wrapper_both_templ_frames {
+.example_info_wrapper {
     margin-bottom: 10px;
 }
 
-.example_info_label_both_templ_frames {
+.example_info_label {
     font-size: 16px;
     /*font-weight: bold;*/ /* Maybe useful */
     color: green;
 }
 
-.example_info_value_both_templ_frames {
+.example_info_value {
     color: var(--deep_pink1);
 }
 
 /* Others */
 
-.error_messages_both_templ_frames { /* Should be common class in both versions (for now is used only in "Facelets") */
+.error_messages { /* Should be common class in both versions (for now is used only in "Facelets") */
     background-color: red;
     color: white;
 }

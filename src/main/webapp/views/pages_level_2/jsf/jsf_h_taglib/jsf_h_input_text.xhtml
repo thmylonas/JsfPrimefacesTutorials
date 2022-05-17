@@ -91,7 +91,7 @@
             <tm:examples_header title="Example for 'title' &amp; 'tabindex' attributes"
                                 render_link="false"
                                 notes="The 'title' attribute displays a small description, which can be used as a tooltip for the 'h:inputText'. The 'tabindex' attribute stores the tab order."
-                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+                                header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:inputText value="text text text text" styleClass="input_text_style"
                              title="'Title' is a tooltip!"
@@ -103,7 +103,7 @@
             <tm:examples_header title="Example for 'rendered' attribute"
                                 render_link="false"
                                 notes="The 'rendered' attribute."
-                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+                                header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:form id="hideDisplayInputTextForm">
                     <h:commandButton value="Hide/Display 'h:inputText'"
@@ -121,7 +121,7 @@
             <tm:examples_header title="Example for 'binding' attribute"
                                 render_link="false"
                                 notes="The 'binding' attribute."
-                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+                                header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:form id="workWithBindingAttributeForm">
                     <h:commandButton value="Work with 'binding' attribute"
@@ -148,7 +148,7 @@
             <tm:examples_header title="Example for 'size' &amp; 'maxlength' attributes"
                                 render_link="false"
                                 notes="The 'size' attribute displays the maximum number of characters used to determine the width of the 'h:inputText'. The 'maxlength' attribute displays the maximum number of characters that may be entered in this field."
-                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+                                header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:inputText value="1234567890123456789012345678" styleClass="input_text_style" size="80"
                              maxlength="28"/>
@@ -159,7 +159,7 @@
             <tm:examples_header title="Example for 'onclick' &amp; 'ondblclick' attributes"
                                 render_link="false"
                                 notes="On 'onclick' changes the style of the nearby text. On 'ondblclick' the style of the text returns to the initial state."
-                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+                                header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:inputText value="text text text text" styleClass="input_text_style" tabindex="3"
                              onclick="document.getElementById('red_bold_text_2').style.color='red'; document.getElementById('red_bold_text_2').style.fontWeight='bold'"
@@ -172,7 +172,7 @@
             <tm:examples_header title="Example for 'onkeydown' &amp; 'ondblclick' attributes"
                                 render_link="false"
                                 notes="On 'onkeydown' an alert popup displays the action &amp; changes the style of the nearby text. On 'ondblclick' the style of the text returns to the initial state."
-                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+                                header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:inputText value="text text text text" styleClass="input_text_style" tabindex="2"
                              onkeydown="window.alert('Key down'); document.getElementById('red_bold_text').style.color='red'; document.getElementById('red_bold_text').style.fontWeight='bold'"
@@ -185,7 +185,7 @@
             <tm:examples_header title="Example for 'onkeyup' attribute"
                                 render_link="false"
                                 notes="On 'onkeyup' an alert popup displays the action."
-                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+                                header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:inputText value="text text text text" styleClass="input_text_style" tabindex="4"
                              onkeyup="window.alert('Key up');"/>
@@ -196,7 +196,7 @@
             <tm:examples_header title="Example for 'onkeypress', 'onmouseup' &amp; 'onmousedown' attributes"
                                 render_link="false"
                                 notes="On 'onkeypress' an alert popup displays the action. On 'onmouseup' an alert popup displays the action. On 'onmousedown' an alert popup displays the action."
-                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+                                header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:inputText value="text text text text" styleClass="input_text_style" tabindex="5"
                              onkeypress="window.alert('Key is pressed')"
@@ -209,7 +209,7 @@
             <tm:examples_header title="Example for 'onmouseover' &amp; 'onmouseout' attributes"
                                 render_link="false"
                                 notes="On 'onmouseover' an alert popup displays the action. On 'onmouseout' an alert popup displays the action."
-                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+                                header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:inputText value="text text text text" styleClass="input_text_style" tabindex="6"
                              onmouseover="window.alert('Mouse move over')"
@@ -221,7 +221,7 @@
             <tm:examples_header title="Example for 'onmousemove' attribute"
                                 render_link="false"
                                 notes="On 'onmousemove' an alert popup displays the action."
-                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+                                header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:inputText value="text text text text" styleClass="input_text_style" tabindex="7"
                              onmousemove="window.alert('The mouse has moved')"/>
@@ -232,7 +232,7 @@
             <tm:examples_header title="Example for 'onfocus' &amp; 'onblur' attributes"
                                 render_link="false"
                                 notes="On 'onfocus' an alert popup displays the action. On 'onblur' an alert popup displays the action."
-                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+                                header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:inputText value="text text text text" styleClass="input_text_style" tabindex="8"
                              onfocus="window.alert('The input has gained focus')"
@@ -244,7 +244,7 @@
             <tm:examples_header title="Example for 'onselect' &amp; 'onchange' attributes"
                                 render_link="false"
                                 notes="On 'onselect' an alert popup displays the action. On 'onchange' an alert popup displays the action."
-                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+                                header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:inputText value="text text text text" styleClass="input_text_style" tabindex="9"
                              onselect="window.alert('The text is selected')"

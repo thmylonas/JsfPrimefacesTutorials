@@ -95,7 +95,7 @@
     padding-bottom: 5px;
 }
 
-.temp_shortcuts_both_templ_frames {
+.temp_shortcuts {
     background-color: var(--turquoise1_opacity4);
     border-radius: 3px;
     box-shadow: 3px 3px 5px fuchsia;
@@ -107,7 +107,7 @@
     padding: 5px;
 }
 
-.temp_shortcuts_both_templ_frames a {
+.temp_shortcuts a {
     color: white;
     text-decoration: none;
 }
