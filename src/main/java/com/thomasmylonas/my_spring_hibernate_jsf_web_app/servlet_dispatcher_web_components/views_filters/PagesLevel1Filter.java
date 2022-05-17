@@ -15,7 +15,8 @@ import java.io.IOException;
                 "/facelets/home/*",
                 "/facelets/spring-framework/*",
                 "/facelets/jsf/*",
-                "/facelets/primefaces/*"
+                "/facelets/primefaces/*",
+                "/facelets/about/*"
         }
 )
 public class PagesLevel1Filter extends AbstractViewsFilter {

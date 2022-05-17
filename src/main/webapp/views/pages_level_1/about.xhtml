@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+    <ui:composition template="../templates/pages_level1_template.xhtml">
+
+        <ui:define name="metadata_desc">
+            <meta name="description" content="#{msg['page_level1.metadata_desc.about']}"/>
+        </ui:define>
+
+        <ui:define name="head_page_title">
+            <title>#{msg['page_level1.head_page_title.about']}</title>
+        </ui:define>
+
+        <ui:define name="center_section_title">
+            <h:outputText value="#{msg['page_level1.center_section.title.about']}"/>
+        </ui:define>
+
+        <ui:define name="center_section_content">
+
+            <p>
+                <h:outputText value="#{msg['page_level1.center_section.title.about.topics']}"
+                              styleClass="technology_topics_titles"/>
+            </p>
+
+            <h:outputText value="#{msg['page_level1.center_section.content.about']}"/>
+
+        </ui:define>
+
+        <ui:define name="right_section_title">
+            <h:outputText value="#{msg['page_level1.right_section.title.about']}"/>
+        </ui:define>
+
+        <ui:define name="right_section_image">
+            <c:set var="pathToThomasMylonasJpg"
+                   value="#{imagesService.getImagesEnum('THOMAS_MYLONAS_IMAGE').imageFullNameWithPath}"/>
+            <!--pathToThomasMylonasJpg == 'images/about/ThomasMylonas.jpg'-->
+            <p:graphicImage value="#{resource[pathToThomasMylonasJpg]}"
+                            alt="#{msg['page_level1.right_section.image_alt.about']}"
+                            styleClass="right_section_image thomas_mylonas_image"/>
+        </ui:define>
+
+        <ui:define name="right_section_content">
+            <div class="description_tm_wrapper">
+                <h:outputText value="#{msg['page_level1.right_section.description.about']}"
+                              styleClass="description_tm"/>
+            </div>
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+</html>
