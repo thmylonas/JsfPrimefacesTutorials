@@ -24,33 +24,33 @@
                     link_url="#{msg['main_components_url.vdldocs.prefix']}commandButton#{msg['main_components_url.vdldocs.suffix']}"
                     link_text="JavaServer Faces: HTML Tag Library (h Taglib) - &lt;h:commandButton&gt;"
                     link_tooltip="#{msg['main_components_url.vdldocs.prefix']}commandButton#{msg['main_components_url.vdldocs.suffix']}"
-                    target_blank="_blank" link_style="center_section_title_link_facelets"/>
+                    target_blank="_blank" link_style="center_section_title_link"/>
         </ui:define>
 
         <ui:define name="center_section_content">
 
             <p>
-                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles_facelets"/>
+                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles"/>
             </p>
             <div>
                 <tm:special_link
                         link_url="#{msg['main_components_url.html.prefix']}HtmlCommandButton#{msg['main_components_url.suffix']}"
                         link_text="javax.faces.component.html.HtmlCommandButton"
                         link_tooltip="#{msg['main_components_url.html.prefix']}HtmlCommandButton#{msg['main_components_url.suffix']}"
-                        target_blank="_blank" link_style="api_package_class_facelets"/>
+                        target_blank="_blank" link_style="api_package_class"/>
                 <span>
-                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <h:outputText value="extends" styleClass="api_package_class_extends"/>
                     <tm:special_link
                             link_url="#{msg['main_components_url.prefix']}UICommand#{msg['main_components_url.suffix']}"
                             link_text="javax.faces.component.UICommand"
                             link_tooltip="#{msg['main_components_url.prefix']}UICommand#{msg['main_components_url.suffix']}"
-                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                            target_blank="_blank" link_style="api_package_class"/>
 	            </span>
             </div>
 
             <p>
                 <h:outputText value="&lt;h:commandButton&gt; attributes list:"
-                              styleClass="h_taglib_subtitles_facelets"/>
+                              styleClass="h_taglib_subtitles"/>
             </p>
             <h:dataTable value="#{htmlCommandButtonBackingBean.commandButtonAttributesList}"
                          var="commandButtonAttribute" border="1">
@@ -78,17 +78,17 @@
             </h:dataTable>
 
             <p>
-                <h:outputText value="&lt;h:commandButton&gt; examples:" styleClass="h_taglib_subtitles_facelets"/>
+                <h:outputText value="&lt;h:commandButton&gt; examples:" styleClass="h_taglib_subtitles"/>
             </p>
 
             <tm:examples_header title="Examples for 'action' attribute" render_link="false"
                                 notes="The 'action' attribute...."
-                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
-            <div class="examples_contents_facelets">
+                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents">
                 <h:form id="formId1">
                     <h:commandButton value="Hide/Display 'h:inputText'"
                                      action="#{htmlCommandButtonBackingBean.hideDisplayInputText}"
-                                     styleClass="hide_display_btn_facelets">
+                                     styleClass="hide_display_btn">
                         <f:ajax render="formId"/>
                     </h:commandButton>
                     <h:inputText id="inputId" value="text text text text"
@@ -96,11 +96,11 @@
                     <!-- binding="#{htmlInputText}" -->
                 </h:form>
             </div>
-            <div class="examples_contents_facelets">
+            <div class="examples_contents">
                 <h:form id="hideDisplayOutputTextForm">
                     <h:commandButton value="Hide/Display 'Text'"
                                      action="#{htmlCommandButtonBackingBean.hideDisplayInputText}"
-                                     styleClass="hide_display_btn_facelets">
+                                     styleClass="hide_display_btn">
                         <f:ajax render="hideDisplayOutputTextForm"/>
                     </h:commandButton>
                     <h:outputText id="outputId" value="Text Text Text Text"/> <!-- value="#{htmlInputText.value} -->

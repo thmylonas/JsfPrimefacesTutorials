@@ -17,23 +17,23 @@
 
             <div class="ui-g">
                 <div class="ui-g-12">
-                    <tm:main_menubar options_rendered="false" main_menubar_style="main_menubar_bottom_section_facelets"
+                    <tm:main_menubar options_rendered="false" main_menubar_style="main_menubar_bottom_section"
                                      render_main_menubar_icons="false"/>
                 </div>
             </div>
             <div class="ui-g">
                 <div class="ui-g-8">
-                    <div class="copyright_wrapper_facelets">
+                    <div class="copyright_wrapper">
                         <h:outputText value="#{msg['copyright']}" styleClass="copyright_both_templ_frames"/>
                     </div>
                 </div>
                 <div class="ui-g-2">
-                    <div class="social_media_bottom_section_facelets">
+                    <div class="social_media_bottom_section">
                         <tm:social_media
-                                social_media_wrapper_style_class="social_media_bottom_section_wrapper_facelets"/>
+                                social_media_wrapper_style_class="social_media_bottom_section_wrapper"/>
                     </div>
                 </div>
-                <div class="ui-g-2 navigate_buttons_wrapper_facelets">
+                <div class="ui-g-2 navigate_buttons_wrapper">
                     <ui:insert name="navigate_buttons">
                         <tm:navigate_buttons back_to_home_rendered="true"/>
                     </ui:insert>

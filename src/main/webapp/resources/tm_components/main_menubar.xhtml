@@ -12,7 +12,7 @@
 
     <ui:composition>
 
-        <!--<h:outputScript name="js/js_pages_level_1/js_primefaces_facelets/js_menubar_facelets.js"/>-->
+        <!--<h:outputScript name="js/js_pages_level_1/js_primefaces/js_menubar.js"/>-->
 
         <cc:interface>
             <cc:attribute name="options_rendered" type="java.lang.Boolean" required="true"
@@ -50,9 +50,9 @@
                     <f:facet name="options">
                         <p:outputPanel rendered="#{cc.attrs.options_rendered}" styleClass="options">
                             <p:inputText placeholder="#{msg['no_page.main_menubar.search']}"
-                                         styleClass="options_input_facelets"/>
-                            <p:commandButton type="button" value="Logout" icon="logout_icon_facelets"
-                                             styleClass="options_logout_facelets"/>
+                                         styleClass="options_input"/>
+                            <p:commandButton type="button" value="Logout" icon="logout_icon"
+                                             styleClass="options_logout"/>
                         </p:outputPanel>
                     </f:facet>
 

@@ -19,7 +19,7 @@
         <cc:implementation>
 
             <div class="ui-g-5 ui-sm-12">
-                <div class="back_to_home_wrapper_facelets">
+                <div class="back_to_home_wrapper">
                     <h:outputLink value="#{msg['webapp_link']}home"
                                   rendered="#{cc.attrs.back_to_home_rendered}">
                         <p:graphicImage value="#{resource['images/navigation_btns/BackToHome.png']}" alt="Home"
@@ -28,10 +28,10 @@
                 </div>
             </div>
             <div class="ui-g-7 ui-sm-12">
-                <div class="back_to_top_wrapper_facelets">
+                <div class="back_to_top_wrapper">
                     <h:outputLink value="#">
                         <p:graphicImage value="#{resource['images/navigation_btns/BackToTop.png']}"
-                                        alt="Back To Top" styleClass="back_to_top_facelets"/>
+                                        alt="Back To Top" styleClass="back_to_top"/>
                     </h:outputLink>
                 </div>
             </div>

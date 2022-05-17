@@ -2,7 +2,7 @@ package com.thomasmylonas.my_spring_hibernate_jsf_web_app.controllers;
 
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.controllers._base.AbstractController;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.StudentAlt;
-import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services.StudentAltService;
+import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services.api_services.StudentAltService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

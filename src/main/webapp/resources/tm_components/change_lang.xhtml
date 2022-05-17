@@ -15,12 +15,12 @@
 
         <cc:implementation>
 
-            <h:form styleClass="change_lang_wrapper_facelets">
-                <h:outputText value="#{msg['change_lang']} EN/GR: " styleClass="change_lang_label_facelets"/>
+            <h:form styleClass="change_lang_wrapper">
+                <h:outputText value="#{msg['change_lang']} EN/GR: " styleClass="change_lang_label"/>
                 <p:selectBooleanButton value="#{faceletsLocaleService.english}" onchange="submit()"
                                        valueChangeListener="#{faceletsLocaleService.switchLocale}"
                                        onLabel="" offLabel=""
-                                       styleClass="#{faceletsLocaleService.loadFlagCss()}_facelets"/>
+                                       styleClass="#{faceletsLocaleService.loadFlagCss()}"/>
             </h:form>
 
         </cc:implementation>

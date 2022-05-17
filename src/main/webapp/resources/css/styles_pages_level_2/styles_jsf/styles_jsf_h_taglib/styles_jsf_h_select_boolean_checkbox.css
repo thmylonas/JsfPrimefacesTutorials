@@ -1,0 +1,12 @@
+.select_boolean_checkbox_style {
+    border: 1px solid var(--deep_pink1);
+    border-radius: 3px;
+}
+
+.select_boolean_checkbox_text {
+    margin-left: 10px;
+}
+
+.sbcb_reset_btn {
+    margin-left: 10px;
+}

@@ -24,32 +24,32 @@
                     link_url="#{msg['main_components_url.vdldocs.prefix']}outputLabel#{msg['main_components_url.vdldocs.suffix']}"
                     link_text="JavaServer Faces: HTML Tag Library (h Taglib) - &lt;h:outputLabel&gt;"
                     link_tooltip="#{msg['main_components_url.vdldocs.prefix']}outputLabel#{msg['main_components_url.vdldocs.suffix']}"
-                    target_blank="_blank" link_style="center_section_title_link_facelets"/>
+                    target_blank="_blank" link_style="center_section_title_link"/>
         </ui:define>
 
         <ui:define name="center_section_content">
 
             <p>
-                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles_facelets"/>
+                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles"/>
             </p>
             <div>
                 <tm:special_link
                         link_url="#{msg['main_components_url.html.prefix']}HtmlOutputLabel#{msg['main_components_url.suffix']}"
                         link_text="javax.faces.component.html.HtmlOutputLabel"
                         link_tooltip="#{msg['main_components_url.html.prefix']}HtmlOutputLabel#{msg['main_components_url.suffix']}"
-                        target_blank="_blank" link_style="api_package_class_facelets"/>
+                        target_blank="_blank" link_style="api_package_class"/>
                 <span>
-                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <h:outputText value="extends" styleClass="api_package_class_extends"/>
                     <tm:special_link
                             link_url="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
                             link_text="javax.faces.component.UIOutput"
                             link_tooltip="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
-                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                            target_blank="_blank" link_style="api_package_class"/>
                 </span>
             </div>
 
             <p>
-                <h:outputText value="&lt;h:outputLabel&gt; attributes list:" styleClass="h_taglib_subtitles_facelets"/>
+                <h:outputText value="&lt;h:outputLabel&gt; attributes list:" styleClass="h_taglib_subtitles"/>
             </p>
             <h:dataTable value="#{htmlOutputLabelBackingBean.outputLabelAttributesList}"
                          var="outputLabelAttribute" border="1">
@@ -77,17 +77,17 @@
             </h:dataTable>
 
             <p>
-                <h:outputText value="&lt;h:outputLabel&gt; examples:" styleClass="h_taglib_subtitles_facelets"/>
+                <h:outputText value="&lt;h:outputLabel&gt; examples:" styleClass="h_taglib_subtitles"/>
             </p>
 
             <tm:examples_header title="'h:outputLabel' using 'for' attribute"
                                 render_link="false"
                                 notes="Simple use of 'h:outputLabel' using 'for' attribute."
-                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
-            <div class="examples_contents_facelets">
+                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents">
                 <h:outputLabel value="'h:outputLabel' using 'for' attribute:" for="outputLabelFor"
-                               styleClass="output_label_style_facelets"/>
-                <h:inputText id="outputLabelFor" value="h:outputLabel example" styleClass="label_s_input_facelets"/>
+                               styleClass="output_label_style"/>
+                <h:inputText id="outputLabelFor" value="h:outputLabel example" styleClass="label_s_input"/>
             </div>
 
             <hr/>
@@ -95,12 +95,12 @@
             <tm:examples_header title="'h:outputLabel' using 'for' attribute, with the use of BackingBean"
                                 render_link="false"
                                 notes="Simple use of 'h:outputLabel' using 'for' attribute, with the use of BackingBean."
-                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
-            <div class="examples_contents_facelets">
+                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents">
                 <h:outputLabel value="#{htmlOutputLabelBackingBean.outputLabelForWithBackingBean}"
-                               for="outputLabelForWithBackingBean" styleClass="output_label_style_facelets"/>
+                               for="outputLabelForWithBackingBean" styleClass="output_label_style"/>
                 <h:inputText id="outputLabelForWithBackingBean" value="h:outputLabel example"
-                             styleClass="label_s_input_facelets"/>
+                             styleClass="label_s_input"/>
             </div>
 
             <hr/>
@@ -108,10 +108,10 @@
             <tm:examples_header title="'h:outputLabel' with nesting"
                                 render_link="false"
                                 notes="In this case, we nest the 'h:inputText' inside the 'h:outputLabel', without using the 'for' attribute. I did not achive to apply margin between 'h:outputLabel' and 'h:inputText'."
-                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
-            <div class="examples_contents_facelets">
-                <h:outputLabel value="h:outputLabel with nesting:        " styleClass="output_label_style_facelets">
-                    <h:inputText value="h:outputLabel example" styleClass="label_s_input_facelets"/>
+                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents">
+                <h:outputLabel value="h:outputLabel with nesting:        " styleClass="output_label_style">
+                    <h:inputText value="h:outputLabel example" styleClass="label_s_input"/>
                 </h:outputLabel>
             </div>
 
@@ -120,13 +120,13 @@
             <tm:examples_header title="'h:outputLabel' with nested 'h:outputText'"
                                 render_link="false"
                                 notes="In this case, instead of using the 'value' attribube, we nest the 'h:outputText' inside the 'h:outputLabel'."
-                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
-            <div class="examples_contents_facelets">
-                <h:outputLabel for="outputLabelNestedOutputText" styleClass="output_label_style_facelets">
+                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents">
+                <h:outputLabel for="outputLabelNestedOutputText" styleClass="output_label_style">
                     <h:outputText value="'h:outputLabel' with nested 'h:outputText':"/>
                 </h:outputLabel>
                 <h:inputText id="outputLabelNestedOutputText" value="h:outputLabel example"
-                             styleClass="label_s_input_facelets"/>
+                             styleClass="label_s_input"/>
             </div>
 
         </ui:define>

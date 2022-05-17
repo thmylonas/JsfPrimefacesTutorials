@@ -1,0 +1,52 @@
+/* Styles for "bottom_section", in "Facelets" */
+
+.bottom_section {
+    background-color: var(--purple1_no_opacity6);
+    border: 1px solid var(--deep_pink1);
+    border-radius: 5px;
+    box-shadow: 8px 5px 5px var(--deep_green_shadow);
+    margin: -10px 0 -5px 0;
+}
+
+/* Copyright */
+
+.copyright_wrapper {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.copyright_both_templ_frames {
+    font-family: var(--frank_ruhl_libre_verdana_sans_serif);
+    font-size: 12px;
+    text-shadow: 2px 2px var(--deep_pink1);
+}
+
+/* Social Media (bottom_section) */
+
+.social_media_bottom_section {
+    margin-left: 10px;
+}
+
+.social_media_bottom_section_wrapper {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* Navigate Buttons */
+
+.navigate_buttons_wrapper {
+    padding-top: 0 !important;
+}
+
+.back_to_home_wrapper {
+    padding-top: 0 !important; /* Displays no difference (in special conditions maybe it will display difference) */
+}
+
+.back_to_top_wrapper {
+    margin-right: -8px;
+}
+
+.back_to_top {
+    width: 100%;
+}

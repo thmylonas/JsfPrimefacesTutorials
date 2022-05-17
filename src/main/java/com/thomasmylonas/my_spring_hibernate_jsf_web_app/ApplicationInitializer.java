@@ -1,6 +1,5 @@
 package com.thomasmylonas.my_spring_hibernate_jsf_web_app;
 
-import com.thomasmylonas.my_spring_hibernate_jsf_web_app._tutorial.multiple_resolvers.MultipleResolversConfig;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.config.DataAccessConfig;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.config.RootConfig;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.config.WebConfig;
@@ -15,7 +14,7 @@ public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherSe
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{WebConfig.class, MultipleResolversConfig.class};
+        return new Class[]{WebConfig.class};
     }
 
     @Override

@@ -24,49 +24,49 @@
                     link_url="#{msg['main_components_url.vdldocs.prefix']}selectManyMenu#{msg['main_components_url.vdldocs.suffix']}"
                     link_text="JavaServer Faces: HTML Tag Library (h Taglib) - &lt;h:selectManyMenu&gt;"
                     link_tooltip="#{msg['main_components_url.vdldocs.prefix']}selectManyMenu#{msg['main_components_url.vdldocs.suffix']}"
-                    target_blank="_blank" link_style="center_section_title_link_facelets"/>
+                    target_blank="_blank" link_style="center_section_title_link"/>
         </ui:define>
 
         <ui:define name="center_section_content">
 
             <p>
-                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles_facelets"/>
+                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles"/>
             </p>
             <div>
                 <tm:special_link
                         link_url="#{msg['main_components_url.html.prefix']}HtmlSelectManyMenu#{msg['main_components_url.suffix']}"
                         link_text="javax.faces.component.html.HtmlSelectManyMenu"
                         link_tooltip="#{msg['main_components_url.html.prefix']}HtmlSelectManyMenu#{msg['main_components_url.suffix']}"
-                        target_blank="_blank" link_style="api_package_class_facelets"/>
+                        target_blank="_blank" link_style="api_package_class"/>
                 <span>
-                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <h:outputText value="extends" styleClass="api_package_class_extends"/>
                     <tm:special_link
                             link_url="#{msg['main_components_url.prefix']}UISelectMany#{msg['main_components_url.suffix']}"
                             link_text="javax.faces.component.UISelectMany"
                             link_tooltip="#{msg['main_components_url.prefix']}UISelectMany#{msg['main_components_url.suffix']}"
-                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                            target_blank="_blank" link_style="api_package_class"/>
                 </span>
                 <span>
-                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <h:outputText value="extends" styleClass="api_package_class_extends"/>
                     <tm:special_link
                             link_url="#{msg['main_components_url.prefix']}UIInput#{msg['main_components_url.suffix']}"
                             link_text="javax.faces.component.UIInput"
                             link_tooltip="#{msg['main_components_url.prefix']}UIInput#{msg['main_components_url.suffix']}"
-                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                            target_blank="_blank" link_style="api_package_class"/>
                 </span>
                 <span>
-                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <h:outputText value="extends" styleClass="api_package_class_extends"/>
                     <tm:special_link
                             link_url="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
                             link_text="javax.faces.component.UIOutput"
                             link_tooltip="#{msg['main_components_url.prefix']}UIOutput#{msg['main_components_url.suffix']}"
-                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                            target_blank="_blank" link_style="api_package_class"/>
                 </span>
             </div>
 
             <p>
                 <h:outputText value="&lt;h:selectManyMenu&gt; attributes list:"
-                              styleClass="h_taglib_subtitles_facelets"/>
+                              styleClass="h_taglib_subtitles"/>
             </p>
             <h:dataTable value="#{htmlSelectManyMenuBackingBean.selectManyMenuAttributesList}"
                          var="selectManyMenuAttribute" border="1">
@@ -94,20 +94,20 @@
             </h:dataTable>
 
             <p>
-                <h:outputText value="&lt;h:selectManyMenu&gt; examples:" styleClass="h_taglib_subtitles_facelets"/>
+                <h:outputText value="&lt;h:selectManyMenu&gt; examples:" styleClass="h_taglib_subtitles"/>
             </p>
 
             <tm:examples_header title="Example from 'Faces.Liferay.Dev'"
                                 title_link="https://faces.liferay.dev/jsf-showcase/-/jsf-tag/h/selectmanymenu/general"
                                 render_link="true" notes=""
-                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
-            <div class="examples_contents_facelets">
-                <div class="example_site_links_wrapper_facelets">
+                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents">
+                <div class="example_site_links_wrapper">
                     <tm:special_link
                             link_url="https://faces.liferay.dev/jsf-showcase/-/jsf-tag/h/selectmanymenu/general"
                             link_text="Faces.Liferay.Dev Link"
                             link_tooltip="https://faces.liferay.dev/jsf-showcase/-/jsf-tag/h/selectmanymenu/general"
-                            target_blank="_blank" link_style="example_site_link_facelets"/>
+                            target_blank="_blank" link_style="example_site_link"/>
                 </div>
 
                 <h:form>
@@ -117,13 +117,13 @@
                         <h:selectBooleanCheckbox value="#{htmlSelectManyMenuBackingBean.valueRequired}">
                             <f:ajax/>
                         </h:selectBooleanCheckbox>
-                        <h:outputText value="Value required" styleClass="value_required_facelets"/>
+                        <h:outputText value="Value required" styleClass="value_required"/>
                     </p>
 
                     <h:selectManyMenu id="smmFacesLiferay"
                                       value="#{htmlSelectManyMenuBackingBean.itemDataNoPreSelectValues}"
                                       required="#{htmlSelectManyMenuBackingBean.valueRequired}"
-                                      styleClass="select_many_menu_style_facelets"
+                                      styleClass="select_many_menu_style"
                                       requiredMessage="The 'h:selectManyMenu' must have a value. Please select an item from the menu!">
                         <f:selectItem itemLabel="-- Select --" itemValue="#{null}" noSelectionOption="true"/>
                         <f:selectItem itemLabel="Item 1" itemValue="Item value 1"
@@ -160,20 +160,20 @@
             <tm:examples_header title="Example from 'Mkyong' &amp; 'StackOverflow Wiki'"
                                 title_link="https://mkyong.com/jsf2/jsf-2-multiple-select-dropdown-box-example"
                                 render_link="true" notes=""
-                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
-            <div class="examples_contents_facelets">
-                <div class="example_site_links_wrapper_facelets">
+                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents">
+                <div class="example_site_links_wrapper">
                     <tm:special_link
                             link_url="https://mkyong.com/jsf2/jsf-2-multiple-select-dropdown-box-example"
                             link_text="MKyong Link"
                             link_tooltip="https://mkyong.com/jsf2/jsf-2-multiple-select-dropdown-box-example"
-                            target_blank="_blank" link_style="example_site_link_facelets"/>
+                            target_blank="_blank" link_style="example_site_link"/>
                     <br/>
                     <tm:special_link
                             link_url="https://stackoverflow.com/tags/selectonemenu/info"
                             link_text="StackOverflow Wiki Link"
                             link_tooltip="https://stackoverflow.com/tags/selectonemenu/info"
-                            target_blank="_blank" link_style="example_site_link_facelets"/>
+                            target_blank="_blank" link_style="example_site_link"/>
                 </div>
 
                 <!--
@@ -188,7 +188,7 @@
                 </p>
                 <h:selectXxxx id="xxxMkyong#"
                               value="#{htmlSelectXxxxBackingBean.selectItemGroupsArrayValues}"
-                              styleClass="select_xxx_xxx_style_facelets">
+                              styleClass="select_xxx_xxx_style">
                     <f:selectItems value="#{htmlSelectXxxxBackingBean.selectItemGroupsArray}"/>
                 </h:selectXxxx>
                 3. Check/Fix all the page about the functionality
@@ -204,7 +204,7 @@
                         </p>
                         <h:selectManyMenu id="smmMkyong1"
                                           value="#{htmlSelectManyMenuBackingBean.javaFrameworksHardCodedValues}"
-                                          styleClass="select_many_menu_style_facelets">
+                                          styleClass="select_many_menu_style">
                             <f:selectItem itemLabel="Java Label" itemValue="Java Value"/>
                             <f:selectItem itemLabel="Spring Framework Label" itemValue="Spring Framework Value"/>
                             <f:selectItem itemLabel="Hibernate Label" itemValue="Hibernate Value"/>
@@ -220,7 +220,7 @@
                         </p>
                         <h:selectManyMenu id="smmMkyong2"
                                           value="#{htmlSelectManyMenuBackingBean.javaFrameworksWithSelectItemsValueLabelArrayValues}"
-                                          styleClass="select_many_menu_style_facelets">
+                                          styleClass="select_many_menu_style">
                             <f:selectItems
                                     value="#{htmlSelectManyMenuBackingBean.javaFrameworksSelectItemsValueLabelArray}"/>
                         </h:selectManyMenu>
@@ -234,7 +234,7 @@
                         </p>
                         <h:selectManyMenu id="smmMkyong3"
                                           value="#{htmlSelectManyMenuBackingBean.javaFrameworksWithSelectItemsValueArrayValues}"
-                                          styleClass="select_many_menu_style_facelets">
+                                          styleClass="select_many_menu_style">
                             <f:selectItems
                                     value="#{htmlSelectManyMenuBackingBean.javaFrameworksSelectItemsValueArray}"/>
                         </h:selectManyMenu>
@@ -249,7 +249,7 @@
                         <p><h:message for="smmMkyong4" styleClass="error_messages_both_templ_frames"/></p>
                         <h:selectManyMenu id="smmMkyong4"
                                           value="#{htmlSelectManyMenuBackingBean.javaFrameworksWithSelectItemsAllAttrsArrayValues}"
-                                          styleClass="select_many_menu_style_facelets" required="true"
+                                          styleClass="select_many_menu_style" required="true"
                                           requiredMessage="The 'h:selectManyMenu' must have a value. Please select an item from the list!">
                             <f:selectItems
                                     value="#{htmlSelectManyMenuBackingBean.javaFrameworksSelectItemsAllAttrsArray}"/>
@@ -264,7 +264,7 @@
                         </p>
                         <h:selectManyMenu id="smmMkyong5"
                                           value="#{htmlSelectManyMenuBackingBean.javaFrameworksWithStringValuesArrayValues}"
-                                          styleClass="select_many_menu_style_facelets">
+                                          styleClass="select_many_menu_style">
                             <f:selectItems
                                     value="#{htmlSelectManyMenuBackingBean.javaFrameworksStringValuesArray}"/>
                         </h:selectManyMenu>
@@ -278,7 +278,7 @@
                         </p>
                         <h:selectManyMenu id="smmMkyong6"
                                           value="#{htmlSelectManyMenuBackingBean.javaFrameworksWithLabelValueMapValues}"
-                                          styleClass="select_many_menu_style_facelets">
+                                          styleClass="select_many_menu_style">
                             <f:selectItems value="#{htmlSelectManyMenuBackingBean.javaFrameworksLabelValueMap}"/>
                         </h:selectManyMenu>
 
@@ -291,7 +291,7 @@
                         </p>
                         <h:selectManyMenu id="smmMkyong7"
                                           value="#{htmlSelectManyMenuBackingBean.javaFrameworksWithValueLabelMapValues}"
-                                          styleClass="select_many_menu_style_facelets">
+                                          styleClass="select_many_menu_style">
                             <f:selectItems
                                     value="#{htmlSelectManyMenuBackingBean.javaFrameworksValueLabelMap.entrySet()}"
                                     var="entry" itemLabel="#{entry.value}" itemValue="#{entry.key}"/>
@@ -306,7 +306,7 @@
                         </p>
                         <h:selectManyMenu id="smmMkyong8"
                                           value="#{htmlSelectManyMenuBackingBean.javaFrameworksWithObjectArrayValues}"
-                                          styleClass="select_one_radio_style_facelets">
+                                          styleClass="select_one_radio_style">
                             <f:selectItems value="#{htmlSelectManyMenuBackingBean.javaFrameworksLabelValueArray}"
                                            var="bean" itemLabel="#{bean.itemLabel}" itemValue="#{bean.itemValue}"/>
                         </h:selectManyMenu>
@@ -319,7 +319,7 @@
                     </h:commandButton>
                     <h:commandButton value="Reset Java Frameworks values"
                                      action="#{htmlSelectManyMenuBackingBean.resetValues}"
-                                     styleClass="smm_reset_btn_facelets">
+                                     styleClass="smm_reset_btn">
                         <f:ajax execute="smmMkyong" render="mkyongOutputId smmMkyong"/>
                     </h:commandButton>
 

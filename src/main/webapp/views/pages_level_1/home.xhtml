@@ -28,30 +28,30 @@
 
             <p>
                 <h:outputText value="#{msg['page_level1.center_section.title.home.topics']}"
-                              styleClass="technology_topics_titles_facelets"/>
+                              styleClass="technology_topics_titles"/>
             </p>
 
-            <div class="technology_topics_group_wrapper_facelets">
+            <div class="technology_topics_group_wrapper">
                 <div>
                     <tm:special_link
                             link_url="#{msg['webapp_link']}facelets/spring-framework"
                             link_text="Spring Framework topics"
                             link_tooltip="#{msg['webapp_link']}facelets/spring-framework"
-                            target_blank="_blank" link_style="technology_topics_list_facelets"/>
+                            target_blank="_blank" link_style="technology_topics_list"/>
                 </div>
                 <div>
                     <tm:special_link
                             link_url="#{msg['webapp_link']}facelets/jsf"
                             link_text="JavaServer Faces topics"
                             link_tooltip="#{msg['webapp_link']}facelets/jsf"
-                            target_blank="_blank" link_style="technology_topics_list_facelets"/>
+                            target_blank="_blank" link_style="technology_topics_list"/>
                 </div>
                 <div>
                     <tm:special_link
                             link_url="#{msg['webapp_link']}facelets/primefaces"
                             link_text="Primefaces topics"
                             link_tooltip="#{msg['webapp_link']}facelets/primefaces"
-                            target_blank="_blank" link_style="technology_topics_list_facelets"/>
+                            target_blank="_blank" link_style="technology_topics_list"/>
                 </div>
             </div>
 
@@ -67,13 +67,13 @@
             <!--pathToThomasMylonasJpg == 'images/about/ThomasMylonas.jpg'-->
             <p:graphicImage value="#{resource[pathToThomasMylonasJpg]}"
                             alt="#{msg['page_level1.right_section.image_alt.home']}"
-                            styleClass="right_section_image_facelets thomas_mylonas_image_facelets"/>
+                            styleClass="right_section_image thomas_mylonas_image"/>
         </ui:define>
 
         <ui:define name="right_section_content">
-            <div class="description_tm_wrapper_facelets">
+            <div class="description_tm_wrapper">
                 <h:outputText value="#{msg['page_level1.right_section.description.home']}"
-                              styleClass="description_tm_facelets"/>
+                              styleClass="description_tm"/>
             </div>
         </ui:define>
 

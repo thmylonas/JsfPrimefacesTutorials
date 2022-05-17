@@ -24,32 +24,32 @@
                     link_url="#{msg['main_components_url.vdldocs.prefix']}column#{msg['main_components_url.vdldocs.suffix']}"
                     link_text="JavaServer Faces: HTML Tag Library (h Taglib) - &lt;h:column&gt;"
                     link_tooltip="#{msg['main_components_url.vdldocs.prefix']}column#{msg['main_components_url.vdldocs.suffix']}"
-                    target_blank="_blank" link_style="center_section_title_link_facelets"/>
+                    target_blank="_blank" link_style="center_section_title_link"/>
         </ui:define>
 
         <ui:define name="center_section_content">
 
             <p>
-                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles_facelets"/>
+                <h:outputText value="JakartaEE API package/class:" styleClass="h_taglib_subtitles"/>
             </p>
             <div>
                 <tm:special_link
                         link_url="#{msg['main_components_url.html.prefix']}HtmlColumn#{msg['main_components_url.suffix']}"
                         link_text="javax.faces.component.html.HtmlColumn"
                         link_tooltip="#{msg['main_components_url.html.prefix']}HtmlColumn#{msg['main_components_url.suffix']}"
-                        target_blank="_blank" link_style="api_package_class_facelets"/>
+                        target_blank="_blank" link_style="api_package_class"/>
                 <span>
-                    <h:outputText value="extends" styleClass="api_package_class_extends_facelets"/>
+                    <h:outputText value="extends" styleClass="api_package_class_extends"/>
                     <tm:special_link
                             link_url="#{msg['main_components_url.prefix']}UIColumn#{msg['main_components_url.suffix']}"
                             link_text="javax.faces.component.UIColumn"
                             link_tooltip="#{msg['main_components_url.prefix']}UIColumn#{msg['main_components_url.suffix']}"
-                            target_blank="_blank" link_style="api_package_class_facelets"/>
+                            target_blank="_blank" link_style="api_package_class"/>
                 </span>
             </div>
 
             <p>
-                <h:outputText value="&lt;h:column&gt; attributes list:" styleClass="h_taglib_subtitles_facelets"/>
+                <h:outputText value="&lt;h:column&gt; attributes list:" styleClass="h_taglib_subtitles"/>
             </p>
             <h:dataTable value="#{htmlColumnBackingBean.columnAttributesList}"
                          var="columnAttribute" border="1">
@@ -77,12 +77,12 @@
             </h:dataTable>
 
             <p>
-                <h:outputText value="&lt;h:column&gt; examples:" styleClass="h_taglib_subtitles_facelets"/>
+                <h:outputText value="&lt;h:column&gt; examples:" styleClass="h_taglib_subtitles"/>
             </p>
 
             <tm:examples_header title="Example..." render_link="false" notes=""
-                                header_style="examples_header_wrapper_facelets,examples_header_title_both_templ_frames,examples_header_link_facelets,examples_header_notes_both_templ_frames"/>
-            <div class="examples_contents_facelets">
+                                header_style="examples_header_wrapper,examples_header_title_both_templ_frames,examples_header_link,examples_header_notes_both_templ_frames"/>
+            <div class="examples_contents">
                 Example contents...
             </div>
 

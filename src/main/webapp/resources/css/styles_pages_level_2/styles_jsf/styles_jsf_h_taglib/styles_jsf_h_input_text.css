@@ -1,0 +1,12 @@
+.input_text_style {
+    border: 1px solid var(--deep_pink1);
+    border-radius: 3px;
+}
+
+.rendered_hide_display_btn {
+    margin-right: 10px;
+}
+
+#red_bold_text, #red_bold_text_2 {
+    margin-left: 10px;
+}
