@@ -11,6 +11,9 @@ import java.io.IOException;
 
 @WebFilter(
         value = {
+                "/",
+                "/facelets/home/*",
+                "/facelets/spring-framework/*",
                 "/facelets/jsf/*",
                 "/facelets/primefaces/*"
         }

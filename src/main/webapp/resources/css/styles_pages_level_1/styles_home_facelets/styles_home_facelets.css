@@ -1,0 +1,28 @@
+/* Image of Thomas Mylonas (right_section) */
+
+.thomas_mylonas_image_facelets {
+    height: 100%;
+    width: 100%;
+}
+
+/* Description of Thomas Mylonas (right_section) */
+
+.description_tm_wrapper_facelets {
+    /*border: 1px solid blue;*/
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 0 !important;
+}
+
+.not_used_description_tm_wrapper_facelets { /* An alternative style-class */
+    /*border: 1px solid blue;*/
+    text-align: center;
+}
+
+.description_tm_facelets {
+    font-family: var(--merienda_verdana_sans_serif);
+    font-size: 14px;
+    text-shadow: 2px 2px var(--deep_pink1);
+    padding: 5px;
+    line-height: 18px;
+}

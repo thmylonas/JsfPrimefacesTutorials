@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+    <ui:composition template="../templates/pages_level1_template.xhtml">
+
+        <ui:define name="metadata_desc">
+            <meta name="description" content="#{msg['page_level1.metadata_desc.home']}"/>
+        </ui:define>
+
+        <ui:define name="head_page_title">
+            <title>#{msg['page_level1.head_page_title.home']}</title>
+        </ui:define>
+
+        <ui:define name="center_section_title">
+            <h:outputText value="#{msg['page_level1.center_section.title.home']}"/>
+        </ui:define>
+
+        <ui:define name="center_section_content">
+
+            <p>
+                <h:outputText value="#{msg['page_level1.center_section.title.home.topics']}"
+                              styleClass="technology_topics_titles_facelets"/>
+            </p>
+
+            <div class="technology_topics_group_wrapper_facelets">
+                <div>
+                    <tm:special_link
+                            link_url="#{msg['webapp_link']}facelets/spring-framework"
+                            link_text="Spring Framework topics"
+                            link_tooltip="#{msg['webapp_link']}facelets/spring-framework"
+                            target_blank="_blank" link_style="technology_topics_list_facelets"/>
+                </div>
+                <div>
+                    <tm:special_link
+                            link_url="#{msg['webapp_link']}facelets/jsf"
+                            link_text="JavaServer Faces topics"
+                            link_tooltip="#{msg['webapp_link']}facelets/jsf"
+                            target_blank="_blank" link_style="technology_topics_list_facelets"/>
+                </div>
+                <div>
+                    <tm:special_link
+                            link_url="#{msg['webapp_link']}facelets/primefaces"
+                            link_text="Primefaces topics"
+                            link_tooltip="#{msg['webapp_link']}facelets/primefaces"
+                            target_blank="_blank" link_style="technology_topics_list_facelets"/>
+                </div>
+            </div>
+
+        </ui:define>
+
+        <ui:define name="right_section_title">
+            <h:outputText value="#{msg['page_level1.right_section.title.home']}"/>
+        </ui:define>
+
+        <ui:define name="right_section_image">
+            <c:set var="pathToThomasMylonasJpg"
+                   value="#{imagesService.getImagesEnum('THOMAS_MYLONAS_IMAGE').imageFullNameWithPath}"/>
+            <!--pathToThomasMylonasJpg == 'images/about/ThomasMylonas.jpg'-->
+            <p:graphicImage value="#{resource[pathToThomasMylonasJpg]}"
+                            alt="#{msg['page_level1.right_section.image_alt.home']}"
+                            styleClass="right_section_image_facelets thomas_mylonas_image_facelets"/>
+        </ui:define>
+
+        <ui:define name="right_section_content">
+            <div class="description_tm_wrapper_facelets">
+                <h:outputText value="#{msg['page_level1.right_section.description.home']}"
+                              styleClass="description_tm_facelets"/>
+            </div>
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+</html>
