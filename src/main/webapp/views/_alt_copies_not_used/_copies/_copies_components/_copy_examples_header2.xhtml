@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components">
+
+<h:body>
+
+    <ui:composition>
+
+        <cc:interface>
+            <cc:attribute name="title" type="java.lang.String" required="true"
+                          shortDescription="Title of Technology examples"/>
+            <cc:attribute name="notes" type="java.lang.String" required="false"
+                          shortDescription="Notes of Technology examples"/>
+            <cc:attribute name="link_text" type="java.lang.String" required="false"
+                          shortDescription="Link text of Technology examples"/>
+            <cc:attribute name="link" type="java.lang.String" required="false"
+                          shortDescription="Link of Technology examples"/>
+            <cc:attribute name="render_link" type="java.lang.Boolean" required="true"
+                          shortDescription="Controls if link will be rendered or not"/>
+            <cc:attribute name="header_style" type="java.lang.String" required="false"
+                          shortDescription="The styleClass of the header"/>
+        </cc:interface>
+
+        <cc:implementation>
+
+            <div class="examples_header_wrapper">
+                <h:outputText value="#{cc.attrs.title}" class="examples_header_title"/>
+                <div class="examples_header_notes">
+                    <h:outputText value="#{cc.attrs.notes}"/>
+                </div>
+                <tm:special_link link_url="#{cc.attrs.link}" link_text="#{cc.attrs.link_text}"
+                                 link_tooltip="#{cc.attrs.link}" target_blank="_blank"
+                                 rendered="#{cc.attrs.render_link}"
+                                 link_style="examples_header_link"/>
+            </div>
+
+        </cc:implementation>
+
+    </ui:composition>
+
+</h:body>
+</html>
+
+        <!--
+        #{cc.attrs.example_style.split(',')[1]}
+        -->

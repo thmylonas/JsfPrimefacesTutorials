@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+<h:body>
+
+    <ui:composition>
+
+        <cc:interface>
+            <cc:attribute name="title" type="java.lang.String" required="true"
+                          shortDescription="Title of JSF examples and notes"/>
+            <cc:attribute name="notes" type="java.lang.String" required="false"
+                          shortDescription="JSF examples and notes"/>
+            <cc:attribute name="render_notes" type="java.lang.Boolean" required="true"
+                          shortDescription="Controls if example notes will be rendered or not"/>
+            <cc:attribute name="header_style" type="java.lang.String" required="false"
+                          shortDescription="The styleClass of the header"/>
+        </cc:interface>
+
+        <cc:implementation>
+
+            <ul class="#{cc.attrs.header_style}">
+                <li>
+                    <h:outputText value="#{cc.attrs.title}"/>
+                </li>
+            </ul>
+            <div class="examples_header_notes">
+                <h:outputText value="#{cc.attrs.notes}" rendered="#{cc.attrs.render_notes}"/>
+            </div>
+
+        </cc:implementation>
+
+    </ui:composition>
+
+</h:body>
+</html>

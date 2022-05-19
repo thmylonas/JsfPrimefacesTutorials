@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<!-- Example of the use of "<ui:include/>" -->
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <!-- Metadata -->
+    <meta name="author" content="Thomas Mylonas"/>
+    <ui:insert name="metadata_desc">
+        <meta name="description" content="Page default description"/>
+    </ui:insert>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <!-- Favicon -->
+    <c:set var="pathToThomasMylonasJpg"
+           value="#{imagesService.getImagesEnum('MENUBAR_ICON_THOMAS_MYLONAS_IMAGE').imageFullNameWithPath}"/>
+    <!--pathToThomasMylonasJpg == 'images/menubar_icons/about/ThomasMylonas.jpg'-->
+    <link rel="shortcut icon" href="#{resource[pathToThomasMylonasJpg]}"/>
+
+    <!-- Stylesheets -->
+    <!-- All the relative stylesheets from "pages_stylesheets.xhtml" -->
+
+    <ui:insert name="head_page_title">
+        <title>Page Title</title>
+    </ui:insert>
+</h:head>
+<h:body styleClass="body">
+
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="top_section">
+                <!--<ui:include src="../path_to_component/top_section.xhtml"/>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <!--
+            <ui:include src="../path_to_component/main_menubar.xhtml">
+                <ui:param name="options_rendered" value="#{true}"/>
+                <ui:param name="main_menubar_style" value="main_menubar_top_section"/>
+            </ui:include>
+            -->
+        </div>
+    </div>
+
+    <div class="ui-g">
+
+        <div class="ui-g-9">
+            <div class="center_section">
+                <!--<ui:include src="../path_to_component/center_section.xhtml"/>-->
+            </div>
+        </div>
+
+        <div class="ui-g-3">
+            <div class="right_section">
+                <!--<ui:include src="../path_to_component/right_section.xhtml"/>-->
+            </div>
+        </div>
+
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="bottom_section">
+                <!--<ui:include src="../path_to_component/bottom_section.xhtml"/>-->
+            </div>
+        </div>
+    </div>
+
+</h:body>
+</html>

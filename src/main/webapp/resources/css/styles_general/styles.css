@@ -1,4 +1,4 @@
-/* General Styles for all WebSite, in "Facelets" */
+/* General Styles for all WebSite */
 
 .body {
     background-image: url(#{resource[ 'images/backgrounds/PinkBg.jpg' ]});
