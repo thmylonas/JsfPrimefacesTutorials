@@ -1,3 +1,518 @@
+/// All Components: 34 ///
+h:column
+h:commandButton
+h:dataTable
+h:form
+h:graphicImage
+h:inputFile
+h:inputHidden
+h:inputSecret
+h:inputTextarea
+h:inputText
+h:outputFormat
+h:outputLabel
+h:panelGrid
+h:panelGroup
+h:selectBooleanCheckbox
+h:selectManyCheckbox
+h:selectManyListbox
+h:selectManyMenu
+h:selectOneListbox
+h:selectOneMenu
+h:selectOneRadio
+h:doctype
+h:outputStylesheet
+h:outputScript
+h:commandScript
+h:message
+h:messages
+h:head
+h:body
+h:outputLink
+h:commandLink
+h:link
+h:button
+h:outputText
+
+======================================================
+
+------- pages_level_3 - #34 -------
+jsf_h_body.xhtml
+jsf_h_button.xhtml
+jsf_h_column.xhtml
+jsf_h_command_button.xhtml
+jsf_h_command_link.xhtml
+jsf_h_command_script.xhtml
+jsf_h_data_table.xhtml
+jsf_h_doctype.xhtml
+jsf_h_form.xhtml
+jsf_h_graphic_image.xhtml
+jsf_h_head.xhtml
+jsf_h_input_file.xhtml
+jsf_h_input_hidden.xhtml
+jsf_h_input_secret.xhtml
+jsf_h_input_text.xhtml
+jsf_h_input_text_area.xhtml
+jsf_h_link.xhtml
+jsf_h_message.xhtml
+jsf_h_messages.xhtml
+jsf_h_output_format.xhtml
+jsf_h_output_label.xhtml
+jsf_h_output_link.xhtml
+jsf_h_output_script.xhtml
+jsf_h_output_stylesheet.xhtml
+jsf_h_output_text.xhtml
+jsf_h_panel_grid.xhtml
+jsf_h_panel_group.xhtml
+jsf_h_select_boolean_checkbox.xhtml
+jsf_h_select_many_checkbox.xhtml
+jsf_h_select_many_listbox.xhtml
+jsf_h_select_many_menu.xhtml
+jsf_h_select_one_listbox.xhtml
+jsf_h_select_one_menu.xhtml
+jsf_h_select_one_radio.xhtml
+
+======================================================
+
+1. When we use a Primefaces CSS-Grid, we never make the rows with fixed height.
+We make the content element fixed and we let the row to wrap the content.
+
+2. All the <h:outputStylesheet> in the <h:head> of the mainTemplate.xhtml file.
+Because the does not contain <ui:composition>, and in the other pages the contain <ui:composition>,
+everything out of it, it will be ignored.
+
+3. #{resource['images/java_frameworks/Java.jpg']
+
+4. In pages, the <ui:define> will be in this order:
+head-metadata, head-title
+top_section, center_section, right_section, leftSection, bottom_section
+
+5. [Better writing] In the css entry: ".ui-menuitem-icon.icon_name", can have whatever name it wants.
+To solve the problem that the menuitem is not displayed, we have to change the dimensions of the
+icon itself with image editors.
+
+6. Add JSTL Library: xmlns:c="http://java.sun.com/jsp/jstl/core", or xmlns:c="http://xmlns.jcp.org/jsp/jstl/core",
+and Maven[javax.servlet, jstl, 1.x]
+
+7. ui-menubar CSS Selectors
+    .ui-menubar
+    .ui-menu-list
+    .ui-menuitem
+    .ui-menuitem-link
+    .ui-menuitem-text
+
+    Example:
+    .ui-menubar, .ui-menu-list  {
+        border: 1px solid blue !important;
+        background: blue url(path/to/myImage.png) 50% 50% repeat-x !important;
+        color: blue !important;
+        font-weight: bolder !important;
+        background-color: yellow !important;
+    }
+
+8. Primeicons
+<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+
+9. A lot of the primefaces components have their own style. To override it we have to add "!important"
+A good example is the styling of the <p:commandButton>
+
+10. Change from "java.sun.com" to "xmlns.jcp.org"
+I changed in every xhtml file the:
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:cc="http://java.sun.com/jsf/composite"
+    xmlns:tm="http://java.sun.com/jsf/composite/tm_components"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+to
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+    xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+
+Exception to this are the following files (the "ns" cannot be changed here):
+"web.xml"
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+    id="WebApp_ID" version="3.0">...</<web-app>
+"faces-config.xml"
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+    http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+11. This is the full collection of xmlns in JSF/Primefaces
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components"
+      xmlns:p="http://primefaces.org/ui">
+
+12. Primefaces v8.0 : Error solved
+
+I had this error before:
+
+com.sun.faces.config.ConfigureListener.contextInitialized Initializing Mojarra 2.2.20
+    (20190731-0757 59754ac80c05d61848a08939ddd11a324f2345ac) for context '/MyWebsiteWebApp'
+com.sun.faces.spi.InjectionProviderFactory.createInstance JSF1048:
+    PostConstruct/PreDestroy annotations present.  ManagedBeans methods marked with these annotations will
+    have said annotations processed.
+com.sun.faces.config.ConfigureListener.contextInitialized Critical error during deployment:
+	java.lang.InstantiationError: org.primefaces.util.Lazy
+		at org.primefaces.csp.CspPhaseListener.<init>(CspPhaseListener.java:48)
+		at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+		at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+		at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+		at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+		at java.lang.Class.newInstance(Class.java:442)
+
+The reason was [I strongly think 99%] because with the Primefaces 8.0, the "DefaultSubMenu" changed,
+and errors appeared in the "MainMenubarModelBuilder" classes.
+Due to commenting this code, these classes could not be loaded in the "MenubarBackingBean" in the
+"@PostConstruct private void init()", as the error log says!
+
+Another issue here....
+Because I commented the contents of the "MenubarBackingBean", everytime the "MenubarBackingBean" was created
+by the @Component annotation, it was giving error that the "MainMenubarModelBuilder" property
+is not existing in the "MenubarBackingBean".
+
+======================================================
+
+TO_DO
+
+How "options" work in "MainMenubarModelBuilder". It is inserted in the "pagesLevel1Template.xhtml", as it is.
+The model controls the submenus/menuitems, and the options are controlled by the parameter
+inserted to the mainMenubar.xhtml
+
+<f:metadata>
+    <f:event type="preRenderView" listener="#{sortViewBackingBean.init}"/>
+    <f:event type="postAddToView" listener="#{sortViewBackingBean.init}"/>
+</f:metadata>
+
+<dependency>
+    <groupId>javax.faces</groupId>
+    <artifactId>javax.faces-api</artifactId>
+    <version>2.2</version>
+    <scope>provided</scope>
+</dependency>
+
+======================================================
+
+Comments in JSF
+----------------
+https://mkyong.com/jsf2/how-to-use-comments-in-jsf-2-0/
+web.xml:
+Context initialization parameter 'facelets.SKIP_COMMENTS' is deprecated.
+<context-param>
+    <param-name>facelets.SKIP_COMMENTS</param-name>
+    <param-value>true</param-value>
+</context-param>
+
+Use the option 'javax.faces.FACELETS_SKIP_COMMENTS'.
+<context-param>
+    <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+    <param-value>true</param-value>
+</context-param>
+
+=====================================================
+
+Problems on "action" attribute
+---------------------------------
+
+If in "h:commandButton" we do not use "f:ajax", everytime we press the "h:commandButton" the whole page will be loaded.
+<h:form>
+    <h:inputText .../>
+    <h:commandButton action="#{backingBean.method}" .../>
+</h:form>
+
+Problem 1
+------------
+If we don not follow the next solutions, this:
+<h:form>
+    <h:inputText .../>
+    <h:commandButton action="#{backingBean.method}" .../>
+</h:form>
+without "f:ajax" inside <h:commandButton>, will lead to the:
+"The origin server did not find a current representation for the target resource or is not willing to disclose that one exists."
+This:
+<h:form>
+    <h:inputText .../>
+    <h:commandButton action="#{backingBean.method}">
+        <f:ajax>
+    </h:commandButton>
+</h:form>
+is not causing this error.
+A possible explanation is that:
+Everytime we press the "h:commandButton" the whole page will be loaded, but the page cannot be found, because the JSF view
+is not in directories under the "webapp" directory.
+
+Problem 2
+------------
+If we don not follow the next solutions, this:
+<h:form>
+    <h:inputText .../>
+    <h:commandButton action="#{backingBean.method}" .../>
+</h:form>
+without "f:ajax", in every page reload the JS alert message appears:
+"The page that you're looking for used information that you entered. Returning to that page might cause any action you
+took to be repeated. Do you want to continue?"
+A possible explanation is that:
+Everytime we reload the page, with the load of the page the form is re-posted.
+
+Solutions
+------------
+
+JSF views have to be in directories under the "webapp" directory
+-------------------------------------------------------------------
+The JSF can work fully (display page, invoke BackingBean methods from "action" attribute by EL) ONLY if the JSF views
+are in directories under the "webapp" directory.
+If the JSF vies are in directories under the "WEB-INF" directory, then the only that will work from JSF is to display the
+page only. Other more deep in JSF functionalities (like invoke the BackingBean methods from "action" attribute by EL)
+WILL NOT work.
+
+FacesServlet have to render the JSF views (not DispatcherServlet)
+--------------------------------------------------------------------
+Spring Controllers must not resolve the views (that means that DispatcherServlet must not be involved).
+JSF views have to be found by FacesServlet, after they are put in directories under the "webapp" directory.
+We can use Filters to filter the URI the client types, and transform it to the real path to the JSF view.
+
+======================================================
+
+3 Efforts
+-----------
+
+<h:form>
+    <h:inputText id="inputId" value="text text text text" styleClass="input_text_style" rendered="true"/>
+    <h:commandButton value="Hide/Display 'h:inputText'" action="#{htmlInputTextBackingBean.hideDisplayInputText}"/>
+</h:form>
+<h:form id="formId">
+    <h:inputText id="inputId" value="text text text text" styleClass="input_text_style"
+                 rendered="#{htmlInputTextBackingBean.rendered}" binding="#{htmlInputTextBackingBean.htmlInputText}"/>
+    <h:commandButton value="Hide/Display 'h:inputText'" action="#{htmlInputTextBackingBean.hideDisplayInputText}"
+                     immediate="true">
+        <f:ajax execute="@form" render="inputId"/>
+    </h:commandButton>
+</h:form>
+
+Some different combinations are (I don't know what is the meaning of these):
+
+<f:ajax execute="@form" render="inputId"/>
+<f:ajax execute="@this" render="inputId formId"/>
+<f:ajax render="inputId formId"/>
+<f:ajax execute="@form" render=":inputId :formId"/>
+<f:ajax execute="@this" render="@this"/>
+<f:ajax execute="@form" render=":inputId"/>
+
+<h:form>
+    <h:inputText id="inputId" value="text text text text" styleClass="input_text_style"
+                 rendered="#{htmlInputTextBackingBean.rendered}"
+                 binding="#{htmlInputTextBackingBean.htmlInputText}"/>
+    <h:commandButton value="Hide/Display 'h:inputText'" action="#{htmlInputTextBackingBean.hideDisplayInputText}"
+                     immediate="true">
+        <f:ajax event="click" listener="#{htmlInputTextBackingBean.hideDisplayInputText}"/>
+    </h:commandButton>
+    <input type="hidden" name="change" value="#{htmlInputTextBackingBean.hideDisplayInputText}"/>
+</h:form>
+
+=====================================================
+
+Getters-Setters in BackingBeans
+----------------------------------
+Site: "https://stackoverflow.com/questions/7580167/are-both-getters-and-setters-mandatory-in-jsfs-managed-beans"
+BackingBean properties which are binded with JSF component attributes that are:
+- "read-only", need only (mandatory) the getters (like: "rendered" attribute and others)
+- "read-write", need (mandatory) and the getters and setters (like: "binding" attribute and others)
+
+=====================================================
+
+JSF backing bean should be serializable?
+-------------------------------------------
+https://stackoverflow.com/questions/3372687/jsf-backing-bean-should-be-serializable
+--------------------------------------------------------------------------------------
+Yes, you understood it correctly. The view is basically stored in the session scope.
+The session scope is in JSF backed by the Servlet's HttpSession. All session attributes are supposed to implement
+Serializable, this because the average ServletContainer may persist session data to hard disk among others to be able
+to share with other servers in a cluster, or to survive heavy load, or to revive sessions during server restart.
+Storing raw Java objects on hard disk is only possible if the respective class implements Serializable.
+Then ObjectOutputStream can be used to write them to hard disk and ObjectInputStream to read them from hard disk.
+The ServletContainer manages this all transparently, you actually don't need to worry about it.
+JSF is just giving a warning so that you understand the risks.
+
+https://suhasjavablog.wordpress.com/2014/05/08/jsf-managedbean-must-implement-serializable-or-not/
+-----------------------------------------------------------------------------------------------------
+JSF MANAGEDBEAN MUST IMPLEMENT SERIALIZABLE OR NOT ?
+Recently I was reading about serialization and I noticed that all the ManagedBean in my JSF project implements Serializable interface.
+
+Normally, we use Serialization to send an object over the network or if the state of an object needs to be persisted to a flat file or a database.
+But my managedBean was just a means to value bind the UI components. I digged deep into this topic and I think its useful to share my findings with you all.
+
+We need not make every ManagedBean serializable. It depends upon the Scope the MBean. If you don’t want to serialize your MBean, make sure the scope is ‘request’.
+
+Instead, if you are dealing with ‘session’ scope or ‘view’ scope (even view scope is using session scope). The session scope is backed by the Servlet’s HttpSession.
+All session attributes are supposed to implement Serializable because the servlet container tries to persist session data to file system
+to be able to survive heavy load and/or reviving sessions during server restart.
+
+Sometimes you might have noticed that your post contructs in your MBean get executed on server restart. Why ?
+Some containers will require you to explicitly disable session serialization (or else they will be generating exceptions).
+Tomcat by default enables persisting session through server restart.
+
+https://docs.oracle.com/javaee/6/tutorial/doc/gjbbk.html
+-----------------------------------------------------------
+Beans that use session, application, or conversation scope must be serializable, but beans that use request scope
+do not have to be serializable.
+
+=====================================================
+
+ManagedBean scopes
+---------------------
+All these scopes are making the "action" attribute method be invoked (due to all the following solutions are applied)
+@RequestScoped
+@javax.faces.bean.ViewScoped
+@javax.faces.view.ViewScoped
+@SessionScoped
+
+=====================================================
+
+The "action" attribute method is invoked (due to all the following solutions are applied), using
+or:
+
+@Component(value = "exampleBackingBean")
+//@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+//@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+public class ExampleBackingBean implements Serializable {
+}
+
+or:
+
+@ManagedBean(name = "exampleBackingBean")
+@RequestScoped
+public class ExampleBackingBean implements Serializable {
+    @ManagedProperty(value = "#{commonHtmlAttributesService}")
+    private CommonHtmlAttributesService commonHtmlAttributesService;
+    // In ManagedBeans the ManagedProperties have to have Getters-Setters (mandatory)
+}
+
+or:
+
+The combination proposed by the online tutorial in the link (Spring MVC integrated with JSF v2.2 example):
+http://javaonlineguide.net/2015/07/jsf-2-2-spring4-integration-example-using-spring-annotations.html
+
+@Component(value = "exampleBackingBean")
+@ManagedBean(name = "exampleBackingBean")
+@RequestScoped
+public class ExampleBackingBean implements Serializable {
+    @PostConstruct
+    private void init() { /*Initialization code*/ }
+}
+
+=====================================================
+
+If we need to implement our own 'Sorting/Filtering' code for a <p:column> (by SortViewBackingBean.sortByIdMethod()),
+we need to use "f:facet" tag in this column.
+In this case, the header text from the "f:facet" tag, overrides the "headerText" attribute.
+
+<h:form>
+    <p:dataTable var="car" value="#{sortViewBackingBean.cars}">
+        <f:facet name="header">
+             Implementing our own 'Sorting/Filtering' code
+        </f:facet>
+        <p:column headerText="ID" sortBy="#{car.id}">
+            <f:facet name="header">
+                <h:commandLink value="ID" action="#{sortViewBackingBean.sortByIdMethod}"/>
+            </f:facet>
+            <h:outputText value="#{car.id}"/>
+        </p:column>
+        <!-- Other columns -->
+    </p:dataTable>
+</h:form>
+
+========================================================================================================================
+
+In Googling they were writing that to make the Sorting/Filtering in <p:dataTable> work we have to run the
+BackingBean initialization as follows inside the page <ui:composition>:
+
+<f:metadata>
+    <f:event type="preRenderView" listener="#{JavaFrameworksBackingBean.init}"/>
+    <f:event type="postAddToView" listener="#{JavaFrameworksBackingBean.init}"/>
+</f:metadata>
+-----------------------
+https://stackoverflow.com/questions/5522702/execute-managebean-method-from-javascript-onload-event/5523717#5523717
+<h:body>
+    <f:ajax event="load" listener="#{bean.onload}" />
+</h:body>
+public void onload(AjaxBehaviourEvent event) {
+    // ...
+}
+=====================================================
+
+BackingBean methods from "action" attribute can be invoked, in all the following cases:
+public String backingBeanActionMethod() {
+    // Code
+    return null;
+}
+public String backingBeanActionMethod() {
+    // Code
+    return "";
+}
+public void backingBeanActionMethod() {
+    // Code
+}
+
+=====================================================
+
+BackingBean methods from "action" attribute can be invoked, with whatever value of "immediate" attribute.
+That means in all the following cases:
+<h:commandButton ...immediate="true"/>
+<h:commandButton ...immediate="false"/>
+
+=====================================================
+
+TO_DO
+1. No empty lines in between
+<html><h:head><h:body></h:body></h:head></html>
+2. Make the name/shortDescription the same pattern
+<cc:interface>
+    <cc:attribute name="back_to_home_rendered" type="java.lang.Boolean" required="true"
+                  shortDescription="Controls if 'BackToHome' button will be rendered or not"/>
+</cc:interface>
+3.Attention:
+@PostConstruct private void init() {initComponentsAttributesList();} in AbstractBackingBeans
+(AbstractHtmlMessagesBackingBean, AbstractHtmlInputsBackingBean, AbstractHtmlOutputsBackingBean)
+4. Change images to this:
+
+<ui:define name="right_section_image">
+    <div class="right_section_image_wrapper">
+        <p:graphicImage value="#{resource['images/cs_topics/Electronics.jpg']}"
+                        alt="Electronics" styleClass="right_section_image electronics_image"/>
+    </div>
+</ui:define>
+
+.right_section_image_wrapper {
+    border-radius: 5px;
+    box-shadow: 8px 5px 5px blue;
+    height: 100%;
+    width: 100%;
+}
+
+.right_section_image {
+    border-radius: 5px;
+    box-shadow: 8px 5px 5px blue;
+    height: 100%;
+    width: 100%;
+    /*padding: 10px;*/
+}
+
+=====================================================
+
 <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
 <dependency>
     <groupId>org.hibernate</groupId>
