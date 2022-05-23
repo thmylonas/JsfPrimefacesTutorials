@@ -31,6 +31,8 @@ public class WebConfig {
 
     /**
      * This method replaces fully the configuration in "web.xml"
+     * To enable the configuration with this class, we have to add in the "WebConfig" class the following annotation:
+     * "@ServletComponentScan(basePackages = {"com.thomasmylonas.my_spring_hibernate_jsf_web_app"})"
      *
      * @param servletContext The ServletContext
      * @return The ServletRegistrationBean
