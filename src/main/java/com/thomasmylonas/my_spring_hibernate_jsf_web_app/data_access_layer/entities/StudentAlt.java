@@ -1,5 +1,7 @@
 package com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities;
 
+import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.enums.Status;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,16 +15,13 @@ public class StudentAlt {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "first_name")
-    private String firstName;
-
-    @Column(name = "last_name")
+    @Column(name = "last_name", length = 30)
     private String lastName;
 
-    @Column(name = "mother_name")
-    private String motherName;
+    @Column(name = "first_name", length = 20)
+    private String firstName;
 
-    @Column(name = "father_name")
+    @Column(name = "father_name", length = 20)
     private String fatherName;
 
     @Column(name = "date_of_birth")
@@ -31,8 +30,12 @@ public class StudentAlt {
     @Column(name = "absences")
     private Integer absences;
 
-    @Column(name = "department_id")
-    private Integer departmentId;
+    @Column(name = "department_id", length = 10)
+    private String departmentId;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "status", length = 15)
+    private Status status;
 
     public Long getId() {
         return id;
@@ -40,14 +43,6 @@ public class StudentAlt {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -58,12 +53,12 @@ public class StudentAlt {
         this.lastName = lastName;
     }
 
-    public String getMotherName() {
-        return motherName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setMotherName(String motherName) {
-        this.motherName = motherName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getFatherName() {
@@ -90,25 +85,33 @@ public class StudentAlt {
         this.absences = absences;
     }
 
-    public Integer getDepartmentId() {
+    public String getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(Integer departmentId) {
+    public void setDepartmentId(String departmentId) {
         this.departmentId = departmentId;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
         return "StudentAlt{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", motherName='" + motherName + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", fatherName='" + fatherName + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", absences=" + absences +
-                ", departmentId=" + departmentId +
+                ", departmentId='" + departmentId + '\'' +
+                ", status=" + status +
                 '}';
     }
 }

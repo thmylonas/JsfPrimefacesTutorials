@@ -1,25 +1,29 @@
 package com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.exceptions;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+/**
+ * This is the ResourceNotFoundException which carries the "type" (Class) and the "ID" of the resource.
+ * In its creation it sets up the super-RuntimeException's message, with the "type" (Class) and the "ID" of the resource
+ */
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class ResourceNotFoundException extends RuntimeException {
 
-    private long resourceId;
-    private String myMessage; // "message" in SuperClass not settable
+    private final String resourceClass;
+    private final Long resourceId;
 
-    public ResourceNotFoundException(long resourceId, String message) {
-        super(message);
-        this.resourceId = resourceId;
-        myMessage = message;
+    public ResourceNotFoundException(String clazz, Long id) {
+        super(String.format("The entity '%s' with ID '%d' is not found!", clazz, id));
+        this.resourceClass = clazz;
+        this.resourceId = id;
     }
 
-    public long getResourceId() {
+    public String getResourceClass() {
+        return resourceClass;
+    }
+
+    public Long getResourceId() {
         return resourceId;
-    }
-
-    public String getMyMessage() {
-        return myMessage;
-    }
-
-    public void setMyMessage(String myMessage) {
-        this.myMessage = myMessage;
     }
 }
