@@ -2,31 +2,26 @@ package com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.exceptio
 
 public class ResponseError {
 
-    private final String message;
-    private final int code;
-    private final String exceptionName;
-    private final Exception exception;
+    private final String errorMessage;
+    private final int errorCode;
+    private final String additionalMessage;
+    //private final Exception exception;
 
-    public ResponseError(String message, int code, String exceptionName, Exception exception) {
-        this.message = message;
-        this.code = code;
-        this.exceptionName = exceptionName;
-        this.exception = exception;
+    public ResponseError(String errorMessage, int errorCode, String additionalMessage) {
+        this.errorMessage = errorMessage;
+        this.errorCode = errorCode;
+        this.additionalMessage = additionalMessage;
     }
 
-    public String getMessage() {
-        return message;
+    public String getErrorMessage() {
+        return errorMessage;
     }
 
-    public int getCode() {
-        return code;
+    public int getErrorCode() {
+        return errorCode;
     }
 
-    public String getExceptionName() {
-        return exceptionName;
-    }
-
-    public Exception getException() {
-        return exception;
+    public String getAdditionalMessage() {
+        return additionalMessage;
     }
 }

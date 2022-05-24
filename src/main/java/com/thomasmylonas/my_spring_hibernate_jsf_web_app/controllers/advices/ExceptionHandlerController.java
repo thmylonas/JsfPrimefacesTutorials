@@ -14,7 +14,7 @@ public class ExceptionHandlerController {
     public ResponseEntity<ResponseError> handleResourceNotFoundException(RuntimeException e) {
 
         // The e (ResourceNotFoundException) carries the super-RuntimeException's message, with the "type" (Class) and the "ID" of the resource
-        String responseMessage = "The exception '" + e.getClass().getSimpleName() + "' is thrown!";
-        return new ResponseEntity<>(new ResponseError(e.getMessage(), HttpStatus.NOT_FOUND.value(), responseMessage, e), HttpStatus.NOT_FOUND);
+        String additionalMessage = "Additional message: The exception '" + e.getClass().getSimpleName() + "' is thrown!";
+        return new ResponseEntity<>(new ResponseError(e.getMessage(), HttpStatus.NOT_FOUND.value(), additionalMessage), HttpStatus.NOT_FOUND);
     }
 }
