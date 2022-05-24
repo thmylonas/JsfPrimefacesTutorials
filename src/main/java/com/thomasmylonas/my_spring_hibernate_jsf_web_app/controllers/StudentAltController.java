@@ -68,9 +68,10 @@ public class StudentAltController extends AbstractController {
         studentAltService.deleteStudentAlt(id);
     }
 
-    @RequestMapping(path = "student-alt", method = RequestMethod.GET)
+    // http://localhost:8080/MySpringHibernateJsfWebApp/api/student-alt/home
+    @RequestMapping(path = "student-alt-home/home", method = RequestMethod.GET)
     public String getStudentAltPage(Model model) {
         model.addAttribute("studentAltService", studentAltService);
-        return "student_alt";
+        return "student_alt_home";
     }
 }

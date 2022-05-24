@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface StudentAltService {
 
-    StudentAlt getStudentAltById(Long id);
+    StudentAlt getStudentAltById(Long id) throws ResourceNotFoundException;
 
     List<StudentAlt> getAllStudentsAlt();
 
     StudentAlt saveStudentAlt(StudentAlt studentAlt);
 
-    StudentAlt updateStudentAlt(StudentAlt studentAlt, Long id);
+    StudentAlt updateStudentAlt(StudentAlt studentAlt, Long id) throws ResourceNotFoundException;
 
     void deleteStudentAlt(Long id) throws ResourceNotFoundException;
 }

@@ -21,6 +21,7 @@ public class StudentAltServiceImpl implements StudentAltService {
 
     @Override
     public StudentAlt getStudentAltById(Long id) {
+
         StudentAlt studentAlt = studentAltRepository.findById(id);
         if (studentAlt == null) {
             throw new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id);

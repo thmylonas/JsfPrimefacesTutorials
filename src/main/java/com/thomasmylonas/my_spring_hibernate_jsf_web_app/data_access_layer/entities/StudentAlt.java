@@ -2,7 +2,15 @@ package com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.enti
 
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.enums.Status;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity(name = "StudentAlt")
@@ -34,7 +42,7 @@ public class StudentAlt {
     private String departmentId;
 
     @Enumerated(value = EnumType.STRING)
-    @Column(name = "status", length = 15)
+    @Column(name = "status", length = 20)
     private Status status;
 
     public Long getId() {
