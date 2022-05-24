@@ -4,13 +4,15 @@ import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.exception
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.exceptions.ResponseError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@RestControllerAdvice
+@ControllerAdvice
 public class ExceptionHandlerController {
 
     @ExceptionHandler(value = {ResourceNotFoundException.class})
+    @ResponseBody
     public ResponseEntity<ResponseError> handleResourceNotFoundException(RuntimeException e) {
 
         // The e (ResourceNotFoundException) carries the super-RuntimeException's message, with the "type" (Class) and the "ID" of the resource
