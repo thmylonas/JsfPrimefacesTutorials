@@ -29,9 +29,6 @@ public class StudentAlt {
     @Column(name = "first_name", length = 20)
     private String firstName;
 
-    @Column(name = "father_name", length = 20)
-    private String fatherName;
-
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
@@ -44,6 +41,19 @@ public class StudentAlt {
     @Enumerated(value = EnumType.STRING)
     @Column(name = "status", length = 20)
     private Status status;
+
+    public StudentAlt() {
+    }
+
+    private StudentAlt(Builder builder) {
+        this.id = builder.id;
+        this.lastName = builder.lastName;
+        this.firstName = builder.firstName;
+        this.dateOfBirth = builder.dateOfBirth;
+        this.absences = builder.absences;
+        this.departmentId = builder.departmentId;
+        this.status = builder.status;
+    }
 
     public Long getId() {
         return id;
@@ -67,14 +77,6 @@ public class StudentAlt {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public String getFatherName() {
-        return fatherName;
-    }
-
-    public void setFatherName(String fatherName) {
-        this.fatherName = fatherName;
     }
 
     public Date getDateOfBirth() {
@@ -115,11 +117,60 @@ public class StudentAlt {
                 "id=" + id +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", fatherName='" + fatherName + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", absences=" + absences +
                 ", departmentId='" + departmentId + '\'' +
                 ", status=" + status +
                 '}';
+    }
+
+    public static class Builder {
+
+        private Long id;
+        private String lastName;
+        private String firstName;
+        private Date dateOfBirth;
+        private Integer absences;
+        private String departmentId;
+        private Status status;
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder firstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder dateOfBirth(Date dateOfBirth) {
+            this.dateOfBirth = dateOfBirth;
+            return this;
+        }
+
+        public Builder absences(Integer absences) {
+            this.absences = absences;
+            return this;
+        }
+
+        public Builder departmentId(String departmentId) {
+            this.departmentId = departmentId;
+            return this;
+        }
+
+        public Builder status(Status status) {
+            this.status = status;
+            return this;
+        }
+
+        public StudentAlt build() {
+            return new StudentAlt(this);
+        }
     }
 }

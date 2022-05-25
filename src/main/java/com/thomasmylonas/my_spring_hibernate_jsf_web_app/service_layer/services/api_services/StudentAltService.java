@@ -16,4 +16,6 @@ public interface StudentAltService {
     StudentAlt updateStudentAlt(StudentAlt studentAlt, Long id) throws ResourceNotFoundException;
 
     void deleteStudentAlt(Long id) throws ResourceNotFoundException;
+
+    List<StudentAlt> fetchAllStudentsAltHardcoded();
 }

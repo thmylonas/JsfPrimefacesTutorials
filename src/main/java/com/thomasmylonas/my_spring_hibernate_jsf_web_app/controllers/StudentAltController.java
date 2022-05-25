@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,12 +65,5 @@ public class StudentAltController extends AbstractController {
     @ResponseBody
     public void deleteExistingStudentAlt(@PathVariable(name = "id") Long id) {
         studentAltService.deleteStudentAlt(id);
-    }
-
-    // http://localhost:8080/MySpringHibernateJsfWebApp/api/student-alt/home
-    @RequestMapping(path = "student-alt-home/home", method = RequestMethod.GET)
-    public String getStudentAltPage(Model model) {
-        model.addAttribute("studentAltService", studentAltService);
-        return "student_alt_home";
     }
 }
