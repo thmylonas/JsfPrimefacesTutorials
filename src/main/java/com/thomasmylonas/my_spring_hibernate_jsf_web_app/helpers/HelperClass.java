@@ -4,7 +4,9 @@ import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.models._g
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
@@ -151,5 +153,12 @@ public abstract class HelperClass {
         return isArrayNullOrEmpty(indexesArray) || isListNullOrEmpty(list) ?
                 Collections.emptyList() :
                 filteredIndexesList.stream().map(list::get).collect(Collectors.toList());
+    }
+
+    public static Date getDate(int year, int month, int day) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, day); // cal.set(1972, Calendar.SEPTEMBER, 24);
+        return cal.getTime();
     }
 }

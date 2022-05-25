@@ -554,3 +554,26 @@ Caused by: java.lang.NullPointerException: inStream parameter is null
 
 git rm -r --cached .idea/
 git commit -m ".idea/ removed"
+
+========================================================================================================================
+
+How to add static CSS,JS files in the Spring MVC app (without Thymeleaf)
+---------------------------------------------------------------------------
+<head>
+    <!-- Stylesheets -->
+    <link href="/MySpringHibernateJsfWebApp/resources/css/styles_general/_styles_variables.css" rel="stylesheet"/>
+    <link href="/MySpringHibernateJsfWebApp/resources/css/styles_general/student_alt_home.css" rel="stylesheet"/>
+    <!-- Stylesheets for Bootstrap -->
+    <link href="/MySpringHibernateJsfWebApp/resources/css/boostrap_css_libs/bootstrap.min.css" rel="stylesheet"/>
+</head>
+
+public class WebConfig implements WebMvcConfigurer {
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
+}
+========================================================================================================================
+
+TO-DOs
+The meta in all pages, all projects
