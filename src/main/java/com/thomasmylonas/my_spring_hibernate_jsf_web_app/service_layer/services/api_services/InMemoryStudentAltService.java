@@ -2,10 +2,8 @@ package com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services
 
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.StudentAlt;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.enums.Status;
-import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.repositories.StudentAltRepository;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.helpers.HelperClass;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.exceptions.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -13,65 +11,44 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-@Service(value = "studentAltService")
-public class StudentAltServiceImpl implements StudentAltService {
+@Service(value = "inMemoryStudentAltService")
+public class InMemoryStudentAltService implements StudentAltService {
 
-    private final StudentAltRepository studentAltRepository;
-
-    private List<StudentAlt> studentsAltListHardcoded;
-    private List<StudentAlt> studentsAltListHardcodedFiltered;
-
-    private Long studentId;
-
-
-    public List<StudentAlt> getStudentsAltListHardcoded() {
-        return studentsAltListHardcoded;
-    }
-
-    public Long getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
-    }
-
-    @Autowired
-    public StudentAltServiceImpl(StudentAltRepository studentAltRepository) {
-        this.studentAltRepository = studentAltRepository;
-    }
+    private List<StudentAlt> inMemoryStudentsAltList;
 
     @PostConstruct
     public void init() {
-        initStudentsAltListHardcoded();
-        studentsAltListHardcodedFiltered = new ArrayList<>();
+        initInMemoryStudentsAltList();
     }
 
     @Override
     public StudentAlt getStudentAltById(Long id) {
-
-        StudentAlt studentAlt = studentAltRepository.findById(id);
-        if (studentAlt == null) {
-            throw new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id);
+        if (id == null) {
+            return null;
         }
-        return studentAlt;
+        return filterInMemoryStudentsAltListById(id); // This might throw a "ResourceNotFoundException"
+    }
+
+    public List<StudentAlt> getStudentAltByIdWrappedInList(Long id) {
+        return Stream.of(getStudentAltById(id)).collect(Collectors.toList()); // This might throw a "ResourceNotFoundException"
     }
 
     @Override
     public List<StudentAlt> getAllStudentsAlt() {
-        return studentAltRepository.findAll();
+        return inMemoryStudentsAltList;
     }
 
     @Override
     public StudentAlt saveStudentAlt(StudentAlt studentAlt) {
-        return studentAltRepository.save(studentAlt);
+        return null;
     }
 
     @Override
     public StudentAlt updateStudentAlt(StudentAlt studentAlt, Long id) {
 
-        StudentAlt studentAltToUpdate = studentAltRepository.findById(id);
+        /*StudentAlt studentAltToUpdate = studentAltRepository.findById(id);
         if (studentAltToUpdate == null) {
             throw new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id);
         }
@@ -94,38 +71,39 @@ public class StudentAltServiceImpl implements StudentAltService {
         if (!HelperClass.isStringNullOrEmpty(studentAlt.getStatus().getValue())) {
             studentAltToUpdate.setStatus(studentAlt.getStatus());
         }
-        return studentAltRepository.save(studentAltToUpdate);
+        return studentAltRepository.save(studentAltToUpdate);*/
+        return null;
     }
 
     @Override
     public void deleteStudentAlt(Long id) throws ResourceNotFoundException {
-        studentAltRepository.deleteById(id);
+//        studentAltRepository.deleteById(id);
     }
 
-    @Override
-    public List<StudentAlt> fetchAllStudentsAltHardcoded() {
-        return studentsAltListHardcodedFiltered;
+    /*private void filterInMemoryStudentsAltListById2(Long id) {
+
+        // Reset the "inMemoryStudentsAltFilteredList"
+        inMemoryStudentsAltFilteredList = new ArrayList<>();
+        // Filter the "inMemoryStudentsAltList" by ID
+        inMemoryStudentsAltFilteredList.addAll(
+                inMemoryStudentsAltList.stream().filter(studentAlt -> studentAlt.getId().equals(id)).collect(Collectors.toList()));
+    }*/
+
+    private StudentAlt filterInMemoryStudentsAltListById(Long id) {
+
+        // Filter the "inMemoryStudentsAltList" by ID
+        return inMemoryStudentsAltList
+                .stream()
+                .filter(studentAlt -> studentAlt.getId().equals(id))
+                .findAny()
+                .orElseThrow(() -> new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id));
     }
 
-    public void filterStudentsAltListHardcodedById(Long id) {
+    private void initInMemoryStudentsAltList() {
 
-        // Reset the "studentsAltListHardcodedFiltered"
-        studentsAltListHardcodedFiltered = new ArrayList<>();
-        // Filter the "studentsAltListHardcoded" by ID
-        studentsAltListHardcodedFiltered.addAll(
-                studentsAltListHardcoded.stream().filter(studentAlt -> studentAlt.getId().equals(id)).collect(Collectors.toList()));
-    }
+        inMemoryStudentsAltList = new ArrayList<>();
 
-    public void resetFormWhichGetsStudentAltById() {
-        studentsAltListHardcodedFiltered = new ArrayList<>();
-        studentId = null;
-    }
-
-    private void initStudentsAltListHardcoded() {
-
-        studentsAltListHardcoded = new ArrayList<>();
-
-        studentsAltListHardcoded.add(new StudentAlt.Builder()
+        inMemoryStudentsAltList.add(new StudentAlt.Builder()
                 .id(1L)
                 .lastName("Mylonas")
                 .firstName("Thomas")
@@ -134,7 +112,7 @@ public class StudentAltServiceImpl implements StudentAltService {
                 .departmentId("Dept1")
                 .status(Status.ADVANCED_STUDENT)
                 .build());
-        studentsAltListHardcoded.add(new StudentAlt.Builder()
+        inMemoryStudentsAltList.add(new StudentAlt.Builder()
                 .id(2L)
                 .lastName("Lorem")
                 .firstName("Ipsum")
@@ -143,7 +121,7 @@ public class StudentAltServiceImpl implements StudentAltService {
                 .departmentId("Dept1")
                 .status(Status.JUNIOR_STUDENT)
                 .build());
-        studentsAltListHardcoded.add(new StudentAlt.Builder()
+        inMemoryStudentsAltList.add(new StudentAlt.Builder()
                 .id(3L)
                 .lastName("Chan")
                 .firstName("Jacky")
@@ -152,7 +130,7 @@ public class StudentAltServiceImpl implements StudentAltService {
                 .departmentId("Dept2")
                 .status(Status.JUNIOR_STUDENT)
                 .build());
-        studentsAltListHardcoded.add(new StudentAlt.Builder()
+        inMemoryStudentsAltList.add(new StudentAlt.Builder()
                 .id(4L)
                 .lastName("Parker")
                 .firstName("Peter")
@@ -161,7 +139,7 @@ public class StudentAltServiceImpl implements StudentAltService {
                 .departmentId("Dept3")
                 .status(Status.MEDIUM_STUDENT)
                 .build());
-        studentsAltListHardcoded.add(new StudentAlt.Builder()
+        inMemoryStudentsAltList.add(new StudentAlt.Builder()
                 .id(5L)
                 .lastName("Murdock")
                 .firstName("Mat")
