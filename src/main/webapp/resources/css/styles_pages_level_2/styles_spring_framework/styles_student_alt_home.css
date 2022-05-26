@@ -1,128 +1,32 @@
-/* General Styles for all WebSite */
-
-.student_alt_home_body {
-    background-image: url("../../../images/backgrounds/PinkBg.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    padding: 10px;
-}
-
-/* Styles for "center_section" */
-
-.center_section {
-    height: 100%; /*150vh*/
-    background-color: var(--turquoise1_no_opacity7);
-    border: 1px solid var(--deep_pink1);
-    border-radius: 5px;
-    box-shadow: 8px 5px 5px var(--deep_green_shadow);
-    font-family: var(--linotype_didot_courgette_serif);
-    margin: 0 0 5px 0;
-    padding: 10px;
-}
-
-.center_section_title {
-    font-family: var(--linotype_didot_courgette_serif);
-    font-size: 30px;
-    color: var(--fire_brick1);
-    text-align: center;
-    text-decoration: none;
-    text-shadow: 4px 4px 4px var(--deep_green_shadow);
-    padding-top: 5px;
-    line-height: 40px;
-    margin: 0 10px 0 10px;
-}
-
-.center_section_title_link, .center_section_title_link:hover {
-    text-decoration: none;
-    color: var(--fire_brick1);
-}
-
-.center_section_content {
-    /*height: 100%;*/ /* TODO: This needs to be fixed */
-    border: 1px solid blue;
-    padding: 10px;
-    margin-right: 8px;
-    margin-left: 7px;
-}
-
-/* Topics of a technology */
-
-.technology_topics_titles {
-    font-size: 18px;
-    font-weight: bold;
-    color: fuchsia;
-    margin-top: 13px;
-    margin-bottom: 10px;
-}
-
-.technology_topics_titles a, .technology_topics_titles a:hover {
-    color: fuchsia;
-    text-decoration: none;
-}
-
-.technology_topics_group_wrapper {
-    margin-bottom: 16px;
-    margin-left: 10px;
-}
-
-.technology_topics_group_wrapper div {
-    margin-top: 8px;
-}
-
-.technology_topics_list_wrapper {
-    margin-bottom: 20px;
-    margin-left: 10px;
-}
-
-.technology_topics_list_wrapper dt {
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--deep_pink1);
-    text-decoration: none;
-    margin-top: 14px;
-}
-
-.technology_topics_list_wrapper dd {
-    margin-top: 4px;
-    margin-left: 10px;
-}
-
-dt:nth-child(1) {
-    margin-top: 0 !important;
-}
-
-.technology_topics_list_wrapper:nth-last-child(1) {
-    margin-bottom: 16px;
-}
-
-.technology_topics_list, .technology_topics_list:hover {
-    font-size: 16px;
-    font-weight: bold;
-    color: blue;
-    text-decoration: none;
-}
-
-.technology_topics_examples {
-    margin-top: 10px;
-}
-
-.not_used_technology_topics_contents {
-    margin-left: 5px;
-}
-
 /* Useful links */
 
-.useful_links, .useful_links:hover {
-    color: var(--fire_brick1);
-    font-style: italic;
-    text-decoration: none;
+.student_id_input_wrapper {
+    margin-top: 20px;
 }
 
-.border {
-    border: 2px solid #0a53be;
+.student_id_input_wrapper label {
+    font-weight: normal !important;
 }
 
-.student_id_input {
+.student_id_input, .student_alt_reset_btn {
     margin-left: 10px !important;
+}
+
+.table_filter_students_alt_list_by_id, .table_students_alt_list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.table_filter_students_alt_list_by_id > div, .table_students_alt_list > div {
+    color: blue;
+    font-style: italic;
+}
+
+table > thead th {
+    color: blue !important;
+    font-style: italic !important;
+}
+
+table tbody {
+    font-weight: 100 !important;
 }

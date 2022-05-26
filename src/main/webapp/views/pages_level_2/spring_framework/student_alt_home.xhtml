@@ -5,7 +5,6 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components"
       xmlns:p="http://primefaces.org/ui">
 
 <h:body>
@@ -35,23 +34,23 @@
                 <dt>Display a StudentAlt (given its ID)</dt>
                 <dd>
                     <h:form>
-                        <div>
+                        <div class="student_id_input_wrapper">
                             <!--
                             In the "p:inputText", if the "value" attribute is defined:
                             - as "long" with no-value assigned, the "p:inputText" will display "0" and not the "placeholder"
                             - as "Long" with no-value assigned (null), the "p:inputText" will display the "placeholder" (not "null")
                             Alternatively, instead of "p:watermark", we can use "p:inputText"'s "placeholder" attribute
                             -->
-                            <p:outputLabel for="studentId" value="Enter the studentAlt ID"/>
-                            <p:watermark for="studentId" value="Enter the studentAlt ID"/>
-                            <p:inputText id="studentId" value="#{studentAltService.studentId}"
-                                         styleClass="student_id_input"/>
+                            <p:outputLabel for="studentId" value="Enter the studentAlt's ID:"/>
+                            <p:watermark for="studentId" value="ID"/>
+                            <p:inputNumber id="studentId" value="#{studentAltService.studentId}"
+                                           maxlength="5" size="2" decimalPlaces="0" thousandSeparator="."
+                                           styleClass="student_id_input"/>
                         </div>
 
-                        <!-- Table -->
-                        <p:dataTable id="asd"
-                                     value="#{studentAltService.fetchAllStudentsAltHardcoded()}"
-                                     var="studentAlt" border="1" resizableColumns="true">
+                        <p:dataTable value="#{studentAltService.fetchAllStudentsAltHardcoded()}"
+                                     var="studentAlt" border="1" resizableColumns="true"
+                                     styleClass="table_filter_students_alt_list_by_id">
                             <f:facet name="header">Display all the StudentsAlt</f:facet>
                             <p:column>
                                 <f:facet name="header">ID</f:facet>
@@ -88,24 +87,19 @@
                                 <p:ajax process="@form" update="@form"
                                         listener="#{studentAltService.filterStudentsAltListHardcodedById(studentAltService.studentId)}"/>
                             </p:commandButton>
-                            <p:commandButton value="Reset studentAlt">
+                            <p:commandButton value="Reset studentAlt" styleClass="student_alt_reset_btn">
                                 <p:ajax process="@form" update="@form"
                                         listener="#{studentAltService.resetFormWhichGetsStudentAltById()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
                 </dd>
-                <dd>
-                    <tm:special_link
-                            link_url="#" link_text="Topic 2"
-                            link_tooltip="#"
-                            target_blank="_blank" link_style="h_taglib_list_items"/>
-                </dd>
 
                 <dt>Display all the StudentsAlt</dt>
                 <dd>
                     <p:dataTable value="#{studentAltService.studentsAltListHardcoded}"
-                                 var="studentAlt" border="1" resizableColumns="true">
+                                 var="studentAlt" border="1" resizableColumns="true"
+                                 styleClass="table_students_alt_list">
                         <f:facet name="header">Display all the StudentsAlt</f:facet>
                         <p:column>
                             <f:facet name="header">ID</f:facet>
@@ -136,6 +130,100 @@
                             #{studentAlt.status}
                         </p:column>
                     </p:dataTable>
+                </dd>
+
+                <dt>Post a new StudentAlt</dt>
+                <dd>
+                    <h:form>
+                        <div class="student_id_input_wrapper">
+                            <p:outputLabel for="lastName" value="Enter the studentAlt's Last Name:"/>
+                            <p:watermark for="lastName" value="Last Name"/>
+                            <p:inputText id="lastName" value="#{studentAltService.studentId}" maxlength="30" size="30"
+                                         styleClass="student_id_input"/>
+                        </div>
+                        <div class="student_id_input_wrapper">
+                            <p:outputLabel for="firstName" value="Enter the studentAlt's First Name:"/>
+                            <p:watermark for="firstName" value="First Name"/>
+                            <p:inputText id="firstName" value="#{studentAltService.studentId}" maxlength="20" size="20"
+                                         styleClass="student_id_input"/>
+                        </div>
+                        <div class="student_id_input_wrapper">
+                            <p:outputLabel for="dateOfBirth" value="Enter the studentAlt's Date of Birth:"/>
+                            <p:watermark for="dateOfBirth" value="Date of Birth"/>
+                            <p:datePicker id="dateOfBirth" value="#{studentAltService.studentId}"
+                                          monthNavigator="true" yearNavigator="true" showWeek="true"
+                                          yearRange="1900:2004" styleClass="student_id_input"/>
+                        </div>
+                        <div class="student_id_input_wrapper">
+                            <p:outputLabel for="absences" value="Enter the studentAlt's Absences:"/>
+                            <p:watermark for="absences" value="Absences"/>
+                            <p:inputNumber id="absences" value="#{studentAltService.studentId}"
+                                           maxlength="5" size="5" decimalPlaces="0" thousandSeparator="."
+                                           styleClass="student_id_input"/>
+                        </div>
+                        <div class="student_id_input_wrapper">
+                            <p:outputLabel for="departmentId" value="Enter the studentAlt's Department ID:"/>
+                            <p:watermark for="departmentId" value="Department ID"/>
+                            <p:inputText id="departmentId" value="#{studentAltService.studentId}"
+                                         maxlength="10" size="10" styleClass="student_id_input"/>
+                        </div>
+                        <div class="student_id_input_wrapper">
+                            <p:outputLabel for="status" value="Enter the studentAlt's Status:"/>
+                            <p:watermark for="status" value="Status"/>
+                            <p:selectOneMenu id="status" value="#{studentAltService.studentId}"
+                                             styleClass="student_id_input">
+                                <f:selectItem itemLabel="Select Status" itemValue=""/>
+                                <f:selectItem itemLabel="Advanced Student" itemValue="ADVANCED_STUDENT"/>
+                                <f:selectItem itemLabel="Medium Student" itemValue="MEDIUM_STUDENT"/>
+                                <f:selectItem itemLabel="Junior Student" itemValue="JUNIOR_STUDENT"/>
+                            </p:selectOneMenu>
+                        </div>
+
+                        <p:dataTable value="#{studentAltService.studentsAltListHardcoded}"
+                                     var="studentAlt" border="1" resizableColumns="true"
+                                     styleClass="table_students_alt_list">
+                            <f:facet name="header">Display all the StudentsAlt</f:facet>
+                            <p:column>
+                                <f:facet name="header">ID</f:facet>
+                                #{studentAlt.id}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">LAST_NAME</f:facet>
+                                #{studentAlt.lastName}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">FIRST_NAME</f:facet>
+                                #{studentAlt.firstName}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">DATE_OF_BIRTH</f:facet>
+                                #{studentAlt.dateOfBirth}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">ABSENCES</f:facet>
+                                #{studentAlt.absences}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">DEPARTMENT_ID</f:facet>
+                                #{studentAlt.departmentId}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">STATUS</f:facet>
+                                #{studentAlt.status}
+                            </p:column>
+                        </p:dataTable>
+
+                        <div>
+                            <p:commandButton type="button" value="Find studentAlt">
+                                <p:ajax process="@form" update="@form"
+                                        listener="#{studentAltService.filterStudentsAltListHardcodedById(studentAltService.studentId)}"/>
+                            </p:commandButton>
+                            <p:commandButton value="Reset studentAlt" styleClass="student_alt_reset_btn">
+                                <p:ajax process="@form" update="@form"
+                                        listener="#{studentAltService.resetFormWhichGetsStudentAltById()}"/>
+                            </p:commandButton>
+                        </div>
+                    </h:form>
                 </dd>
             </dl>
 
