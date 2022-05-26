@@ -42,13 +42,14 @@ public class InMemoryStudentAltService implements StudentAltService {
 
     @Override
     public StudentAlt saveStudentAlt(StudentAlt studentAlt) {
-        return null;
+        inMemoryStudentsAltList.add(studentAlt);
+        return studentAlt;
     }
 
     @Override
     public StudentAlt updateStudentAlt(StudentAlt studentAlt, Long id) {
 
-        /*StudentAlt studentAltToUpdate = studentAltRepository.findById(id);
+        StudentAlt studentAltToUpdate = inMemoryStudentsAltList.get(id.intValue());
         if (studentAltToUpdate == null) {
             throw new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id);
         }
@@ -71,23 +72,13 @@ public class InMemoryStudentAltService implements StudentAltService {
         if (!HelperClass.isStringNullOrEmpty(studentAlt.getStatus().getValue())) {
             studentAltToUpdate.setStatus(studentAlt.getStatus());
         }
-        return studentAltRepository.save(studentAltToUpdate);*/
-        return null;
+        return studentAltToUpdate;
     }
 
     @Override
     public void deleteStudentAlt(Long id) throws ResourceNotFoundException {
-//        studentAltRepository.deleteById(id);
+        inMemoryStudentsAltList.remove(id.intValue());
     }
-
-    /*private void filterInMemoryStudentsAltListById2(Long id) {
-
-        // Reset the "inMemoryStudentsAltFilteredList"
-        inMemoryStudentsAltFilteredList = new ArrayList<>();
-        // Filter the "inMemoryStudentsAltList" by ID
-        inMemoryStudentsAltFilteredList.addAll(
-                inMemoryStudentsAltList.stream().filter(studentAlt -> studentAlt.getId().equals(id)).collect(Collectors.toList()));
-    }*/
 
     private StudentAlt filterInMemoryStudentsAltListById(Long id) {
 
