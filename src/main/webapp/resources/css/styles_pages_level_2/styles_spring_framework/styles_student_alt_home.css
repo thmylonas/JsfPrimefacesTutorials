@@ -1,11 +1,27 @@
 /* Useful links */
 
-.student_id_input_wrapper {
-    margin-top: 20px;
+.student_input_wrapper {
+    /*margin-top: 20px;*/
 }
 
-.student_id_input_wrapper label {
+.student_input_wrapper label {
     font-weight: normal !important;
+    float: right;
+}
+
+.data_insert_form_get_by_id {
+    border: 1px solid var(--deep_pink1);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #dcdcfc;
+    width: fit-content;
+}
+
+.data_insert_form {
+    border: 1px solid var(--deep_pink1);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #dcdcfc;
+    width: fit-content;
+    padding: 10px 40px;
 }
 
 .student_id_input, .student_alt_reset_btn {

@@ -34,17 +34,25 @@
                 <dt>Display a StudentAlt (given its ID)</dt>
                 <dd>
                     <h:form>
-                        <div class="student_id_input_wrapper">
-                            <!--
-                            In the "p:inputText", if the "value" attribute is defined:
-                            - as "long" with no-value assigned, the "p:inputText" will display "0" and not the "placeholder"
-                            - as "Long" with no-value assigned (null), the "p:inputText" will display the "placeholder" (not "null")
-                            Alternatively, instead of "p:watermark", we can use "p:inputText"'s "placeholder" attribute
-                            -->
-                            <p:outputLabel for="studentId" value="Enter the studentAlt's ID:"/>
-                            <p:watermark for="studentId" value="ID"/>
-                            <p:inputText id="studentId" value="#{inMemoryStudentAltBackingBean.studentId}"
-                                         maxlength="5" size="2" styleClass="student_id_input"/>
+                        <!--
+                        In the "p:inputText", if the "value" attribute is defined:
+                        - as "long" with no-value assigned, the "p:inputText" will display "0" and not the "placeholder"
+                        - as "Long" with no-value assigned (null), the "p:inputText" will display the "placeholder" (not "null")
+                        Alternatively, instead of "p:watermark", we can use "p:inputText"'s "placeholder" attribute
+                        -->
+                        <div class="student_input_wrapper">
+                            <div class="data_insert_form_get_by_id">
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <p:outputLabel for="studentId" value="Enter the studentAlt's ID:"/>
+                                        <p:watermark for="studentId" value="ID"/>
+                                    </div>
+                                    <div class="ui-g-6">
+                                        <p:inputText id="studentId" value="#{inMemoryStudentAltBackingBean.studentId}"
+                                                     maxlength="5" size="2" styleClass="student_id_input"/>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <p:dataTable value="#{inMemoryStudentAltBackingBean.studentsAltFilteredList}"
@@ -86,7 +94,7 @@
                                 <p:ajax process="@form" update="@form"
                                         listener="#{inMemoryStudentAltBackingBean.displayStudentAltByGivenId()}"/>
                             </p:commandButton>
-                            <p:commandButton value="Reset studentAlt" styleClass="student_alt_reset_btn">
+                            <p:commandButton value="Reset form" styleClass="student_alt_reset_btn">
                                 <p:ajax process="@form" update="@form"
                                         listener="#{inMemoryStudentAltBackingBean.resetFormWhichFetchesStudentAltById()}"/>
                             </p:commandButton>
@@ -134,51 +142,234 @@
 
                 <dt>Add a new StudentAlt</dt>
                 <dd>
-                    <h:form id="formWhichPostsNewStudentAlt">
-                        <div class="student_id_input_wrapper">
-                            <p:outputLabel for="lastName" value="Enter the studentAlt's Last Name:"/>
-                            <p:watermark for="lastName" value="Last Name"/>
-                            <p:inputText id="lastName" value="#{inMemoryStudentAltBackingBean.studentAltModel.lastName}"
-                                         maxlength="30" size="30" styleClass="student_id_input"/>
+                    <h:form id="formWhichSavesNewStudentAlt">
+                        <div class="data_insert_form">
+                            <div class="student_input_wrapper">
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <p:outputLabel for="lastNameSave" value="Enter the studentAlt's Last Name:"/>
+                                        <p:watermark for="lastNameSave" value="Last Name"/>
+                                    </div>
+                                    <div class="ui-g-6">
+                                        <p:inputText id="lastNameSave"
+                                                     value="#{inMemoryStudentAltBackingBean.studentAltModel.lastName}"
+                                                     maxlength="30" size="30" styleClass="student_id_input"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student_input_wrapper">
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <p:outputLabel for="firstNameSave" value="Enter the studentAlt's First Name:"/>
+                                        <p:watermark for="firstNameSave" value="First Name"/>
+                                    </div>
+                                    <div class="ui-g-6">
+                                        <p:inputText id="firstNameSave"
+                                                     value="#{inMemoryStudentAltBackingBean.studentAltModel.firstName}"
+                                                     maxlength="20" size="20" styleClass="student_id_input"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student_input_wrapper">
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <p:outputLabel for="dateOfBirthSave"
+                                                       value="Enter the studentAlt's Date of Birth:"/>
+                                        <p:watermark for="dateOfBirthSave" value="Date of Birth"/>
+                                    </div>
+                                    <div class="ui-g-6">
+                                        <p:datePicker id="dateOfBirthSave"
+                                                      value="#{inMemoryStudentAltBackingBean.studentAltModel.dateOfBirth}"
+                                                      monthNavigator="true" yearNavigator="true" showWeek="true"
+                                                      yearRange="1900:2004" styleClass="student_id_input"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student_input_wrapper">
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <p:outputLabel for="absencesSave" value="Enter the studentAlt's Absences:"/>
+                                        <p:watermark for="absencesSave" value="Absences"/>
+                                    </div>
+                                    <div class="ui-g-6">
+                                        <p:inputText id="absencesSave"
+                                                     value="#{inMemoryStudentAltBackingBean.studentAltModel.absences}"
+                                                     maxlength="5" size="5" styleClass="student_id_input"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student_input_wrapper">
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <p:outputLabel for="departmentIdSave"
+                                                       value="Enter the studentAlt's Department ID:"/>
+                                        <p:watermark for="departmentIdSave" value="Department ID"/>
+                                    </div>
+                                    <div class="ui-g-6">
+                                        <p:inputText id="departmentIdSave"
+                                                     value="#{inMemoryStudentAltBackingBean.studentAltModel.departmentId}"
+                                                     maxlength="10" size="10" styleClass="student_id_input"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student_input_wrapper">
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <p:outputLabel for="statusSave" value="Enter the studentAlt's Status:"/>
+                                        <p:watermark for="statusSave" value="Status"/>
+                                    </div>
+                                    <div class="ui-g-6">
+                                        <p:selectOneMenu id="statusSave"
+                                                         value="#{inMemoryStudentAltBackingBean.studentAltModel.status}"
+                                                         styleClass="student_id_input">
+                                            <f:selectItem itemLabel="Select Status" itemValue=""/>
+                                            <f:selectItem itemLabel="Advanced Student" itemValue="ADVANCED_STUDENT"/>
+                                            <f:selectItem itemLabel="Medium Student" itemValue="MEDIUM_STUDENT"/>
+                                            <f:selectItem itemLabel="Junior Student" itemValue="JUNIOR_STUDENT"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="student_id_input_wrapper">
-                            <p:outputLabel for="firstName" value="Enter the studentAlt's First Name:"/>
-                            <p:watermark for="firstName" value="First Name"/>
-                            <p:inputText id="firstName"
-                                         value="#{inMemoryStudentAltBackingBean.studentAltModel.firstName}"
-                                         maxlength="20" size="20" styleClass="student_id_input"/>
+
+                        <p:dataTable value="#{inMemoryStudentAltBackingBean.fetchToDisplayAllStudentsAltList()}"
+                                     var="studentAlt" border="1" resizableColumns="true"
+                                     styleClass="table_students_alt_list">
+                            <f:facet name="header">Display all the StudentsAlt</f:facet>
+                            <p:column>
+                                <f:facet name="header">ID</f:facet>
+                                #{studentAlt.id}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">LAST_NAME</f:facet>
+                                #{studentAlt.lastName}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">FIRST_NAME</f:facet>
+                                #{studentAlt.firstName}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">DATE_OF_BIRTH</f:facet>
+                                #{studentAlt.dateOfBirth}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">ABSENCES</f:facet>
+                                #{studentAlt.absences}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">DEPARTMENT_ID</f:facet>
+                                #{studentAlt.departmentId}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">STATUS</f:facet>
+                                #{studentAlt.status}
+                            </p:column>
+                        </p:dataTable>
+
+                        <div>
+                            <p:commandButton type="button" value="Add studentAlt">
+                                <p:ajax process="@form" update="@form"
+                                        listener="#{inMemoryStudentAltBackingBean.saveNewStudentAlt(inMemoryStudentAltBackingBean.studentAltModel)}"/>
+                            </p:commandButton>
+                            <p:commandButton value="Reset form" styleClass="student_alt_reset_btn">
+                                <p:ajax process="@form" update="@form"
+                                        listener="#{inMemoryStudentAltBackingBean.resetFormWhichFetchesStudentAltById()}"/>
+                            </p:commandButton>
                         </div>
-                        <div class="student_id_input_wrapper">
-                            <p:outputLabel for="dateOfBirth" value="Enter the studentAlt's Date of Birth:"/>
-                            <p:watermark for="dateOfBirth" value="Date of Birth"/>
-                            <p:datePicker id="dateOfBirth"
-                                          value="#{inMemoryStudentAltBackingBean.studentAltModel.dateOfBirth}"
-                                          monthNavigator="true" yearNavigator="true" showWeek="true"
-                                          yearRange="1900:2004" styleClass="student_id_input"/>
-                        </div>
-                        <div class="student_id_input_wrapper">
-                            <p:outputLabel for="absences" value="Enter the studentAlt's Absences:"/>
-                            <p:watermark for="absences" value="Absences"/>
-                            <p:inputText id="absences" value="#{inMemoryStudentAltBackingBean.studentAltModel.absences}"
-                                         maxlength="5" size="5" styleClass="student_id_input"/>
-                        </div>
-                        <div class="student_id_input_wrapper">
-                            <p:outputLabel for="departmentId" value="Enter the studentAlt's Department ID:"/>
-                            <p:watermark for="departmentId" value="Department ID"/>
-                            <p:inputText id="departmentId"
-                                         value="#{inMemoryStudentAltBackingBean.studentAltModel.departmentId}"
-                                         maxlength="10" size="10" styleClass="student_id_input"/>
-                        </div>
-                        <div class="student_id_input_wrapper">
-                            <p:outputLabel for="status" value="Enter the studentAlt's Status:"/>
-                            <p:watermark for="status" value="Status"/>
-                            <p:selectOneMenu id="status" value="#{inMemoryStudentAltBackingBean.studentAltModel.status}"
-                                             styleClass="student_id_input">
-                                <f:selectItem itemLabel="Select Status" itemValue=""/>
-                                <f:selectItem itemLabel="Advanced Student" itemValue="ADVANCED_STUDENT"/>
-                                <f:selectItem itemLabel="Medium Student" itemValue="MEDIUM_STUDENT"/>
-                                <f:selectItem itemLabel="Junior Student" itemValue="JUNIOR_STUDENT"/>
-                            </p:selectOneMenu>
+                    </h:form>
+                </dd>
+
+                <dt>Update an existing StudentAlt</dt>
+                <dd>
+                    <h:form id="formWhichUpdatesStudentAlt">
+                        <div class="data_insert_form">
+                            <div class="student_input_wrapper">
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <p:outputLabel for="lastNameUpdate" value="Enter the studentAlt's Last Name:"/>
+                                        <p:watermark for="lastNameUpdate" value="Last Name"/>
+                                    </div>
+                                    <div class="ui-g-6">
+                                        <p:inputText id="lastNameUpdate"
+                                                     value="#{inMemoryStudentAltBackingBean.studentAltModel.lastName}"
+                                                     maxlength="30" size="30" styleClass="student_id_input"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student_input_wrapper">
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <p:outputLabel for="firstNameUpdate"
+                                                       value="Enter the studentAlt's First Name:"/>
+                                        <p:watermark for="firstNameUpdate" value="First Name"/>
+                                    </div>
+                                    <div class="ui-g-6">
+                                        <p:inputText id="firstNameUpdate"
+                                                     value="#{inMemoryStudentAltBackingBean.studentAltModel.firstName}"
+                                                     maxlength="20" size="20" styleClass="student_id_input"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student_input_wrapper">
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <p:outputLabel for="dateOfBirthUpdate"
+                                                       value="Enter the studentAlt's Date of Birth:"/>
+                                        <p:watermark for="dateOfBirthUpdate" value="Date of Birth"/>
+                                    </div>
+                                    <div class="ui-g-6">
+                                        <p:datePicker id="dateOfBirthUpdate"
+                                                      value="#{inMemoryStudentAltBackingBean.studentAltModel.dateOfBirth}"
+                                                      monthNavigator="true" yearNavigator="true" showWeek="true"
+                                                      yearRange="1900:2004" styleClass="student_id_input"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student_input_wrapper">
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <p:outputLabel for="absencesUpdate" value="Enter the studentAlt's Absences:"/>
+                                        <p:watermark for="absencesUpdate" value="Absences"/>
+                                    </div>
+                                    <div class="ui-g-6">
+                                        <p:inputText id="absencesUpdate"
+                                                     value="#{inMemoryStudentAltBackingBean.studentAltModel.absences}"
+                                                     maxlength="5" size="5" styleClass="student_id_input"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student_input_wrapper">
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <p:outputLabel for="departmentIdUpdate"
+                                                       value="Enter the studentAlt's Department ID:"/>
+                                        <p:watermark for="departmentIdUpdate" value="Department ID"/>
+                                    </div>
+                                    <div class="ui-g-6">
+                                        <p:inputText id="departmentIdUpdate"
+                                                     value="#{inMemoryStudentAltBackingBean.studentAltModel.departmentId}"
+                                                     maxlength="10" size="10" styleClass="student_id_input"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student_input_wrapper">
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <p:outputLabel for="statusUpdate" value="Enter the studentAlt's Status:"/>
+                                        <p:watermark for="statusUpdate" value="Status"/>
+                                    </div>
+                                    <div class="ui-g-6">
+                                        <p:selectOneMenu id="statusUpdate"
+                                                         value="#{inMemoryStudentAltBackingBean.studentAltModel.status}"
+                                                         styleClass="student_id_input">
+                                            <f:selectItem itemLabel="Select Status" itemValue=""/>
+                                            <f:selectItem itemLabel="Advanced Student" itemValue="ADVANCED_STUDENT"/>
+                                            <f:selectItem itemLabel="Medium Student" itemValue="MEDIUM_STUDENT"/>
+                                            <f:selectItem itemLabel="Junior Student" itemValue="JUNIOR_STUDENT"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <p:dataTable value="#{inMemoryStudentAltBackingBean.fetchToDisplayAllStudentsAltList()}"
@@ -231,7 +422,7 @@
                 <dt>Delete a StudentAlt (given its ID)</dt>
                 <dd>
                     <h:form id="formWhichDeletesStudentAltById">
-                        <div class="student_id_input_wrapper">
+                        <div class="student_input_wrapper">
                             <p:outputLabel for="studentToDeleteId" value="Enter the studentAlt's ID:"/>
                             <p:watermark for="studentToDeleteId" value="ID"/>
                             <p:inputText id="studentToDeleteId"
@@ -278,8 +469,8 @@
                                 <p:ajax process="@form" update="@form"
                                         listener="#{inMemoryStudentAltBackingBean.deleteStudentAltByGivenId()}"/>
                             </p:commandButton>
-                            <!--formWhichPostsNewStudentAlt tableWhichDisplaysAllStudentAlt-->
-                            <p:commandButton value="Reset studentAlt" styleClass="student_alt_reset_btn">
+                            <!--formWhichSavesNewStudentAlt formWhichUpdatesStudentAlt tableWhichDisplaysAllStudentAlt-->
+                            <p:commandButton value="Reset form" styleClass="student_alt_reset_btn">
                                 <p:ajax process="@form" update="@form"
                                         listener="#{inMemoryStudentAltBackingBean.resetFormWhichDeletesStudentAltById()}"/>
                             </p:commandButton>
