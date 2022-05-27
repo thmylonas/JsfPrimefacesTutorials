@@ -1,4 +1,4 @@
-package com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services.api_services;
+package com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services.api_services.student_alt_api_services;
 
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.StudentAlt;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.exceptions.ResourceNotFoundException;

@@ -1,20 +1,19 @@
-package com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services.api_services;
+package com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services.api_services.student_alt_api_services;
 
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.StudentAlt;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.enums.Status;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.helpers.HelperClass;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.exceptions.ResourceNotFoundException;
+import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services.api_services.student_alt_api_services._base.AbstractStudentAltService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service(value = "inMemoryStudentAltService")
-public class InMemoryStudentAltService implements StudentAltService {
+public class InMemoryStudentAltService extends AbstractStudentAltService {
 
     private List<StudentAlt> inMemoryStudentsAltList;
 
@@ -24,15 +23,8 @@ public class InMemoryStudentAltService implements StudentAltService {
     }
 
     @Override
-    public StudentAlt getStudentAltById(Long id) {
-        if (id == null) {
-            return null;
-        }
-        return filterInMemoryStudentsAltListById(id); // This might throw a "ResourceNotFoundException"
-    }
-
-    public List<StudentAlt> getStudentAltByIdWrappedInList(Long id) {
-        return Stream.of(getStudentAltById(id)).collect(Collectors.toList()); // This might throw a "ResourceNotFoundException"
+    public StudentAlt getStudentAltById(Long id) throws ResourceNotFoundException {
+        return filterInMemoryStudentsAltListById(id);
     }
 
     @Override
@@ -42,52 +34,44 @@ public class InMemoryStudentAltService implements StudentAltService {
 
     @Override
     public StudentAlt saveStudentAlt(StudentAlt studentAlt) {
+
+        if (studentAlt == null) {
+            return null;
+        }
         inMemoryStudentsAltList.add(studentAlt);
         return studentAlt;
     }
 
     @Override
-    public StudentAlt updateStudentAlt(StudentAlt studentAlt, Long id) {
+    public StudentAlt updateStudentAlt(StudentAlt studentAlt, Long id) throws ResourceNotFoundException {
 
-        StudentAlt studentAltToUpdate = inMemoryStudentsAltList.get(id.intValue());
-        if (studentAltToUpdate == null) {
-            throw new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id);
+        if (id == null || studentAlt == null) {
+            return null;
         }
-
-        if (!HelperClass.isStringNullOrEmpty(studentAlt.getLastName())) {
-            studentAltToUpdate.setLastName(studentAlt.getLastName());
-        }
-        if (!HelperClass.isStringNullOrEmpty(studentAlt.getFirstName())) {
-            studentAltToUpdate.setFirstName(studentAlt.getFirstName());
-        }
-        if (studentAlt.getDateOfBirth() != null) {
-            studentAltToUpdate.setDateOfBirth(studentAlt.getDateOfBirth());
-        }
-        if (studentAlt.getAbsences() != null) {
-            studentAltToUpdate.setAbsences(studentAlt.getAbsences());
-        }
-        if (!HelperClass.isStringNullOrEmpty(studentAlt.getDepartmentId())) {
-            studentAltToUpdate.setDepartmentId(studentAlt.getDepartmentId());
-        }
-        if (!HelperClass.isStringNullOrEmpty(studentAlt.getStatus().getValue())) {
-            studentAltToUpdate.setStatus(studentAlt.getStatus());
-        }
+        StudentAlt studentAltToUpdate = getStudentAltById(id); // This might throw a "ResourceNotFoundException"
+        updateStudentAltWithGivenObject(studentAltToUpdate, studentAlt);
         return studentAltToUpdate;
     }
 
     @Override
     public void deleteStudentAlt(Long id) throws ResourceNotFoundException {
-        inMemoryStudentsAltList.remove(id.intValue());
+
+        StudentAlt studentAltToDelete = getStudentAltById(id); // This might throw a "ResourceNotFoundException"
+        if (studentAltToDelete == null) {
+            return;
+        }
+        inMemoryStudentsAltList.remove(studentAltToDelete);
     }
 
     private StudentAlt filterInMemoryStudentsAltListById(Long id) {
 
         // Filter the "inMemoryStudentsAltList" by ID
-        return inMemoryStudentsAltList
-                .stream()
-                .filter(studentAlt -> studentAlt.getId().equals(id))
-                .findAny()
-                .orElseThrow(() -> new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id));
+        return id == null ? null :
+                inMemoryStudentsAltList
+                        .stream()
+                        .filter(studentAlt -> studentAlt.getId().equals(id))
+                        .findAny()
+                        .orElseThrow(() -> new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id));
     }
 
     private void initInMemoryStudentsAltList() {
@@ -95,7 +79,7 @@ public class InMemoryStudentAltService implements StudentAltService {
         inMemoryStudentsAltList = new ArrayList<>();
 
         inMemoryStudentsAltList.add(new StudentAlt.Builder()
-                .id(1L)
+                .id(0L)
                 .lastName("Mylonas")
                 .firstName("Thomas")
                 .dateOfBirth(HelperClass.getDate(1972, Calendar.SEPTEMBER, 24))
@@ -104,7 +88,7 @@ public class InMemoryStudentAltService implements StudentAltService {
                 .status(Status.ADVANCED_STUDENT)
                 .build());
         inMemoryStudentsAltList.add(new StudentAlt.Builder()
-                .id(2L)
+                .id(1L)
                 .lastName("Lorem")
                 .firstName("Ipsum")
                 .dateOfBirth(HelperClass.getDate(1979, Calendar.APRIL, 30))
@@ -113,7 +97,7 @@ public class InMemoryStudentAltService implements StudentAltService {
                 .status(Status.JUNIOR_STUDENT)
                 .build());
         inMemoryStudentsAltList.add(new StudentAlt.Builder()
-                .id(3L)
+                .id(2L)
                 .lastName("Chan")
                 .firstName("Jacky")
                 .dateOfBirth(HelperClass.getDate(1982, Calendar.MAY, 9))
@@ -122,7 +106,7 @@ public class InMemoryStudentAltService implements StudentAltService {
                 .status(Status.JUNIOR_STUDENT)
                 .build());
         inMemoryStudentsAltList.add(new StudentAlt.Builder()
-                .id(4L)
+                .id(3L)
                 .lastName("Parker")
                 .firstName("Peter")
                 .dateOfBirth(HelperClass.getDate(1990, Calendar.OCTOBER, 15))
@@ -131,7 +115,7 @@ public class InMemoryStudentAltService implements StudentAltService {
                 .status(Status.MEDIUM_STUDENT)
                 .build());
         inMemoryStudentsAltList.add(new StudentAlt.Builder()
-                .id(5L)
+                .id(4L)
                 .lastName("Murdock")
                 .firstName("Mat")
                 .dateOfBirth(HelperClass.getDate(2000, Calendar.FEBRUARY, 2))
