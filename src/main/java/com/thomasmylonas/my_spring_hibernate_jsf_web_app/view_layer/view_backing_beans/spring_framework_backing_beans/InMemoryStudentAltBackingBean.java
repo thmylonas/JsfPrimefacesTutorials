@@ -24,14 +24,14 @@ public class InMemoryStudentAltBackingBean extends AbstractStudentAltBackingBean
         studentAltModel = new StudentAltModel();
     }
 
-    public void displayStudentAltByGivenId() {
+    public void displayStudentAltById() {
         // Reset the "studentsAltFilteredList"
         studentsAltFilteredList = new ArrayList<>();
         // Populate the "studentsAltFilteredList" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
         studentsAltFilteredList.add(inMemoryStudentAltService.getStudentAltById(studentId));
     }
 
-    public List<StudentAlt> fetchToDisplayAllStudentsAltList() {
+    public List<StudentAlt> fetchAllStudentsAlt() {
 
         List<StudentAlt> allStudentsAltList = inMemoryStudentAltService.getAllStudentsAlt();
         if (HelperClass.isListNullOrEmpty(allStudentsAltList)) {
@@ -47,7 +47,7 @@ public class InMemoryStudentAltBackingBean extends AbstractStudentAltBackingBean
         }
         StudentAlt studentAlt = new StudentAlt();
 
-        List<StudentAlt> allStudentsAltList = fetchToDisplayAllStudentsAltList();
+        List<StudentAlt> allStudentsAltList = fetchAllStudentsAlt();
         if (HelperClass.isListNullOrEmpty(allStudentsAltList)) {
             studentAlt.setId(0L);
         } else {
@@ -63,7 +63,7 @@ public class InMemoryStudentAltBackingBean extends AbstractStudentAltBackingBean
         inMemoryStudentAltService.saveStudentAlt(studentAlt);
     }
 
-    public void updateNewStudentAlt(StudentAltModel studentAltModel, Integer id) {
+    public void updateStudentAlt(StudentAltModel studentAltModel, Integer id) {
 
         if (id == null || isStudentAltModelEmpty(studentAltModel)) {
             return;
@@ -84,7 +84,7 @@ public class InMemoryStudentAltBackingBean extends AbstractStudentAltBackingBean
         }
     }
 
-    public void deleteStudentAltByGivenId() {
+    public void deleteStudentAlt() {
         try {
             inMemoryStudentAltService.deleteStudentAlt(studentToDeleteId);
         } catch (ResourceNotFoundException e) {
@@ -92,16 +92,21 @@ public class InMemoryStudentAltBackingBean extends AbstractStudentAltBackingBean
         }
     }
 
-    public void resetFormWhichFetchesStudentAltById() {
+    public void resetFetchByIdForm() {
         studentsAltFilteredList = new ArrayList<>();
         studentId = null;
     }
 
-    public void resetFormWhichUpdatesStudentAltById() {
-        studentToUpdateId = null;
+    public void resetSaveForm() {
+        studentAltModel = null;
     }
 
-    public void resetFormWhichDeletesStudentAltById() {
+    public void resetUpdateForm() {
+        studentToUpdateId = null;
+        studentAltModel = null;
+    }
+
+    public void resetDeleteForm() {
         studentToDeleteId = null;
     }
 }

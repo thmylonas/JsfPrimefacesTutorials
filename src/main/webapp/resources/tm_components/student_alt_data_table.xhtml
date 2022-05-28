@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+    <ui:composition>
+
+        <cc:interface>
+            <cc:attribute name="title" type="java.lang.String" required="false"
+                          shortDescription="The title of the data_table"/>
+            <cc:attribute name="studentAltList" type="java.util.List" required="true"
+                          shortDescription="List of StudentAlt"/>
+            <cc:attribute name="data_table_style_class" type="java.lang.String" required="false"
+                          shortDescription="The styleClass for the data_table"/>
+        </cc:interface>
+
+        <cc:implementation>
+
+            <p:dataTable value="#{cc.attrs.studentAltList}" var="studentAlt" border="1" resizableColumns="true"
+                         styleClass="#{cc.attrs.data_table_style_class}">
+                <f:facet name="header">#{cc.attrs.title}</f:facet>
+                <p:column>
+                    <f:facet name="header">ID</f:facet>
+                    #{studentAlt.id}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">LAST_NAME</f:facet>
+                    #{studentAlt.lastName}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">FIRST_NAME</f:facet>
+                    #{studentAlt.firstName}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">DATE_OF_BIRTH</f:facet>
+                    #{studentAlt.dateOfBirth}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">ABSENCES</f:facet>
+                    #{studentAlt.absences}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">DEPARTMENT_ID</f:facet>
+                    #{studentAlt.departmentId}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">STATUS</f:facet>
+                    #{studentAlt.status}
+                </p:column>
+            </p:dataTable>
+
+        </cc:implementation>
+
+    </ui:composition>
+
+</h:body>
+</html>

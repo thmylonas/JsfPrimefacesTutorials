@@ -1,21 +1,3 @@
-/* Useful links */
-
-.student_input_wrapper {
-    /*margin-top: 20px;*/
-}
-
-.student_input_wrapper label {
-    font-weight: normal !important;
-    float: right;
-}
-
-.data_insert_form_get_by_id {
-    border: 1px solid var(--deep_pink1);
-    border-radius: 5px;
-    box-shadow: 5px 5px 5px #dcdcfc;
-    width: fit-content;
-}
-
 .data_insert_form {
     border: 1px solid var(--deep_pink1);
     border-radius: 5px;
@@ -24,16 +6,25 @@
     padding: 10px 40px;
 }
 
-.student_id_input, .student_alt_reset_btn {
+.data_insert_form label {
+    font-weight: normal !important;
+    float: right;
+}
+
+.input_field, .student_alt_reset_btn {
     margin-left: 10px !important;
 }
 
-.table_filter_students_alt_list_by_id, .table_students_alt_list {
+.select_one_menu_input_field {
+    margin-left: 18px !important;
+}
+
+.table_students_alt_list {
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.table_filter_students_alt_list_by_id > div, .table_students_alt_list > div {
+.table_students_alt_list > div {
     color: blue;
     font-style: italic;
 }

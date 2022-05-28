@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+    <ui:composition>
+
+        <cc:interface>
+            <cc:attribute name="studentId" type="java.lang.Long" required="true"
+                          shortDescription="The StudentAltBackingBean"/>
+            <cc:attribute name="student_alt_id_form_style_class" type="java.lang.String" required="false"
+                          shortDescription="The styleClass for the student_alt_id_form"/>
+        </cc:interface>
+
+        <cc:implementation>
+
+            <div class="ui-g">
+                <div class="ui-g-6">
+                    <p:outputLabel for="studentId" value="Enter the studentAlt's ID:"/>
+                    <p:watermark for="studentId" value="ID"/>
+                </div>
+                <div class="ui-g-6">
+                    <p:inputText id="studentId" value="#{cc.attrs.studentId}"
+                                 maxlength="5" size="2" styleClass="#{cc.attrs.student_alt_id_form_style_class}"/>
+                </div>
+            </div>
+
+        </cc:implementation>
+
+    </ui:composition>
+
+</h:body>
+</html>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+    <ui:composition>
+
+        <cc:interface>
+            <cc:attribute name="studentAltModel"
+                          type="com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.StudentAltModel"
+                          required="true" shortDescription="The StudentAltModel"/>
+            <cc:attribute name="student_alt_insert_data_form_style_class" type="java.lang.String" required="false"
+                          shortDescription="The styleClass for the student_alt_insert_data_form"/>
+        </cc:interface>
+
+        <cc:implementation>
+
+            <div class="ui-g">
+                <div class="ui-g-6">
+                    <p:outputLabel for="lastName" value="Enter the studentAlt's Last Name:"/>
+                    <p:watermark for="lastName" value="Last Name"/>
+                </div>
+                <div class="ui-g-6">
+                    <p:inputText id="lastName" value="#{cc.attrs.studentAltModel.lastName}"
+                                 maxlength="30" size="30"
+                                 styleClass="#{cc.attrs.student_alt_insert_data_form_style_class}"/>
+                </div>
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-6">
+                    <p:outputLabel for="firstName" value="Enter the studentAlt's First Name:"/>
+                    <p:watermark for="firstName" value="First Name"/>
+                </div>
+                <div class="ui-g-6">
+                    <p:inputText id="firstName" value="#{cc.attrs.studentAltModel.firstName}"
+                                 maxlength="20" size="20"
+                                 styleClass="#{cc.attrs.student_alt_insert_data_form_style_class}"/>
+                </div>
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-6">
+                    <p:outputLabel for="dateOfBirth"
+                                   value="Enter the studentAlt's Date of Birth:"/>
+                    <p:watermark for="dateOfBirth" value="Date of Birth"/>
+                </div>
+                <div class="ui-g-6">
+                    <p:datePicker id="dateOfBirth" value="#{cc.attrs.studentAltModel.dateOfBirth}"
+                                  monthNavigator="true" yearNavigator="true" showWeek="true"
+                                  yearRange="1900:2004"
+                                  styleClass="#{cc.attrs.student_alt_insert_data_form_style_class}"/>
+                </div>
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-6">
+                    <p:outputLabel for="absences" value="Enter the studentAlt's Absences:"/>
+                    <p:watermark for="absences" value="Absences"/>
+                </div>
+                <div class="ui-g-6">
+                    <p:inputText id="absences" value="#{cc.attrs.studentAltModel.absences}"
+                                 maxlength="5" size="5"
+                                 styleClass="#{cc.attrs.student_alt_insert_data_form_style_class}"/>
+                </div>
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-6">
+                    <p:outputLabel for="departmentId"
+                                   value="Enter the studentAlt's Department ID:"/>
+                    <p:watermark for="departmentId" value="Department ID"/>
+                </div>
+                <div class="ui-g-6">
+                    <p:inputText id="departmentId" value="#{cc.attrs.studentAltModel.departmentId}"
+                                 maxlength="10" size="10"
+                                 styleClass="#{cc.attrs.student_alt_insert_data_form_style_class}"/>
+                </div>
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-6">
+                    <p:outputLabel for="status" value="Enter the studentAlt's Status:"/>
+                    <p:watermark for="status" value="Status"/>
+                </div>
+                <div class="ui-g-6">
+                    <p:selectOneMenu id="status" value="#{cc.attrs.studentAltModel.status}"
+                                     styleClass="#{cc.attrs.student_alt_insert_data_form_style_class} select_one_menu_input_field">
+                        <f:selectItem itemLabel="Select Status" itemValue=""/>
+                        <f:selectItem itemLabel="Advanced Student" itemValue="ADVANCED_STUDENT"/>
+                        <f:selectItem itemLabel="Medium Student" itemValue="MEDIUM_STUDENT"/>
+                        <f:selectItem itemLabel="Junior Student" itemValue="JUNIOR_STUDENT"/>
+                    </p:selectOneMenu>
+                </div>
+            </div>
+
+        </cc:implementation>
+
+    </ui:composition>
+
+</h:body>
+</html>
