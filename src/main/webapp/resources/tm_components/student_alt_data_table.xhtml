@@ -17,14 +17,14 @@
                           shortDescription="The title of the data_table"/>
             <cc:attribute name="studentAltList" type="java.util.List" required="true"
                           shortDescription="List of StudentAlt"/>
-            <cc:attribute name="data_table_style_class" type="java.lang.String" required="false"
-                          shortDescription="The styleClass for the data_table"/>
+            <cc:attribute name="style_class" type="java.lang.String" required="false"
+                          shortDescription="The styleClass of the student_alt_data_table"/>
         </cc:interface>
 
         <cc:implementation>
 
             <p:dataTable value="#{cc.attrs.studentAltList}" var="studentAlt" border="1" resizableColumns="true"
-                         styleClass="#{cc.attrs.data_table_style_class}">
+                         styleClass="#{cc.attrs.style_class}">
                 <f:facet name="header">#{cc.attrs.title}</f:facet>
                 <p:column>
                     <f:facet name="header">ID</f:facet>
