@@ -26,7 +26,7 @@
         <ui:define name="center_section_content">
 
             <p>
-                <h:outputText value="Simple 'StudentAlt' (alternative) API" styleClass="h_taglib_subtitles"/>
+                <h:outputText value="Simple 'StudentAlt' (alternative) API" styleClass="technology_topics_titles"/>
             </p>
 
             <dl class="technology_topics_list_wrapper">
@@ -40,14 +40,14 @@
                         Alternatively, instead of "p:watermark", we can use "p:inputText"'s "placeholder" attribute
                         -->
                         <div class="data_insert_form">
-                            <tm:student_alt_id_form studentId="#{inMemoryStudentAltBackingBean.studentId}"
-                                                    student_alt_id_form_style_class="input_field"/>
+                            <tm:input_text_label input_value="#{inMemoryStudentAltBackingBean.studentId}"
+                                                 label="Enter the studentAlt's ID:" placeholder="ID"
+                                                 max_length="5" size="2" style_class="insert_data"/>
                         </div>
 
-                        <tm:student_alt_data_table
-                                title="Display the filtered StudentAlt"
-                                studentAltList="#{inMemoryStudentAltBackingBean.studentsAltFilteredList}"
-                                data_table_style_class="table_students_alt_list"/>
+                        <tm:student_alt_data_table title="Display the filtered StudentAlt"
+                                                   studentAltList="#{inMemoryStudentAltBackingBean.studentsAltFilteredList}"
+                                                   style_class="table_students_alt_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Find studentAlt">
@@ -66,21 +66,20 @@
                 <dd>
                     <tm:student_alt_data_table title="Display all the StudentsAlt"
                                                studentAltList="#{inMemoryStudentAltBackingBean.fetchAllStudentsAlt()}"
-                                               data_table_style_class="table_students_alt_list"/>
+                                               style_class="table_students_alt_list"/>
                 </dd>
 
                 <dt>Add a new StudentAlt</dt>
                 <dd>
                     <h:form id="formWhichSavesNewStudentAlt">
                         <div class="data_insert_form">
-                            <tm:student_alt_insert_data_form
-                                    studentAltModel="#{inMemoryStudentAltBackingBean.studentAltModel}"
-                                    student_alt_insert_data_form_style_class="input_field"/>
+                            <tm:student_alt_insert_data model="#{inMemoryStudentAltBackingBean.studentAltModel}"
+                                                        style_class="insert_data"/>
                         </div>
 
                         <tm:student_alt_data_table title="Display all the StudentsAlt"
                                                    studentAltList="#{inMemoryStudentAltBackingBean.fetchAllStudentsAlt()}"
-                                                   data_table_style_class="table_students_alt_list"/>
+                                                   style_class="table_students_alt_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Add studentAlt">
@@ -99,19 +98,16 @@
                 <dd>
                     <h:form id="formWhichUpdatesStudentAlt">
                         <div class="data_insert_form">
-                            <tm:student_alt_id_form studentId="#{inMemoryStudentAltBackingBean.studentToUpdateId}"
-                                                    student_alt_id_form_style_class="input_field"/>
-                        </div>
-                        <br/>
-                        <div class="data_insert_form">
-                            <tm:student_alt_insert_data_form
-                                    studentAltModel="#{inMemoryStudentAltBackingBean.studentAltModel}"
-                                    student_alt_insert_data_form_style_class="input_field"/>
+                            <tm:input_text_label input_value="#{inMemoryStudentAltBackingBean.studentToUpdateId}"
+                                                 label="Enter the studentAlt's ID:" placeholder="ID"
+                                                 max_length="5" size="2" style_class="insert_data"/>
+                            <tm:student_alt_insert_data model="#{inMemoryStudentAltBackingBean.studentAltModel}"
+                                                        style_class="insert_data"/>
                         </div>
 
                         <tm:student_alt_data_table title="Display all the StudentsAlt"
                                                    studentAltList="#{inMemoryStudentAltBackingBean.fetchAllStudentsAlt()}"
-                                                   data_table_style_class="table_students_alt_list"/>
+                                                   style_class="table_students_alt_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Update studentAlt">
@@ -130,13 +126,14 @@
                 <dd>
                     <h:form id="formWhichDeletesStudentAltById">
                         <div class="data_insert_form">
-                            <tm:student_alt_id_form studentId="#{inMemoryStudentAltBackingBean.studentToDeleteId}"
-                                                    student_alt_id_form_style_class="input_field"/>
+                            <tm:input_text_label input_value="#{inMemoryStudentAltBackingBean.studentToDeleteId}"
+                                                 label="Enter the studentAlt's ID:" placeholder="ID"
+                                                 max_length="5" size="2" style_class="insert_data"/>
                         </div>
 
                         <tm:student_alt_data_table title="Display all the StudentsAlt"
                                                    studentAltList="#{inMemoryStudentAltBackingBean.fetchAllStudentsAlt()}"
-                                                   data_table_style_class="table_students_alt_list"/>
+                                                   style_class="table_students_alt_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Delete studentAlt">
