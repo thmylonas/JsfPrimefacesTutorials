@@ -29,7 +29,7 @@ public abstract class AbstractStudentAltService extends AbstractService implemen
         if (!HelperClass.isStringNullOrEmpty(studentAlt.getDepartmentId())) {
             studentAltToUpdate.setDepartmentId(studentAlt.getDepartmentId());
         }
-        if (!HelperClass.isStringNullOrEmpty(studentAlt.getStatus().getValue())) {
+        if (studentAlt.getStatus() != null) {
             studentAltToUpdate.setStatus(studentAlt.getStatus());
         }
     }

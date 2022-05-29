@@ -14,7 +14,8 @@ public class DbStudentAltBackingBean extends AbstractStudentAltBackingBean {
     @Autowired
     public DbStudentAltBackingBean(StudentAltService dbStudentAltService) {
         this.dbStudentAltService = dbStudentAltService;
-        studentAltModel = new StudentAltModel();
+        studentAltToSaveModel = new StudentAltModel();
+        studentAltToUpdateModel = new StudentAltModel();
     }
 
     // ...

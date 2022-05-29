@@ -21,14 +21,15 @@ public class InMemoryStudentAltBackingBean extends AbstractStudentAltBackingBean
     public InMemoryStudentAltBackingBean(StudentAltService inMemoryStudentAltService) {
         this.inMemoryStudentAltService = inMemoryStudentAltService;
         studentsAltFilteredList = new ArrayList<>();
-        studentAltModel = new StudentAltModel();
+        studentAltToSaveModel = new StudentAltModel();
+        studentAltToUpdateModel = new StudentAltModel();
     }
 
     public void displayStudentAltById() {
         // Reset the "studentsAltFilteredList"
         studentsAltFilteredList = new ArrayList<>();
         // Populate the "studentsAltFilteredList" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
-        studentsAltFilteredList.add(inMemoryStudentAltService.getStudentAltById(studentId));
+        studentsAltFilteredList.add(inMemoryStudentAltService.getStudentAltById(studentAltId));
     }
 
     public List<StudentAlt> fetchAllStudentsAlt() {
@@ -86,7 +87,7 @@ public class InMemoryStudentAltBackingBean extends AbstractStudentAltBackingBean
 
     public void deleteStudentAlt() {
         try {
-            inMemoryStudentAltService.deleteStudentAlt(studentToDeleteId);
+            inMemoryStudentAltService.deleteStudentAlt(studentAltToDeleteId);
         } catch (ResourceNotFoundException e) {
             // Display error message (somehow)
         }
@@ -94,19 +95,19 @@ public class InMemoryStudentAltBackingBean extends AbstractStudentAltBackingBean
 
     public void resetFetchByIdForm() {
         studentsAltFilteredList = new ArrayList<>();
-        studentId = null;
+        studentAltId = null;
     }
 
     public void resetSaveForm() {
-        studentAltModel = null;
+        resetStudentAltModel(studentAltToSaveModel);
     }
 
     public void resetUpdateForm() {
-        studentToUpdateId = null;
-        studentAltModel = null;
+        studentAltToUpdateId = null;
+        resetStudentAltModel(studentAltToUpdateModel);
     }
 
     public void resetDeleteForm() {
-        studentToDeleteId = null;
+        studentAltToDeleteId = null;
     }
 }

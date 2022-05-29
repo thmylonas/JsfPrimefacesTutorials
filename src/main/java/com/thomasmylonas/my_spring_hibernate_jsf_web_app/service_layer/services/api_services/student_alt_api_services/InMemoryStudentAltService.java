@@ -117,7 +117,7 @@ public class InMemoryStudentAltService extends AbstractStudentAltService {
         inMemoryStudentsAltList.add(new StudentAlt.Builder()
                 .id(4L)
                 .lastName("Murdock")
-                .firstName("Mat")
+                .firstName("Matt")
                 .dateOfBirth(HelperClass.getDate(2000, Calendar.FEBRUARY, 2))
                 .absences(2)
                 .departmentId("Dept4")

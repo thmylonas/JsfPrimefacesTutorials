@@ -10,10 +10,11 @@ import java.util.List;
 public abstract class AbstractStudentAltBackingBean extends AbstractBackingBean {
 
     protected List<StudentAlt> studentsAltFilteredList;
-    protected Long studentId;
-    protected Long studentToUpdateId;
-    protected Long studentToDeleteId;
-    protected StudentAltModel studentAltModel;
+    protected Long studentAltId;
+    protected Long studentAltToUpdateId;
+    protected Long studentAltToDeleteId;
+    protected StudentAltModel studentAltToSaveModel;
+    protected StudentAltModel studentAltToUpdateModel;
 
     protected boolean isStudentAltModelEmpty(StudentAltModel studentAltModel) {
         return HelperClass.isStringNullOrEmpty(studentAltModel.getLastName()) &&
@@ -24,6 +25,15 @@ public abstract class AbstractStudentAltBackingBean extends AbstractBackingBean 
                 HelperClass.isStringNullOrEmpty(studentAltModel.getStatus().getValue());
     }
 
+    protected void resetStudentAltModel(StudentAltModel studentAltModel) {
+        studentAltModel.setLastName(null);
+        studentAltModel.setFirstName(null);
+        studentAltModel.setDateOfBirth(null);
+        studentAltModel.setAbsences(null);
+        studentAltModel.setDepartmentId(null);
+        studentAltModel.setStatus(null);
+    }
+
     public List<StudentAlt> getStudentsAltFilteredList() {
         return studentsAltFilteredList;
     }
@@ -32,35 +42,43 @@ public abstract class AbstractStudentAltBackingBean extends AbstractBackingBean 
         this.studentsAltFilteredList = studentsAltFilteredList;
     }
 
-    public Long getStudentId() {
-        return studentId;
+    public Long getStudentAltId() {
+        return studentAltId;
     }
 
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
+    public void setStudentAltId(Long studentAltId) {
+        this.studentAltId = studentAltId;
     }
 
-    public Long getStudentToUpdateId() {
-        return studentToUpdateId;
+    public Long getStudentAltToUpdateId() {
+        return studentAltToUpdateId;
     }
 
-    public void setStudentToUpdateId(Long studentToUpdateId) {
-        this.studentToUpdateId = studentToUpdateId;
+    public void setStudentAltToUpdateId(Long studentAltToUpdateId) {
+        this.studentAltToUpdateId = studentAltToUpdateId;
     }
 
-    public Long getStudentToDeleteId() {
-        return studentToDeleteId;
+    public Long getStudentAltToDeleteId() {
+        return studentAltToDeleteId;
     }
 
-    public void setStudentToDeleteId(Long studentToDeleteId) {
-        this.studentToDeleteId = studentToDeleteId;
+    public void setStudentAltToDeleteId(Long studentAltToDeleteId) {
+        this.studentAltToDeleteId = studentAltToDeleteId;
     }
 
-    public StudentAltModel getStudentAltModel() {
-        return studentAltModel;
+    public StudentAltModel getStudentAltToSaveModel() {
+        return studentAltToSaveModel;
     }
 
-    public void setStudentAltModel(StudentAltModel studentAltModel) {
-        this.studentAltModel = studentAltModel;
+    public void setStudentAltToSaveModel(StudentAltModel studentAltToSaveModel) {
+        this.studentAltToSaveModel = studentAltToSaveModel;
+    }
+
+    public StudentAltModel getStudentAltToUpdateModel() {
+        return studentAltToUpdateModel;
+    }
+
+    public void setStudentAltToUpdateModel(StudentAltModel studentAltToUpdateModel) {
+        this.studentAltToUpdateModel = studentAltToUpdateModel;
     }
 }

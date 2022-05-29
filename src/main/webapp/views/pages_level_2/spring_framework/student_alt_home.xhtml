@@ -40,7 +40,7 @@
                         Alternatively, instead of "p:watermark", we can use "p:inputText"'s "placeholder" attribute
                         -->
                         <div class="data_insert_form">
-                            <tm:input_text_label input_value="#{inMemoryStudentAltBackingBean.studentId}"
+                            <tm:input_text_label input_value="#{inMemoryStudentAltBackingBean.studentAltId}"
                                                  label="Enter the studentAlt's ID:" placeholder="ID"
                                                  max_length="5" size="2" style_class="insert_data"/>
                         </div>
@@ -73,7 +73,7 @@
                 <dd>
                     <h:form id="formWhichSavesNewStudentAlt">
                         <div class="data_insert_form">
-                            <tm:student_alt_insert_data model="#{inMemoryStudentAltBackingBean.studentAltModel}"
+                            <tm:student_alt_insert_data model="#{inMemoryStudentAltBackingBean.studentAltToSaveModel}"
                                                         style_class="insert_data"/>
                         </div>
 
@@ -84,7 +84,7 @@
                         <div>
                             <p:commandButton type="button" value="Add studentAlt">
                                 <p:ajax process="@form" update="@form @(.table_students_alt_list)"
-                                        listener="#{inMemoryStudentAltBackingBean.saveNewStudentAlt(inMemoryStudentAltBackingBean.studentAltModel)}"/>
+                                        listener="#{inMemoryStudentAltBackingBean.saveNewStudentAlt(inMemoryStudentAltBackingBean.studentAltToSaveModel)}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_alt_reset_btn">
                                 <p:ajax process="@form" update="@form"
@@ -98,10 +98,10 @@
                 <dd>
                     <h:form id="formWhichUpdatesStudentAlt">
                         <div class="data_insert_form">
-                            <tm:input_text_label input_value="#{inMemoryStudentAltBackingBean.studentToUpdateId}"
+                            <tm:input_text_label input_value="#{inMemoryStudentAltBackingBean.studentAltToUpdateId}"
                                                  label="Enter the studentAlt's ID:" placeholder="ID"
                                                  max_length="5" size="2" style_class="insert_data"/>
-                            <tm:student_alt_insert_data model="#{inMemoryStudentAltBackingBean.studentAltModel}"
+                            <tm:student_alt_insert_data model="#{inMemoryStudentAltBackingBean.studentAltToUpdateModel}"
                                                         style_class="insert_data"/>
                         </div>
 
@@ -112,7 +112,7 @@
                         <div>
                             <p:commandButton type="button" value="Update studentAlt">
                                 <p:ajax process="@form" update="@form @(.table_students_alt_list)"
-                                        listener="#{inMemoryStudentAltBackingBean.updateStudentAlt(inMemoryStudentAltBackingBean.studentAltModel, inMemoryStudentAltBackingBean.studentToUpdateId)}"/>
+                                        listener="#{inMemoryStudentAltBackingBean.updateStudentAlt(inMemoryStudentAltBackingBean.studentAltToUpdateModel, inMemoryStudentAltBackingBean.studentAltToUpdateId)}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_alt_reset_btn">
                                 <p:ajax process="@form" update="@form"
@@ -126,7 +126,7 @@
                 <dd>
                     <h:form id="formWhichDeletesStudentAltById">
                         <div class="data_insert_form">
-                            <tm:input_text_label input_value="#{inMemoryStudentAltBackingBean.studentToDeleteId}"
+                            <tm:input_text_label input_value="#{inMemoryStudentAltBackingBean.studentAltToDeleteId}"
                                                  label="Enter the studentAlt's ID:" placeholder="ID"
                                                  max_length="5" size="2" style_class="insert_data"/>
                         </div>
