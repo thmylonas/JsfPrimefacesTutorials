@@ -1,3 +1,13 @@
+.select_datasource {
+    background-color: #dcdcfc;
+    border: 1px solid var(--deep_pink1);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px var(--deep_pink1);
+    width: fit-content;
+    padding: 10px 18px;
+    margin-bottom: 35px;
+}
+
 .data_insert_form {
     border: 1px solid var(--deep_pink1);
     border-radius: 5px;
