@@ -18,8 +18,8 @@ import java.util.Date;
 public class StudentAlt {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_generator")
-    @SequenceGenerator(name = "student_generator", sequenceName = "student_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_alt_generator")
+    @SequenceGenerator(name = "student_alt_generator", sequenceName = "student_alt_sequence", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 

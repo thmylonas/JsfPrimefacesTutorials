@@ -31,7 +31,9 @@ public class DataAccessConfig {
         emfb.setJpaVendorAdapter(jpaVendorAdapter);
 
         Properties properties = new Properties();
-        //properties.setProperty("hibernate.hbm2ddl.auto", "update");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");
+        properties.setProperty("hibernate.show_sql", "true");
+        properties.setProperty("hibernate.format_sql", "true");
         //properties.put("hibernate.id.new_generator_mappings", "true");
         emfb.setJpaProperties(properties);
 
