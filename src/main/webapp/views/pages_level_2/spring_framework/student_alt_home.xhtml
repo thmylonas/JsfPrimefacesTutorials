@@ -27,31 +27,32 @@
         <ui:define name="center_section_content">
 
             <p>
-                <h:outputText value="Simple 'StudentAlt' (alternative) API" styleClass="technology_topics_titles"/>
+                <h:outputText value="Simple 'StudentAlt' (alternative) API#{studentAltBackingBean.displayDataSource()}"
+                              escape="false" styleClass="technology_topics_titles"/>
             </p>
 
             <div class="select_datasource">
                 <h:form>
                     <div>
                         <p:outputLabel for="dataSource" value="Select DataSource (In-Memory/Database):"/>
-                        <p:selectOneMenu id="dataSource" value="#{inMemoryStudentAltBackingBean.asd}"
+                        <p:selectOneMenu id="dataSource" value="#{studentAltBackingBean.dataSource}"
                                          styleClass="select_one_menu_input_field">
                             <f:selectItem itemLabel="Select DataSource" itemValue=""/>
-                            <f:selectItem itemLabel="In-Memory DataSource" itemValue="In-Memory DataSource"/>
-                            <f:selectItem itemLabel="Database DataSource" itemValue="Database DataSource"/>
+                            <f:selectItem itemLabel="In-Memory DataSource" itemValue="InMemoryDS"/>
+                            <f:selectItem itemLabel="Database DataSource" itemValue="DatabaseDS"/>
                         </p:selectOneMenu>
                     </div>
                     <br/>
                     <div>
                         <p:commandButton type="button" value="Select DataSource">
-                            <p:ajax process="@form" update="@form"
-                                    listener="#{inMemoryStudentAltBackingBean.asd}"/>
+                            <p:ajax process="@form" update="@all"
+                                    listener="#{studentAltBackingBean.selectDatasource()}"/>
                         </p:commandButton>
                     </div>
                 </h:form>
             </div>
 
-            <dl class="technology_topics_list_wrapper">
+            <dl class="technology_topics_list_wrapper #{studentAltBackingBean.displayApiForms()} ">
                 <dt>Display a StudentAlt (given its ID)</dt>
                 <dd>
                     <h:form>
@@ -62,23 +63,24 @@
                         Alternatively, instead of "p:watermark", we can use "p:inputText"'s "placeholder" attribute
                         -->
                         <div class="data_insert_form">
-                            <tm:input_text_label input_value="#{inMemoryStudentAltBackingBean.studentAltId}"
-                                                 label="Enter the studentAlt's ID:" placeholder="ID"
-                                                 max_length="5" size="2" style_class="insert_data"/>
+                            <tm:input_text_label
+                                    input_value="#{studentAltBackingBean.generalStudentAltBackingBean.studentAltId}"
+                                    label="Enter the studentAlt's ID:" placeholder="ID"
+                                    max_length="5" size="2" style_class="insert_data"/>
                         </div>
 
                         <tm:student_alt_data_table title="Display the filtered StudentAlt"
-                                                   studentAltList="#{inMemoryStudentAltBackingBean.studentsAltFilteredList}"
+                                                   studentAltList="#{studentAltBackingBean.generalStudentAltBackingBean.studentsAltFilteredList}"
                                                    style_class="table_students_alt_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Find studentAlt">
                                 <p:ajax process="@form" update="@form @(.table_students_alt_list)"
-                                        listener="#{inMemoryStudentAltBackingBean.displayStudentAltById()}"/>
+                                        listener="#{studentAltBackingBean.generalStudentAltBackingBean.displayStudentAltById()}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_alt_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{inMemoryStudentAltBackingBean.resetFetchByIdForm()}"/>
+                                        listener="#{studentAltBackingBean.generalStudentAltBackingBean.resetFetchByIdForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
@@ -87,7 +89,7 @@
                 <dt>Display all the StudentsAlt</dt>
                 <dd>
                     <tm:student_alt_data_table title="Display all the StudentsAlt"
-                                               studentAltList="#{inMemoryStudentAltBackingBean.fetchAllStudentsAlt()}"
+                                               studentAltList="#{studentAltBackingBean.generalStudentAltBackingBean.fetchAllStudentsAlt()}"
                                                style_class="table_students_alt_list"/>
                 </dd>
 
@@ -95,22 +97,23 @@
                 <dd>
                     <h:form id="formWhichSavesNewStudentAlt">
                         <div class="data_insert_form">
-                            <tm:student_alt_insert_data model="#{inMemoryStudentAltBackingBean.studentAltToSaveModel}"
-                                                        style_class="insert_data"/>
+                            <tm:student_alt_insert_data
+                                    model="#{studentAltBackingBean.generalStudentAltBackingBean.studentAltToSaveModel}"
+                                    style_class="insert_data"/>
                         </div>
 
                         <tm:student_alt_data_table title="Display all the StudentsAlt"
-                                                   studentAltList="#{inMemoryStudentAltBackingBean.fetchAllStudentsAlt()}"
+                                                   studentAltList="#{studentAltBackingBean.generalStudentAltBackingBean.fetchAllStudentsAlt()}"
                                                    style_class="table_students_alt_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Add studentAlt">
                                 <p:ajax process="@form" update="@form @(.table_students_alt_list)"
-                                        listener="#{inMemoryStudentAltBackingBean.saveNewStudentAlt(inMemoryStudentAltBackingBean.studentAltToSaveModel)}"/>
+                                        listener="#{studentAltBackingBean.generalStudentAltBackingBean.saveNewStudentAlt(studentAltBackingBean.generalStudentAltBackingBean.studentAltToSaveModel)}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_alt_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{inMemoryStudentAltBackingBean.resetSaveForm()}"/>
+                                        listener="#{studentAltBackingBean.generalStudentAltBackingBean.resetSaveForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
@@ -120,25 +123,27 @@
                 <dd>
                     <h:form id="formWhichUpdatesStudentAlt">
                         <div class="data_insert_form">
-                            <tm:input_text_label input_value="#{inMemoryStudentAltBackingBean.studentAltToUpdateId}"
-                                                 label="Enter the studentAlt's ID:" placeholder="ID"
-                                                 max_length="5" size="2" style_class="insert_data"/>
-                            <tm:student_alt_insert_data model="#{inMemoryStudentAltBackingBean.studentAltToUpdateModel}"
-                                                        style_class="insert_data"/>
+                            <tm:input_text_label
+                                    input_value="#{studentAltBackingBean.generalStudentAltBackingBean.studentAltToUpdateId}"
+                                    label="Enter the studentAlt's ID:" placeholder="ID"
+                                    max_length="5" size="2" style_class="insert_data"/>
+                            <tm:student_alt_insert_data
+                                    model="#{studentAltBackingBean.generalStudentAltBackingBean.studentAltToUpdateModel}"
+                                    style_class="insert_data"/>
                         </div>
 
                         <tm:student_alt_data_table title="Display all the StudentsAlt"
-                                                   studentAltList="#{inMemoryStudentAltBackingBean.fetchAllStudentsAlt()}"
+                                                   studentAltList="#{studentAltBackingBean.generalStudentAltBackingBean.fetchAllStudentsAlt()}"
                                                    style_class="table_students_alt_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Update studentAlt">
                                 <p:ajax process="@form" update="@form @(.table_students_alt_list)"
-                                        listener="#{inMemoryStudentAltBackingBean.updateStudentAlt(inMemoryStudentAltBackingBean.studentAltToUpdateModel, inMemoryStudentAltBackingBean.studentAltToUpdateId)}"/>
+                                        listener="#{studentAltBackingBean.generalStudentAltBackingBean.updateStudentAlt(studentAltBackingBean.generalStudentAltBackingBean.studentAltToUpdateModel, studentAltBackingBean.generalStudentAltBackingBean.studentAltToUpdateId)}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_alt_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{inMemoryStudentAltBackingBean.resetUpdateForm()}"/>
+                                        listener="#{studentAltBackingBean.generalStudentAltBackingBean.resetUpdateForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
@@ -148,23 +153,24 @@
                 <dd>
                     <h:form id="formWhichDeletesStudentAltById">
                         <div class="data_insert_form">
-                            <tm:input_text_label input_value="#{inMemoryStudentAltBackingBean.studentAltToDeleteId}"
-                                                 label="Enter the studentAlt's ID:" placeholder="ID"
-                                                 max_length="5" size="2" style_class="insert_data"/>
+                            <tm:input_text_label
+                                    input_value="#{studentAltBackingBean.generalStudentAltBackingBean.studentAltToDeleteId}"
+                                    label="Enter the studentAlt's ID:" placeholder="ID"
+                                    max_length="5" size="2" style_class="insert_data"/>
                         </div>
 
                         <tm:student_alt_data_table title="Display all the StudentsAlt"
-                                                   studentAltList="#{inMemoryStudentAltBackingBean.fetchAllStudentsAlt()}"
+                                                   studentAltList="#{studentAltBackingBean.generalStudentAltBackingBean.fetchAllStudentsAlt()}"
                                                    style_class="table_students_alt_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Delete studentAlt">
                                 <p:ajax process="@form" update="@form @(.table_students_alt_list)"
-                                        listener="#{inMemoryStudentAltBackingBean.deleteStudentAlt()}"/>
+                                        listener="#{studentAltBackingBean.generalStudentAltBackingBean.deleteStudentAlt()}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_alt_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{inMemoryStudentAltBackingBean.resetDeleteForm()}"/>
+                                        listener="#{studentAltBackingBean.generalStudentAltBackingBean.resetDeleteForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>

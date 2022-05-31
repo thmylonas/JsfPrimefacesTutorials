@@ -8,6 +8,14 @@
     margin-bottom: 35px;
 }
 
+.display_api_forms {
+    display: block;
+}
+
+.not_display_api_forms {
+    display: none;
+}
+
 .data_insert_form {
     border: 1px solid var(--deep_pink1);
     border-radius: 5px;
