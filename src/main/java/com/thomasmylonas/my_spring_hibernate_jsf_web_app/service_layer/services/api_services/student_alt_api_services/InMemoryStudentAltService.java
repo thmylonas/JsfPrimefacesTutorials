@@ -18,7 +18,7 @@ public class InMemoryStudentAltService extends AbstractStudentAltService {
     private List<StudentAlt> inMemoryStudentsAltList;
 
     @PostConstruct
-    public void init() {
+    private void init() {
         initInMemoryStudentsAltList();
     }
 
@@ -79,7 +79,7 @@ public class InMemoryStudentAltService extends AbstractStudentAltService {
         inMemoryStudentsAltList = new ArrayList<>();
 
         inMemoryStudentsAltList.add(new StudentAlt.Builder()
-                .id(0L)
+                .id(1L)
                 .lastName("Mylonas")
                 .firstName("Thomas")
                 .dateOfBirth(HelperClass.getDate(1972, Calendar.SEPTEMBER, 24))
@@ -88,7 +88,7 @@ public class InMemoryStudentAltService extends AbstractStudentAltService {
                 .status(Status.ADVANCED_STUDENT)
                 .build());
         inMemoryStudentsAltList.add(new StudentAlt.Builder()
-                .id(1L)
+                .id(2L)
                 .lastName("Lorem")
                 .firstName("Ipsum")
                 .dateOfBirth(HelperClass.getDate(1979, Calendar.APRIL, 30))
@@ -97,7 +97,7 @@ public class InMemoryStudentAltService extends AbstractStudentAltService {
                 .status(Status.JUNIOR_STUDENT)
                 .build());
         inMemoryStudentsAltList.add(new StudentAlt.Builder()
-                .id(2L)
+                .id(3L)
                 .lastName("Chan")
                 .firstName("Jacky")
                 .dateOfBirth(HelperClass.getDate(1982, Calendar.MAY, 9))
@@ -106,7 +106,7 @@ public class InMemoryStudentAltService extends AbstractStudentAltService {
                 .status(Status.JUNIOR_STUDENT)
                 .build());
         inMemoryStudentsAltList.add(new StudentAlt.Builder()
-                .id(3L)
+                .id(4L)
                 .lastName("Parker")
                 .firstName("Peter")
                 .dateOfBirth(HelperClass.getDate(1990, Calendar.OCTOBER, 15))
@@ -115,7 +115,7 @@ public class InMemoryStudentAltService extends AbstractStudentAltService {
                 .status(Status.MEDIUM_STUDENT)
                 .build());
         inMemoryStudentsAltList.add(new StudentAlt.Builder()
-                .id(4L)
+                .id(5L)
                 .lastName("Murdock")
                 .firstName("Matt")
                 .dateOfBirth(HelperClass.getDate(2000, Calendar.FEBRUARY, 2))
