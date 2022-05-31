@@ -29,19 +29,10 @@ public class HtmlOutputFormatBackingBean extends AbstractHtmlOutputsBackingBean 
     private String lessThan;
     private String greaterThan;
 
-    // Styling parameters finals
-    private final String SPAN_OPEN_LEFT_STYLE = "<span style=\"";
-    private final String SPAN_OPEN_RIGHT_STYLE = "\">";
-    private final String SPAN_CLOSE = "</span>";
-    private final String ATTR_COLON = "; ";
-    private final String COLOR_ATTR = "color:";
-    private final String FONT_WEIGHT_ATTR = "font-weight:";
-
     public HtmlOutputFormatBackingBean() {
         textWith2Params = "parameter 1: {0}, parameter 2: {1}";
-        textWith2StyledParams = "parameter 1: " + SPAN_OPEN_LEFT_STYLE + COLOR_ATTR + COLOR_DEEP_PINK +
-                SPAN_OPEN_RIGHT_STYLE + "{0}" + SPAN_CLOSE + ", parameter 2: " + SPAN_OPEN_LEFT_STYLE + COLOR_ATTR +
-                COLOR_BLUE + ATTR_COLON + FONT_WEIGHT_ATTR + "bold" + SPAN_OPEN_RIGHT_STYLE + "{1}" + SPAN_CLOSE;
+        textWith2StyledParams = "parameter 1: " + highlightingSpan("{0}", COLOR_DEEP_PINK, "normal") +
+                ", parameter 2: " + highlightingSpan("{1}", COLOR_BLUE, "bold");
         //textWith2StyledParams = "parameter 1: <span style=\"color:" + COLOR_DEEP_PINK + "\">{0}</span>, parameter 2: <span style=\"color:" + COLOR_BLUE + "; font-weight:bold\">{1}</span>";
         textHello = "Hello {0}";
         textHelloEscaped = "With escape=\"true\": Hello &lt;span style=\"color:" + COLOR_DEEP_PINK + "\"&gt;{0}&lt;/span&gt;";
