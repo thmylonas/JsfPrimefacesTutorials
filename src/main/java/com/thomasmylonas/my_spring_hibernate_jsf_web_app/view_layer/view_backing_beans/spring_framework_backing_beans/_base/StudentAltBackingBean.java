@@ -4,17 +4,65 @@ import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entit
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.StudentAltModel;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.helpers.HelperClass;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.view_backing_beans._base.AbstractBackingBean;
+import com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.view_backing_beans.spring_framework_backing_beans.DbStudentAltBackingBean;
+import com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.view_backing_beans.spring_framework_backing_beans.InMemoryStudentAltBackingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-public abstract class AbstractStudentAltBackingBean extends AbstractBackingBean {
+@Component(value = "studentAltBackingBean")
+public class StudentAltBackingBean extends AbstractBackingBean {
 
-    protected List<StudentAlt> studentsAltFilteredList;
+    private String dataSource;
+    private boolean displayApiForms;
+
+    protected List<StudentAlt> studentsAltFilteredList; // This might be put in the "InMemoryStudentAltBackingBean" only. Maybe the Getters/Setters not be useful
     protected Long studentAltId;
     protected Long studentAltToUpdateId;
     protected Long studentAltToDeleteId;
     protected StudentAltModel studentAltToSaveModel;
     protected StudentAltModel studentAltToUpdateModel;
+
+    private StudentAltBackingBean generalStudentAltBackingBean;
+
+    @Autowired
+    private InMemoryStudentAltBackingBean inMemoryStudentAltBackingBean;
+
+    @Autowired
+    private DbStudentAltBackingBean dbStudentAltBackingBean;
+
+    public String displayDataSource() {
+
+        if (dataSource == null) {
+            return "";
+        } else {
+            if (dataSource.equalsIgnoreCase("InMemoryDS")) {
+                return " (Using an " + highlightingSpan("'In-Memory DataSource'", COLOR_BLUE, "bold") + ")";
+            } else if (dataSource.equalsIgnoreCase("DatabaseDS")) {
+                return " (Using an " + highlightingSpan("'Database DataSource'", COLOR_BLUE, "bold") + ")";
+            } else {
+                return "";
+            }
+        }
+    }
+
+    public void selectDatasource() {
+
+        if (dataSource.equalsIgnoreCase("InMemoryDS")) {
+            displayApiForms = true;
+            generalStudentAltBackingBean = inMemoryStudentAltBackingBean;
+        } else if (dataSource.equalsIgnoreCase("DatabaseDS")) {
+            displayApiForms = true;
+            generalStudentAltBackingBean = dbStudentAltBackingBean;
+        } else {
+            displayApiForms = false;
+        }
+    }
+
+    public String displayApiForms() {
+        return displayApiForms ? "display_api_forms" : "not_display_api_forms";
+    }
 
     protected boolean isStudentAltModelEmpty(StudentAltModel studentAltModel) {
         return HelperClass.isStringNullOrEmpty(studentAltModel.getLastName()) &&
@@ -32,6 +80,14 @@ public abstract class AbstractStudentAltBackingBean extends AbstractBackingBean 
         studentAltModel.setAbsences(null);
         studentAltModel.setDepartmentId(null);
         studentAltModel.setStatus(null);
+    }
+
+    public String getDataSource() {
+        return dataSource;
+    }
+
+    public void setDataSource(String dataSource) {
+        this.dataSource = dataSource;
     }
 
     public List<StudentAlt> getStudentsAltFilteredList() {
@@ -80,5 +136,13 @@ public abstract class AbstractStudentAltBackingBean extends AbstractBackingBean 
 
     public void setStudentAltToUpdateModel(StudentAltModel studentAltToUpdateModel) {
         this.studentAltToUpdateModel = studentAltToUpdateModel;
+    }
+
+    public StudentAltBackingBean getGeneralStudentAltBackingBean() {
+        return generalStudentAltBackingBean;
+    }
+
+    public void setGeneralStudentAltBackingBean(StudentAltBackingBean generalStudentAltBackingBean) {
+        this.generalStudentAltBackingBean = generalStudentAltBackingBean;
     }
 }
