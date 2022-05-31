@@ -1,13 +1,16 @@
 package com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services.api_services.student_alt_api_services;
 
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.StudentAlt;
+import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.enums.Status;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.repositories.StudentAltRepository;
+import com.thomasmylonas.my_spring_hibernate_jsf_web_app.helpers.HelperClass;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.exceptions.ResourceNotFoundException;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services.api_services.student_alt_api_services._base.AbstractStudentAltService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.Calendar;
 import java.util.List;
 
 @Service(value = "dbStudentAltService")
@@ -21,7 +24,8 @@ public class DbStudentAltService extends AbstractStudentAltService {
     }
 
     @PostConstruct
-    public void init() {
+    private void init() {
+        initInMemoryStudentsAltList();
     }
 
     @Override
@@ -72,5 +76,49 @@ public class DbStudentAltService extends AbstractStudentAltService {
             return;
         }
         studentAltRepository.deleteById(id);
+    }
+
+    private void initInMemoryStudentsAltList() {
+
+        studentAltRepository.save(new StudentAlt.Builder()
+                .lastName("Mylonas")
+                .firstName("Thomas")
+                .dateOfBirth(HelperClass.getDate(1972, Calendar.SEPTEMBER, 24))
+                .absences(1)
+                .departmentId("Dept1")
+                .status(Status.ADVANCED_STUDENT)
+                .build());
+        studentAltRepository.save(new StudentAlt.Builder()
+                .lastName("Lorem")
+                .firstName("Ipsum")
+                .dateOfBirth(HelperClass.getDate(1979, Calendar.APRIL, 30))
+                .absences(5)
+                .departmentId("Dept1")
+                .status(Status.JUNIOR_STUDENT)
+                .build());
+        studentAltRepository.save(new StudentAlt.Builder()
+                .lastName("Chan")
+                .firstName("Jacky")
+                .dateOfBirth(HelperClass.getDate(1982, Calendar.MAY, 9))
+                .absences(3)
+                .departmentId("Dept2")
+                .status(Status.JUNIOR_STUDENT)
+                .build());
+        studentAltRepository.save(new StudentAlt.Builder()
+                .lastName("Parker")
+                .firstName("Peter")
+                .dateOfBirth(HelperClass.getDate(1990, Calendar.OCTOBER, 15))
+                .absences(7)
+                .departmentId("Dept3")
+                .status(Status.MEDIUM_STUDENT)
+                .build());
+        studentAltRepository.save(new StudentAlt.Builder()
+                .lastName("Murdock")
+                .firstName("Matt")
+                .dateOfBirth(HelperClass.getDate(2000, Calendar.FEBRUARY, 2))
+                .absences(2)
+                .departmentId("Dept4")
+                .status(Status.ADVANCED_STUDENT)
+                .build());
     }
 }

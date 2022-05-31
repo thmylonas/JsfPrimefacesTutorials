@@ -30,14 +30,14 @@ public class DbStudentAltBackingBean extends StudentAltBackingBean {
 
         // TODO: Temp code
         studentsAltFilteredList = new ArrayList<>();
-        studentsAltFilteredList.add(new StudentAlt.Builder()
-                .id(999L).lastName("Aaaa")
-                .firstName("Bbbb")
-                .dateOfBirth(HelperClass.getDate(2000, Calendar.APRIL, 1))
-                .absences(999)
-                .departmentId("ddd")
-                .status(Status.ADVANCED_STUDENT)
-                .build());
+//        studentsAltFilteredList.add(new StudentAlt.Builder()
+//                .id(999L).lastName("Aaaa")
+//                .firstName("Bbbb")
+//                .dateOfBirth(HelperClass.getDate(2000, Calendar.APRIL, 1))
+//                .absences(999)
+//                .departmentId("ddd")
+//                .status(Status.ADVANCED_STUDENT)
+//                .build());
     }
 
     public List<StudentAlt> fetchAllStudentsAlt() {
@@ -46,7 +46,27 @@ public class DbStudentAltBackingBean extends StudentAltBackingBean {
     }
 
     public void saveNewStudentAlt(StudentAltModel studentAltModel) {
+
         // TODO: Add code
+        if (isStudentAltModelEmpty(studentAltModel)) {
+            return;
+        }
+        StudentAlt studentAlt = new StudentAlt();
+
+        List<StudentAlt> allStudentsAltList = fetchAllStudentsAlt();
+        if (HelperClass.isListNullOrEmpty(allStudentsAltList)) {
+            studentAlt.setId(0L);
+        } else {
+            studentAlt.setId((long) allStudentsAltList.size());
+        }
+        studentAlt.setLastName(studentAltModel.getLastName());
+        studentAlt.setFirstName(studentAltModel.getFirstName());
+        studentAlt.setDateOfBirth(studentAltModel.getDateOfBirth());
+        studentAlt.setAbsences(studentAltModel.getAbsences());
+        studentAlt.setDepartmentId(studentAltModel.getDepartmentId());
+        studentAlt.setStatus(studentAltModel.getStatus());
+
+        dbStudentAltService.saveStudentAlt(studentAlt);
     }
 
     public void updateStudentAlt(StudentAltModel studentAltModel, Integer id) {

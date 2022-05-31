@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  * Take a look at the manual transactions...
- * Use @Transactual
+ * Use @Transactional
  */
 @Repository //(value = "studentAltRepository") // With this, 2 beans are created
 public class StudentAltRepository implements GenericJpaRepository<StudentAlt, Long> {
@@ -71,24 +71,31 @@ public class StudentAltRepository implements GenericJpaRepository<StudentAlt, Lo
         return allQuery.getResultList();
     }
 
+    /**
+     * The use of "EM.persist(studentAlt)", leads to the error:
+     * "javax.persistence.PersistenceException: org.hibernate.PersistentObjectException: detached entity passed to persist"
+     *
+     * @param studentAlt The entity to persist (must not be {@literal null})
+     * @param <S>        The generic type of the entity "StudentAlt"
+     * @return The entity which have persisted
+     */
     @Override
     //@Transactional
     public <S extends StudentAlt> S save(S studentAlt) {
 
-        //S studentAltPersisted = null;
+        S studentAltPersisted = null;
         try {
             if (!TX.isActive()) {
                 TX.begin();
             }
-            //studentAltPersisted = EM.merge(s);
-            EM.persist(studentAlt);
+            studentAltPersisted = EM.merge(studentAlt);
             EM.flush();
             TX.commit();
         } catch (Exception e) {
             TX.rollback();
             LOGGER.error(e.getMessage());
         }
-        return studentAlt;
+        return studentAltPersisted;
     }
 
     @Override

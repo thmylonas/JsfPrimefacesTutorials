@@ -17,7 +17,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = {"com.thomasmylonas.my_spring_hibernate_jsf_web_app"})
+@ComponentScan(basePackages = {"com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer"})
 public class DataAccessConfig {
 
     private final Logger LOGGER = LogManager.getLogger(getClass().getName());
