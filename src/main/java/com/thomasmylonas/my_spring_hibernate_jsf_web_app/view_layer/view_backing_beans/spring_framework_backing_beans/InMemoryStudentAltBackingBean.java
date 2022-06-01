@@ -1,7 +1,7 @@
 package com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.view_backing_beans.spring_framework_backing_beans;
 
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.StudentAlt;
-import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.StudentAltModel;
+import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.models.spring_framework_models.StudentAltModel;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.helpers.HelperClass;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.exceptions.ResourceNotFoundException;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services.api_services.student_alt_api_services.StudentAltService;
