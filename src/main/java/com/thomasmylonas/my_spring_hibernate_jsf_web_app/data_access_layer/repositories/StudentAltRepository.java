@@ -21,7 +21,7 @@ import java.util.List;
  * Take a look at the manual transactions...
  * Use @Transactional
  */
-@Repository //(value = "studentAltRepository") // With this, 2 beans are created
+@Repository(value = "studentAltRepository")
 public class StudentAltRepository implements GenericJpaRepository<StudentAlt, Long> {
 
     private final Logger LOGGER = LogManager.getLogger(getClass().getName());

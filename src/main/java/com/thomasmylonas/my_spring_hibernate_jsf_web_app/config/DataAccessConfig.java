@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.jndi.JndiObjectFactoryBean;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -17,7 +18,11 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = {"com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer"})
+@ComponentScan(basePackages = {"com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer"},
+        excludeFilters = {
+                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class)
+        }
+)
 public class DataAccessConfig {
 
     private final Logger LOGGER = LogManager.getLogger(getClass().getName());
@@ -37,7 +42,7 @@ public class DataAccessConfig {
         //properties.put("hibernate.id.new_generator_mappings", "true");
         emfb.setJpaProperties(properties);
 
-        emfb.setPackagesToScan("com.thomasmylonas.my_spring_hibernate_jsf_web_app");
+        emfb.setPackagesToScan("com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer");
         return emfb;
     }
 

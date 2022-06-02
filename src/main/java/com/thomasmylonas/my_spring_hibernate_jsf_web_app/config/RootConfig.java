@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
         excludeFilters = {
                 @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Repository.class),
                 @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class),
+                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class)
         }
 )
 public class RootConfig {
