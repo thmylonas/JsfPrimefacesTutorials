@@ -25,7 +25,7 @@ public class DbStudentAltService extends AbstractStudentAltService {
 
     @PostConstruct
     private void init() {
-        initInMemoryStudentsAltList();
+        initStudentsAltList();
     }
 
     @Override
@@ -34,11 +34,8 @@ public class DbStudentAltService extends AbstractStudentAltService {
         if (id == null) {
             return null;
         }
-        StudentAlt studentAlt = studentAltRepository.findById(id);
-        if (studentAlt == null) {
-            throw new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id);
-        }
-        return studentAlt;
+        return studentAltRepository.findById(id).
+                orElseThrow(() -> new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id));
     }
 
     @Override
@@ -61,12 +58,10 @@ public class DbStudentAltService extends AbstractStudentAltService {
         if (id == null || studentAlt == null) {
             return null;
         }
-        StudentAlt studentAltToUpdate = studentAltRepository.findById(id);
-        if (studentAltToUpdate == null) {
-            throw new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id);
-        }
-        updateStudentAltWithGivenObject(studentAltToUpdate, studentAlt);
-        return studentAltRepository.save(studentAltToUpdate);
+        StudentAlt studentAltToBeUpdated = studentAltRepository.findById(id).
+                orElseThrow(() -> new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id));
+        updateStudentAltWithGivenObject(studentAltToBeUpdated, studentAlt);
+        return studentAltRepository.save(studentAltToBeUpdated);
     }
 
     @Override
@@ -78,7 +73,7 @@ public class DbStudentAltService extends AbstractStudentAltService {
         studentAltRepository.deleteById(id);
     }
 
-    private void initInMemoryStudentsAltList() {
+    private void initStudentsAltList() {
 
         studentAltRepository.save(new StudentAlt.Builder()
                 .lastName("Mylonas")

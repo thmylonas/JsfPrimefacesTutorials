@@ -1,7 +1,6 @@
 package com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.view_backing_beans.spring_framework_backing_beans._base;
 
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.StudentAlt;
-import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.models.spring_framework_models.StudentAltModel;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.helpers.HelperClass;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.view_backing_beans._base.AbstractBackingBean;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.view_backing_beans.spring_framework_backing_beans.DbStudentAltBackingBean;
@@ -9,6 +8,7 @@ import com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.view_backing
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component(value = "studentAltBackingBean")
@@ -17,12 +17,16 @@ public class StudentAltBackingBean extends AbstractBackingBean {
     private String dataSource;
     private boolean displayApiForms;
 
-    protected List<StudentAlt> studentsAltFilteredList; // This might be put in the "InMemoryStudentAltBackingBean" only. Maybe the Getters/Setters not be useful
+    protected List<StudentAlt> studentsAltFilteredList;
+
+    // The "studentAltId" ID's collected from the user input
     protected Long studentAltId;
-    protected Long studentAltToUpdateId;
-    protected Long studentAltToDeleteId;
-    protected StudentAltModel studentAltToSaveModel;
-    protected StudentAltModel studentAltToUpdateModel;
+    protected Long updateFormStudentAltId;
+    protected Long deleteFormStudentAltId;
+
+    // The "studentAlt" info's collected from the user input
+    protected StudentAlt saveFormStudentAlt;
+    protected StudentAlt updateFormStudentAlt;
 
     private StudentAltBackingBean generalStudentAltBackingBean;
 
@@ -61,25 +65,51 @@ public class StudentAltBackingBean extends AbstractBackingBean {
     }
 
     public String displayApiForms() {
+
+        resetFetchByIdForm();
+        resetSaveForm();
+        resetUpdateForm();
+        resetDeleteForm();
         return displayApiForms ? "display_api_forms" : "not_display_api_forms";
     }
 
-    protected boolean isStudentAltModelEmpty(StudentAltModel studentAltModel) {
-        return HelperClass.isStringNullOrEmpty(studentAltModel.getLastName()) &&
-                HelperClass.isStringNullOrEmpty(studentAltModel.getFirstName()) &&
-                studentAltModel.getDateOfBirth() == null &&
-                studentAltModel.getAbsences() == null &&
-                HelperClass.isStringNullOrEmpty(studentAltModel.getDepartmentId()) &&
-                HelperClass.isStringNullOrEmpty(studentAltModel.getStatus().getValue());
+    protected boolean isStudentAltEmpty(StudentAlt studentAlt) {
+        return HelperClass.isStringNullOrEmpty(studentAlt.getLastName()) &&
+                HelperClass.isStringNullOrEmpty(studentAlt.getFirstName()) &&
+                studentAlt.getDateOfBirth() == null &&
+                studentAlt.getAbsences() == null &&
+                HelperClass.isStringNullOrEmpty(studentAlt.getDepartmentId()) &&
+                HelperClass.isStringNullOrEmpty(studentAlt.getStatus().getValue());
     }
 
-    protected void resetStudentAltModel(StudentAltModel studentAltModel) {
-        studentAltModel.setLastName(null);
-        studentAltModel.setFirstName(null);
-        studentAltModel.setDateOfBirth(null);
-        studentAltModel.setAbsences(null);
-        studentAltModel.setDepartmentId(null);
-        studentAltModel.setStatus(null);
+    protected void resetStudentAlt(StudentAlt studentAlt) {
+
+        if (studentAlt != null) {
+            studentAlt.setLastName(null);
+            studentAlt.setFirstName(null);
+            studentAlt.setDateOfBirth(null);
+            studentAlt.setAbsences(null);
+            studentAlt.setDepartmentId(null);
+            studentAlt.setStatus(null);
+        }
+    }
+
+    public void resetFetchByIdForm() {
+        studentsAltFilteredList = new ArrayList<>();
+        studentAltId = null;
+    }
+
+    public void resetSaveForm() {
+        resetStudentAlt(saveFormStudentAlt);
+    }
+
+    public void resetUpdateForm() {
+        updateFormStudentAltId = null;
+        resetStudentAlt(updateFormStudentAlt);
+    }
+
+    public void resetDeleteForm() {
+        deleteFormStudentAltId = null;
     }
 
     public String getDataSource() {
@@ -106,36 +136,36 @@ public class StudentAltBackingBean extends AbstractBackingBean {
         this.studentAltId = studentAltId;
     }
 
-    public Long getStudentAltToUpdateId() {
-        return studentAltToUpdateId;
+    public Long getUpdateFormStudentAltId() {
+        return updateFormStudentAltId;
     }
 
-    public void setStudentAltToUpdateId(Long studentAltToUpdateId) {
-        this.studentAltToUpdateId = studentAltToUpdateId;
+    public void setUpdateFormStudentAltId(Long updateFormStudentAltId) {
+        this.updateFormStudentAltId = updateFormStudentAltId;
     }
 
-    public Long getStudentAltToDeleteId() {
-        return studentAltToDeleteId;
+    public Long getDeleteFormStudentAltId() {
+        return deleteFormStudentAltId;
     }
 
-    public void setStudentAltToDeleteId(Long studentAltToDeleteId) {
-        this.studentAltToDeleteId = studentAltToDeleteId;
+    public void setDeleteFormStudentAltId(Long deleteFormStudentAltId) {
+        this.deleteFormStudentAltId = deleteFormStudentAltId;
     }
 
-    public StudentAltModel getStudentAltToSaveModel() {
-        return studentAltToSaveModel;
+    public StudentAlt getSaveFormStudentAlt() {
+        return saveFormStudentAlt;
     }
 
-    public void setStudentAltToSaveModel(StudentAltModel studentAltToSaveModel) {
-        this.studentAltToSaveModel = studentAltToSaveModel;
+    public void setSaveFormStudentAlt(StudentAlt saveFormStudentAlt) {
+        this.saveFormStudentAlt = saveFormStudentAlt;
     }
 
-    public StudentAltModel getStudentAltToUpdateModel() {
-        return studentAltToUpdateModel;
+    public StudentAlt getUpdateFormStudentAlt() {
+        return updateFormStudentAlt;
     }
 
-    public void setStudentAltToUpdateModel(StudentAltModel studentAltToUpdateModel) {
-        this.studentAltToUpdateModel = studentAltToUpdateModel;
+    public void setUpdateFormStudentAlt(StudentAlt updateFormStudentAlt) {
+        this.updateFormStudentAlt = updateFormStudentAlt;
     }
 
     public StudentAltBackingBean getGeneralStudentAltBackingBean() {

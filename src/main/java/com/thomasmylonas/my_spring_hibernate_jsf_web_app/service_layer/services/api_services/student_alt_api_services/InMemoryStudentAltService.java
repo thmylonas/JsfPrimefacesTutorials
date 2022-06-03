@@ -48,9 +48,9 @@ public class InMemoryStudentAltService extends AbstractStudentAltService {
         if (id == null || studentAlt == null) {
             return null;
         }
-        StudentAlt studentAltToUpdate = getStudentAltById(id); // This might throw a "ResourceNotFoundException"
-        updateStudentAltWithGivenObject(studentAltToUpdate, studentAlt);
-        return studentAltToUpdate;
+        StudentAlt studentAltToBeUpdated = getStudentAltById(id); // This might throw a "ResourceNotFoundException"
+        updateStudentAltWithGivenObject(studentAltToBeUpdated, studentAlt);
+        return studentAltToBeUpdated;
     }
 
     @Override

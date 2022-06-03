@@ -1,6 +1,7 @@
 package com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.view_backing_beans.spring_framework_backing_beans;
 
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.StudentAlt;
+import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.exceptions.ResourceNotFoundException;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.models.spring_framework_models.StudentAltModel;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.helpers.HelperClass;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services.api_services.student_alt_api_services.StudentAltService;
@@ -19,75 +20,64 @@ public class DbStudentAltBackingBean extends StudentAltBackingBean {
     @Autowired
     public DbStudentAltBackingBean(StudentAltService dbStudentAltService) {
         this.dbStudentAltService = dbStudentAltService;
-        studentsAltFilteredList = new ArrayList<>(); // TODO: Temp code
-        studentAltToSaveModel = new StudentAltModel();
-        studentAltToUpdateModel = new StudentAltModel();
+        studentsAltFilteredList = new ArrayList<>();
+        saveFormStudentAlt = new StudentAlt();
+        updateFormStudentAlt = new StudentAlt();
     }
 
     public void displayStudentAltById() {
 
-        // TODO: Temp code
+        if (studentAltId == null) {
+            return;
+        }
+        // Reset the "studentsAltFilteredList"
         studentsAltFilteredList = new ArrayList<>();
-//        studentsAltFilteredList.add(new StudentAlt.Builder()
-//                .id(999L).lastName("Aaaa")
-//                .firstName("Bbbb")
-//                .dateOfBirth(HelperClass.getDate(2000, Calendar.APRIL, 1))
-//                .absences(999)
-//                .departmentId("ddd")
-//                .status(Status.ADVANCED_STUDENT)
-//                .build());
+        // Populate the "studentsAltFilteredList" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
+        try {
+            studentsAltFilteredList.add(dbStudentAltService.getStudentAltById(studentAltId));
+        } catch (ResourceNotFoundException e) {
+            // Display error message (somehow)
+        }
     }
 
     public List<StudentAlt> fetchAllStudentsAlt() {
-        // TODO: Temp code
-        return studentsAltFilteredList;
+
+        List<StudentAlt> allStudentsAltList = dbStudentAltService.getAllStudentsAlt();
+        if (HelperClass.isListNullOrEmpty(allStudentsAltList)) {
+            // Display error message (somehow)
+        }
+        return allStudentsAltList;
     }
 
-    public void saveNewStudentAlt(StudentAltModel studentAltModel) {
+    public void saveNewStudentAlt(StudentAlt studentAlt) {
 
-        // TODO: Add code
-        if (isStudentAltModelEmpty(studentAltModel)) {
+        if (isStudentAltEmpty(studentAlt)) {
             return;
         }
-        StudentAlt studentAlt = new StudentAlt();
-
-        List<StudentAlt> allStudentsAltList = fetchAllStudentsAlt();
-        if (HelperClass.isListNullOrEmpty(allStudentsAltList)) {
-            studentAlt.setId(0L);
-        } else {
-            studentAlt.setId((long) allStudentsAltList.size());
-        }
-        studentAlt.setLastName(studentAltModel.getLastName());
-        studentAlt.setFirstName(studentAltModel.getFirstName());
-        studentAlt.setDateOfBirth(studentAltModel.getDateOfBirth());
-        studentAlt.setAbsences(studentAltModel.getAbsences());
-        studentAlt.setDepartmentId(studentAltModel.getDepartmentId());
-        studentAlt.setStatus(studentAltModel.getStatus());
-
         dbStudentAltService.saveStudentAlt(studentAlt);
     }
 
-    public void updateStudentAlt(StudentAltModel studentAltModel, Integer id) {
-        // TODO: Add code
+    public void updateStudentAlt(StudentAlt studentAlt, Long id) {
+
+        if (id == null || isStudentAltEmpty(studentAlt)) {
+            return;
+        }
+        try {
+            dbStudentAltService.updateStudentAlt(studentAlt, id);
+        } catch (ResourceNotFoundException e) {
+            // Display error message (somehow)
+        }
     }
 
     public void deleteStudentAlt() {
-        // TODO: Add code
-    }
 
-    public void resetFetchByIdForm() {
-        // TODO: Add code
-    }
-
-    public void resetSaveForm() {
-        // TODO: Add code
-    }
-
-    public void resetUpdateForm() {
-        // TODO: Add code
-    }
-
-    public void resetDeleteForm() {
-        // TODO: Add code
+        if (deleteFormStudentAltId == null) {
+            return;
+        }
+        try {
+            dbStudentAltService.deleteStudentAlt(deleteFormStudentAltId);
+        } catch (ResourceNotFoundException e) {
+            // Display error message (somehow)
+        }
     }
 }

@@ -1,7 +1,6 @@
 package com.thomasmylonas.my_spring_hibernate_jsf_web_app.view_layer.view_backing_beans.spring_framework_backing_beans;
 
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.entities.StudentAlt;
-import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.models.spring_framework_models.StudentAltModel;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.helpers.HelperClass;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.exceptions.ResourceNotFoundException;
 import com.thomasmylonas.my_spring_hibernate_jsf_web_app.service_layer.services.api_services.student_alt_api_services.StudentAltService;
@@ -21,8 +20,8 @@ public class InMemoryStudentAltBackingBean extends StudentAltBackingBean {
     public InMemoryStudentAltBackingBean(StudentAltService inMemoryStudentAltService) {
         this.inMemoryStudentAltService = inMemoryStudentAltService;
         studentsAltFilteredList = new ArrayList<>();
-        studentAltToSaveModel = new StudentAltModel();
-        studentAltToUpdateModel = new StudentAltModel();
+        saveFormStudentAlt = new StudentAlt();
+        updateFormStudentAlt = new StudentAlt();
     }
 
     public void displayStudentAltById() {
@@ -41,45 +40,27 @@ public class InMemoryStudentAltBackingBean extends StudentAltBackingBean {
         return allStudentsAltList;
     }
 
-    public void saveNewStudentAlt(StudentAltModel studentAltModel) {
+    public void saveNewStudentAlt(StudentAlt studentAlt) {
 
-        if (isStudentAltModelEmpty(studentAltModel)) {
+        if (isStudentAltEmpty(studentAlt)) {
             return;
         }
-        StudentAlt studentAlt = new StudentAlt();
-
         List<StudentAlt> allStudentsAltList = fetchAllStudentsAlt();
         if (HelperClass.isListNullOrEmpty(allStudentsAltList)) {
-            studentAlt.setId(0L);
+            studentAlt.setId(1L);
         } else {
             studentAlt.setId((long) allStudentsAltList.size());
         }
-        studentAlt.setLastName(studentAltModel.getLastName());
-        studentAlt.setFirstName(studentAltModel.getFirstName());
-        studentAlt.setDateOfBirth(studentAltModel.getDateOfBirth());
-        studentAlt.setAbsences(studentAltModel.getAbsences());
-        studentAlt.setDepartmentId(studentAltModel.getDepartmentId());
-        studentAlt.setStatus(studentAltModel.getStatus());
-
         inMemoryStudentAltService.saveStudentAlt(studentAlt);
     }
 
-    public void updateStudentAlt(StudentAltModel studentAltModel, Integer id) {
+    public void updateStudentAlt(StudentAlt studentAlt, Long id) {
 
-        if (id == null || isStudentAltModelEmpty(studentAltModel)) {
+        if (id == null || isStudentAltEmpty(studentAlt)) {
             return;
         }
-        StudentAlt studentAlt = new StudentAlt();
-
-        studentAlt.setLastName(studentAltModel.getLastName());
-        studentAlt.setFirstName(studentAltModel.getFirstName());
-        studentAlt.setDateOfBirth(studentAltModel.getDateOfBirth());
-        studentAlt.setAbsences(studentAltModel.getAbsences());
-        studentAlt.setDepartmentId(studentAltModel.getDepartmentId());
-        studentAlt.setStatus(studentAltModel.getStatus());
-
         try {
-            inMemoryStudentAltService.updateStudentAlt(studentAlt, id.longValue());
+            inMemoryStudentAltService.updateStudentAlt(studentAlt, id);
         } catch (ResourceNotFoundException e) {
             // Display error message (somehow)
         }
@@ -87,27 +68,9 @@ public class InMemoryStudentAltBackingBean extends StudentAltBackingBean {
 
     public void deleteStudentAlt() {
         try {
-            inMemoryStudentAltService.deleteStudentAlt(studentAltToDeleteId);
+            inMemoryStudentAltService.deleteStudentAlt(deleteFormStudentAltId);
         } catch (ResourceNotFoundException e) {
             // Display error message (somehow)
         }
-    }
-
-    public void resetFetchByIdForm() {
-        studentsAltFilteredList = new ArrayList<>();
-        studentAltId = null;
-    }
-
-    public void resetSaveForm() {
-        resetStudentAltModel(studentAltToSaveModel);
-    }
-
-    public void resetUpdateForm() {
-        studentAltToUpdateId = null;
-        resetStudentAltModel(studentAltToUpdateModel);
-    }
-
-    public void resetDeleteForm() {
-        studentAltToDeleteId = null;
     }
 }
