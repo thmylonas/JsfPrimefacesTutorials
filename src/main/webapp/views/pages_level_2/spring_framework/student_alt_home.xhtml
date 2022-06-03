@@ -80,7 +80,7 @@
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_alt_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{studentAltBackingBean.resetFetchByIdForm()}"/>
+                                        listener="#{studentAltBackingBean.generalStudentAltBackingBean.resetFetchByIdForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
@@ -113,7 +113,7 @@
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_alt_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{studentAltBackingBean.resetSaveForm()}"/>
+                                        listener="#{studentAltBackingBean.generalStudentAltBackingBean.resetSaveForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
@@ -143,7 +143,7 @@
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_alt_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{studentAltBackingBean.resetUpdateForm()}"/>
+                                        listener="#{studentAltBackingBean.generalStudentAltBackingBean.resetUpdateForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
@@ -170,7 +170,7 @@
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_alt_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{studentAltBackingBean.resetDeleteForm()}"/>
+                                        listener="#{studentAltBackingBean.generalStudentAltBackingBean.resetDeleteForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
