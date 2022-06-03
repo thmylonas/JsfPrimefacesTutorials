@@ -1,11 +1,12 @@
-package com.thomasmylonas.my_spring_hibernate_jsf_web_app.data_access_layer.repositories;
+package com.thomasmylonas.my_spring_hibernate_jsf_web_app._alt_copies_not_used._alt._alt_repositories;
 
 import javax.persistence.EntityManager;
 
 /**
  * Interface for generic CRUD operations on a repository for a specific type
  */
-public interface GenericJpaRepository<T, ID> {
+@Deprecated
+public interface _alt_GenericJpaRepository<T, ID> {
 
     /**
      * Returns a reference to the entity with the given identifier. Depending on how the JPA persistence provider is
@@ -22,8 +23,8 @@ public interface GenericJpaRepository<T, ID> {
     /**
      * Returns all instances of the type with the given IDs.
      *
-     * @param idsList
-     * @return
+     * @param idsList *************************************
+     * @return ********************************************
      */
     Iterable<T> findAllById(Iterable<ID> idsList);
 
@@ -77,7 +78,7 @@ public interface GenericJpaRepository<T, ID> {
     /**
      * Deletes a given entity.
      *
-     * @param entity
+     * @param entity The entity to be deleted
      * @throws IllegalArgumentException in case the given entity is {@literal null}.
      */
     void delete(T entity);
@@ -90,7 +91,7 @@ public interface GenericJpaRepository<T, ID> {
     /**
      * Deletes the given entities.
      *
-     * @param entities
+     * @param entities The entities to be deleted
      * @throws IllegalArgumentException in case the given {@link Iterable} is {@literal null}.
      */
     void deleteAllGiven(Iterable<? extends T> entities);
