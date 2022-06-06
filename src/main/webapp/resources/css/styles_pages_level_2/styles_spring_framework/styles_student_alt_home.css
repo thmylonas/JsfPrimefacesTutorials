@@ -1,0 +1,59 @@
+.select_datasource {
+    background-color: #dcdcfc;
+    border: 1px solid var(--deep_pink1);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px var(--deep_pink1);
+    width: fit-content;
+    padding: 10px 18px;
+    margin-bottom: 35px;
+}
+
+.display_api_forms {
+    display: block;
+}
+
+.not_display_api_forms {
+    display: none;
+}
+
+.data_insert_form {
+    border: 1px solid var(--deep_pink1);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #dcdcfc;
+    width: fit-content;
+    padding: 10px 40px;
+}
+
+.data_insert_form label {
+    font-weight: normal !important;
+    float: right;
+}
+
+.insert_data, .student_alt_reset_btn {
+    margin-left: 10px !important;
+}
+
+.select_one_menu_input_field {
+    margin-left: 18px !important;
+}
+
+/* table_students_alt_list */
+
+.table_students_alt_list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.table_students_alt_list > div {
+    color: blue;
+    font-style: italic;
+}
+
+.table_students_alt_list thead th {
+    color: blue !important;
+    font-style: italic !important;
+}
+
+.table_students_alt_list tbody {
+    font-weight: 100 !important;
+}

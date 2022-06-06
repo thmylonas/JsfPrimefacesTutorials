@@ -1,4 +1,4 @@
-package com.thomasmylonas.my_spring_hibernate_jsf_web_app.controllers._base;
+package com.thomasmylonas.my_spring_hibernate_jsf_web_app.servlet_dispatcher_web_components.controllers._base;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

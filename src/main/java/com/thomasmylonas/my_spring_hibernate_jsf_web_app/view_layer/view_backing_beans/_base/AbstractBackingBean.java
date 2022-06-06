@@ -15,6 +15,13 @@ public abstract class AbstractBackingBean implements Serializable {
     // Constants of colors
     protected final String COLOR_BLUE = getPropertyValueFromProperties(PROPERTIES_FILE_1_DIR, "color.blue", "The 'color.blue' is not found!");
     protected final String COLOR_DEEP_PINK = getPropertyValueFromProperties(PROPERTIES_FILE_1_DIR, "color.deep_pink", "The 'color.deep_pink' is not found!");
+    // Constants of styling
+    protected final String SPAN_OPEN_LEFT_STYLE = "<span style=\"";
+    protected final String SPAN_OPEN_RIGHT_STYLE = "\">";
+    protected final String SPAN_CLOSE = "</span>";
+    protected final String ATTR_COLON = "; ";
+    protected final String COLOR_ATTR = "color:";
+    protected final String FONT_WEIGHT_ATTR = "font-weight:";
 
     protected String getPropertyValueFromProperties(@SuppressWarnings("all") String propertiesPath, String propertyName,
                                                     @SuppressWarnings("all") String errorMessage) {
@@ -27,5 +34,10 @@ public abstract class AbstractBackingBean implements Serializable {
                     " (because 'HelperClass::getPropertyValueFromProperties' throws 'IOException') @@@");
         }
         return propertyValue;
+    }
+
+    protected String highlightingSpan(String spanText, String color, String weight) {
+        return SPAN_OPEN_LEFT_STYLE + COLOR_ATTR + color + ATTR_COLON + FONT_WEIGHT_ATTR + weight + SPAN_OPEN_RIGHT_STYLE +
+                spanText + SPAN_CLOSE;
     }
 }

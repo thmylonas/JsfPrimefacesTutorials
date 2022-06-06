@@ -26,6 +26,7 @@ public abstract class AbstractViewsFilter implements Filter {
     private final String SPECIAL_LAST_URI_PART = "home";
 
     protected final String MAIN_PAGES_LEVEL_1_DIR = "/pages_level_1/";
+    protected final String MAIN_SPRING_FRAMEWORK_DIR = "/pages_level_2/spring_framework/";
     protected final String MAIN_JSF_DIR = "/pages_level_2/jsf/";
     protected final String MAIN_PRIMEFACES_DIR = "/pages_level_2/primefaces/";
     protected final String MAIN_JSF_H_TAGLIB_DIR = "/pages_level_2/jsf/jsf_h_taglib/";

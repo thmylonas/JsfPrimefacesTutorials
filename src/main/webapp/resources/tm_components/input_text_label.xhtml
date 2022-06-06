@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+    <ui:composition>
+
+        <cc:interface>
+            <cc:attribute name="input_value" type="java.lang.String" required="true"
+                          shortDescription="The value of the input_text_label"/>
+            <cc:attribute name="label" type="java.lang.String" required="false"
+                          shortDescription="The label of the input_text_label"/>
+            <cc:attribute name="placeholder" type="java.lang.String" required="false"
+                          shortDescription="The placeholder of the input_text_label"/>
+            <cc:attribute name="max_length" type="java.lang.Integer" required="false"
+                          shortDescription="The maxlength of the input_text_label"/>
+            <cc:attribute name="size" type="java.lang.Integer" required="false"
+                          shortDescription="The size of the input_text_label"/>
+            <cc:attribute name="style_class" type="java.lang.String" required="false"
+                          shortDescription="The styleClass of the input_text_label"/>
+        </cc:interface>
+
+        <cc:implementation>
+
+            <div class="ui-g">
+                <div class="ui-g-6">
+                    <p:outputLabel for="inputId" value="#{cc.attrs.label}"/>
+                    <p:watermark for="inputId" value="#{cc.attrs.placeholder}"/>
+                </div>
+                <div class="ui-g-6">
+                    <p:inputText id="inputId" value="#{cc.attrs.input_value}"
+                                 maxlength="#{cc.attrs.max_length}" size="#{cc.attrs.size}"
+                                 styleClass="#{cc.attrs.style_class}"/>
+                </div>
+            </div>
+
+        </cc:implementation>
+
+    </ui:composition>
+
+</h:body>
+</html>
