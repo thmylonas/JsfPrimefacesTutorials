@@ -622,3 +622,11 @@ public class RootConfig {}
 3. Be careful, the "@WebFilter" is not a Spring bean, and is not in the "Spring Container". It is a Web Container"'s (Tomcat) object
 
 ========================================================================================================================
+
+What is the situation in the StudentAlt API
+----------------------------------------------
+1. I moved and merged all the code (Controllers, Services, Repositories, Configuration)
+from the "EmployeePerformanceEvaluationAPI" project in this project, in a clean and right status
+2.
+
+========================================================================================================================
