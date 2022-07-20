@@ -29,7 +29,7 @@ public class StudentAltController extends AbstractController {
         this.dbStudentAltService = dbStudentAltService;
     }
 
-    // http://localhost:8080/MySpringHibernateJsfWebApp/api/student-alt/1
+    // http://localhost:8080/SpringMvcJsfPfWebApp/api/student-alt/1
     @RequestMapping(path = "{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<StudentAlt> getStudentAltById(@PathVariable(name = "id") Long id) {
@@ -38,21 +38,21 @@ public class StudentAltController extends AbstractController {
         return new ResponseEntity<>(studentAlt, HttpStatus.OK);
     }
 
-    // http://localhost:8080/MySpringHibernateJsfWebApp/api/student-alt/all-students-alt
+    // http://localhost:8080/SpringMvcJsfPfWebApp/api/student-alt/all-students-alt
     @RequestMapping(path = "all-students-alt", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<StudentAlt>> getAllStudentsAlt() {
         return new ResponseEntity<>(dbStudentAltService.getAllStudentsAlt(), HttpStatus.OK);
     }
 
-    // http://localhost:8080/MySpringHibernateJsfWebApp/api/student-alt
+    // http://localhost:8080/SpringMvcJsfPfWebApp/api/student-alt
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<StudentAlt> saveNewStudentAlt(@RequestBody StudentAlt studentAlt) {
         return new ResponseEntity<>(dbStudentAltService.saveStudentAlt(studentAlt), HttpStatus.CREATED);
     }
 
-    // http://localhost:8080/MySpringHibernateJsfWebApp/api/student-alt/1
+    // http://localhost:8080/SpringMvcJsfPfWebApp/api/student-alt/1
     @RequestMapping(path = "{id}", method = RequestMethod.PUT)
     @ResponseBody
     public ResponseEntity<StudentAlt> updateExistingStudentAlt(@RequestBody StudentAlt studentAlt,
@@ -60,7 +60,7 @@ public class StudentAltController extends AbstractController {
         return new ResponseEntity<>(dbStudentAltService.updateStudentAlt(studentAlt, id), HttpStatus.OK);
     }
 
-    // http://localhost:8080/MySpringHibernateJsfWebApp/api/student-alt/1
+    // http://localhost:8080/SpringMvcJsfPfWebApp/api/student-alt/1
     @RequestMapping(path = "{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public void deleteExistingStudentAlt(@PathVariable(name = "id") Long id) {

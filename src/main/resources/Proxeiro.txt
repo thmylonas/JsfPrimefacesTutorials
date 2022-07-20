@@ -532,7 +532,7 @@ xmlns:cc="http://xmlns.jcp.org/jsf/composite"
 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 xmlns:p="http://primefaces.org/ui"
 
-MySpringHibernateJsfWebApp_war_exploded -> MySpringHibernateJsfWebApp
+SpringMvcJsfPfWebApp_war_exploded -> SpringMvcJsfPfWebApp
 ----------------------------------------
 @PersistenceContext
 private EntityManager EM;
@@ -561,10 +561,10 @@ How to add static CSS,JS files in the Spring MVC app (without Thymeleaf)
 ---------------------------------------------------------------------------
 <head>
     <!-- Stylesheets -->
-    <link href="/MySpringHibernateJsfWebApp/resources/css/styles_general/_styles_variables.css" rel="stylesheet"/>
-    <link href="/MySpringHibernateJsfWebApp/resources/css/styles_general/student_alt_home.css" rel="stylesheet"/>
+    <link href="/SpringMvcJsfPfWebApp/resources/css/styles_general/_styles_variables.css" rel="stylesheet"/>
+    <link href="/SpringMvcJsfPfWebApp/resources/css/styles_general/student_alt_home.css" rel="stylesheet"/>
     <!-- Stylesheets for Bootstrap -->
-    <link href="/MySpringHibernateJsfWebApp/resources/css/boostrap_css_libs/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/SpringMvcJsfPfWebApp/resources/css/boostrap_css_libs/bootstrap.min.css" rel="stylesheet"/>
 </head>
 
 public class WebConfig implements WebMvcConfigurer {
