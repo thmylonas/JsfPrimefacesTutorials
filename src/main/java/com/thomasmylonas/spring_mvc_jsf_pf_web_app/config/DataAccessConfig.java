@@ -18,6 +18,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.Properties;
 
@@ -28,6 +29,7 @@ import java.util.Properties;
         }
 )
 @EnableJpaRepositories(basePackages = "com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer")
+@EnableTransactionManagement
 public class DataAccessConfig {
 
     private final Logger LOGGER = LogManager.getLogger(getClass().getName());
