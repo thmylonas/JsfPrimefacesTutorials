@@ -1,6 +1,6 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app._tutorial._spring_security._spring_security_config;
 
-/*import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -23,23 +23,23 @@ import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.openid.OpenIDAuthenticationToken;
 
 import javax.sql.DataSource;
-import java.util.List;*/
+import java.util.List;
 
 /**
  * From the "SpringSecurity v5.7.1 and after" the following code is "Deprecated"
  */
-//@Configuration
-//@EnableWebSecurity // The "@EnableWebMvcSecurity" is deprecated
-//@ComponentScan(basePackages = {"com.thomasmylonas.spring_mvc_jsf_pf_web_app"})
-//@Deprecated
-public class SecurityConfigDeprecated /*extends WebSecurityConfigurerAdapter*/ {
+@Configuration
+@EnableWebSecurity // The "@EnableWebMvcSecurity" is deprecated
+@ComponentScan(basePackages = {"com.thomasmylonas.spring_mvc_jsf_pf_web_app"})
+@Deprecated
+public class SecurityConfigDeprecated extends WebSecurityConfigurerAdapter {
 
 	/*
 	This configuration, without overriding any of the "configure()" methods,
 	will lock down the application so tightly that nobody can get in!
 	*/
 
-    /*@Autowired
+    @Autowired
     protected DataSource dataSource;
 
     @Bean(name = "pbkdf2PasswordEncoder")
@@ -50,7 +50,7 @@ public class SecurityConfigDeprecated /*extends WebSecurityConfigurerAdapter*/ {
     @Bean(name = "bCryptPasswordEncoder")
     public PasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
-    }*/
+    }
 
     /*
     Spring's default queries for "jdbcAuthentication"
@@ -77,10 +77,10 @@ public class SecurityConfigDeprecated /*extends WebSecurityConfigurerAdapter*/ {
      * 1. creates the "springSecurityFilterChain" and
      * 2. can be used to create other FilterChainProxy beans.
      */
-    /*@Override
+    @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/images/**", "/js/**", "/webjars/**");
-    }*/
+    }
 
     /**
      * Implement this method to configure how requests are secured by interceptors
@@ -88,7 +88,7 @@ public class SecurityConfigDeprecated /*extends WebSecurityConfigurerAdapter*/ {
      * @param http The "HttpSecurity"
      * @throws Exception An Exception
      */
-    /*@Override
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         // Default implementation
@@ -157,7 +157,7 @@ public class SecurityConfigDeprecated /*extends WebSecurityConfigurerAdapter*/ {
         // Other implementations
         http.authorizeRequests().antMatchers("/**").hasRole("USER").and().formLogin();
         http.authorizeRequests().antMatchers("/**").hasRole("USER").and().openidLogin().permitAll();
-    }*/
+    }
 
     /**
      * Implement this method to configure user-details services
@@ -165,7 +165,7 @@ public class SecurityConfigDeprecated /*extends WebSecurityConfigurerAdapter*/ {
      * @param auth The "AuthenticationManagerBuilder"
      * @throws Exception An Exception
      */
-    /*@Override
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         // InMemoryAuthentication
@@ -185,30 +185,30 @@ public class SecurityConfigDeprecated /*extends WebSecurityConfigurerAdapter*/ {
         auth
                 .jdbcAuthentication() // JdbcUserDetailsManagerConfigurer<AuthenticationManagerBuilder>
                 .dataSource(dataSource)
-                /-
+                /*
                 Set Schema/DDL scripts.
                 If the following is not set, the configuration will be based on the default queries:
                 - JdbcDaoImpl.DEF_USERS_BY_USERNAME_QUERY,
                 - JdbcDaoImpl.DEF_AUTHORITIES_BY_USERNAME_QUERY,
                 - JdbcDaoImpl.DEF_GROUP_AUTHORITIES_BY_USERNAME_QUERY
-                -/
+                */
                 .usersByUsernameQuery("select username, password, true " +
                         "from Spitter where username=?")
                 .authoritiesByUsernameQuery("select username, 'ROLE_USER' " +
                         "from Spitter where username=?")
                 .groupAuthoritiesByUsername("query_string")
                 .passwordEncoder(bCryptPasswordEncoder());
-    }*/
+    }
 
     /*
     Other methods
     */
-    /*public static class AutoProvisioningUserDetailsService implements AuthenticationUserDetailsService<OpenIDAuthenticationToken> {
+    public static class AutoProvisioningUserDetailsService implements AuthenticationUserDetailsService<OpenIDAuthenticationToken> {
         public UserDetails loadUserDetails(OpenIDAuthenticationToken token) throws UsernameNotFoundException {
             List<GrantedAuthority> authorityList = AuthorityUtils.createAuthorityList("ROLE_USER");
             return new User(token.getName(), "", authorityList);
         }
-    }*/
+    }
 }
 
 /*

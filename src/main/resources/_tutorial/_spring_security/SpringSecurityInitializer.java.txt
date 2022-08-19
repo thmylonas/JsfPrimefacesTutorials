@@ -1,6 +1,6 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app._tutorial._spring_security;
 
-//import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
 /**
  * Site: https://howtodoinjava.com/spring5/security/security-java-config-enablewebsecurity-example
@@ -24,6 +24,6 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app._tutorial._spring_security;
  * <p>
  * This code can be implemented with XML-config: "web.xml" - "org.springframework.web.filter.DelegatingFilterProxy"
  */
-public class SpringSecurityInitializer /*extends AbstractSecurityWebApplicationInitializer*/ {
+public class SpringSecurityInitializer extends AbstractSecurityWebApplicationInitializer {
     // No code needed
 }

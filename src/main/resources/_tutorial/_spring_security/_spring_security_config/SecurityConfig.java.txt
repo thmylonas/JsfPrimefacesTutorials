@@ -1,6 +1,6 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app._tutorial._spring_security._spring_security_config;
 
-/*import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,15 +13,15 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
-import org.springframework.security.web.SecurityFilterChain;*/
+import org.springframework.security.web.SecurityFilterChain;
 
-//@Configuration
-//@EnableWebSecurity
-//@ComponentScan(basePackages = {"com.thomasmylonas.spring_mvc_jsf_pf_web_app"})
+@Configuration
+@EnableWebSecurity
+@ComponentScan(basePackages = {"com.thomasmylonas.spring_mvc_jsf_pf_web_app"})
 public class SecurityConfig extends SecurityConfigDeprecated {
 
-    /*@Autowired
-    private PasswordEncoder bCryptPasswordEncoder;*/
+    @Autowired
+    private PasswordEncoder bCryptPasswordEncoder;
 
     /**
      * This bean replaces the deprecated method:
@@ -33,19 +33,17 @@ public class SecurityConfig extends SecurityConfigDeprecated {
      *
      * @return The "WebSecurityCustomizer"
      */
-    /*@Bean
+    @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
 
-        /-
-        return new WebSecurityCustomizer() {
+        /*return new WebSecurityCustomizer() {
             @Override
             public void customize(WebSecurity web) {
                 web.ignoring().antMatchers("/images/**", "/js/**", "/webjars/**");
             }
-        };
-        -/
+        };*/
         return (web) -> web.ignoring().antMatchers("/images/**", "/js/**", "/webjars/**");
-    }*/
+    }
 
     /**
      * This bean replaces the deprecated method:
@@ -55,7 +53,7 @@ public class SecurityConfig extends SecurityConfigDeprecated {
      * @return The "SecurityFilterChain"
      * @throws Exception An Exception
      */
-    /*@Bean
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         // Default implementation
@@ -126,7 +124,7 @@ public class SecurityConfig extends SecurityConfigDeprecated {
         http.authorizeRequests().antMatchers("/**").hasRole("USER").and().openidLogin().permitAll();
 
         return http.build();
-    }*/
+    }
 
     /**
      * InMemoryAuthentication: Enable an in-memory user store
@@ -136,7 +134,7 @@ public class SecurityConfig extends SecurityConfigDeprecated {
      *
      * @return The "InMemoryUserDetailsManager"
      */
-    /*@Bean
+    @Bean
     public InMemoryUserDetailsManager userDetailsService() {
 
         InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager();
@@ -156,7 +154,7 @@ public class SecurityConfig extends SecurityConfigDeprecated {
                 .build());
 
         return inMemoryUserDetailsManager;
-    }*/
+    }
 
     /**
      * JdbcAuthentication
@@ -166,29 +164,29 @@ public class SecurityConfig extends SecurityConfigDeprecated {
      *
      * @return The "JdbcUserDetailsManager"
      */
-    /*@Bean
+    @Bean
     public JdbcUserDetailsManager userDetailsService2() {
 
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(); // new JdbcUserDetailsManager(dataSource);
 
         jdbcUserDetailsManager.setDataSource(dataSource);
 
-        /-
+        /*
         Set Schema/DDL scripts.
         If the following is not set, the configuration will be based on the default queries:
         - JdbcDaoImpl.DEF_USERS_BY_USERNAME_QUERY,
         - JdbcDaoImpl.DEF_AUTHORITIES_BY_USERNAME_QUERY,
         - JdbcDaoImpl.DEF_GROUP_AUTHORITIES_BY_USERNAME_QUERY
-        -/
+        */
         jdbcUserDetailsManager.setUsersByUsernameQuery("select username, password, true " +
                 "from Spitter where username=?");
         jdbcUserDetailsManager.setAuthoritiesByUsernameQuery("select username, 'ROLE_USER' " +
                 "from Spitter where username=?");
         jdbcUserDetailsManager.setGroupAuthoritiesByUsernameQuery("query_string");
 
-        /-
+        /*
         Create users
-        -/
+        */
         jdbcUserDetailsManager.createUser(User.withUsername("user")
                 .password(bCryptPasswordEncoder.encode("password"))
                 .roles("USER").authorities("ROLE_USER")
@@ -199,5 +197,5 @@ public class SecurityConfig extends SecurityConfigDeprecated {
                 .build());
 
         return jdbcUserDetailsManager;
-    }*/
+    }
 }
