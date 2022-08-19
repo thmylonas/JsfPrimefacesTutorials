@@ -1,4 +1,4 @@
-package com.thomasmylonas.spring_mvc_jsf_pf_web_app._spring_security._spring_security_config;
+package com.thomasmylonas.spring_mvc_jsf_pf_web_app._tutorial._spring_security._spring_security_config;
 
 /*import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
