@@ -14,7 +14,7 @@ import java.io.IOException;
                 "/facelets/jsf-tricks-others/*"
         }
 )
-public class JsfTicksOthersFilter extends AbstractViewsFilter {
+public class JsfTricksOthersFilter extends AbstractViewsFilter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
