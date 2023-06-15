@@ -1,58 +1,4 @@
 <dependencies>
-
-    <!--
-    com.oracle.ojdbc8
-    This dependency "com.oracle, ojdbc8" has to be installed manually using the command:
-    "mvn install:install-file -Dfile=C:\ojdbc8.jar -DgroupId=com.oracle -DartifactId=ojdbc8 -Dversion=19.3 -Dpackaging=jar"
-    -->
-    <dependency>
-        <groupId>com.oracle</groupId>
-        <artifactId>ojdbc8</artifactId>
-        <version>19.3</version>
-    </dependency>
-
-    <!-- org.apache.tomcat: tomcat-catalina, tomcat-dbcp, javax -->
-    <dependency>
-        <groupId>org.apache.tomcat</groupId>
-        <artifactId>tomcat-catalina</artifactId>
-        <version>9.0.30</version>
-    </dependency>
-    <dependency>
-        <groupId>org.apache.tomcat</groupId>
-        <artifactId>tomcat-dbcp</artifactId>
-        <version>9.0.30</version>
-    </dependency>
-    <dependency>
-        <groupId>directory-naming</groupId>
-        <artifactId>naming-java</artifactId>
-        <version>0.8</version>
-        <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>javax.inject</groupId>
-        <artifactId>javax.inject</artifactId>
-        <version>1</version>
-    </dependency>
-    <dependency>
-        <groupId>javax.jms</groupId>
-        <artifactId>javax.jms-api</artifactId>
-        <version>2.0.1</version>
-        <scope>provided</scope>
-    </dependency>
-    <dependency>
-        <groupId>javax.mvc</groupId>
-        <artifactId>javax.mvc-api</artifactId>
-        <version>1.0.0</version>
-    </dependency>
-
-    <!-- javax.servlet -->
-    <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>javax.servlet-api</artifactId>
-        <version>4.0.1</version>
-        <scope>provided</scope>
-    </dependency>
-
     <!-- org.springframework -->
     <dependency>
         <groupId>org.springframework</groupId>
@@ -135,6 +81,48 @@
         <version>2.6.3</version>
     </dependency>
 
+    <!-- org.apache.tomcat: tomcat-catalina, tomcat-dbcp, javax -->
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-catalina</artifactId>
+        <version>9.0.30</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-dbcp</artifactId>
+        <version>9.0.30</version>
+    </dependency>
+    <dependency>
+        <groupId>directory-naming</groupId>
+        <artifactId>naming-java</artifactId>
+        <version>0.8</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>javax.inject</groupId>
+        <artifactId>javax.inject</artifactId>
+        <version>1</version>
+    </dependency>
+    <dependency>
+        <groupId>javax.jms</groupId>
+        <artifactId>javax.jms-api</artifactId>
+        <version>2.0.1</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>javax.mvc</groupId>
+        <artifactId>javax.mvc-api</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+
+    <!-- javax.servlet -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.1</version>
+        <scope>provided</scope>
+    </dependency>
+
     <!-- jstl Library -->
     <dependency>
         <groupId>javax.servlet</groupId>
@@ -203,7 +191,17 @@
         <version>7.0.1.Final</version> <!-- 6.1.1.Final -->
     </dependency>
 
-    <!-- Mysql Connector -->
+    <!-- Databases' drivers/connectors -->
+    <!--
+    com.oracle.ojdbc8
+    This dependency "com.oracle, ojdbc8" has to be installed manually using the command:
+    "mvn install:install-file -Dfile=C:\ojdbc8.jar -DgroupId=com.oracle -DartifactId=ojdbc8 -Dversion=19.3 -Dpackaging=jar"
+    -->
+    <dependency>
+        <groupId>com.oracle</groupId>
+        <artifactId>ojdbc8</artifactId>
+        <version>19.3</version>
+    </dependency>
     <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
