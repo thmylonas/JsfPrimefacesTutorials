@@ -81,6 +81,18 @@
         <version>2.6.3</version>
     </dependency>
 
+    <!-- org.hibernate -->
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>5.4.3.Final</version> <!-- The latest version: "5.6.1.Final", fails to start the WebApp -->
+    </dependency>
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>7.0.1.Final</version> <!-- 6.1.1.Final -->
+    </dependency>
+
     <!-- org.apache.tomcat (tomcat-catalina, tomcat-dbcp) -->
     <dependency>
         <groupId>org.apache.tomcat</groupId>
@@ -139,23 +151,6 @@
         <scope>provided</scope>
     </dependency>
 
-    <!-- com.sun.faces/org.primefaces -->
-    <dependency>
-        <groupId>com.sun.faces</groupId>
-        <artifactId>jsf-api</artifactId>
-        <version>2.2.20</version>
-    </dependency>
-    <dependency>
-        <groupId>com.sun.faces</groupId>
-        <artifactId>jsf-impl</artifactId>
-        <version>2.2.20</version>
-    </dependency>
-    <dependency>
-        <groupId>org.primefaces</groupId>
-        <artifactId>primefaces</artifactId>
-        <version>8.0</version>
-    </dependency>
-
     <!--
     org.thymeleaf/thymeleaf, org.thymeleaf/thymeleaf-spring5, nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect,
     thymeleaf-extras-springsecurity5, thymeleaf-spring-environment-dialect
@@ -186,16 +181,21 @@
         <version>1.0.1</version>
     </dependency>
 
-    <!-- org.hibernate -->
+    <!-- com.sun.faces/org.primefaces -->
     <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-core</artifactId>
-        <version>5.4.3.Final</version> <!-- The latest version: "5.6.1.Final", fails to start the WebApp -->
+        <groupId>com.sun.faces</groupId>
+        <artifactId>jsf-api</artifactId>
+        <version>2.2.20</version>
     </dependency>
     <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-validator</artifactId>
-        <version>7.0.1.Final</version> <!-- 6.1.1.Final -->
+        <groupId>com.sun.faces</groupId>
+        <artifactId>jsf-impl</artifactId>
+        <version>2.2.20</version>
+    </dependency>
+    <dependency>
+        <groupId>org.primefaces</groupId>
+        <artifactId>primefaces</artifactId>
+        <version>8.0</version>
     </dependency>
 
     <!-- Databases' drivers/connectors -->
