@@ -81,7 +81,19 @@
         <version>2.6.3</version>
     </dependency>
 
-    <!-- javax, org.apache.tomcat (tomcat-catalina, tomcat-dbcp) -->
+    <!-- org.apache.tomcat (tomcat-catalina, tomcat-dbcp) -->
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-catalina</artifactId>
+        <version>9.0.30</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-dbcp</artifactId>
+        <version>9.0.30</version>
+    </dependency>
+
+    <!-- javax -->
     <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>javax.servlet-api</artifactId>
@@ -97,16 +109,6 @@
         <groupId>javax.el</groupId>
         <artifactId>javax.el-api</artifactId>
         <version>3.0.1-b06</version>
-    </dependency>
-    <dependency>
-        <groupId>org.apache.tomcat</groupId>
-        <artifactId>tomcat-catalina</artifactId>
-        <version>9.0.30</version>
-    </dependency>
-    <dependency>
-        <groupId>org.apache.tomcat</groupId>
-        <artifactId>tomcat-dbcp</artifactId>
-        <version>9.0.30</version>
     </dependency>
     <dependency>
         <groupId>directory-naming</groupId>
