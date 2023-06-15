@@ -203,7 +203,7 @@
         <version>7.0.1.Final</version> <!-- 6.1.1.Final -->
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <!-- Mysql Connector -->
     <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
@@ -289,4 +289,22 @@
         <version>3.0.1-b06</version>
     </dependency>
 
+    <!-- Others -->
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-dbcp2</artifactId>
+        <version>2.1.1</version>
+    </dependency>
+    <dependency>
+        <groupId>javax</groupId>
+        <artifactId>javaee-web-api</artifactId>
+        <version>7.0</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>unknown.binary</groupId>
+        <artifactId>hibernate-jpamodelgen-4.3.1.Final</artifactId>
+        <version>SNAPSHOT</version>
+        <scope>provided</scope>
+    </dependency>
 </dependencies>
