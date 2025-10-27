@@ -2,7 +2,6 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services;
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.primefaces_models.Car;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services._base.AbstractService;
-import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.UUID;
 
 //@javax.inject.Named("carService")
 //@javax.faces.bean.ApplicationScoped
-@Service(value = "carService")
+//@Service(value = "carService")
 public class CarService extends AbstractService implements Serializable {
 
     private final String[] colors = new String[]{"Black", "White", "Green", "Red", "Blue", "Orange",

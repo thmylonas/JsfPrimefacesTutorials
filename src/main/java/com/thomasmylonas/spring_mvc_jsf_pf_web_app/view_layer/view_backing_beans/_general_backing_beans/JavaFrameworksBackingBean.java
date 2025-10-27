@@ -2,17 +2,13 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models._general_models.JavaFrameworksModel;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans._base.AbstractBackingBean;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component(value = "javaFrameworksBackingBean")
-@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+//@Component(value = "javaFrameworksBackingBean")
+//@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class JavaFrameworksBackingBean extends AbstractBackingBean {
 
     private List<JavaFrameworksModel> javaFrameworks;

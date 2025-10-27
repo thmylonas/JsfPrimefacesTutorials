@@ -1,11 +1,10 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.primefaces_backing_beans;
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.primefaces_backing_beans._base.AbstractPrimefacesBackingBean;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-@Component(value = "primefacesBackingBean")
+//@Component(value = "primefacesBackingBean")
 public class PrimefacesBackingBean extends AbstractPrimefacesBackingBean {
 
     @PostConstruct

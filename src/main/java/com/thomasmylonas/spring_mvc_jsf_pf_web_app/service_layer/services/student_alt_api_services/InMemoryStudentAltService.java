@@ -3,16 +3,15 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.stude
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.StudentAlt;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.enums.Status;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.helpers.HelperClass;
-import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.exceptions.ResourceNotFoundException;
+import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.exceptions.ResourceNotFoundException;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services._base.AbstractStudentAltService;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-@Service(value = "inMemoryStudentAltService")
+//@Service(value = "inMemoryStudentAltService")
 public class InMemoryStudentAltService extends AbstractStudentAltService {
 
     private List<StudentAlt> inMemoryStudentsAltList;

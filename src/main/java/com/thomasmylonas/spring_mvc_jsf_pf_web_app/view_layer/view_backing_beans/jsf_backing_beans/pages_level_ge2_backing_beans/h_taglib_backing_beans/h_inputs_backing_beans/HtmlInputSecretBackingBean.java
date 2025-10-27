@@ -2,13 +2,12 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_models.ComponentsAttribute;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.jsf_backing_beans.pages_level_ge2_backing_beans.h_taglib_backing_beans.h_inputs_backing_beans._base.AbstractHtmlInputsBackingBean;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component(value = "htmlInputSecretBackingBean")
+//@Component(value = "htmlInputSecretBackingBean")
 public class HtmlInputSecretBackingBean extends AbstractHtmlInputsBackingBean {
 
     private List<ComponentsAttribute> inputSecretAttributesList;

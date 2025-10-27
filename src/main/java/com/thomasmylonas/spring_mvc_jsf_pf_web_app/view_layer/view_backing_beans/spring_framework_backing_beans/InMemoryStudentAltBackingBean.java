@@ -2,21 +2,19 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.StudentAlt;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.helpers.HelperClass;
-import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.exceptions.ResourceNotFoundException;
+import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.exceptions.ResourceNotFoundException;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services.StudentAltService;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.spring_framework_backing_beans._base.StudentAltBackingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component(value = "inMemoryStudentAltBackingBean")
+//@Component(value = "inMemoryStudentAltBackingBean")
 public class InMemoryStudentAltBackingBean extends StudentAltBackingBean {
 
     private final StudentAltService inMemoryStudentAltService;
 
-    @Autowired
+//    @Autowired
     public InMemoryStudentAltBackingBean(StudentAltService inMemoryStudentAltService) {
         this.inMemoryStudentAltService = inMemoryStudentAltService;
         studentsAltFilteredList = new ArrayList<>();

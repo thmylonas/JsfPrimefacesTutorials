@@ -2,15 +2,13 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.CommonHtmlAttributesService;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.jsf_backing_beans.JsfBackingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-@Component(value = "htmlTaglibBackingBean")
+//@Component(value = "htmlTaglibBackingBean")
 public class HtmlTaglibBackingBean extends JsfBackingBean {
 
-    @Autowired
+//    @Autowired
     protected CommonHtmlAttributesService commonHtmlAttributesService;
 
     @PostConstruct

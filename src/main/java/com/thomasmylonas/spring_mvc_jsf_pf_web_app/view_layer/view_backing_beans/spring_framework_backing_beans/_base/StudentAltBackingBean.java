@@ -5,13 +5,11 @@ import com.thomasmylonas.spring_mvc_jsf_pf_web_app.helpers.HelperClass;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans._base.AbstractBackingBean;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.spring_framework_backing_beans.DbStudentAltBackingBean;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.spring_framework_backing_beans.InMemoryStudentAltBackingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component(value = "studentAltBackingBean")
+//@Component(value = "studentAltBackingBean")
 public class StudentAltBackingBean extends AbstractBackingBean {
 
     private String dataSource;
@@ -30,10 +28,10 @@ public class StudentAltBackingBean extends AbstractBackingBean {
 
     private StudentAltBackingBean generalStudentAltBackingBean;
 
-    @Autowired
+//    @Autowired
     private InMemoryStudentAltBackingBean inMemoryStudentAltBackingBean;
 
-    @Autowired
+//    @Autowired
     private DbStudentAltBackingBean dbStudentAltBackingBean;
 
     public String displayDataSource() {

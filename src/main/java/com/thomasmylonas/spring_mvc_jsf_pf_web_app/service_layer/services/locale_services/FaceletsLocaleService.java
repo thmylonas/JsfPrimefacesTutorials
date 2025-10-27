@@ -1,7 +1,6 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.locale_services;
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.locale_services._base.AbstractLocaleService;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -9,7 +8,7 @@ import javax.faces.event.ValueChangeEvent;
 import java.util.Locale;
 import java.util.Map;
 
-@Service(value = "faceletsLocaleService")
+//@Service(value = "faceletsLocaleService")
 public class FaceletsLocaleService extends AbstractLocaleService {
 
     /**

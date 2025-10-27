@@ -3,21 +3,16 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.primefaces_models.Car;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.CarService;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.primefaces_backing_beans.PrimefacesBackingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
 
-@Component(value = "sortingDataTableBackingBean")
-@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+//@Component(value = "sortingDataTableBackingBean")
+//@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class SortingDataTableBackingBean extends PrimefacesBackingBean {
 
     private List<Car> cars;
-    @Autowired
+//    @Autowired
     private CarService carService;
 
     @PostConstruct

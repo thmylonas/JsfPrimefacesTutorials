@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>Web Application with Spring MVC, Hibernate/JPA, JSF, Primefaces, Maven (no archetype)</name>
+    <name>Web Application with JSF, Primefaces, Hibernate/JPA, Maven (no archetype)</name>
     <url>http://localhost:8080/SpringMvcJsfPfWebApp</url>
 
     <properties>
@@ -31,11 +31,11 @@
         This dependency "com.oracle, ojdbc8" has to be installed manually using the command:
         "mvn install:install-file -Dfile=C:\ojdbc8.jar -DgroupId=com.oracle -DartifactId=ojdbc8 -Dversion=19.3 -Dpackaging=jar"
         -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.oracle</groupId>
-            <artifactId>ojdbc8</artifactId> <!-- ojdbc10 -->
+            <artifactId>ojdbc8</artifactId> &lt;!&ndash; ojdbc10 &ndash;&gt;
             <version>19.3</version>
-        </dependency>
+        </dependency>-->
 
         <!-- org.apache.tomcat: tomcat-catalina, tomcat-dbcp, javax -->
         <dependency>
@@ -69,7 +69,7 @@
         </dependency>
 
         <!-- org.springframework -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${springframework.version}</version>
@@ -118,7 +118,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <version>2.7.2</version>
-        </dependency>
+        </dependency>-->
 
         <!-- org.hibernate -->
         <dependency>
