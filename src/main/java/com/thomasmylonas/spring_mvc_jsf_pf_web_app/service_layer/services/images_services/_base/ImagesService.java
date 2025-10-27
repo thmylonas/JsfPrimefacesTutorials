@@ -4,11 +4,13 @@ import com.thomasmylonas.spring_mvc_jsf_pf_web_app.helpers.HelperClass;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer._enums.ImagesEnum;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services._base.AbstractService;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import java.util.Arrays;
 import java.util.List;
 
-//@Service(value = "imagesService")
-//@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+@ManagedBean
+@ViewScoped
 public class ImagesService extends AbstractService {
 
     protected final List<ImagesEnum> LIST_OF_IMAGES_ENUMS = Arrays.asList(ImagesEnum.values());
@@ -25,7 +27,6 @@ public class ImagesService extends AbstractService {
         return imagesEnum;
     }
 
-    @SuppressWarnings("unused")
     public ImagesEnum getImagesEnumForName(String imageName) {
         return ImagesEnum.getImagesEnumForName(imageName);
     }
