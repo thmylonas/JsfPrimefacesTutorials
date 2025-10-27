@@ -17,6 +17,11 @@ The "javax/javaee-api" dependency, contains the "javax.inject/javax.inject", so,
     <version>1</version>
 </dependency>
 
+- https://github.com/eclipse-ee4j/mojarra/issues/4264
+- https://coderanch.com/t/513343/java/ManagedBean-works-Named-doesn
+- https://jpguilleron.wordpress.com/2014/07/06/migrating-from-jsf-injection-to-cdi
+- https://stackoverflow.com/questions/24164019/jsf2-2-named-does-not-work
+
 "WEB-INF/beans.xml"
 
 <?xml version="1.0" encoding="UTF-8"?>
