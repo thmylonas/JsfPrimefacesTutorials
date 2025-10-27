@@ -10,11 +10,11 @@
         Web Application with Spring MVC, Hibernate/JPA, JSF, Primefaces, Maven (no archetype)
     </display-name>
 
-    <listener>
+    <!--<listener>
         <listener-class>
             org.springframework.web.context.request.RequestContextListener
         </listener-class>
-    </listener>
+    </listener>-->
 
     <!--
     ***************************** Initialization of FacesServlet *****************************
