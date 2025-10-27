@@ -1,11 +1,11 @@
-package com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.api_services.student_alt_api_services;
+package com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services;
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.StudentAlt;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.enums.Status;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.repositories.StudentAltRepository;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.helpers.HelperClass;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.exceptions.ResourceNotFoundException;
-import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.api_services.student_alt_api_services._base.AbstractStudentAltService;
+import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services._base.AbstractStudentAltService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
