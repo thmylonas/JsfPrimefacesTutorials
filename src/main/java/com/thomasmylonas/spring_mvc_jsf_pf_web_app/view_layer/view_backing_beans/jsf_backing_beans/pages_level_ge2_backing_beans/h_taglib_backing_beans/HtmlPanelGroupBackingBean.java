@@ -28,8 +28,15 @@ public class HtmlPanelGroupBackingBean extends HtmlTaglibBackingBean {
 
         // The globally common Components' attributes (Containing attributes: "id", "rendered", "styleClass", "binding" - Alternative attributes: "styleClass")
         panelGroupAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getGloballyCommonAttributesListWithFlags(
-                        new GloballyCommonAttributesFlags.Builder()
-                                .isIdAlt(false).isValueAlt(false).isRenderedAlt(false).isStyleClassAlt(true).isConverterAlt(false).isBindingAlt(false).build()),
+                        GloballyCommonAttributesFlags.builder()
+                                .idAlt(false)
+                                .valueAlt(false)
+                                .renderedAlt(false)
+                                .styleClassAlt(true)
+                                .converterAlt(false)
+                                .bindingAlt(false)
+                                .build()
+                ),
                 EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events

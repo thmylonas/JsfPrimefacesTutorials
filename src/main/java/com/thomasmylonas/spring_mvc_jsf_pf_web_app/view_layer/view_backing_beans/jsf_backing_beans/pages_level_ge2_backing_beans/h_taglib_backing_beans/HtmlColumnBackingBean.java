@@ -27,8 +27,15 @@ public class HtmlColumnBackingBean extends HtmlTaglibBackingBean {
 
         // The globally common Components' attributes (Containing attributes: "id", "rendered", "binding" - Alternative attributes: "id", "rendered", "binding")
         columnAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getGloballyCommonAttributesListWithFlags(
-                        new GloballyCommonAttributesFlags.Builder()
-                                .isIdAlt(true).isValueAlt(false).isRenderedAlt(true).isStyleClassAlt(false).isConverterAlt(false).isBindingAlt(true).build()),
+                        GloballyCommonAttributesFlags.builder()
+                                .idAlt(true)
+                                .valueAlt(false)
+                                .renderedAlt(true)
+                                .styleClassAlt(false)
+                                .converterAlt(false)
+                                .bindingAlt(true)
+                                .build()
+                ),
                 EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events

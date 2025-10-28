@@ -34,8 +34,16 @@ public class HtmlSelectBooleanCheckboxBackingBean extends AbstractHtmlSelectsBac
 
         // The globally common Components' attributes (Alternative attributes: "value", "converter")
         selectBooleanCheckboxAttributesList.addAll(commonHtmlAttributesService.getGloballyCommonAttributesListWithFlags(
-                new GloballyCommonAttributesFlags.Builder()
-                        .isIdAlt(false).isValueAlt(true).isRenderedAlt(false).isStyleClassAlt(false).isConverterAlt(true).isBindingAlt(false).build()));
+                        GloballyCommonAttributesFlags.builder()
+                                .idAlt(false)
+                                .valueAlt(true)
+                                .renderedAlt(false)
+                                .styleClassAlt(false)
+                                .converterAlt(true)
+                                .bindingAlt(false)
+                                .build()
+                )
+        );
 
         // The common "UIInput" Components' attributes
         List<String> globallyCommonNameAttributesList = commonHtmlAttributesService.getGloballyCommonAttributesList().stream().map(ComponentsAttribute::getName).collect(Collectors.toList());

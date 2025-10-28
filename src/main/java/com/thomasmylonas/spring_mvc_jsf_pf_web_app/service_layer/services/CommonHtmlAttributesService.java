@@ -114,32 +114,32 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
 
         globallyCommonAttributesList = new ArrayList<>();
 
-        if (flags.isIdAlt) { // Alternative "id" attribute value (The Description is different)
+        if (flags.idAlt()) { // Alternative "id" attribute value (The Description is different)
             globallyCommonAttributesList.add(new ComponentsAttribute("id", false, "No default value", "java.lang.String", "The component identifier for the associated component"));
         } else { // Normal "id" attribute value
             globallyCommonAttributesList.add(new ComponentsAttribute("id", false, "No default value", "java.lang.String", "The component identifier for this component. This value must be unique within the closest parent component that is a naming container"));
         }
-        if (flags.isValueAlt) { // Alternative "value" attribute value (The Type is different)
+        if (flags.valueAlt()) { // Alternative "value" attribute value (The Type is different)
             globallyCommonAttributesList.add(new ComponentsAttribute("value", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.Boolean)", "The current value of this component"));
         } else { // Normal "value" attribute value
             globallyCommonAttributesList.add(new ComponentsAttribute("value", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.Object)", "The current value of this component"));
         }
-        if (flags.isRenderedAlt) { // Alternative "rendered" attribute value (The Type is different / In the Description the rest is missing)
+        if (flags.renderedAlt()) { // Alternative "rendered" attribute value (The Type is different / In the Description the rest is missing)
             globallyCommonAttributesList.add(new ComponentsAttribute("rendered", false, "true", "javax.el.ValueExpression (must evaluate to java.lang.Boolean)", "Flag indicating whether or not this component should be rendered (during Render Response Phase), or processed on any subsequent form submit"));
         } else { // Normal "rendered" attribute value
             globallyCommonAttributesList.add(new ComponentsAttribute("rendered", false, "true", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating whether or not this component should be rendered (during Render Response Phase), or processed on any subsequent form submit. The default value for this property is true"));
         }
-        if (flags.isStyleClassAlt) { // Alternative "styleClass" attribute value (The Description is different in the word "attribute/property")
+        if (flags.styleClassAlt()) { // Alternative "styleClass" attribute value (The Description is different in the word "attribute/property")
             globallyCommonAttributesList.add(new ComponentsAttribute("styleClass", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Space-separated list of CSS style class(es) to be applied when this element is rendered. This value must be passed through as the 'class' property on generated markup"));
         } else { // Normal "styleClass" attribute value
             globallyCommonAttributesList.add(new ComponentsAttribute("styleClass", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Space-separated list of CSS style class(es) to be applied when this element is rendered. This value must be passed through as the 'class' attribute on generated markup"));
         }
-        if (flags.isConverterAlt) { // Alternative "converter" attribute value (In the Description the rest is missing)
+        if (flags.converterAlt()) { // Alternative "converter" attribute value (In the Description the rest is missing)
             globallyCommonAttributesList.add(new ComponentsAttribute("converter", false, "No default value", "javax.el.ValueExpression (must evaluate to javax.faces.convert.Converter)", "Converter instance registered with this component"));
         } else { // Normal "converter" attribute value
             globallyCommonAttributesList.add(new ComponentsAttribute("converter", false, "No default value", "javax.el.ValueExpression (must evaluate to javax.faces.convert.Converter)", "Converter instance registered with this component. As a convenience this attribute is also allowed to evaluate to a java.lang.String, which will be used in a call to Application.createConverter(String converterId) to create the converter instance"));
         }
-        if (flags.isBindingAlt) { // Alternative "binding" attribute value (The Description is different)
+        if (flags.bindingAlt()) { // Alternative "binding" attribute value (The Description is different)
             globallyCommonAttributesList.add(new ComponentsAttribute("binding", false, "No default value", "javax.el.ValueExpression (must evaluate to javax.faces.component.UIComponent)", "The value binding expression linking this component to a property in a backing bean"));
         } else { // Normal "binding" attribute value
             globallyCommonAttributesList.add(new ComponentsAttribute("binding", false, "No default value", "javax.el.ValueExpression (must evaluate to javax.faces.component.UIComponent)", "The ValueExpression linking this component to a property in a backing bean"));
@@ -331,13 +331,13 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
 
     public List<ComponentsAttribute> getGloballyCommonAttributesList() {
         return getGloballyCommonAttributesListWithFlags(
-                new GloballyCommonAttributesFlags.Builder()
-                        .isIdAlt(false)
-                        .isValueAlt(false)
-                        .isRenderedAlt(false)
-                        .isStyleClassAlt(false)
-                        .isConverterAlt(false)
-                        .isBindingAlt(false)
+                GloballyCommonAttributesFlags.builder()
+                        .idAlt(false)
+                        .valueAlt(false)
+                        .renderedAlt(false)
+                        .styleClassAlt(false)
+                        .converterAlt(false)
+                        .bindingAlt(false)
                         .build());
     }
 
