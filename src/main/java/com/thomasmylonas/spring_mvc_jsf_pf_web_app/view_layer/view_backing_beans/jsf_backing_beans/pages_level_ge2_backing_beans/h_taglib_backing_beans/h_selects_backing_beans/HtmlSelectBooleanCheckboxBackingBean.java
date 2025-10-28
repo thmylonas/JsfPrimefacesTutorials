@@ -7,11 +7,12 @@ import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_mode
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.jsf_backing_beans.pages_level_ge2_backing_beans.h_taglib_backing_beans.h_selects_backing_beans._base.AbstractHtmlSelectsBackingBean;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//@Component(value = "htmlSelectBooleanCheckboxBackingBean")
+@ManagedBean(name = "htmlSelectBooleanCheckboxBackingBean")
 public class HtmlSelectBooleanCheckboxBackingBean extends AbstractHtmlSelectsBackingBean {
 
     private List<ComponentsAttribute> selectBooleanCheckboxAttributesList;
