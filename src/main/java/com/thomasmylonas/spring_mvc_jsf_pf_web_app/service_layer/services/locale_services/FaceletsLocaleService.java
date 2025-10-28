@@ -3,12 +3,13 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.local
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.locale_services._base.AbstractLocaleService;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import java.util.Locale;
 import java.util.Map;
 
-//@Service(value = "faceletsLocaleService")
+@ManagedBean(name = "faceletsLocaleService")
 public class FaceletsLocaleService extends AbstractLocaleService {
 
     /**

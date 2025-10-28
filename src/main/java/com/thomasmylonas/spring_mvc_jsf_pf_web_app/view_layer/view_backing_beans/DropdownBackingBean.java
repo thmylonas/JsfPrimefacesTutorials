@@ -2,12 +2,13 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-//@Component
+@ManagedBean(name = "dropdownBackingBean")
 public class DropdownBackingBean implements Serializable {
 
     private final Map<String, Map<String, String>> data = new HashMap<>();

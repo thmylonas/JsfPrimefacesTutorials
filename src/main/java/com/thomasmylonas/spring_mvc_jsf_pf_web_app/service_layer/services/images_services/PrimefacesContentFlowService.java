@@ -4,10 +4,12 @@ import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer._enums.ImagesEn
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.images_services._base.ImagesService;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import java.util.List;
 
-//@Service(value = "primefacesContentFlowService")
-//@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+@ManagedBean(name = "primefacesContentFlowService")
+@ViewScoped
 public class PrimefacesContentFlowService extends ImagesService {
 
     private final Integer[] IMAGES_INDEXES_ARRAY = new Integer[]{1, 2, 0};
