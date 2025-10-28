@@ -1,23 +1,45 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.spring_framework_backing_beans;
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.Student;
+import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.repositories.StudentDao;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.helpers.HelperClass;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.exceptions.ResourceNotFoundException;
+import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services.DbStudentService;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services.StudentService;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.spring_framework_backing_beans._base.StudentBackingBean;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "dbStudentBackingBean")
 public class DbStudentBackingBean extends StudentBackingBean {
 
-    @ManagedProperty(value = "#{dbStudentService}")
-    private StudentService dbStudentService;
+    private final StudentService dbStudentService;
 
     public DbStudentBackingBean() {
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("StudentsPU_H2");
+        EntityManager em = null;
+
+        try {
+            em = emf.createEntityManager(); // IllegalStateException
+            StudentDao studentDao = new StudentDao(em);
+            this.dbStudentService = new DbStudentService(studentDao);
+        } catch (Exception e) {
+            throw new RuntimeException("Error creating EntityManager", e);
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+            // In the In-Memory H2-Database run cases, if "emf.close()", the tables/data in the H2-Database are deleted
+            LOGGER.warn("In the In-Memory H2-Database run cases, if 'emf.close()', the tables/data in the H2-Database are deleted");
+            //emf.close();
+        }
+
         studentsFilteredList = new ArrayList<>();
         saveFormStudent = new Student();
         updateFormStudent = new Student();

@@ -3,10 +3,9 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.helpers;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models._general_models.GenericArray;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
@@ -26,7 +25,7 @@ public abstract class HelperClass {
      * @return A boolean which checks if a String is "null" or "empty"
      */
     public static boolean isStringNullOrEmpty(String string) {
-        return string == null || string.equals("");
+        return string == null || string.isEmpty();
     }
 
     /**
@@ -155,10 +154,7 @@ public abstract class HelperClass {
                 filteredIndexesList.stream().map(list::get).collect(Collectors.toList());
     }
 
-    public static Date getDate(int year, int month, int day) {
-
-        Calendar cal = Calendar.getInstance();
-        cal.set(year, month, day); // cal.set(1972, Calendar.SEPTEMBER, 24);
-        return cal.getTime();
+    public static LocalDate getDate(int year, int month, int day) {
+        return LocalDate.of(year, month, day);
     }
 }

@@ -17,7 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity(name = "Student")
 @Table(name = "Students")
@@ -42,7 +42,7 @@ public class Student {
     private String firstName;
 
     @Column(name = "Date_Of_Birth")
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @Column(name = "Absences")
     private Integer absences;
