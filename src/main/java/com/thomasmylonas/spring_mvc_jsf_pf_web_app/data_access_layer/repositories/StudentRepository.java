@@ -1,5 +1,4 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.repositories;
 
-//@Repository(value = "studentAltRepository")
-public interface StudentAltRepository {
+public interface StudentRepository {
 }

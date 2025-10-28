@@ -15,44 +15,44 @@
         <cc:interface>
             <cc:attribute name="title" type="java.lang.String" required="false"
                           shortDescription="The title of the data_table"/>
-            <cc:attribute name="studentAltList" type="java.util.List" required="true"
-                          shortDescription="List of StudentAlt"/>
+            <cc:attribute name="studentList" type="java.util.List" required="true"
+                          shortDescription="List of Student"/>
             <cc:attribute name="style_class" type="java.lang.String" required="false"
-                          shortDescription="The styleClass of the student_alt_data_table"/>
+                          shortDescription="The styleClass of the student_data_table"/>
         </cc:interface>
 
         <cc:implementation>
 
-            <p:dataTable value="#{cc.attrs.studentAltList}" var="studentAlt" border="1" resizableColumns="true"
+            <p:dataTable value="#{cc.attrs.studentList}" var="student" border="1" resizableColumns="true"
                          styleClass="#{cc.attrs.style_class}">
                 <f:facet name="header">#{cc.attrs.title}</f:facet>
                 <p:column>
                     <f:facet name="header">ID</f:facet>
-                    #{studentAlt.id}
+                    #{student.id}
                 </p:column>
                 <p:column>
                     <f:facet name="header">LAST_NAME</f:facet>
-                    #{studentAlt.lastName}
+                    #{student.lastName}
                 </p:column>
                 <p:column>
                     <f:facet name="header">FIRST_NAME</f:facet>
-                    #{studentAlt.firstName}
+                    #{student.firstName}
                 </p:column>
                 <p:column>
                     <f:facet name="header">DATE_OF_BIRTH</f:facet>
-                    #{studentAlt.dateOfBirth}
+                    #{student.dateOfBirth}
                 </p:column>
                 <p:column>
                     <f:facet name="header">ABSENCES</f:facet>
-                    #{studentAlt.absences}
+                    #{student.absences}
                 </p:column>
                 <p:column>
                     <f:facet name="header">DEPARTMENT_ID</f:facet>
-                    #{studentAlt.departmentId}
+                    #{student.departmentId}
                 </p:column>
                 <p:column>
                     <f:facet name="header">STATUS</f:facet>
-                    #{studentAlt.status}
+                    #{student.status}
                 </p:column>
             </p:dataTable>
 

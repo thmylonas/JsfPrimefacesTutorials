@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+    <ui:composition template="../../templates/pages_level2_template.xhtml">
+
+        <ui:define name="metadata_desc">
+            <meta name="description" content="Spring Framework: Simple 'Student' API"/>
+        </ui:define>
+
+        <ui:define name="head_page_title">
+            <title>Spring Framework: Simple 'Student' API</title>
+        </ui:define>
+
+        <ui:define name="center_section_title">
+            <h:outputText value="Spring Framework: Simple 'Student' API"/>
+        </ui:define>
+
+        <ui:define name="center_section_content">
+
+            <p>
+                <h:outputText value="Simple 'Student' API#{studentBackingBean.displayDataSource()}"
+                              escape="false" styleClass="technology_topics_titles"/>
+            </p>
+
+            <div class="select_datasource">
+                <h:form>
+                    <div>
+                        <p:outputLabel for="dataSource" value="Select DataSource (In-Memory/Database):"/>
+                        <p:selectOneMenu id="dataSource" value="#{studentBackingBean.dataSource}"
+                                         styleClass="select_one_menu_input_field">
+                            <f:selectItem itemLabel="Select DataSource" itemValue=""/>
+                            <f:selectItem itemLabel="In-Memory DataSource" itemValue="InMemoryDS"/>
+                            <f:selectItem itemLabel="Database DataSource" itemValue="DatabaseDS"/>
+                        </p:selectOneMenu>
+                    </div>
+                    <br/>
+                    <div>
+                        <p:commandButton type="button" value="Select DataSource">
+                            <p:ajax process="@form" update="@all"
+                                    listener="#{studentBackingBean.selectDatasource()}"/>
+                        </p:commandButton>
+                    </div>
+                </h:form>
+            </div>
+
+            <dl class="technology_topics_list_wrapper #{studentBackingBean.displayApiForms()} ">
+                <dt>Display a Student (given its ID)</dt>
+                <dd>
+                    <h:form>
+                        <!--
+                        In the "p:inputText", if the "value" attribute is defined:
+                        - as "long" with no-value assigned, the "p:inputText" will display "0" and not the "placeholder"
+                        - as "Long" with no-value assigned (null), the "p:inputText" will display the "placeholder" (not "null")
+                        Alternatively, instead of "p:watermark", we can use "p:inputText"'s "placeholder" attribute
+                        -->
+                        <div class="data_insert_form">
+                            <tm:input_text_label
+                                    input_value="#{studentBackingBean.generalStudentBackingBean.studentId}"
+                                    label="Enter the student's ID:" placeholder="ID"
+                                    max_length="5" size="2" style_class="insert_data"/>
+                        </div>
+
+                        <tm:student_data_table title="Display the filtered Student"
+                                               studentList="#{studentBackingBean.generalStudentBackingBean.studentsFilteredList}"
+                                               style_class="table_students_list"/>
+
+                        <div>
+                            <p:commandButton type="button" value="Find student">
+                                <p:ajax process="@form" update="@form @(.table_students_list)"
+                                        listener="#{studentBackingBean.generalStudentBackingBean.displayStudentById()}"/>
+                            </p:commandButton>
+                            <p:commandButton value="Reset form" styleClass="student_reset_btn">
+                                <p:ajax process="@form" update="@form"
+                                        listener="#{studentBackingBean.generalStudentBackingBean.resetFetchByIdForm()}"/>
+                            </p:commandButton>
+                        </div>
+                    </h:form>
+                </dd>
+
+                <dt>Display all the Students</dt>
+                <dd>
+                    <tm:student_data_table title="Display all the Students"
+                                           studentList="#{studentBackingBean.generalStudentBackingBean.fetchAllStudents()}"
+                                           style_class="table_students_list"/>
+                </dd>
+
+                <dt>Add a new Student</dt>
+                <dd>
+                    <h:form id="formWhichSavesNewStudent">
+                        <div class="data_insert_form">
+                            <tm:student_insert_data
+                                    model="#{studentBackingBean.generalStudentBackingBean.saveFormStudent}"
+                                    style_class="insert_data"/>
+                        </div>
+
+                        <tm:student_data_table title="Display all the Students"
+                                               studentList="#{studentBackingBean.generalStudentBackingBean.fetchAllStudents()}"
+                                               style_class="table_students_list"/>
+
+                        <div>
+                            <p:commandButton type="button" value="Add student">
+                                <p:ajax process="@form" update="@form @(.table_students_list)"
+                                        listener="#{studentBackingBean.generalStudentBackingBean.saveNewStudent(studentBackingBean.generalStudentBackingBean.saveFormStudent)}"/>
+                            </p:commandButton>
+                            <p:commandButton value="Reset form" styleClass="student_reset_btn">
+                                <p:ajax process="@form" update="@form"
+                                        listener="#{studentBackingBean.generalStudentBackingBean.resetSaveForm()}"/>
+                            </p:commandButton>
+                        </div>
+                    </h:form>
+                </dd>
+
+                <dt>Update an existing Student</dt>
+                <dd>
+                    <h:form id="formWhichUpdatesStudent">
+                        <div class="data_insert_form">
+                            <tm:input_text_label
+                                    input_value="#{studentBackingBean.generalStudentBackingBean.updateFormStudentId}"
+                                    label="Enter the student's ID:" placeholder="ID"
+                                    max_length="5" size="2" style_class="insert_data"/>
+                            <tm:student_insert_data
+                                    model="#{studentBackingBean.generalStudentBackingBean.updateFormStudent}"
+                                    style_class="insert_data"/>
+                        </div>
+
+                        <tm:student_data_table title="Display all the Students"
+                                               studentList="#{studentBackingBean.generalStudentBackingBean.fetchAllStudents()}"
+                                               style_class="table_students_list"/>
+
+                        <div>
+                            <p:commandButton type="button" value="Update student">
+                                <p:ajax process="@form" update="@form @(.table_students_list)"
+                                        listener="#{studentBackingBean.generalStudentBackingBean.updateStudent(studentBackingBean.generalStudentBackingBean.updateFormStudent, studentBackingBean.generalStudentBackingBean.updateFormStudentId)}"/>
+                            </p:commandButton>
+                            <p:commandButton value="Reset form" styleClass="student_reset_btn">
+                                <p:ajax process="@form" update="@form"
+                                        listener="#{studentBackingBean.generalStudentBackingBean.resetUpdateForm()}"/>
+                            </p:commandButton>
+                        </div>
+                    </h:form>
+                </dd>
+
+                <dt>Delete a Student (given its ID)</dt>
+                <dd>
+                    <h:form id="formWhichDeletesStudentById">
+                        <div class="data_insert_form">
+                            <tm:input_text_label
+                                    input_value="#{studentBackingBean.generalStudentBackingBean.deleteFormStudentId}"
+                                    label="Enter the student's ID:" placeholder="ID"
+                                    max_length="5" size="2" style_class="insert_data"/>
+                        </div>
+
+                        <tm:student_data_table title="Display all the Students"
+                                               studentList="#{studentBackingBean.generalStudentBackingBean.fetchAllStudents()}"
+                                               style_class="table_students_list"/>
+
+                        <div>
+                            <p:commandButton type="button" value="Delete student">
+                                <p:ajax process="@form" update="@form @(.table_students_list)"
+                                        listener="#{studentBackingBean.generalStudentBackingBean.deleteStudent()}"/>
+                            </p:commandButton>
+                            <p:commandButton value="Reset form" styleClass="student_reset_btn">
+                                <p:ajax process="@form" update="@form"
+                                        listener="#{studentBackingBean.generalStudentBackingBean.resetDeleteForm()}"/>
+                            </p:commandButton>
+                        </div>
+                    </h:form>
+                </dd>
+            </dl>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+</html>

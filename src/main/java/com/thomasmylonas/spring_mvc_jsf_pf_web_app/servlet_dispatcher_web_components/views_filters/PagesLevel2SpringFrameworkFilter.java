@@ -11,7 +11,7 @@ import java.io.IOException;
 
 @WebFilter(
         value = {
-                "/facelets/student-alt-home/*"
+                "/facelets/student-home/*"
         }
 )
 public class PagesLevel2SpringFrameworkFilter extends AbstractViewsFilter {

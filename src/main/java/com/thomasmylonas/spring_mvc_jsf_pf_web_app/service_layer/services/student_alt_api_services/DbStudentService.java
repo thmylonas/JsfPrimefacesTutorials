@@ -1,11 +1,11 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services;
 
-import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.StudentAlt;
+import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.Student;
 //import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.enums.Status;
-import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.repositories.StudentAltRepository;
+import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.repositories.StudentRepository;
 //import com.thomasmylonas.spring_mvc_jsf_pf_web_app.helpers.HelperClass;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.exceptions.ResourceNotFoundException;
-import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services._base.AbstractStudentAltService;
+import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services._base.AbstractStudentService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -13,69 +13,69 @@ import javax.faces.bean.ManagedProperty;
 //import java.util.Calendar;
 import java.util.List;
 
-@ManagedBean(name = "dbStudentAltService")
-public class DbStudentAltService extends AbstractStudentAltService {
+@ManagedBean(name = "dbStudentService")
+public class DbStudentService extends AbstractStudentService {
 
-    @ManagedProperty(value = "#{studentAltRepository}")
-    private StudentAltRepository studentAltRepository;
+    @ManagedProperty(value = "#{studentRepository}")
+    private StudentRepository studentRepository;
 
     @PostConstruct
     private void init() {
-        initStudentsAltList();
+        initStudentsList();
     }
 
     @Override
-    public StudentAlt getStudentAltById(Long id) throws ResourceNotFoundException {
+    public Student getStudentById(Long id) throws ResourceNotFoundException {
 
         if (id == null) {
             return null;
         }
-//        return studentAltRepository.findById(id).
-//                orElseThrow(() -> new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id));
+//        return studentRepository.findById(id).
+//                orElseThrow(() -> new ResourceNotFoundException(Student.class.getSimpleName(), id));
         return null;
     }
 
     @Override
-    public List<StudentAlt> getAllStudentsAlt() {
-//        return studentAltRepository.findAll();
+    public List<Student> getAllStudents() {
+//        return studentRepository.findAll();
         return null;
     }
 
     @Override
-    public StudentAlt saveStudentAlt(StudentAlt studentAlt) {
+    public Student saveStudent(Student student) {
 
-        if (studentAlt == null) {
+        if (student == null) {
             return null;
         }
-//        return studentAltRepository.save(studentAlt);
+//        return studentRepository.save(student);
         return null;
     }
 
     @Override
-    public StudentAlt updateStudentAlt(StudentAlt studentAlt, Long id) throws ResourceNotFoundException {
+    public Student updateStudent(Student student, Long id) throws ResourceNotFoundException {
 
-        if (id == null || studentAlt == null) {
+        if (id == null || student == null) {
             return null;
         }
-//        StudentAlt studentAltToBeUpdated = studentAltRepository.findById(id).
-//                orElseThrow(() -> new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id));
-//        updateStudentAltWithGivenObject(studentAltToBeUpdated, studentAlt);
-//        return studentAltRepository.save(studentAltToBeUpdated);
+//        Student studentToBeUpdated = studentRepository.findById(id).
+//                orElseThrow(() -> new ResourceNotFoundException(Student.class.getSimpleName(), id));
+//        updateStudentWithGivenObject(studentToBeUpdated, student);
+//        return studentRepository.save(studentToBeUpdated);
         return null;
     }
 
     @Override
-    public void deleteStudentAlt(Long id) throws ResourceNotFoundException {
+    public void deleteStudent(Long id) throws ResourceNotFoundException {
 
         if (id == null) {
             return;
         }
-//        studentAltRepository.deleteById(id);
+//        studentRepository.deleteById(id);
     }
 
-    private void initStudentsAltList() {
+    private void initStudentsList() {
 
-//        studentAltRepository.save(new StudentAlt.Builder()
+//        studentRepository.save(new Student.Builder()
 //                .lastName("Mylonas")
 //                .firstName("Thomas")
 //                .dateOfBirth(HelperClass.getDate(1972, Calendar.SEPTEMBER, 24))
@@ -83,7 +83,7 @@ public class DbStudentAltService extends AbstractStudentAltService {
 //                .departmentId("Dept1")
 //                .status(Status.ADVANCED_STUDENT)
 //                .build());
-//        studentAltRepository.save(new StudentAlt.Builder()
+//        studentRepository.save(new Student.Builder()
 //                .lastName("Lorem")
 //                .firstName("Ipsum")
 //                .dateOfBirth(HelperClass.getDate(1979, Calendar.APRIL, 30))
@@ -91,7 +91,7 @@ public class DbStudentAltService extends AbstractStudentAltService {
 //                .departmentId("Dept1")
 //                .status(Status.JUNIOR_STUDENT)
 //                .build());
-//        studentAltRepository.save(new StudentAlt.Builder()
+//        studentRepository.save(new Student.Builder()
 //                .lastName("Chan")
 //                .firstName("Jacky")
 //                .dateOfBirth(HelperClass.getDate(1982, Calendar.MAY, 9))
@@ -99,7 +99,7 @@ public class DbStudentAltService extends AbstractStudentAltService {
 //                .departmentId("Dept2")
 //                .status(Status.JUNIOR_STUDENT)
 //                .build());
-//        studentAltRepository.save(new StudentAlt.Builder()
+//        studentRepository.save(new Student.Builder()
 //                .lastName("Parker")
 //                .firstName("Peter")
 //                .dateOfBirth(HelperClass.getDate(1990, Calendar.OCTOBER, 15))
@@ -107,7 +107,7 @@ public class DbStudentAltService extends AbstractStudentAltService {
 //                .departmentId("Dept3")
 //                .status(Status.MEDIUM_STUDENT)
 //                .build());
-//        studentAltRepository.save(new StudentAlt.Builder()
+//        studentRepository.save(new Student.Builder()
 //                .lastName("Murdock")
 //                .firstName("Matt")
 //                .dateOfBirth(HelperClass.getDate(2000, Calendar.FEBRUARY, 2))

@@ -1,10 +1,10 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services;
 
-import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.StudentAlt;
+import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.Student;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.enums.Status;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.helpers.HelperClass;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.exceptions.ResourceNotFoundException;
-import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services._base.AbstractStudentAltService;
+import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services._base.AbstractStudentService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -12,73 +12,73 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-@ManagedBean(name = "inMemoryStudentAltService")
-public class InMemoryStudentAltService extends AbstractStudentAltService {
+@ManagedBean(name = "inMemoryStudentService")
+public class InMemoryStudentService extends AbstractStudentService {
 
-    private List<StudentAlt> inMemoryStudentsAltList;
+    private List<Student> inMemoryStudentsList;
 
     @PostConstruct
     private void init() {
-        initInMemoryStudentsAltList();
+        initInMemoryStudentsList();
     }
 
     @Override
-    public StudentAlt getStudentAltById(Long id) throws ResourceNotFoundException {
-        return filterInMemoryStudentsAltListById(id);
+    public Student getStudentById(Long id) throws ResourceNotFoundException {
+        return filterInMemoryStudentsListById(id);
     }
 
     @Override
-    public List<StudentAlt> getAllStudentsAlt() {
-        return inMemoryStudentsAltList;
+    public List<Student> getAllStudents() {
+        return inMemoryStudentsList;
     }
 
     @Override
-    public StudentAlt saveStudentAlt(StudentAlt studentAlt) {
+    public Student saveStudent(Student student) {
 
-        if (studentAlt == null) {
+        if (student == null) {
             return null;
         }
-        inMemoryStudentsAltList.add(studentAlt);
-        return studentAlt;
+        inMemoryStudentsList.add(student);
+        return student;
     }
 
     @Override
-    public StudentAlt updateStudentAlt(StudentAlt studentAlt, Long id) throws ResourceNotFoundException {
+    public Student updateStudent(Student student, Long id) throws ResourceNotFoundException {
 
-        if (id == null || studentAlt == null) {
+        if (id == null || student == null) {
             return null;
         }
-        StudentAlt studentAltToBeUpdated = getStudentAltById(id); // This might throw a "ResourceNotFoundException"
-        updateStudentAltWithGivenObject(studentAltToBeUpdated, studentAlt);
-        return studentAltToBeUpdated;
+        Student studentToBeUpdated = getStudentById(id); // This might throw a "ResourceNotFoundException"
+        updateStudentWithGivenObject(studentToBeUpdated, student);
+        return studentToBeUpdated;
     }
 
     @Override
-    public void deleteStudentAlt(Long id) throws ResourceNotFoundException {
+    public void deleteStudent(Long id) throws ResourceNotFoundException {
 
-        StudentAlt studentAltToDelete = getStudentAltById(id); // This might throw a "ResourceNotFoundException"
-        if (studentAltToDelete == null) {
+        Student studentToDelete = getStudentById(id); // This might throw a "ResourceNotFoundException"
+        if (studentToDelete == null) {
             return;
         }
-        inMemoryStudentsAltList.remove(studentAltToDelete);
+        inMemoryStudentsList.remove(studentToDelete);
     }
 
-    private StudentAlt filterInMemoryStudentsAltListById(Long id) {
+    private Student filterInMemoryStudentsListById(Long id) {
 
-        // Filter the "inMemoryStudentsAltList" by ID
+        // Filter the "inMemoryStudentsList" by ID
         return id == null ? null :
-                inMemoryStudentsAltList
+                inMemoryStudentsList
                         .stream()
-                        .filter(studentAlt -> studentAlt.getId().equals(id))
+                        .filter(student -> student.getId().equals(id))
                         .findAny()
-                        .orElseThrow(() -> new ResourceNotFoundException(StudentAlt.class.getSimpleName(), id));
+                        .orElseThrow(() -> new ResourceNotFoundException(Student.class.getSimpleName(), id));
     }
 
-    private void initInMemoryStudentsAltList() {
+    private void initInMemoryStudentsList() {
 
-        inMemoryStudentsAltList = new ArrayList<>();
+        inMemoryStudentsList = new ArrayList<>();
 
-        inMemoryStudentsAltList.add(new StudentAlt.Builder()
+        inMemoryStudentsList.add(Student.builder()
                 .id(1L)
                 .lastName("Mylonas")
                 .firstName("Thomas")
@@ -87,7 +87,7 @@ public class InMemoryStudentAltService extends AbstractStudentAltService {
                 .departmentId("Dept1")
                 .status(Status.ADVANCED_STUDENT)
                 .build());
-        inMemoryStudentsAltList.add(new StudentAlt.Builder()
+        inMemoryStudentsList.add(Student.builder()
                 .id(2L)
                 .lastName("Lorem")
                 .firstName("Ipsum")
@@ -96,7 +96,7 @@ public class InMemoryStudentAltService extends AbstractStudentAltService {
                 .departmentId("Dept1")
                 .status(Status.JUNIOR_STUDENT)
                 .build());
-        inMemoryStudentsAltList.add(new StudentAlt.Builder()
+        inMemoryStudentsList.add(Student.builder()
                 .id(3L)
                 .lastName("Chan")
                 .firstName("Jacky")
@@ -105,7 +105,7 @@ public class InMemoryStudentAltService extends AbstractStudentAltService {
                 .departmentId("Dept2")
                 .status(Status.JUNIOR_STUDENT)
                 .build());
-        inMemoryStudentsAltList.add(new StudentAlt.Builder()
+        inMemoryStudentsList.add(Student.builder()
                 .id(4L)
                 .lastName("Parker")
                 .firstName("Peter")
@@ -114,7 +114,7 @@ public class InMemoryStudentAltService extends AbstractStudentAltService {
                 .departmentId("Dept3")
                 .status(Status.MEDIUM_STUDENT)
                 .build());
-        inMemoryStudentsAltList.add(new StudentAlt.Builder()
+        inMemoryStudentsList.add(Student.builder()
                 .id(5L)
                 .lastName("Murdock")
                 .firstName("Matt")

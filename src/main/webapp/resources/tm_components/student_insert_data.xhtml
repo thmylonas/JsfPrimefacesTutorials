@@ -15,26 +15,26 @@
 
         <cc:interface>
             <cc:attribute name="model"
-                          type="com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.StudentAlt"
+                          type="com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.Student"
                           required="true"
-                          shortDescription="The StudentAlt instance which will store the temporary StudentAlt's input"/>
+                          shortDescription="The Student instance which will store the temporary Student's input"/>
             <cc:attribute name="style_class" type="java.lang.String" required="false"
-                          shortDescription="The styleClass of the student_alt_insert_data"/>
+                          shortDescription="The styleClass of the student_insert_data"/>
         </cc:interface>
 
         <cc:implementation>
 
             <tm:input_text_label input_value="#{cc.attrs.model.lastName}"
-                                 label="Enter the studentAlt's Last Name:" placeholder="Last Name"
+                                 label="Enter the student's Last Name:" placeholder="Last Name"
                                  max_length="30" size="30" style_class="#{cc.attrs.style_class}"/>
 
             <tm:input_text_label input_value="#{cc.attrs.model.firstName}"
-                                 label="Enter the studentAlt's First Name:" placeholder="First Name"
+                                 label="Enter the student's First Name:" placeholder="First Name"
                                  max_length="20" size="20" style_class="#{cc.attrs.style_class}"/>
 
             <div class="ui-g">
                 <div class="ui-g-6">
-                    <p:outputLabel for="dateOfBirth" value="Enter the studentAlt's Date of Birth:"/>
+                    <p:outputLabel for="dateOfBirth" value="Enter the student's Date of Birth:"/>
                     <p:watermark for="dateOfBirth" value="Date of Birth"/>
                 </div>
                 <div class="ui-g-6">
@@ -45,16 +45,16 @@
             </div>
 
             <tm:input_text_label input_value="#{cc.attrs.model.absences}"
-                                 label="Enter the studentAlt's Absences:" placeholder="Absences"
+                                 label="Enter the student's Absences:" placeholder="Absences"
                                  max_length="5" size="5" style_class="#{cc.attrs.style_class}"/>
 
             <tm:input_text_label input_value="#{cc.attrs.model.departmentId}"
-                                 label="Enter the studentAlt's Department ID:" placeholder="Department ID"
+                                 label="Enter the student's Department ID:" placeholder="Department ID"
                                  max_length="10" size="10" style_class="#{cc.attrs.style_class}"/>
 
             <div class="ui-g">
                 <div class="ui-g-6">
-                    <p:outputLabel for="status" value="Enter the studentAlt's Status:"/>
+                    <p:outputLabel for="status" value="Enter the student's Status:"/>
                 </div>
                 <div class="ui-g-6">
                     <p:selectOneMenu id="status" value="#{cc.attrs.model.status}"

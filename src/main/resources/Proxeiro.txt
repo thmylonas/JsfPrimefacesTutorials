@@ -645,7 +645,7 @@ Caused by: java.lang.NullPointerException: inStream parameter is null
 	at com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.CommonHtmlAttributesService.initCommonEventHandlerAttributesList(CommonHtmlAttributesService.java:153) ~[classes/:?]
 	at com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.CommonHtmlAttributesService.init(CommonHtmlAttributesService.java:102) ~[classes/:?]
 ----------------------------------------
-@Repository //(value = "studentAltRepository") // With this, 2 beans are created
+@Repository //(value = "studentRepository") // With this, 2 beans are created
 
 git rm -r --cached .idea/
 git commit -m ".idea/ removed"
@@ -718,8 +718,8 @@ public class RootConfig {}
 
 ========================================================================================================================
 
-What is the situation in the StudentAlt API
-----------------------------------------------
+What is the situation in the Student API
+--------------------------------------------
 1. I moved and merged all the code (Controllers, Services, Repositories, Configuration)
 from the "EmployeePerformanceEvaluationAPI" project in this project, in a clean and right status
 2.
