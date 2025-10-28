@@ -122,7 +122,7 @@ public abstract class AbstractHtmlSelectManyBackingBean extends AbstractHtmlSele
     }
 
     public String displayItemValues(String[] itemValues) {
-        return itemValues == null ? "[ ]" : HelperClass.displayArrayToString(itemValues, DisplayConstants.DISPLAY_INLINE_IN_CONSOLE, false);
+        return itemValues == null ? "[ ]" : HelperClass.displayStringListAsString(itemValues, DisplayConstants.DISPLAY_INLINE_IN_CONSOLE);
     }
 
     public void resetValues() {

@@ -737,5 +737,4 @@ Lombok - Builders
 Enum names
 StudentAlt -> Student
 Change loggers to slf4j
-protected static final Logger LOGGER = LogManager.getLogger(AbstractViewsFilter.class.getSimpleName());
 LOGGER.error("@@@")

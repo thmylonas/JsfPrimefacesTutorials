@@ -1,7 +1,7 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app.servlet_dispatcher_web_components.views_filters._base;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 
 public abstract class AbstractViewsFilter implements Filter {
 
-    protected static final Logger LOGGER = LogManager.getLogger(AbstractViewsFilter.class.getSimpleName());
+    protected static final Logger LOGGER = LoggerFactory.getLogger(AbstractViewsFilter.class.getSimpleName());
 
     private static final String MAIN_VIEWS_DIR = "/views";
     private static final String SPECIAL_LAST_URI_PART = "home";
