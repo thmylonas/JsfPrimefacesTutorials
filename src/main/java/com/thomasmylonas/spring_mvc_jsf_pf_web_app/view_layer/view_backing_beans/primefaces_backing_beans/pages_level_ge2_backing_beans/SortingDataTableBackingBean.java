@@ -5,14 +5,18 @@ import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.CarSer
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.primefaces_backing_beans.PrimefacesBackingBean;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import java.util.List;
 
-//@Component(value = "sortingDataTableBackingBean")
-//@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+@ManagedBean(name = "sortingDataTableBackingBean")
+@ViewScoped
 public class SortingDataTableBackingBean extends PrimefacesBackingBean {
 
     private List<Car> cars;
-//    @Autowired
+
+    @ManagedProperty(value = "#{carService}")
     private CarService carService;
 
     @PostConstruct

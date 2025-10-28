@@ -4,11 +4,13 @@ import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.Common
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.jsf_backing_beans.JsfBackingBean;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
-//@Component(value = "htmlTaglibBackingBean")
+@ManagedBean(name = "htmlTaglibBackingBean")
 public class HtmlTaglibBackingBean extends JsfBackingBean {
 
-//    @Autowired
+    @ManagedProperty(value = "#{commonHtmlAttributesService}")
     protected CommonHtmlAttributesService commonHtmlAttributesService;
 
     @PostConstruct
