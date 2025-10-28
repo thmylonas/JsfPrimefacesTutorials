@@ -1,25 +1,23 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services;
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.StudentAlt;
-import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.enums.Status;
+//import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.enums.Status;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.repositories.StudentAltRepository;
-import com.thomasmylonas.spring_mvc_jsf_pf_web_app.helpers.HelperClass;
+//import com.thomasmylonas.spring_mvc_jsf_pf_web_app.helpers.HelperClass;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.exceptions.ResourceNotFoundException;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services._base.AbstractStudentAltService;
 
 import javax.annotation.PostConstruct;
-import java.util.Calendar;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+//import java.util.Calendar;
 import java.util.List;
 
-//@Service(value = "dbStudentAltService")
+@ManagedBean(name = "dbStudentAltService")
 public class DbStudentAltService extends AbstractStudentAltService {
 
-    private final StudentAltRepository studentAltRepository;
-
-    //    @Autowired
-    public DbStudentAltService(StudentAltRepository studentAltRepository) {
-        this.studentAltRepository = studentAltRepository;
-    }
+    @ManagedProperty(value = "#{studentAltRepository}")
+    private StudentAltRepository studentAltRepository;
 
     @PostConstruct
     private void init() {
