@@ -7,11 +7,12 @@ import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.except
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services._base.AbstractStudentAltService;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-//@Service(value = "inMemoryStudentAltService")
+@ManagedBean(name = "inMemoryStudentAltService")
 public class InMemoryStudentAltService extends AbstractStudentAltService {
 
     private List<StudentAlt> inMemoryStudentsAltList;

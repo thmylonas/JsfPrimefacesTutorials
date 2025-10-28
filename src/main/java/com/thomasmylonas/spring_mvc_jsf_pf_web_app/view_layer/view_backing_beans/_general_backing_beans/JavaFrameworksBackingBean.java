@@ -4,11 +4,13 @@ import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models._general
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans._base.AbstractBackingBean;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Component(value = "javaFrameworksBackingBean")
-//@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+@ManagedBean(name = "javaFrameworksBackingBean")
+@ViewScoped
 public class JavaFrameworksBackingBean extends AbstractBackingBean {
 
     private List<JavaFrameworksModel> javaFrameworks;

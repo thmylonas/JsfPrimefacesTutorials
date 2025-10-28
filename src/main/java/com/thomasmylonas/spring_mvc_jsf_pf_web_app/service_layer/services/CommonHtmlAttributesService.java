@@ -5,11 +5,12 @@ import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_mode
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services._base.AbstractService;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Service(value = "commonHtmlAttributesService")
+@ManagedBean(name = "commonHtmlAttributesService")
 public class CommonHtmlAttributesService extends AbstractService implements Serializable {
 
     /**

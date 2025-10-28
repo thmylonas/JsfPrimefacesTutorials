@@ -9,7 +9,7 @@ import javax.faces.bean.ViewScoped;
 import java.util.Arrays;
 import java.util.List;
 
-@ManagedBean
+@ManagedBean(name = "imagesService")
 @ViewScoped
 public class ImagesService extends AbstractService {
 
