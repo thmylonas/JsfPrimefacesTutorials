@@ -51,12 +51,10 @@ public class CarService extends AbstractService implements Serializable {
         return Math.random() > 0.5;
     }
 
-    @SuppressWarnings("unused")
     public List<String> getColors() {
         return Arrays.asList(colors);
     }
 
-    @SuppressWarnings("unused")
     public List<String> getBrands() {
         return Arrays.asList(brands);
     }

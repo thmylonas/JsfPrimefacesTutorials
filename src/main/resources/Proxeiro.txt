@@ -734,3 +734,8 @@ Change the:
 @SuppressWarnings
 Delete _ExampleManagedBean
 Lombok
+Lombok - Builders
+Enum names
+StudentAlt -> Student
+protected static final Logger LOGGER = LogManager.getLogger(AbstractViewsFilter.class.getSimpleName());
+LOGGER.error("@@@")

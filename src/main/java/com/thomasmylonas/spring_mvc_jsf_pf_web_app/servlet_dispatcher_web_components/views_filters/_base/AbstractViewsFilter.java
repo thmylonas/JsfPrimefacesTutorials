@@ -19,21 +19,20 @@ import java.util.stream.Stream;
 
 public abstract class AbstractViewsFilter implements Filter {
 
-    protected final Logger LOGGER = LogManager.getLogger(getClass().getName());
-    @SuppressWarnings("all")
-    private final String MAIN_VIEWS_DIR = "/views";
-    @SuppressWarnings("all")
-    private final String SPECIAL_LAST_URI_PART = "home";
+    protected static final Logger LOGGER = LogManager.getLogger(AbstractViewsFilter.class.getSimpleName());
 
-    protected final String MAIN_PAGES_LEVEL_1_DIR = "/pages_level_1/";
-    protected final String MAIN_SPRING_FRAMEWORK_DIR = "/pages_level_2/spring_framework/";
-    protected final String MAIN_JSF_DIR = "/pages_level_2/jsf/";
-    protected final String MAIN_PRIMEFACES_DIR = "/pages_level_2/primefaces/";
-    protected final String MAIN_JSF_H_TAGLIB_DIR = "/pages_level_2/jsf/jsf_h_taglib/";
-    protected final String MAIN_JSF_TRICKS_OTHERS_DIR = "/pages_level_2/jsf/_jsf_tricks_others/";
+    private static final String MAIN_VIEWS_DIR = "/views";
+    private static final String SPECIAL_LAST_URI_PART = "home";
+
+    protected static final String MAIN_PAGES_LEVEL_1_DIR = "/pages_level_1/";
+    protected static final String MAIN_SPRING_FRAMEWORK_DIR = "/pages_level_2/spring_framework/";
+    protected static final String MAIN_JSF_DIR = "/pages_level_2/jsf/";
+    protected static final String MAIN_PRIMEFACES_DIR = "/pages_level_2/primefaces/";
+    protected static final String MAIN_JSF_H_TAGLIB_DIR = "/pages_level_2/jsf/jsf_h_taglib/";
+    protected static final String MAIN_JSF_TRICKS_OTHERS_DIR = "/pages_level_2/jsf/_jsf_tricks_others/";
 
     public void doFilter(String parentDirPath, Class<?> filterSubClass, ServletRequest request,
-                         ServletResponse response, @SuppressWarnings("unused") FilterChain filterChain) throws IOException, ServletException {
+                         ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
 
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;

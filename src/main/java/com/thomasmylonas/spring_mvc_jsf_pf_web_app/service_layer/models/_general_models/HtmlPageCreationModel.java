@@ -48,27 +48,22 @@ public final class HtmlPageCreationModel extends AbstractModel {
         this.pageBody = pageBody;
     }
 
-    @SuppressWarnings("unused")
     public String getPageStart() {
         return pageStart;
     }
 
-    @SuppressWarnings("unused")
     public String getPageMiddle() {
         return pageMiddle;
     }
 
-    @SuppressWarnings("unused")
     public String getPageEnd() {
         return pageEnd;
     }
 
-    @SuppressWarnings("unused")
     public String getPageTitle() {
         return pageTitle;
     }
 
-    @SuppressWarnings("unused")
     public String getPageBody() {
         return pageBody;
     }

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@SuppressWarnings("unused")
+@Deprecated
 public abstract class _alt_AbstractJsfViewFilter implements Filter {
 
     protected boolean resourceExists;

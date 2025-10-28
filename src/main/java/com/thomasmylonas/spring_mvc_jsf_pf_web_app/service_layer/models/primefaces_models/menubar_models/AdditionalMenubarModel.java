@@ -53,22 +53,18 @@ public class AdditionalMenubarModel extends AbstractMenubarModel {
         additionalMenuModel.getElements().add(secondSubmenu);
     }
 
-    @SuppressWarnings("unused")
     public MenuModel getAdditionalMenuModel() {
         return additionalMenuModel;
     }
 
-    @SuppressWarnings("unused")
     public void save() {
         addMessage("Success on save", "Data saved");
     }
 
-    @SuppressWarnings("unused")
     public void update() {
         addMessage("Success on update", "Data updated");
     }
 
-    @SuppressWarnings("unused")
     public void delete() {
         addMessage("Success on delete", "Data deleted");
     }

@@ -14,9 +14,7 @@ public abstract class AbstractModel {
     // Other constants
     protected final String WEBAPP_LINK = getPropertyValueFromProperties(PROPERTIES_FILE_1_DIR, "webapp_link", "The 'webapp_link' is not found!");
 
-    protected String getPropertyValueFromProperties(@SuppressWarnings("all") String propertiesPath,
-                                                    @SuppressWarnings("all") String propertyName,
-                                                    @SuppressWarnings("all") String errorMessage) {
+    protected String getPropertyValueFromProperties(String propertiesPath, String propertyName, String errorMessage) {
 
         String propertyValue = "No '" + propertyName + "' value found!";
         try {

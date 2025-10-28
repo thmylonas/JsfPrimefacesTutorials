@@ -15,7 +15,6 @@ public class GenericArray<T> extends AbstractModel {
 
     private final T[] genericElementsArray;
 
-    @SuppressWarnings("unchecked")
     public GenericArray(Class<T> clazz, int capacity) {
         genericElementsArray = (T[]) Array.newInstance(clazz, capacity);
     }

@@ -54,22 +54,18 @@ public class Car extends AbstractModel implements Serializable {
         this.color = color;
     }
 
-    @SuppressWarnings("unused")
     public int getPrice() {
         return price;
     }
 
-    @SuppressWarnings("unused")
     public void setPrice(int price) {
         this.price = price;
     }
 
-    @SuppressWarnings("unused")
     public boolean isSoldState() {
         return soldState;
     }
 
-    @SuppressWarnings("unused")
     public void setSoldState(boolean soldState) {
         this.soldState = soldState;
     }

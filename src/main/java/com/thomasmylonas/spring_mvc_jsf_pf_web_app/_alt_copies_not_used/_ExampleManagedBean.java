@@ -5,7 +5,6 @@ import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans
 
 import java.io.Serializable;
 
-@SuppressWarnings("unused")
 //@ManagedBean(name = "newNameManagedBean")
 //@RequestScoped //@javax.faces.bean.ViewScoped, @javax.faces.view.ViewScoped, @SessionScoped
 public class _ExampleManagedBean implements Serializable {

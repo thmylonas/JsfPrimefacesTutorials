@@ -9,22 +9,22 @@ import java.io.Serializable;
 
 public abstract class AbstractBackingBean implements Serializable {
 
-    protected final Logger LOGGER = LogManager.getLogger(getClass().getName());
+    protected static final Logger LOGGER = LogManager.getLogger(AbstractBackingBean.class.getSimpleName());
+
     // Constants of directories of Properties files
-    protected final String PROPERTIES_FILE_1_DIR = "resource_bundles/messages.properties";
+    protected static final String PROPERTIES_FILE_1_DIR = "resource_bundles/messages.properties";
     // Constants of colors
     protected final String COLOR_BLUE = getPropertyValueFromProperties(PROPERTIES_FILE_1_DIR, "color.blue", "The 'color.blue' is not found!");
     protected final String COLOR_DEEP_PINK = getPropertyValueFromProperties(PROPERTIES_FILE_1_DIR, "color.deep_pink", "The 'color.deep_pink' is not found!");
     // Constants of styling
-    protected final String SPAN_OPEN_LEFT_STYLE = "<span style=\"";
-    protected final String SPAN_OPEN_RIGHT_STYLE = "\">";
-    protected final String SPAN_CLOSE = "</span>";
-    protected final String ATTR_COLON = "; ";
-    protected final String COLOR_ATTR = "color:";
-    protected final String FONT_WEIGHT_ATTR = "font-weight:";
+    protected static final String SPAN_OPEN_LEFT_STYLE = "<span style=\"";
+    protected static final String SPAN_OPEN_RIGHT_STYLE = "\">";
+    protected static final String SPAN_CLOSE = "</span>";
+    protected static final String ATTR_COLON = "; ";
+    protected static final String COLOR_ATTR = "color:";
+    protected static final String FONT_WEIGHT_ATTR = "font-weight:";
 
-    protected String getPropertyValueFromProperties(@SuppressWarnings("all") String propertiesPath, String propertyName,
-                                                    @SuppressWarnings("all") String errorMessage) {
+    protected String getPropertyValueFromProperties(String propertiesPath, String propertyName, String errorMessage) {
 
         String propertyValue = "No '" + propertyName + "' value found!";
         try {

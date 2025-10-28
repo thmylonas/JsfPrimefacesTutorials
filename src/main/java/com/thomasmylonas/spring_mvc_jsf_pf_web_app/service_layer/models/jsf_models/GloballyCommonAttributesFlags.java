@@ -52,7 +52,6 @@ public final class GloballyCommonAttributesFlags extends AbstractModel {
      * @param isConverterAlt  The flag: is the value of the attribute "converter" alternative?
      * @param isBindingAlt    The flag: is the value of the attribute "binding" alternative?
      */
-    @SuppressWarnings("unused")
     @Deprecated
     private GloballyCommonAttributesFlags(boolean isIdAlt, boolean isValueAlt, boolean isRenderedAlt,
                                           boolean isStyleClassAlt, boolean isConverterAlt, boolean isBindingAlt) {
@@ -117,7 +116,6 @@ public final class GloballyCommonAttributesFlags extends AbstractModel {
             return this;
         }
 
-        @SuppressWarnings("all")
         public GloballyCommonAttributesFlags build() {
             /*
             // This is another way to initialize the class's variables (Deprecated way)

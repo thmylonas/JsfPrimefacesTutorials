@@ -73,7 +73,6 @@ public enum ImagesEnum {
         return imageName;
     }
 
-    @SuppressWarnings("unused")
     public String getImageExtension() {
         return imageExtension;
     }
@@ -82,7 +81,6 @@ public enum ImagesEnum {
         return imageDescription;
     }
 
-    @SuppressWarnings("unused")
     public String getImagePath() {
         return imagePath;
     }
