@@ -7,16 +7,16 @@ import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
 
 import javax.faces.application.FacesMessage;
+//import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
-//@Component
-@SuppressWarnings("unused")
+//@ManagedBean(name = "additionalMenubarModel")
+@Deprecated
 public class AdditionalMenubarModel extends AbstractMenubarModel {
 
     private final MenuModel additionalMenuModel = new DefaultMenuModel();
 
     //@PostConstruct
-    @SuppressWarnings("unused")
     private void init() {
 
         // First submenu

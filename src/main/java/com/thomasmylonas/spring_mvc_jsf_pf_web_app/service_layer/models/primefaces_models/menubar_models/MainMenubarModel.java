@@ -5,8 +5,10 @@ import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
+//import javax.faces.bean.ManagedBean;
 
-//@Component(value = "mainMenubarModel")
+//@ManagedBean(name = "mainMenubarModel")
+@Deprecated
 public class MainMenubarModel extends AbstractMenubarModel {
 
     private final MenuModel menuModel = new DefaultMenuModel();
