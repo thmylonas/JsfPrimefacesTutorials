@@ -3,18 +3,16 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.primefaces_models.menubar_models.MainMenubarModel;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans._base.AbstractBackingBean;
 
-//@Component(value = "menubarBackingBean")
-@SuppressWarnings("unused")
+//import javax.faces.bean.ManagedBean;
+//import javax.faces.bean.ManagedProperty;
+
+//@ManagedBean(name = "menubarBackingBean")
+@Deprecated
 public class MenubarBackingBean extends AbstractBackingBean {
 
-    private final MainMenubarModel mainMenubarModel;
+    //@ManagedProperty(value = "#{mainMenubarModel}")
+    private MainMenubarModel mainMenubarModel;
 
-    //@Autowired
-    public MenubarBackingBean(MainMenubarModel mainMenubarModel) {
-        this.mainMenubarModel = mainMenubarModel;
-    }
-
-    @SuppressWarnings("unused")
     public MainMenubarModel getMainMenubarModel() {
         return mainMenubarModel;
     }
