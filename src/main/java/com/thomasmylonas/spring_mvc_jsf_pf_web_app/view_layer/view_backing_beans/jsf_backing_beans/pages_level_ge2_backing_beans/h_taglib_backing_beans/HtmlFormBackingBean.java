@@ -4,10 +4,11 @@ import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_mode
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.jsf_backing_beans.pages_level_ge2_backing_beans.HtmlTaglibBackingBean;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Component(value = "htmlFormBackingBean")
+@ManagedBean(name = "htmlFormBackingBean")
 public class HtmlFormBackingBean extends HtmlTaglibBackingBean {
 
     private List<ComponentsAttribute> formAttributesList;

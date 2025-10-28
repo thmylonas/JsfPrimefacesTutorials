@@ -730,3 +730,7 @@ About OracleDB
 Change the:
 - "webapp/META-INF/context.xml"
 - web.xml: <web-app ...><resource-ref></resource-ref></web-app>
+
+@SuppressWarnings
+Delete _ExampleManagedBean
+Lombok
