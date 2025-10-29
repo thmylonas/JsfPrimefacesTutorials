@@ -4,11 +4,13 @@ import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.primefac
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services._base.AbstractService;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @ManagedBean(name = "carService")
+@ViewScoped
 public class CarService extends AbstractService {
 
     private static final List<String> COLORS = List.of("Black", "White", "Green", "Red", "Blue", "Orange",
