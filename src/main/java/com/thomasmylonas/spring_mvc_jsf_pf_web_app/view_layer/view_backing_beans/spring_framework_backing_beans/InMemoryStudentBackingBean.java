@@ -3,21 +3,23 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.data_access_layer.entities.Student;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.helpers.HelperClass;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.exceptions.ResourceNotFoundException;
+import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services.InMemoryStudentService;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.student_alt_api_services.StudentService;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.spring_framework_backing_beans._base.StudentBackingBean;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "inMemoryStudentBackingBean")
 public class InMemoryStudentBackingBean extends StudentBackingBean {
 
-    @ManagedProperty(value = "#{inMemoryStudentService}")
-    private StudentService inMemoryStudentService;
+    private final StudentService inMemoryStudentService;
 
     public InMemoryStudentBackingBean() {
+
+        inMemoryStudentService = new InMemoryStudentService();
+
         studentsFilteredList = new ArrayList<>();
         saveFormStudent = new Student();
         updateFormStudent = new Student();

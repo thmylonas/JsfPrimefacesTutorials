@@ -1,9 +1,13 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer._enums;
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.helpers.HelperClass;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.Arrays;
 
+@Getter
+@AllArgsConstructor
 public enum ImagesEnum {
 
     // "images/java_frameworks"
@@ -48,42 +52,19 @@ public enum ImagesEnum {
     // Empty Value
     EMPTY_VALUE("", "", "", "");
 
-    static final String MAIN_IMAGES_DIR = "images/";
-    static final String MAIN_IMAGES_ABOUT_DIR = "about/";
-    static final String MAIN_IMAGES_BACKGROUNDS_DIR = "backgrounds/";
-    static final String MAIN_IMAGES_JAVA_FRAMEWORKS_DIR = "java_frameworks/";
-    static final String MAIN_IMAGES_NAVIGATION_BTNS_DIR = "navigation_btns/";
-    static final String MAIN_IMAGES_SOCIAL_MEDIA_DIR = "social_media/";
-    static final String MAIN_IMAGES_LANGS_DIR = "langs/";
-    static final String MAIN_IMAGES_MENUBAR_ICON_DIR = "menubar_icons/";
+    private static final String MAIN_IMAGES_DIR = "images/";
+    private static final String MAIN_IMAGES_ABOUT_DIR = "about/";
+    private static final String MAIN_IMAGES_BACKGROUNDS_DIR = "backgrounds/";
+    private static final String MAIN_IMAGES_JAVA_FRAMEWORKS_DIR = "java_frameworks/";
+    private static final String MAIN_IMAGES_NAVIGATION_BTNS_DIR = "navigation_btns/";
+    private static final String MAIN_IMAGES_SOCIAL_MEDIA_DIR = "social_media/";
+    private static final String MAIN_IMAGES_LANGS_DIR = "langs/";
+    private static final String MAIN_IMAGES_MENUBAR_ICON_DIR = "menubar_icons/";
 
-    final String imageName;
-    final String imageExtension;
-    final String imageDescription;
-    final String imagePath;
-
-    ImagesEnum(String imageName, String imageExtension, String imageDescription, String imagePath) {
-        this.imageName = imageName;
-        this.imageExtension = imageExtension;
-        this.imageDescription = imageDescription;
-        this.imagePath = imagePath;
-    }
-
-    public String getImageName() {
-        return imageName;
-    }
-
-    public String getImageExtension() {
-        return imageExtension;
-    }
-
-    public String getImageDescription() {
-        return imageDescription;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
+    private final String imageName;
+    private final String imageExtension;
+    private final String imageDescription;
+    private final String imagePath;
 
     public String getImageFullName() {
         return imageName + imageExtension;

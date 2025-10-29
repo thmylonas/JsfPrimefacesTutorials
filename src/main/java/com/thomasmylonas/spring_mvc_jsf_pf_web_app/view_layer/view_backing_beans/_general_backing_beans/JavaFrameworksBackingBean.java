@@ -2,6 +2,7 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models._general_models.JavaFrameworksModel;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans._base.AbstractBackingBean;
+import lombok.Getter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @ManagedBean(name = "javaFrameworksBackingBean")
 @ViewScoped
+@Getter
 public class JavaFrameworksBackingBean extends AbstractBackingBean {
 
     private List<JavaFrameworksModel> javaFrameworks;
@@ -24,9 +26,5 @@ public class JavaFrameworksBackingBean extends AbstractBackingBean {
         javaFrameworks.add(new JavaFrameworksModel("4", "Hibernate", "Java EE"));
         javaFrameworks.add(new JavaFrameworksModel("5", "JavaServer Faces", "Java EE"));
         javaFrameworks.add(new JavaFrameworksModel("6", "Primefaces", "Java EE"));
-    }
-
-    public List<JavaFrameworksModel> getJavaFrameworks() {
-        return javaFrameworks;
     }
 }

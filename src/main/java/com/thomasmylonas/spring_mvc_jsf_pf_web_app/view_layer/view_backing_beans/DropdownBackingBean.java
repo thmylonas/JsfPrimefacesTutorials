@@ -1,19 +1,29 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
+//import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-@ManagedBean(name = "dropdownBackingBean")
+//@ManagedBean(name = "dropdownBackingBean")
+@Getter
+@Deprecated
 public class DropdownBackingBean implements Serializable {
 
     private final Map<String, Map<String, String>> data = new HashMap<>();
+
+    @Setter
     private String country;
+
+    @Setter
     private String city;
+
     private Map<String, String> countries;
     private Map<String, String> cities;
 
@@ -44,37 +54,9 @@ public class DropdownBackingBean implements Serializable {
         data.put("Brazil", map);
     }
 
-    public Map<String, Map<String, String>> getData() {
-        return data;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public Map<String, String> getCountries() {
-        return countries;
-    }
-
-    public Map<String, String> getCities() {
-        return cities;
-    }
-
     public void onCountryChange() {
 
-        if (country != null && !country.equals("")) {
+        if (country != null && !country.isEmpty()) {
             cities = data.get(country);
         } else {
             cities = new HashMap<>();

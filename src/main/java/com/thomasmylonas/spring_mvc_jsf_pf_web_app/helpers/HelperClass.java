@@ -70,7 +70,7 @@ public abstract class HelperClass {
         return properties;
     }
 
-    public static String getPropertyValueFromProperties(String propertiesPath, String propertyName) throws IOException {
+    public static String fetchPropertyValueFromProperties(String propertiesPath, String propertyName) throws IOException {
 
         if (isStringNullOrEmpty(propertiesPath) || isStringNullOrEmpty(propertyName)) {
             return "";
@@ -90,7 +90,7 @@ public abstract class HelperClass {
                 filteredIndexesList.stream().map(list::get).collect(Collectors.toList());
     }
 
-    public static LocalDate getDate(int year, int month, int day) {
+    public static LocalDate buildDate(int year, int month, int day) {
         return LocalDate.of(year, month, day);
     }
 }
