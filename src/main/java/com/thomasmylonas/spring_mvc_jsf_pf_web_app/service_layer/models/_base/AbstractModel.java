@@ -11,15 +11,16 @@ public abstract class AbstractModel {
     protected static final Logger LOGGER = LoggerFactory.getLogger(AbstractModel.class.getSimpleName());
 
     // Constants of directories of Properties files
-    protected final String PROPERTIES_FILE_1_DIR = "resource_bundles/messages.properties";
-    // Other constants
-    protected final String WEBAPP_LINK = getPropertyValueFromProperties(PROPERTIES_FILE_1_DIR, "webapp_link", "The 'webapp_link' is not found!");
+    protected static final String PROPERTIES_FILE_1_DIR = "resource_bundles/messages.properties";
 
-    protected String getPropertyValueFromProperties(String propertiesPath, String propertyName, String errorMessage) {
+    // Other constants
+    protected final String WEBAPP_LINK = fetchPropertyValueFromProperties(PROPERTIES_FILE_1_DIR, "webapp_link", "The 'webapp_link' is not found!");
+
+    protected String fetchPropertyValueFromProperties(String propertiesPath, String propertyName, String errorMessage) {
 
         String propertyValue = "No '" + propertyName + "' value found!";
         try {
-            propertyValue = HelperClass.getPropertyValueFromProperties(propertiesPath, propertyName);
+            propertyValue = HelperClass.fetchPropertyValueFromProperties(propertiesPath, propertyName);
         } catch (IOException e) {
             LOGGER.error("@@@ In 'AbstractModel': " + errorMessage +
                     " (because 'HelperClass::getPropertyValueFromProperties' throws 'IOException') @@@");

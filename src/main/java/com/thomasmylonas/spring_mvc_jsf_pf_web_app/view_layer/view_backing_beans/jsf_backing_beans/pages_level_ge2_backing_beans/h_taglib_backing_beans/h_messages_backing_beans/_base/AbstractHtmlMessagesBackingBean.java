@@ -9,8 +9,9 @@ import java.util.List;
 
 public abstract class AbstractHtmlMessagesBackingBean extends HtmlTaglibBackingBean {
 
+    private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"value", "converter"};
+
     protected List<ComponentsAttribute> messagesComponentsAttributesList;
-    private final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"value", "converter"};
 
     @PostConstruct
     private void init() {
@@ -22,7 +23,7 @@ public abstract class AbstractHtmlMessagesBackingBean extends HtmlTaglibBackingB
         messagesComponentsAttributesList = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "rendered", "styleClass", "binding")
-        messagesComponentsAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        messagesComponentsAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The most common Components' attributes
         messagesComponentsAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributesList());

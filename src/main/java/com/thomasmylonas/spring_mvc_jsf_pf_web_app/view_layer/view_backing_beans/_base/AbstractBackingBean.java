@@ -13,9 +13,7 @@ public abstract class AbstractBackingBean implements Serializable {
 
     // Constants of directories of Properties files
     protected static final String PROPERTIES_FILE_1_DIR = "resource_bundles/messages.properties";
-    // Constants of colors
-    protected final String COLOR_BLUE = getPropertyValueFromProperties(PROPERTIES_FILE_1_DIR, "color.blue", "The 'color.blue' is not found!");
-    protected final String COLOR_DEEP_PINK = getPropertyValueFromProperties(PROPERTIES_FILE_1_DIR, "color.deep_pink", "The 'color.deep_pink' is not found!");
+
     // Constants of styling
     protected static final String SPAN_OPEN_LEFT_STYLE = "<span style=\"";
     protected static final String SPAN_OPEN_RIGHT_STYLE = "\">";
@@ -24,11 +22,15 @@ public abstract class AbstractBackingBean implements Serializable {
     protected static final String COLOR_ATTR = "color:";
     protected static final String FONT_WEIGHT_ATTR = "font-weight:";
 
-    protected String getPropertyValueFromProperties(String propertiesPath, String propertyName, String errorMessage) {
+    // Constants of colors
+    protected final String COLOR_BLUE = fetchPropertyValueFromProperties(PROPERTIES_FILE_1_DIR, "color.blue", "The 'color.blue' is not found!");
+    protected final String COLOR_DEEP_PINK = fetchPropertyValueFromProperties(PROPERTIES_FILE_1_DIR, "color.deep_pink", "The 'color.deep_pink' is not found!");
+
+    protected String fetchPropertyValueFromProperties(String propertiesPath, String propertyName, String errorMessage) {
 
         String propertyValue = "No '" + propertyName + "' value found!";
         try {
-            propertyValue = HelperClass.getPropertyValueFromProperties(propertiesPath, propertyName);
+            propertyValue = HelperClass.fetchPropertyValueFromProperties(propertiesPath, propertyName);
         } catch (IOException e) {
             LOGGER.error("@@@ In 'AbstractBackingBean': " + errorMessage +
                     " (because 'HelperClass::getPropertyValueFromProperties' throws 'IOException') @@@");

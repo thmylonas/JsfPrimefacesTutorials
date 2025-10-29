@@ -1,56 +1,44 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.locale_services._base;
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services._base.AbstractService;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.annotation.PostConstruct;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
+@Getter
+@Setter
 public abstract class AbstractLocaleService extends AbstractService {
+
+    /**
+     * The final EN_LOCALE (Locale.ENGLISH)
+     */
+    protected static final Locale EN_LOCALE = new Locale("en", "US");
+
+    /**
+     * The final GR_LOCALE
+     */
+    protected static final Locale GR_LOCALE = new Locale("el", "GR");
+
+    /**
+     * The Map<String, Locale> of entries: (localeCode, Locale)
+     */
+    protected static final Map<String, Locale> LOCALES_MAP = new LinkedHashMap<>() {{
+        put("En", EN_LOCALE);
+        put("Gr", GR_LOCALE);
+    }};
 
     /**
      * The global current Locale in the application
      */
     protected Locale locale;
 
-    /**
-     * The final EN_LOCALE (Locale.ENGLISH)
-     */
-    protected final Locale EN_LOCALE = new Locale("en", "US");
-
-    /**
-     * The final GR_LOCALE
-     */
-    protected final Locale GR_LOCALE = new Locale("el", "GR");
-
-    /**
-     * The Map<String, Locale> of entries: (localeCode, Locale)
-     */
-    protected final Map<String, Locale> LOCALES_MAP = new LinkedHashMap<>() {{
-        put("En", EN_LOCALE);
-        put("Gr", GR_LOCALE);
-    }};
-
     @PostConstruct
     private void init() {
         locale = EN_LOCALE;
-    }
-
-    public Locale getLocale() {
-        return locale;
-    }
-
-    public void setLocale(Locale locale) {
-        this.locale = locale;
-    }
-
-    public Locale getEnLocale() {
-        return EN_LOCALE;
-    }
-
-    public Locale getGrLocale() {
-        return GR_LOCALE;
     }
 
     public String loadFlagCss() {
