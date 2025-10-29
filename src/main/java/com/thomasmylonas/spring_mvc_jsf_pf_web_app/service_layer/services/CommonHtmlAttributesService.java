@@ -3,6 +3,7 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_models.ComponentsAttribute;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_models.GloballyCommonAttributesFlags;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services._base.AbstractService;
+import lombok.Getter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "commonHtmlAttributesService")
+@Getter
 public class CommonHtmlAttributesService extends AbstractService implements Serializable {
 
     /**
@@ -205,7 +207,7 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         subsetUiInputsAttributesList.addAll(getMostCommonAttributesList());
 
         // The attributes of components, with which we can interact
-        subsetUiInputsAttributesList.addAll(getCommonInteractAccessAttributesList());
+        subsetUiInputsAttributesList.addAll(initAndGetCommonInteractAccessAttributesList());
 
         subsetUiInputsAttributesList.add(new ComponentsAttribute("label", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "A localized user presentable name for this component"));
         subsetUiInputsAttributesList.add(new ComponentsAttribute("readonly", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component will prohibit changes by the user. The element may receive focus unless it has also been disabled. A value of false causes no attribute to be rendered, while a value of true causes the attribute to be rendered as readonly='readonly'"));
@@ -216,7 +218,7 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         commonUiInputsAttributesList = new ArrayList<>();
 
         // The globally common Components' attributes
-        commonUiInputsAttributesList.addAll(getGloballyCommonAttributesList());
+        commonUiInputsAttributesList.addAll(initAndGetGloballyCommonAttributesList());
 
         // The attributes which are handling events
         commonUiInputsAttributesList.addAll(getCommonEventHandlerAttributesList());
@@ -265,7 +267,7 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         commonLinksAttributesList = new ArrayList<>();
 
         // The attributes of components, with which we can interact (Alternative attributes: "disabled")
-        commonLinksAttributesList.addAll(getCommonInteractAccessAttributesListWithFlags(true));
+        commonLinksAttributesList.addAll(initAndGetCommonInteractAccessAttributesListWithFlags(true));
 
         commonLinksAttributesList.add(new ComponentsAttribute("target", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Name of a frame where the resource retrieved via this hyperlink is to be displayed"));
         commonLinksAttributesList.add(new ComponentsAttribute("rel", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The relationship from the current document to the anchor specified by this hyperlink. The value of this attribute is a space-separated list of link types"));
@@ -324,13 +326,13 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         commonOutcomeTargetsAttributesList.add(new ComponentsAttribute("disableClientWindow", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.Boolean)", "Disable appending the ClientWindow on the rendering of this element"));
     }
 
-    public List<ComponentsAttribute> getGloballyCommonAttributesListWithFlags(GloballyCommonAttributesFlags globallyCommonAttributesFlags) {
+    public List<ComponentsAttribute> initAndGetGloballyCommonAttributesListWithFlags(GloballyCommonAttributesFlags globallyCommonAttributesFlags) {
         initGloballyCommonAttributesList(globallyCommonAttributesFlags);
         return globallyCommonAttributesList;
     }
 
-    public List<ComponentsAttribute> getGloballyCommonAttributesList() {
-        return getGloballyCommonAttributesListWithFlags(
+    public List<ComponentsAttribute> initAndGetGloballyCommonAttributesList() {
+        return initAndGetGloballyCommonAttributesListWithFlags(
                 GloballyCommonAttributesFlags.builder()
                         .idAlt(false)
                         .valueAlt(false)
@@ -341,53 +343,21 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
                         .build());
     }
 
-    public List<ComponentsAttribute> getCommonEventHandlerAttributesList() {
-        return commonEventHandlerAttributesList;
-    }
-
-    public List<ComponentsAttribute> getMostCommonAttributesList() {
-        return mostCommonAttributesList;
-    }
-
-    public List<ComponentsAttribute> getCommonInteractAccessAttributesListWithFlags(boolean isDisabledAlt) {
+    public List<ComponentsAttribute> initAndGetCommonInteractAccessAttributesListWithFlags(boolean isDisabledAlt) {
         initCommonInteractAccessAttributesList(isDisabledAlt);
         return commonInteractAccessAttributesList;
     }
 
-    public List<ComponentsAttribute> getCommonInteractAccessAttributesList() {
-        return getCommonInteractAccessAttributesListWithFlags(false);
+    public List<ComponentsAttribute> initAndGetCommonInteractAccessAttributesList() {
+        return initAndGetCommonInteractAccessAttributesListWithFlags(false);
     }
 
-    public List<ComponentsAttribute> getSubsetUiInputsAttributesList() {
-        return subsetUiInputsAttributesList;
-    }
-
-    public List<ComponentsAttribute> getCommonUiInputsAttributesList() {
-        return commonUiInputsAttributesList;
-    }
-
-    public List<ComponentsAttribute> getCommonSelectsAttributesListWithFlags(boolean isEnabledClassAlt, boolean isDisabledClassAlt) {
+    public List<ComponentsAttribute> initAndGetCommonSelectsAttributesListWithFlags(boolean isEnabledClassAlt, boolean isDisabledClassAlt) {
         initCommonSelectsAttributesList(isEnabledClassAlt, isDisabledClassAlt);
         return commonSelectsAttributesList;
     }
 
-    public List<ComponentsAttribute> getCommonSelectsAttributesList() {
-        return getCommonSelectsAttributesListWithFlags(false, false);
-    }
-
-    public List<ComponentsAttribute> getCommonLinksAttributesList() {
-        return commonLinksAttributesList;
-    }
-
-    public List<ComponentsAttribute> getCommonMessagesAttributesList() {
-        return commonMessagesAttributesList;
-    }
-
-    public List<ComponentsAttribute> getCommonPanelsTablesAttributesList() {
-        return commonPanelsTablesAttributesList;
-    }
-
-    public List<ComponentsAttribute> getCommonOutcomeTargetsAttributesList() {
-        return commonOutcomeTargetsAttributesList;
+    public List<ComponentsAttribute> initAndGetCommonSelectsAttributesList() {
+        return initAndGetCommonSelectsAttributesListWithFlags(false, false);
     }
 }

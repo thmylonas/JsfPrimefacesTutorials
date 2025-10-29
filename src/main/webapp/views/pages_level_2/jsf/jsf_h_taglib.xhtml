@@ -29,7 +29,7 @@
                 <h:outputText value="Common attributes list for UI components:"
                               styleClass="h_taglib_subtitles"/>
             </p>
-            <h:dataTable value="#{htmlTaglibBackingBean.commonHtmlAttributesService.globallyCommonAttributesList}"
+            <h:dataTable value="#{htmlTaglibBackingBean.commonHtmlAttributesService.initAndGetGloballyCommonAttributesList()}"
                          var="commonAttribute" border="1">
                 <f:facet name="header">Common attributes list for UI components</f:facet>
                 <h:column>
