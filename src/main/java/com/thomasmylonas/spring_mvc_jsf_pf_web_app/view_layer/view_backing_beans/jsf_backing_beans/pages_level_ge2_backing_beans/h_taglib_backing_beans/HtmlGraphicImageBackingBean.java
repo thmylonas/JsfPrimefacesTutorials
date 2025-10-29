@@ -2,6 +2,7 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_models.ComponentsAttribute;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.jsf_backing_beans.pages_level_ge2_backing_beans.HtmlTaglibBackingBean;
+import lombok.Getter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -9,12 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "htmlGraphicImageBackingBean")
+@Getter
 public class HtmlGraphicImageBackingBean extends HtmlTaglibBackingBean {
 
-    private List<ComponentsAttribute> graphicImageAttributesList;
+    private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"converter"};
+    private static final String[] EXCLUDED_EVENT_HANDLER_ATTRIBUTES = {"onfocus", "onblur", "onselect", "onchange"};
 
-    private final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"converter"};
-    private final String[] EXCLUDED_EVENT_HANDLER_ATTRIBUTES = {"onfocus", "onblur", "onselect", "onchange"};
+    private List<ComponentsAttribute> graphicImageAttributesList;
 
     @PostConstruct
     private void init() {
@@ -26,7 +28,7 @@ public class HtmlGraphicImageBackingBean extends HtmlTaglibBackingBean {
         graphicImageAttributesList = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "value", "rendered", "styleClass", "binding")
-        graphicImageAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        graphicImageAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
         graphicImageAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributesList(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
@@ -43,9 +45,5 @@ public class HtmlGraphicImageBackingBean extends HtmlTaglibBackingBean {
         graphicImageAttributesList.add(new ComponentsAttribute("longdesc", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "URI to a long description of the image represented by this element"));
         graphicImageAttributesList.add(new ComponentsAttribute("ismap", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this image is to be used as a server side image map. Such an image must be enclosed within a hyperlink ('a'). A value of false causes no attribute to be rendered, while a value of true causes the attribute to be rendered as ismap='ismap'"));
         graphicImageAttributesList.add(new ComponentsAttribute("usemap", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The name of a client side image map (an HTML 'map' element) for which this element provides the image"));
-    }
-
-    public List<ComponentsAttribute> getGraphicImageAttributesList() {
-        return graphicImageAttributesList;
     }
 }

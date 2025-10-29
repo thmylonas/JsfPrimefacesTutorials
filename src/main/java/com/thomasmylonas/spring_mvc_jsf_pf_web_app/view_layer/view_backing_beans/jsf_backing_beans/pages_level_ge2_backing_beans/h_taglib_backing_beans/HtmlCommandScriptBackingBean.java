@@ -2,6 +2,7 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_models.ComponentsAttribute;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.jsf_backing_beans.pages_level_ge2_backing_beans.HtmlTaglibBackingBean;
+import lombok.Getter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -9,11 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "htmlCommandScriptBackingBean")
+@Getter
 public class HtmlCommandScriptBackingBean extends HtmlTaglibBackingBean {
 
-    private List<ComponentsAttribute> commandScriptAttributesList;
+    private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"styleClass", "converter"};
 
-    private final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"styleClass", "converter"};
+    private List<ComponentsAttribute> commandScriptAttributesList;
 
     @PostConstruct
     private void init() {
@@ -25,7 +27,7 @@ public class HtmlCommandScriptBackingBean extends HtmlTaglibBackingBean {
         commandScriptAttributesList = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "value", "rendered", "binding")
-        commandScriptAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        commandScriptAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
         commandScriptAttributesList.add(new ComponentsAttribute("onevent", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The name of the JavaScript function that will handle UI events"));
@@ -39,9 +41,5 @@ public class HtmlCommandScriptBackingBean extends HtmlTaglibBackingBean {
         commandScriptAttributesList.add(new ComponentsAttribute("render", false, "@none", "javax.el.ValueExpression (must evaluate to java.lang.String)", "This is a space separated list of client identifiers of components that will participate in the 'render' portion of the Request Processing Lifecycle. If a literal is specified the identifiers must be space delimited. Any of the keywords '@this', '@form', '@all', '@none' may be specified in the identifier list. If not specified, the default value of '@none' is assumed. For example, @this clientIdOne clientIdTwo"));
         commandScriptAttributesList.add(new ComponentsAttribute("resetValues", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.Boolean)", "Reset specific input values. Interpret the value of the render attribute as a space separated list of client identifiers suitable for passing directly to UIViewRoot.resetValues(). The implementation must cause an ActionListener to be attached to the ActionSource component in which this tag is nested that calls UIViewRoot.resetValues() passing the value of the render attribute as the argument"));
         commandScriptAttributesList.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase"));
-    }
-
-    public List<ComponentsAttribute> getCommandScriptAttributesList() {
-        return commandScriptAttributesList;
     }
 }

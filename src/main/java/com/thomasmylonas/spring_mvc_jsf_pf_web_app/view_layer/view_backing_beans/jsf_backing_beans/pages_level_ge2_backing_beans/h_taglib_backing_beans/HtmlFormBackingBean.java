@@ -2,6 +2,7 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_models.ComponentsAttribute;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.jsf_backing_beans.pages_level_ge2_backing_beans.HtmlTaglibBackingBean;
+import lombok.Getter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -9,12 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "htmlFormBackingBean")
+@Getter
 public class HtmlFormBackingBean extends HtmlTaglibBackingBean {
 
-    private List<ComponentsAttribute> formAttributesList;
+    private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"value", "converter"};
+    private static final String[] EXCLUDED_EVENT_HANDLER_ATTRIBUTES = {"onfocus", "onblur", "onselect", "onchange"};
 
-    private final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"value", "converter"};
-    private final String[] EXCLUDED_EVENT_HANDLER_ATTRIBUTES = {"onfocus", "onblur", "onselect", "onchange"};
+    private List<ComponentsAttribute> formAttributesList;
 
     @PostConstruct
     private void init() {
@@ -26,7 +28,7 @@ public class HtmlFormBackingBean extends HtmlTaglibBackingBean {
         formAttributesList = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "rendered", "styleClass", "binding")
-        formAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        formAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
         formAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributesList(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
@@ -41,9 +43,5 @@ public class HtmlFormBackingBean extends HtmlTaglibBackingBean {
         formAttributesList.add(new ComponentsAttribute("acceptcharset", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "List of character encodings for input data that are accepted by the server processing this form"));
         formAttributesList.add(new ComponentsAttribute("enctype", false, "application/x-www-form-urlencoded", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Content type used to submit the form to the server. If not specified, the default value is 'application/x-www-form-urlencoded'"));
         formAttributesList.add(new ComponentsAttribute("target", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Name of a frame where the response retrieved after this form submit is to be displayed"));
-    }
-
-    public List<ComponentsAttribute> getFormAttributesList() {
-        return formAttributesList;
     }
 }

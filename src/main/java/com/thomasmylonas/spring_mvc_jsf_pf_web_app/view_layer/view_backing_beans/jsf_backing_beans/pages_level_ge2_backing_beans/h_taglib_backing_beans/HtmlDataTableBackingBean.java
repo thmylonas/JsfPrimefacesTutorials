@@ -2,6 +2,7 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_models.ComponentsAttribute;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.jsf_backing_beans.pages_level_ge2_backing_beans.HtmlTaglibBackingBean;
+import lombok.Getter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -9,12 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "htmlDataTableBackingBean")
+@Getter
 public class HtmlDataTableBackingBean extends HtmlTaglibBackingBean {
 
-    private List<ComponentsAttribute> dataTableAttributesList;
+    private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"converter"};
+    private static final String[] EXCLUDED_EVENT_HANDLER_ATTRIBUTES = {"onfocus", "onblur", "onselect", "onchange"};
 
-    private final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"converter"};
-    private final String[] EXCLUDED_EVENT_HANDLER_ATTRIBUTES = {"onfocus", "onblur", "onselect", "onchange"};
+    private List<ComponentsAttribute> dataTableAttributesList;
 
     @PostConstruct
     private void init() {
@@ -26,7 +28,7 @@ public class HtmlDataTableBackingBean extends HtmlTaglibBackingBean {
         dataTableAttributesList = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "value", "rendered", "styleClass", "binding")
-        dataTableAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        dataTableAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
         dataTableAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributesList(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
@@ -41,9 +43,5 @@ public class HtmlDataTableBackingBean extends HtmlTaglibBackingBean {
         dataTableAttributesList.add(new ComponentsAttribute("rowStatePreserved", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Boolean flag directing how the per-row component state should be handled. See UIData.setRowStatePreserved for more information"));
         dataTableAttributesList.add(new ComponentsAttribute("rows", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "The number of rows to display, starting with the one identified by the 'first' property. If this value is set to zero, all available rows in the underlying data model will be displayed"));
         dataTableAttributesList.add(new ComponentsAttribute("var", false, "No default value", "java.lang.String", "Name of a request-scope attribute under which the model data for the row selected by the current value of the 'rowIndex' property (i.e. also the current value of the 'rowData' property) will be exposed"));
-    }
-
-    public List<ComponentsAttribute> getDataTableAttributesList() {
-        return dataTableAttributesList;
     }
 }

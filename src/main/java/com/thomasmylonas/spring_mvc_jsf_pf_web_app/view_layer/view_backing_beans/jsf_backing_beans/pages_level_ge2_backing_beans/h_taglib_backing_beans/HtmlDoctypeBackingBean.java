@@ -2,6 +2,7 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_models.ComponentsAttribute;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.jsf_backing_beans.pages_level_ge2_backing_beans.HtmlTaglibBackingBean;
+import lombok.Getter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -9,11 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "htmlDoctypeBackingBean")
+@Getter
 public class HtmlDoctypeBackingBean extends HtmlTaglibBackingBean {
 
-    private List<ComponentsAttribute> doctypeAttributesList;
+    private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"styleClass"};
 
-    private final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"styleClass"};
+    private List<ComponentsAttribute> doctypeAttributesList;
 
     @PostConstruct
     private void init() {
@@ -25,14 +27,10 @@ public class HtmlDoctypeBackingBean extends HtmlTaglibBackingBean {
         doctypeAttributesList = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "value", "rendered", "converter", "binding")
-        doctypeAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        doctypeAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         doctypeAttributesList.add(new ComponentsAttribute("public", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Will be output as the public part of the DOCTYPE"));
         doctypeAttributesList.add(new ComponentsAttribute("rootElement", true, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The root XML element"));
         doctypeAttributesList.add(new ComponentsAttribute("system", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Will be output as the system part of the DOCTYPE"));
-    }
-
-    public List<ComponentsAttribute> getDoctypeAttributesList() {
-        return doctypeAttributesList;
     }
 }

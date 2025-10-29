@@ -2,6 +2,8 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_models.ComponentsAttribute;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.jsf_backing_beans.pages_level_ge2_backing_beans.HtmlTaglibBackingBean;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -12,13 +14,15 @@ import java.util.List;
 
 @ManagedBean(name = "htmlCommandButtonBackingBean")
 @ViewScoped
+@Getter
+@Setter
 public class HtmlCommandButtonBackingBean extends HtmlTaglibBackingBean {
+
+    private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"converter"};
 
     private List<ComponentsAttribute> commandButtonAttributesList;
 
-    private final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"converter"};
-
-    private HtmlInputText htmlInputText = new HtmlInputText();
+    private HtmlInputText htmlInputText;
     private boolean rendered = true;
 
     @PostConstruct
@@ -28,10 +32,12 @@ public class HtmlCommandButtonBackingBean extends HtmlTaglibBackingBean {
 
     private void initComponentsAttributesList() {
 
+        htmlInputText = new HtmlInputText();
+
         commandButtonAttributesList = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "value", "rendered", "styleClass", "binding")
-        commandButtonAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        commandButtonAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
         commandButtonAttributesList.addAll(commonHtmlAttributesService.getCommonEventHandlerAttributesList());
@@ -45,22 +51,6 @@ public class HtmlCommandButtonBackingBean extends HtmlTaglibBackingBean {
         commandButtonAttributesList.add(new ComponentsAttribute("image", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Absolute or relative URL of the image to be displayed for this button. If specified, this 'input' element will be of type 'image'. Otherwise, it will be of the type specified by the 'type' property with a label specified by the 'value' property. Note that if the value of this attribute starts with '/', the rendered value for this attribute will be prefixed with the context-root for this application"));
         commandButtonAttributesList.add(new ComponentsAttribute("alt", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Alternate textual description of the element rendered by this component"));
         commandButtonAttributesList.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase"));
-    }
-
-    public List<ComponentsAttribute> getCommandButtonAttributesList() {
-        return commandButtonAttributesList;
-    }
-
-    public HtmlInputText getHtmlInputText() {
-        return htmlInputText;
-    }
-
-    public void setHtmlInputText(HtmlInputText htmlInputText) {
-        this.htmlInputText = htmlInputText;
-    }
-
-    public boolean isRendered() {
-        return rendered;
     }
 
     public void hideDisplayInputText() {
