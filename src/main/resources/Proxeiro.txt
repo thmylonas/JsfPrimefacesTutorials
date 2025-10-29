@@ -738,3 +738,8 @@ Enum names
 StudentAlt -> Student
 Change loggers to slf4j
 LOGGER.error("@@@")
+Change the name/path
+StudentService/StudentDao method names
+new Locale(...) - 'Locale(java.lang.String, java.lang.String)' is deprecated since version 19
+DisplayConstants delete/keep
+_ExampleManagedBean delete at the end or keep

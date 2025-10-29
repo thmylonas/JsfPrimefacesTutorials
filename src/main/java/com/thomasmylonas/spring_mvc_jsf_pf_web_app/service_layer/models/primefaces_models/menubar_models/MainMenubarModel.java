@@ -1,6 +1,7 @@
 package com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.primefaces_models.menubar_models;
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.primefaces_models.menubar_models._base.AbstractMenubarModel;
+import lombok.Getter;
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
@@ -8,6 +9,7 @@ import org.primefaces.model.menu.MenuModel;
 //import javax.faces.bean.ManagedBean;
 
 //@ManagedBean(name = "mainMenubarModel")
+@Getter
 @Deprecated
 public class MainMenubarModel extends AbstractMenubarModel {
 
@@ -49,9 +51,5 @@ public class MainMenubarModel extends AbstractMenubarModel {
 
         item = DefaultMenuItem.builder().value("About").url(WEBAPP_LINK + "facelets/about").build();
         menuModel.getElements().add(item);
-    }
-
-    public MenuModel getMenuModel() {
-        return menuModel;
     }
 }

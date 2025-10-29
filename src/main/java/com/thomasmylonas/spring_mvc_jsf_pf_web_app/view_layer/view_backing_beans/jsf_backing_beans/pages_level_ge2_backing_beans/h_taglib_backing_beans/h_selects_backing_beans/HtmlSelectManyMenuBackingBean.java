@@ -2,6 +2,7 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_models.ComponentsAttribute;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.jsf_backing_beans.pages_level_ge2_backing_beans.h_taglib_backing_beans.h_selects_backing_beans._base.AbstractHtmlSelectManyBackingBean;
+import lombok.Getter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "htmlSelectManyMenuBackingBean")
+@Getter
 public class HtmlSelectManyMenuBackingBean extends AbstractHtmlSelectManyBackingBean {
 
     private List<ComponentsAttribute> selectManyMenuAttributesList;
@@ -25,13 +27,9 @@ public class HtmlSelectManyMenuBackingBean extends AbstractHtmlSelectManyBacking
         selectManyMenuAttributesList = new ArrayList<>();
 
         // The common "SelectOne"/"SelectMany" Components' attributes
-        selectManyMenuAttributesList.addAll(commonHtmlAttributesService.getCommonSelectsAttributesList());
+        selectManyMenuAttributesList.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributesList());
 
         selectManyMenuAttributesList.add(new ComponentsAttribute("collectionType", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Optional attribute that is a literal string that is the fully qualified class name of a concrete class that implements java.util.Collection, or an EL expression that evaluates to either 1. such a String, or 2. the Class object itself"));
         selectManyMenuAttributesList.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
-    }
-
-    public List<ComponentsAttribute> getSelectManyMenuAttributesList() {
-        return selectManyMenuAttributesList;
     }
 }

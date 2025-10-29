@@ -3,6 +3,7 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.primefaces_models.Car;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.CarService;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.primefaces_backing_beans.PrimefacesBackingBean;
+import lombok.Setter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -17,6 +18,7 @@ public class SortingDataTableBackingBean extends PrimefacesBackingBean {
     private List<Car> cars;
 
     @ManagedProperty(value = "#{carService}")
+    @Setter
     private CarService carService;
 
     @PostConstruct
@@ -29,9 +31,5 @@ public class SortingDataTableBackingBean extends PrimefacesBackingBean {
             cars = this.carService.createCars(10);
         }
         return cars;
-    }
-
-    public void setService(CarService carService) {
-        this.carService = carService;
     }
 }

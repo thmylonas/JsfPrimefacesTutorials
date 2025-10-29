@@ -2,6 +2,7 @@ package com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_bean
 
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_models.ComponentsAttribute;
 import com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.view_backing_beans.jsf_backing_beans.pages_level_ge2_backing_beans.h_taglib_backing_beans.h_selects_backing_beans._base.AbstractHtmlSelectManyBackingBean;
+import lombok.Getter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "htmlSelectManyCheckboxBackingBean")
+@Getter
 public class HtmlSelectManyCheckboxBackingBean extends AbstractHtmlSelectManyBackingBean {
 
     private List<ComponentsAttribute> selectManyCheckboxAttributesList;
@@ -25,7 +27,7 @@ public class HtmlSelectManyCheckboxBackingBean extends AbstractHtmlSelectManyBac
         selectManyCheckboxAttributesList = new ArrayList<>();
 
         // The common "SelectOne"/"SelectMany" Components' attributes
-        selectManyCheckboxAttributesList.addAll(commonHtmlAttributesService.getCommonSelectsAttributesList());
+        selectManyCheckboxAttributesList.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributesList());
 
         selectManyCheckboxAttributesList.add(new ComponentsAttribute("collectionType", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Optional attribute that is a literal string that is the fully qualified class name of a concrete class that implements java.util.Collection, or an EL expression that evaluates to either 1. such a String, or 2. the Class object itself"));
         selectManyCheckboxAttributesList.add(new ComponentsAttribute("selectedClass", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "CSS style class to apply to the rendered label on selected options"));
@@ -33,9 +35,5 @@ public class HtmlSelectManyCheckboxBackingBean extends AbstractHtmlSelectManyBac
         selectManyCheckboxAttributesList.add(new ComponentsAttribute("layout", false, "lineDirection", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Orientation of the options list to be created. Valid values are 'pageDirection' (list is laid out vertically), or 'lineDirection' (list is laid out horizontally). If not specified, the default value is 'lineDirection'"));
         selectManyCheckboxAttributesList.add(new ComponentsAttribute("border", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "Width (in pixels) of the border to be drawn around the table containing the options list"));
         selectManyCheckboxAttributesList.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
-    }
-
-    public List<ComponentsAttribute> getSelectManyCheckboxAttributesList() {
-        return selectManyCheckboxAttributesList;
     }
 }
