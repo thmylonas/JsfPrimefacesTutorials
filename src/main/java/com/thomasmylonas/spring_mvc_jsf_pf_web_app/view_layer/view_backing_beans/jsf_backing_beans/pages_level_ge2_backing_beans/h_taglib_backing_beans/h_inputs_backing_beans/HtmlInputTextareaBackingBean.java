@@ -26,7 +26,7 @@ public class HtmlInputTextareaBackingBean extends AbstractHtmlInputsBackingBean 
         inputTextareaAttributesList = new ArrayList<>();
 
         // The common "UIInput" Components' attributes
-        inputTextareaAttributesList.addAll(commonHtmlAttributesService.getCommonUiInputsAttributesList());
+        inputTextareaAttributesList.addAll(commonHtmlAttributesService.getCommonUiInputsAttributes());
 
         inputTextareaAttributesList.add(new ComponentsAttribute("rows", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "The number of rows to be displayed"));
         inputTextareaAttributesList.add(new ComponentsAttribute("cols", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "The number of columns to be displayed"));

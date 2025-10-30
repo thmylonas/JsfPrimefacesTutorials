@@ -42,7 +42,7 @@ public class HtmlPanelGroupBackingBean extends HtmlTaglibBackingBean {
                 EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
-        panelGroupAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributesList(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
+        panelGroupAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
 
         panelGroupAttributesList.add(new ComponentsAttribute("layout", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The type of layout markup to use when rendering this group. If the value is 'block' the renderer must produce an HTML 'div' element. Otherwise HTML 'span' element must be produced"));
         panelGroupAttributesList.add(new ComponentsAttribute("style", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "CSS style(s) to be applied when this component is rendered"));

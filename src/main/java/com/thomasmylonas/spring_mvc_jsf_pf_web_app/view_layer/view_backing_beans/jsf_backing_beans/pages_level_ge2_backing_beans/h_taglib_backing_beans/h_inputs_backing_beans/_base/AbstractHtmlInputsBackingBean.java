@@ -13,7 +13,7 @@ public abstract class AbstractHtmlInputsBackingBean extends HtmlTaglibBackingBea
     protected void initCommonHtmlInputsAttributes() {
 
         // The common "UIInput" Components' attributes
-        uiInputsAttributesList.addAll(commonHtmlAttributesService.getCommonUiInputsAttributesList());
+        uiInputsAttributesList.addAll(commonHtmlAttributesService.getCommonUiInputsAttributes());
 
         uiInputsAttributesList.add(new ComponentsAttribute("alt", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Alternate textual description of the element rendered by this component"));
         uiInputsAttributesList.add(new ComponentsAttribute("maxlength", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "The maximum number of characters that may be entered in this field"));

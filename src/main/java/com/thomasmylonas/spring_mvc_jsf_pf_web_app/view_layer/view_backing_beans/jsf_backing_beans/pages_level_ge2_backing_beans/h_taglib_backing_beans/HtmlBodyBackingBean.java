@@ -31,12 +31,12 @@ public class HtmlBodyBackingBean extends HtmlTaglibBackingBean {
         bodyAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
-        bodyAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributesList(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
+        bodyAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
         bodyAttributesList.add(new ComponentsAttribute("onload", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Javascript code executed when the user agent finishes loading a window or all frames within a frameset"));
         bodyAttributesList.add(new ComponentsAttribute("onunload", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Javascript code executed when the user agent removes a document from a window or frame"));
 
         // The most common Components' attributes
-        bodyAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributesList());
+        bodyAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         bodyAttributesList.add(new ComponentsAttribute("xmlns", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "An XML Namespace to be passed through to the rendered element"));
     }

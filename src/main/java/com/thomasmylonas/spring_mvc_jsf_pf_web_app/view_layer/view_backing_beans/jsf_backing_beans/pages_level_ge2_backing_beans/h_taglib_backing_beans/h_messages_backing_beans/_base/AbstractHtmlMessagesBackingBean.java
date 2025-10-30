@@ -20,9 +20,9 @@ public abstract class AbstractHtmlMessagesBackingBean extends HtmlTaglibBackingB
         messagesComponentsAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The most common Components' attributes
-        messagesComponentsAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributesList());
+        messagesComponentsAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         // The common "Messages" Components' attributes
-        messagesComponentsAttributesList.addAll(commonHtmlAttributesService.getCommonMessagesAttributesList());
+        messagesComponentsAttributesList.addAll(commonHtmlAttributesService.getCommonMessagesAttributes());
     }
 }

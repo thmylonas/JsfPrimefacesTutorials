@@ -30,12 +30,12 @@ public class HtmlOutputLinkBackingBean extends AbstractHtmlOutputsBackingBean {
         outputLinkAttributesList.addAll(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList());
 
         // The attributes which are handling events
-        outputLinkAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributesList(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
+        outputLinkAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
 
         // The most common Components' attributes
-        outputLinkAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributesList());
+        outputLinkAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         // The common "Links" Components' attributes (Alternative attributes: "disabled")
-        outputLinkAttributesList.addAll(commonHtmlAttributesService.getCommonLinksAttributesList());
+        outputLinkAttributesList.addAll(commonHtmlAttributesService.getCommonLinksAttributes());
     }
 }

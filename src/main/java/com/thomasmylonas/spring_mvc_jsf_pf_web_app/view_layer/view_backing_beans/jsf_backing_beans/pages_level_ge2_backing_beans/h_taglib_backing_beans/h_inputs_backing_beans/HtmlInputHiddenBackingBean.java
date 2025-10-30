@@ -35,9 +35,9 @@ public class HtmlInputHiddenBackingBean extends AbstractHtmlInputsBackingBean {
 
         // The common "UIInput" Components' attributes
         List<String> globallyCommonNameAttributesList = commonHtmlAttributesService.initAndGetGloballyCommonAttributesList().stream().map(ComponentsAttribute::getName).collect(Collectors.toList());
-        List<String> commonEventHandlerNameAttributesList = commonHtmlAttributesService.getCommonEventHandlerAttributesList().stream().map(ComponentsAttribute::getName).collect(Collectors.toList());
-        List<String> subsetUiInputsNameAttributesList = commonHtmlAttributesService.getSubsetUiInputsAttributesList().stream().map(ComponentsAttribute::getName).collect(Collectors.toList());
-        List<ComponentsAttribute> tempCommonUiInputsAttributesList = excludeAttributes(commonHtmlAttributesService.getCommonUiInputsAttributesList(), HelperClass.transformListToArray(globallyCommonNameAttributesList, new GenericArray<>(String.class, 0)));
+        List<String> commonEventHandlerNameAttributesList = commonHtmlAttributesService.getCommonEventHandlerAttributes().stream().map(ComponentsAttribute::getName).collect(Collectors.toList());
+        List<String> subsetUiInputsNameAttributesList = commonHtmlAttributesService.getSubsetUiInputsAttributes().stream().map(ComponentsAttribute::getName).collect(Collectors.toList());
+        List<ComponentsAttribute> tempCommonUiInputsAttributesList = excludeAttributes(commonHtmlAttributesService.getCommonUiInputsAttributes(), HelperClass.transformListToArray(globallyCommonNameAttributesList, new GenericArray<>(String.class, 0)));
         tempCommonUiInputsAttributesList = excludeAttributes(tempCommonUiInputsAttributesList, HelperClass.transformListToArray(commonEventHandlerNameAttributesList, new GenericArray<>(String.class, 0)));
         tempCommonUiInputsAttributesList = excludeAttributes(tempCommonUiInputsAttributesList, HelperClass.transformListToArray(subsetUiInputsNameAttributesList, new GenericArray<>(String.class, 0)));
         inputHiddenAttributesList.addAll(tempCommonUiInputsAttributesList);

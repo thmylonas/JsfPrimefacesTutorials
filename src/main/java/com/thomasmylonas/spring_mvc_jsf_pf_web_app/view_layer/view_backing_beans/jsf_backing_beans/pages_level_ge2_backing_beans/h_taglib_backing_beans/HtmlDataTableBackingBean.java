@@ -31,13 +31,13 @@ public class HtmlDataTableBackingBean extends HtmlTaglibBackingBean {
         dataTableAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
-        dataTableAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributesList(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
+        dataTableAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
 
         // The most common Components' attributes
-        dataTableAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributesList());
+        dataTableAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         // The common "Panels"/"Tables" Components' attributes
-        dataTableAttributesList.addAll(commonHtmlAttributesService.getCommonPanelsTablesAttributesList());
+        dataTableAttributesList.addAll(commonHtmlAttributesService.getCommonPanelsTablesAttributes());
 
         dataTableAttributesList.add(new ComponentsAttribute("first", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "Zero-relative row number of the first row to be displayed. If this property is set to zero, rendering will begin with the first row of the underlying data"));
         dataTableAttributesList.add(new ComponentsAttribute("rowStatePreserved", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Boolean flag directing how the per-row component state should be handled. See UIData.setRowStatePreserved for more information"));

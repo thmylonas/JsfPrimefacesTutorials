@@ -31,13 +31,13 @@ public class HtmlPanelGridBackingBean extends HtmlTaglibBackingBean {
         panelGridAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
-        panelGridAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributesList(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
+        panelGridAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
 
         // The most common Components' attributes
-        panelGridAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributesList());
+        panelGridAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         // The common "Panels"/"Tables" Components' attributes
-        panelGridAttributesList.addAll(commonHtmlAttributesService.getCommonPanelsTablesAttributesList());
+        panelGridAttributesList.addAll(commonHtmlAttributesService.getCommonPanelsTablesAttributes());
 
         panelGridAttributesList.add(new ComponentsAttribute("columns", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "The number of columns to render before starting a new row"));
     }

@@ -38,10 +38,10 @@ public class HtmlOutputLabelBackingBean extends AbstractHtmlOutputsBackingBean {
         outputLabelAttributesList.addAll(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList());
 
         // The attributes which are handling events
-        outputLabelAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributesList(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
+        outputLabelAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
 
         // The most common Components' attributes
-        outputLabelAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributesList());
+        outputLabelAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         // The attributes of components, with which we can interact
         outputLabelAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetCommonInteractAccessAttributesList(), EXCLUDED_INTERACTION_ACCESS_ATTRIBUTES));

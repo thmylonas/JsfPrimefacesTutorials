@@ -31,7 +31,7 @@ public class HtmlHeadBackingBean extends HtmlTaglibBackingBean {
         headAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The most common Components' attributes (Containing attributes: "dir", "lang")
-        headAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getMostCommonAttributesList(), EXCLUDED_MOST_COMMON_ATTRIBUTES));
+        headAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getMostCommonAttributes(), EXCLUDED_MOST_COMMON_ATTRIBUTES));
 
         headAttributesList.add(new ComponentsAttribute("xmlns", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "An XML Namespace to be passed through to the rendered element"));
     }

@@ -31,15 +31,15 @@ public class HtmlLinkBackingBean extends HtmlTaglibBackingBean {
         linkAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
-        linkAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributesList(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
+        linkAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
 
         // The most common Components' attributes
-        linkAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributesList());
+        linkAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         // The common "Links" Components' attributes (Alternative attributes: "disabled")
-        linkAttributesList.addAll(commonHtmlAttributesService.getCommonLinksAttributesList());
+        linkAttributesList.addAll(commonHtmlAttributesService.getCommonLinksAttributes());
 
         // The common "UIOutcomeTarget" Components' attributes
-        linkAttributesList.addAll(commonHtmlAttributesService.getCommonOutcomeTargetsAttributesList());
+        linkAttributesList.addAll(commonHtmlAttributesService.getCommonOutcomeTargetsAttributes());
     }
 }

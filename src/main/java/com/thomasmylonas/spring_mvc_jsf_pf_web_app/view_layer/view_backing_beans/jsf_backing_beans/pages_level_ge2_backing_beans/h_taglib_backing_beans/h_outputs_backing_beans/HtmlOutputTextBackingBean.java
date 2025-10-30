@@ -28,7 +28,7 @@ public class HtmlOutputTextBackingBean extends AbstractHtmlOutputsBackingBean {
         outputTextAttributesList.addAll(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList());
 
         // The most common Components' attributes
-        outputTextAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributesList());
+        outputTextAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         outputTextAttributesList.add(new ComponentsAttribute("escape", false, "true", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that characters that are sensitive in HTML and XML markup must be escaped. This flag is set to 'true' by default"));
     }

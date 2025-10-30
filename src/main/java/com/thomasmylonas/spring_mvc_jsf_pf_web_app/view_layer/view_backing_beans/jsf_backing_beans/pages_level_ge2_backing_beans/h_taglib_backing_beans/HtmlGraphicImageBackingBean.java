@@ -31,10 +31,10 @@ public class HtmlGraphicImageBackingBean extends HtmlTaglibBackingBean {
         graphicImageAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
-        graphicImageAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributesList(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
+        graphicImageAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
 
         // The most common Components' attributes
-        graphicImageAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributesList());
+        graphicImageAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         graphicImageAttributesList.add(new ComponentsAttribute("url", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Context-relative URL to retrieve the resource associated with this component. This is an alias for the 'value' property"));
         graphicImageAttributesList.add(new ComponentsAttribute("alt", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Alternate textual description of the element rendered by this component"));
