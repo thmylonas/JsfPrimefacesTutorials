@@ -16,7 +16,7 @@
             The following does not work for UTF-8 charset:
             <base-name>resource_bundles.messages</base-name>
             -->
-            <base-name>com.thomasmylonas.spring_mvc_jsf_pf_web_app.view_layer.Messages</base-name>
+            <base-name>com.thomasmylonas.jsf_primefaces_tutorials.view_layer.Messages</base-name>
             <var>msg</var>
         </resource-bundle>
     </application>

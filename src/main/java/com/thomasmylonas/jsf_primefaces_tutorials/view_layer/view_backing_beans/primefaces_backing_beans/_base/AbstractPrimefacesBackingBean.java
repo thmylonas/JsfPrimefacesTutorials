@@ -1,0 +1,6 @@
+package com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.primefaces_backing_beans._base;
+
+import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans._base.AbstractBackingBean;
+
+public abstract class AbstractPrimefacesBackingBean extends AbstractBackingBean {
+}
