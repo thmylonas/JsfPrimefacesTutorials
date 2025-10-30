@@ -13,23 +13,23 @@ import java.util.List;
 @Getter
 public class HtmlMessageBackingBean extends AbstractHtmlMessagesBackingBean {
 
-    private List<ComponentsAttribute> messageAttributesList;
+    private List<ComponentsAttribute> messageAttributes;
 
     @PostConstruct
     private void init() {
         initCommonHtmlMessagesAttributes();
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        messageAttributesList = new ArrayList<>();
+        messageAttributes = new ArrayList<>();
 
         // These attributes are inherited from the superclass "AbstractHtmlMessagesBackingBean"
-        messageAttributesList.addAll(messagesComponentsAttributesList);
+        messageAttributes.addAll(messagesComponentsAttributes);
 
-        messageAttributesList.add(new ComponentsAttribute("for", true, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Search expression to the component for which to display messages"));
-        messageAttributesList.add(new ComponentsAttribute("showDetail", false, "true", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating whether the detail portion of displayed messages should be included. Default value is 'true'"));
-        messageAttributesList.add(new ComponentsAttribute("showSummary", false, "false", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating whether the summary portion of displayed messages should be included. Default value is 'false'"));
+        messageAttributes.add(new ComponentsAttribute("for", true, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Search expression to the component for which to display messages"));
+        messageAttributes.add(new ComponentsAttribute("showDetail", false, "true", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating whether the detail portion of displayed messages should be included. Default value is 'true'"));
+        messageAttributes.add(new ComponentsAttribute("showSummary", false, "false", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating whether the summary portion of displayed messages should be included. Default value is 'false'"));
     }
 }

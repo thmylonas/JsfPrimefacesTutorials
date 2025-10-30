@@ -101,18 +101,18 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
 
     @PostConstruct
     private void init() {
-        initCommonEventHandlerAttributesList();
-        initMostCommonAttributesList();
-        initSubsetUiInputsAttributesList();
-        initCommonUiInputsAttributesList();
-        initCommonLinksAttributesList();
-        initCommonMessagesAttributesList();
-        initCommonPanelsTablesAttributesList();
-        initCommonOutcomeTargetsAttributesList();
-        // "globallyCommonAttributesList", "commonInteractAccessAttributesList", "commonSelectsAttributesList" cannot be initialized here
+        initCommonEventHandlerAttributes();
+        initMostCommonAttributes();
+        initSubsetUiInputsAttributes();
+        initCommonUiInputsAttributes();
+        initCommonLinksAttributes();
+        initCommonMessagesAttributes();
+        initCommonPanelsTablesAttributes();
+        initCommonOutcomeTargetsAttributes();
+        // "globallyCommonAttributes", "commonInteractAccessAttributes", "commonSelectsAttributes" cannot be initialized here
     }
 
-    private void initGloballyCommonAttributesList(GloballyCommonAttributesFlags flags) {
+    private void initGloballyCommonAttributes(GloballyCommonAttributesFlags flags) {
 
         globallyCommonAttributes = new ArrayList<>();
 
@@ -148,7 +148,7 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         }
     }
 
-    private void initCommonEventHandlerAttributesList() {
+    private void initCommonEventHandlerAttributes() {
 
         commonEventHandlerAttributes = new ArrayList<>();
 
@@ -168,7 +168,7 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         commonEventHandlerAttributes.add(new ComponentsAttribute("onchange", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Javascript code executed when this element loses focus and its value has been modified since gaining focus"));
     }
 
-    private void initMostCommonAttributesList() {
+    private void initMostCommonAttributes() {
 
         mostCommonAttributes = new ArrayList<>();
 
@@ -180,13 +180,13 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
     }
 
     /**
-     * This method initializes the "commonInteractAccessAttributesList".
+     * This method initializes the "commonInteractAccessAttributes".
      * In this list, the attribute "disabled" (based in the following parameter/flag)
      * has alternative value only in the "link" components (e.g. "h:commandLink", "h:link").
      *
      * @param isDisabledAlt The flag: is the value of the attribute "disabled" alternative?
      */
-    private void initCommonInteractAccessAttributesList(boolean isDisabledAlt) {
+    private void initCommonInteractAccessAttributes(boolean isDisabledAlt) {
 
         commonInteractAccessAttributes = new ArrayList<>();
 
@@ -199,7 +199,7 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         }
     }
 
-    private void initSubsetUiInputsAttributesList() {
+    private void initSubsetUiInputsAttributes() {
 
         subsetUiInputsAttributes = new ArrayList<>();
 
@@ -207,18 +207,18 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         subsetUiInputsAttributes.addAll(getMostCommonAttributes());
 
         // The attributes of components, with which we can interact
-        subsetUiInputsAttributes.addAll(initAndGetCommonInteractAccessAttributesList());
+        subsetUiInputsAttributes.addAll(initAndGetCommonInteractAccessAttributes());
 
         subsetUiInputsAttributes.add(new ComponentsAttribute("label", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "A localized user presentable name for this component"));
         subsetUiInputsAttributes.add(new ComponentsAttribute("readonly", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component will prohibit changes by the user. The element may receive focus unless it has also been disabled. A value of false causes no attribute to be rendered, while a value of true causes the attribute to be rendered as readonly='readonly'"));
     }
 
-    private void initCommonUiInputsAttributesList() {
+    private void initCommonUiInputsAttributes() {
 
         commonUiInputsAttributes = new ArrayList<>();
 
         // The globally common Components' attributes
-        commonUiInputsAttributes.addAll(initAndGetGloballyCommonAttributesList());
+        commonUiInputsAttributes.addAll(initAndGetGloballyCommonAttributes());
 
         // The attributes which are handling events
         commonUiInputsAttributes.addAll(getCommonEventHandlerAttributes());
@@ -235,14 +235,14 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
     }
 
     /**
-     * This method initializes the "commonSelectsAttributesList".
+     * This method initializes the "commonSelectsAttributes".
      * In this list, the attributes "enabledClass", "disabledClass" (based in the following parameters/flags)
      * have alternative values only in the "h:selectOneRadio" component.
      *
      * @param isEnabledClassAlt  The flag: is the value of the attribute "enabledClass" alternative?
      * @param isDisabledClassAlt The flag: is the value of the attribute "disabledClass" alternative?
      */
-    private void initCommonSelectsAttributesList(boolean isEnabledClassAlt, boolean isDisabledClassAlt) {
+    private void initCommonSelectsAttributes(boolean isEnabledClassAlt, boolean isDisabledClassAlt) {
 
         commonSelectsAttributes = new ArrayList<>();
 
@@ -262,12 +262,12 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         commonSelectsAttributes.add(new ComponentsAttribute("hideNoSelectionOption", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that, if this component is activated by the user, The 'no selection option', if any, must be hidden"));
     }
 
-    private void initCommonLinksAttributesList() {
+    private void initCommonLinksAttributes() {
 
         commonLinksAttributes = new ArrayList<>();
 
         // The attributes of components, with which we can interact (Alternative attributes: "disabled")
-        commonLinksAttributes.addAll(initAndGetCommonInteractAccessAttributesListWithFlags(true));
+        commonLinksAttributes.addAll(initAndGetCommonInteractAccessAttributesWithFlags(true));
 
         commonLinksAttributes.add(new ComponentsAttribute("target", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Name of a frame where the resource retrieved via this hyperlink is to be displayed"));
         commonLinksAttributes.add(new ComponentsAttribute("rel", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The relationship from the current document to the anchor specified by this hyperlink. The value of this attribute is a space-separated list of link types"));
@@ -279,7 +279,7 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         commonLinksAttributes.add(new ComponentsAttribute("shape", false, "default (entire region)", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The shape of the hot spot on the screen (for use in client-side image maps). Valid values are: default (entire region); rect (rectangular region); circle (circular region); and poly (polygonal region)"));
     }
 
-    private void initCommonMessagesAttributesList() {
+    private void initCommonMessagesAttributes() {
 
         commonMessagesAttributes = new ArrayList<>();
 
@@ -294,7 +294,7 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         commonMessagesAttributes.add(new ComponentsAttribute("fatalStyle", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "CSS style(s) to apply to any message with a severity class of 'FATAL'"));
     }
 
-    private void initCommonPanelsTablesAttributesList() {
+    private void initCommonPanelsTablesAttributes() {
 
         commonPanelsTablesAttributes = new ArrayList<>();
 
@@ -316,7 +316,7 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         commonPanelsTablesAttributes.add(new ComponentsAttribute("rules", false, "none (no rules)", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Code specifying which rules will appear between cells within this table. Valid values are: none (no rules, default value); groups (between row groups); rows (between rows only); cols (between columns only); and all (between all rows and columns)"));
     }
 
-    private void initCommonOutcomeTargetsAttributesList() {
+    private void initCommonOutcomeTargetsAttributes() {
 
         commonOutcomeTargetsAttributes = new ArrayList<>();
 
@@ -326,13 +326,13 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         commonOutcomeTargetsAttributes.add(new ComponentsAttribute("disableClientWindow", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.Boolean)", "Disable appending the ClientWindow on the rendering of this element"));
     }
 
-    public List<ComponentsAttribute> initAndGetGloballyCommonAttributesListWithFlags(GloballyCommonAttributesFlags globallyCommonAttributesFlags) {
-        initGloballyCommonAttributesList(globallyCommonAttributesFlags);
+    public List<ComponentsAttribute> initAndGetGloballyCommonAttributesWithFlags(GloballyCommonAttributesFlags globallyCommonAttributesFlags) {
+        initGloballyCommonAttributes(globallyCommonAttributesFlags);
         return globallyCommonAttributes;
     }
 
-    public List<ComponentsAttribute> initAndGetGloballyCommonAttributesList() {
-        return initAndGetGloballyCommonAttributesListWithFlags(
+    public List<ComponentsAttribute> initAndGetGloballyCommonAttributes() {
+        return initAndGetGloballyCommonAttributesWithFlags(
                 GloballyCommonAttributesFlags.builder()
                         .idAlt(false)
                         .valueAlt(false)
@@ -343,21 +343,21 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
                         .build());
     }
 
-    public List<ComponentsAttribute> initAndGetCommonInteractAccessAttributesListWithFlags(boolean isDisabledAlt) {
-        initCommonInteractAccessAttributesList(isDisabledAlt);
+    public List<ComponentsAttribute> initAndGetCommonInteractAccessAttributesWithFlags(boolean isDisabledAlt) {
+        initCommonInteractAccessAttributes(isDisabledAlt);
         return commonInteractAccessAttributes;
     }
 
-    public List<ComponentsAttribute> initAndGetCommonInteractAccessAttributesList() {
-        return initAndGetCommonInteractAccessAttributesListWithFlags(false);
+    public List<ComponentsAttribute> initAndGetCommonInteractAccessAttributes() {
+        return initAndGetCommonInteractAccessAttributesWithFlags(false);
     }
 
-    public List<ComponentsAttribute> initAndGetCommonSelectsAttributesListWithFlags(boolean isEnabledClassAlt, boolean isDisabledClassAlt) {
-        initCommonSelectsAttributesList(isEnabledClassAlt, isDisabledClassAlt);
+    public List<ComponentsAttribute> initAndGetCommonSelectsAttributesWithFlags(boolean isEnabledClassAlt, boolean isDisabledClassAlt) {
+        initCommonSelectsAttributes(isEnabledClassAlt, isDisabledClassAlt);
         return commonSelectsAttributes;
     }
 
-    public List<ComponentsAttribute> initAndGetCommonSelectsAttributesList() {
-        return initAndGetCommonSelectsAttributesListWithFlags(false, false);
+    public List<ComponentsAttribute> initAndGetCommonSelectsAttributes() {
+        return initAndGetCommonSelectsAttributesWithFlags(false, false);
     }
 }

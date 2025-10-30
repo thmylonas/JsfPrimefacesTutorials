@@ -13,27 +13,27 @@ import java.util.List;
 @Getter
 public class HtmlSelectManyCheckboxBackingBean extends AbstractHtmlSelectManyBackingBean {
 
-    private List<ComponentsAttribute> selectManyCheckboxAttributesList;
+    private List<ComponentsAttribute> selectManyCheckboxAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
         initExamplesValues();
         initSelectItemsWithMapsAndArrays();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        selectManyCheckboxAttributesList = new ArrayList<>();
+        selectManyCheckboxAttributes = new ArrayList<>();
 
         // The common "SelectOne"/"SelectMany" Components' attributes
-        selectManyCheckboxAttributesList.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributesList());
+        selectManyCheckboxAttributes.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributes());
 
-        selectManyCheckboxAttributesList.add(new ComponentsAttribute("collectionType", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Optional attribute that is a literal string that is the fully qualified class name of a concrete class that implements java.util.Collection, or an EL expression that evaluates to either 1. such a String, or 2. the Class object itself"));
-        selectManyCheckboxAttributesList.add(new ComponentsAttribute("selectedClass", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "CSS style class to apply to the rendered label on selected options"));
-        selectManyCheckboxAttributesList.add(new ComponentsAttribute("unselectedClass", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "CSS style class to apply to the rendered label on unselected options"));
-        selectManyCheckboxAttributesList.add(new ComponentsAttribute("layout", false, "lineDirection", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Orientation of the options list to be created. Valid values are 'pageDirection' (list is laid out vertically), or 'lineDirection' (list is laid out horizontally). If not specified, the default value is 'lineDirection'"));
-        selectManyCheckboxAttributesList.add(new ComponentsAttribute("border", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "Width (in pixels) of the border to be drawn around the table containing the options list"));
-        selectManyCheckboxAttributesList.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
+        selectManyCheckboxAttributes.add(new ComponentsAttribute("collectionType", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Optional attribute that is a literal string that is the fully qualified class name of a concrete class that implements java.util.Collection, or an EL expression that evaluates to either 1. such a String, or 2. the Class object itself"));
+        selectManyCheckboxAttributes.add(new ComponentsAttribute("selectedClass", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "CSS style class to apply to the rendered label on selected options"));
+        selectManyCheckboxAttributes.add(new ComponentsAttribute("unselectedClass", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "CSS style class to apply to the rendered label on unselected options"));
+        selectManyCheckboxAttributes.add(new ComponentsAttribute("layout", false, "lineDirection", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Orientation of the options list to be created. Valid values are 'pageDirection' (list is laid out vertically), or 'lineDirection' (list is laid out horizontally). If not specified, the default value is 'lineDirection'"));
+        selectManyCheckboxAttributes.add(new ComponentsAttribute("border", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "Width (in pixels) of the border to be drawn around the table containing the options list"));
+        selectManyCheckboxAttributes.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
     }
 }

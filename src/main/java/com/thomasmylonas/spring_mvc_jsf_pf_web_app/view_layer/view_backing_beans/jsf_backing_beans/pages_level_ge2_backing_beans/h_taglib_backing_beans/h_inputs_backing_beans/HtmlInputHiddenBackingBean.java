@@ -18,30 +18,30 @@ public class HtmlInputHiddenBackingBean extends AbstractHtmlInputsBackingBean {
 
     private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"styleClass"};
 
-    private List<ComponentsAttribute> inputHiddenAttributesList;
+    private List<ComponentsAttribute> inputHiddenAttributes;
 
     @PostConstruct
     private void init() {
         initCommonHtmlInputsAttributes();
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        inputHiddenAttributesList = new ArrayList<>();
+        inputHiddenAttributes = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "value", "rendered", "converter", "binding")
-        inputHiddenAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        inputHiddenAttributes.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributes(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The common "UIInput" Components' attributes
-        List<String> globallyCommonNameAttributesList = commonHtmlAttributesService.initAndGetGloballyCommonAttributesList().stream().map(ComponentsAttribute::getName).collect(Collectors.toList());
-        List<String> commonEventHandlerNameAttributesList = commonHtmlAttributesService.getCommonEventHandlerAttributes().stream().map(ComponentsAttribute::getName).collect(Collectors.toList());
-        List<String> subsetUiInputsNameAttributesList = commonHtmlAttributesService.getSubsetUiInputsAttributes().stream().map(ComponentsAttribute::getName).collect(Collectors.toList());
-        List<ComponentsAttribute> tempCommonUiInputsAttributesList = excludeAttributes(commonHtmlAttributesService.getCommonUiInputsAttributes(), HelperClass.transformListToArray(globallyCommonNameAttributesList, new GenericArray<>(String.class, 0)));
-        tempCommonUiInputsAttributesList = excludeAttributes(tempCommonUiInputsAttributesList, HelperClass.transformListToArray(commonEventHandlerNameAttributesList, new GenericArray<>(String.class, 0)));
-        tempCommonUiInputsAttributesList = excludeAttributes(tempCommonUiInputsAttributesList, HelperClass.transformListToArray(subsetUiInputsNameAttributesList, new GenericArray<>(String.class, 0)));
-        inputHiddenAttributesList.addAll(tempCommonUiInputsAttributesList);
+        List<String> globallyCommonNameAttributes = commonHtmlAttributesService.initAndGetGloballyCommonAttributes().stream().map(ComponentsAttribute::getName).collect(Collectors.toList());
+        List<String> commonEventHandlerNameAttributes = commonHtmlAttributesService.getCommonEventHandlerAttributes().stream().map(ComponentsAttribute::getName).collect(Collectors.toList());
+        List<String> subsetUiInputsNameAttributes = commonHtmlAttributesService.getSubsetUiInputsAttributes().stream().map(ComponentsAttribute::getName).collect(Collectors.toList());
+        List<ComponentsAttribute> tempCommonUiInputsAttributes = excludeAttributes(commonHtmlAttributesService.getCommonUiInputsAttributes(), HelperClass.transformListToArray(globallyCommonNameAttributes, new GenericArray<>(String.class, 0)));
+        tempCommonUiInputsAttributes = excludeAttributes(tempCommonUiInputsAttributes, HelperClass.transformListToArray(commonEventHandlerNameAttributes, new GenericArray<>(String.class, 0)));
+        tempCommonUiInputsAttributes = excludeAttributes(tempCommonUiInputsAttributes, HelperClass.transformListToArray(subsetUiInputsNameAttributes, new GenericArray<>(String.class, 0)));
+        inputHiddenAttributes.addAll(tempCommonUiInputsAttributes);
 
-        inputHiddenAttributesList.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
+        inputHiddenAttributes.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
     }
 }

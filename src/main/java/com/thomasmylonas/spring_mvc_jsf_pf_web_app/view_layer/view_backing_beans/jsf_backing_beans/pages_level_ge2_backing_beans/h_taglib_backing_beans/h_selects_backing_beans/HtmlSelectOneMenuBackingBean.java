@@ -13,22 +13,22 @@ import java.util.List;
 @Getter
 public class HtmlSelectOneMenuBackingBean extends AbstractHtmlSelectOneBackingBean {
 
-    private List<ComponentsAttribute> selectOneMenuAttributesList;
+    private List<ComponentsAttribute> selectOneMenuAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
         initExamplesValues();
         initSelectItemsWithMapsAndArrays();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        selectOneMenuAttributesList = new ArrayList<>();
+        selectOneMenuAttributes = new ArrayList<>();
 
         // The common "SelectOne"/"SelectMany" Components' attributes
-        selectOneMenuAttributesList.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributesList());
+        selectOneMenuAttributes.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributes());
 
-        selectOneMenuAttributesList.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
+        selectOneMenuAttributes.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
     }
 }

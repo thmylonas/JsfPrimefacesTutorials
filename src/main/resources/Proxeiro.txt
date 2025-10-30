@@ -580,7 +580,7 @@ TO_DO
                   shortDescription="Controls if 'BackToHome' button will be rendered or not"/>
 </cc:interface>
 3.Attention:
-@PostConstruct private void init() {initComponentsAttributesList();} in AbstractBackingBeans
+@PostConstruct private void init() {initComponentsAttributes();} in AbstractBackingBeans
 (AbstractHtmlMessagesBackingBean, AbstractHtmlInputsBackingBean, AbstractHtmlOutputsBackingBean)
 4. Change images to this:
 
@@ -642,7 +642,7 @@ Caused by: java.lang.NullPointerException: inStream parameter is null
 	at com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models._base.AbstractModel.getPropertyValueFromProperties(AbstractModel.java:23) ~[classes/:?]
 	at com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models._base.AbstractModel.<init>(AbstractModel.java:15) ~[classes/:?]
 	at com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.models.jsf_models.ComponentsAttribute.<init>(ComponentsAttribute.java:13) ~[classes/:?]
-	at com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.CommonHtmlAttributesService.initCommonEventHandlerAttributesList(CommonHtmlAttributesService.java:153) ~[classes/:?]
+	at com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.CommonHtmlAttributesService.initCommonEventHandlerAttributes(CommonHtmlAttributesService.java:153) ~[classes/:?]
 	at com.thomasmylonas.spring_mvc_jsf_pf_web_app.service_layer.services.CommonHtmlAttributesService.init(CommonHtmlAttributesService.java:102) ~[classes/:?]
 ----------------------------------------
 

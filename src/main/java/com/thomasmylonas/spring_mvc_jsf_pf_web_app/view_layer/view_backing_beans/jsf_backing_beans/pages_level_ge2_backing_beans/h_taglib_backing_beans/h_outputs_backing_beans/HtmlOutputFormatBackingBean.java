@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 public class HtmlOutputFormatBackingBean extends AbstractHtmlOutputsBackingBean {
 
-    private List<ComponentsAttribute> outputFormatAttributesList;
+    private List<ComponentsAttribute> outputFormatAttributes;
 
     // Text with parameters to be used in the 'value' attribute of <h:outputFormat>
     private final String textWith2Params;
@@ -51,19 +51,19 @@ public class HtmlOutputFormatBackingBean extends AbstractHtmlOutputsBackingBean 
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        outputFormatAttributesList = new ArrayList<>();
+        outputFormatAttributes = new ArrayList<>();
 
         // The globally common Components' attributes
-        outputFormatAttributesList.addAll(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList());
+        outputFormatAttributes.addAll(commonHtmlAttributesService.initAndGetGloballyCommonAttributes());
 
         // The most common Components' attributes
-        outputFormatAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
+        outputFormatAttributes.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
-        outputFormatAttributesList.add(new ComponentsAttribute("escape", false, "true", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that characters that are sensitive in HTML and XML markup must be escaped. This flag is set to 'true' by default"));
+        outputFormatAttributes.add(new ComponentsAttribute("escape", false, "true", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that characters that are sensitive in HTML and XML markup must be escaped. This flag is set to 'true' by default"));
     }
 }

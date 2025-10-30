@@ -13,19 +13,19 @@ import java.util.List;
 @Getter
 public class HtmlInputFileBackingBean extends AbstractHtmlInputsBackingBean {
 
-    private List<ComponentsAttribute> inputFileAttributesList;
+    private List<ComponentsAttribute> inputFileAttributes;
 
     @PostConstruct
     private void init() {
         initCommonHtmlInputsAttributes();
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        inputFileAttributesList = new ArrayList<>();
+        inputFileAttributes = new ArrayList<>();
 
         // These attributes are inherited from the superclass "AbstractHtmlUiInputsBackingBean"
-        inputFileAttributesList.addAll(uiInputsAttributesList);
+        inputFileAttributes.addAll(uiInputsAttributes);
     }
 }

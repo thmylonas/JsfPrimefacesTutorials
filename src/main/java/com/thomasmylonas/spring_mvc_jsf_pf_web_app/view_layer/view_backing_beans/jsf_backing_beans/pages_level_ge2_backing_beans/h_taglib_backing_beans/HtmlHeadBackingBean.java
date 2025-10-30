@@ -16,23 +16,23 @@ public class HtmlHeadBackingBean extends HtmlTaglibBackingBean {
     private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"value", "rendered", "styleClass", "converter"};
     private static final String[] EXCLUDED_MOST_COMMON_ATTRIBUTES = {"role", "style", "title"};
 
-    private List<ComponentsAttribute> headAttributesList;
+    private List<ComponentsAttribute> headAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        headAttributesList = new ArrayList<>();
+        headAttributes = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "binding")
-        headAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        headAttributes.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributes(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The most common Components' attributes (Containing attributes: "dir", "lang")
-        headAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getMostCommonAttributes(), EXCLUDED_MOST_COMMON_ATTRIBUTES));
+        headAttributes.addAll(excludeAttributes(commonHtmlAttributesService.getMostCommonAttributes(), EXCLUDED_MOST_COMMON_ATTRIBUTES));
 
-        headAttributesList.add(new ComponentsAttribute("xmlns", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "An XML Namespace to be passed through to the rendered element"));
+        headAttributes.add(new ComponentsAttribute("xmlns", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "An XML Namespace to be passed through to the rendered element"));
     }
 }

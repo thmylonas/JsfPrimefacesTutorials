@@ -16,28 +16,28 @@ public class HtmlBodyBackingBean extends HtmlTaglibBackingBean {
     private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"value", "rendered", "converter"};
     private static final String[] EXCLUDED_EVENT_HANDLER_ATTRIBUTES = {"onfocus", "onblur", "onselect", "onchange"};
 
-    private List<ComponentsAttribute> bodyAttributesList;
+    private List<ComponentsAttribute> bodyAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        bodyAttributesList = new ArrayList<>();
+        bodyAttributes = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "styleClass", "binding")
-        bodyAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        bodyAttributes.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributes(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
-        bodyAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
-        bodyAttributesList.add(new ComponentsAttribute("onload", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Javascript code executed when the user agent finishes loading a window or all frames within a frameset"));
-        bodyAttributesList.add(new ComponentsAttribute("onunload", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Javascript code executed when the user agent removes a document from a window or frame"));
+        bodyAttributes.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
+        bodyAttributes.add(new ComponentsAttribute("onload", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Javascript code executed when the user agent finishes loading a window or all frames within a frameset"));
+        bodyAttributes.add(new ComponentsAttribute("onunload", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Javascript code executed when the user agent removes a document from a window or frame"));
 
         // The most common Components' attributes
-        bodyAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
+        bodyAttributes.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
-        bodyAttributesList.add(new ComponentsAttribute("xmlns", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "An XML Namespace to be passed through to the rendered element"));
+        bodyAttributes.add(new ComponentsAttribute("xmlns", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "An XML Namespace to be passed through to the rendered element"));
     }
 }

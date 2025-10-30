@@ -13,23 +13,23 @@ import java.util.List;
 @Getter
 public class HtmlSelectManyMenuBackingBean extends AbstractHtmlSelectManyBackingBean {
 
-    private List<ComponentsAttribute> selectManyMenuAttributesList;
+    private List<ComponentsAttribute> selectManyMenuAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
         initExamplesValues();
         initSelectItemsWithMapsAndArrays();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        selectManyMenuAttributesList = new ArrayList<>();
+        selectManyMenuAttributes = new ArrayList<>();
 
         // The common "SelectOne"/"SelectMany" Components' attributes
-        selectManyMenuAttributesList.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributesList());
+        selectManyMenuAttributes.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributes());
 
-        selectManyMenuAttributesList.add(new ComponentsAttribute("collectionType", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Optional attribute that is a literal string that is the fully qualified class name of a concrete class that implements java.util.Collection, or an EL expression that evaluates to either 1. such a String, or 2. the Class object itself"));
-        selectManyMenuAttributesList.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
+        selectManyMenuAttributes.add(new ComponentsAttribute("collectionType", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Optional attribute that is a literal string that is the fully qualified class name of a concrete class that implements java.util.Collection, or an EL expression that evaluates to either 1. such a String, or 2. the Class object itself"));
+        selectManyMenuAttributes.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
     }
 }

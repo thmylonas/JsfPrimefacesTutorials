@@ -13,23 +13,23 @@ import java.util.List;
 @Getter
 public class HtmlInputTextareaBackingBean extends AbstractHtmlInputsBackingBean {
 
-    private List<ComponentsAttribute> inputTextareaAttributesList;
+    private List<ComponentsAttribute> inputTextareaAttributes;
 
     @PostConstruct
     private void init() {
         initCommonHtmlInputsAttributes();
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        inputTextareaAttributesList = new ArrayList<>();
+        inputTextareaAttributes = new ArrayList<>();
 
         // The common "UIInput" Components' attributes
-        inputTextareaAttributesList.addAll(commonHtmlAttributesService.getCommonUiInputsAttributes());
+        inputTextareaAttributes.addAll(commonHtmlAttributesService.getCommonUiInputsAttributes());
 
-        inputTextareaAttributesList.add(new ComponentsAttribute("rows", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "The number of rows to be displayed"));
-        inputTextareaAttributesList.add(new ComponentsAttribute("cols", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "The number of columns to be displayed"));
-        inputTextareaAttributesList.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
+        inputTextareaAttributes.add(new ComponentsAttribute("rows", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "The number of rows to be displayed"));
+        inputTextareaAttributes.add(new ComponentsAttribute("cols", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "The number of columns to be displayed"));
+        inputTextareaAttributes.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
     }
 }

@@ -15,22 +15,22 @@ public class HtmlOutputStylesheetBackingBean extends AbstractHtmlOutputsBackingB
 
     private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"styleClass"};
 
-    private List<ComponentsAttribute> outputStylesheetAttributesList;
+    private List<ComponentsAttribute> outputStylesheetAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        outputStylesheetAttributesList = new ArrayList<>();
+        outputStylesheetAttributes = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "value", "rendered", "converter", "binding")
-        outputStylesheetAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        outputStylesheetAttributes.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributes(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
-        outputStylesheetAttributesList.add(new ComponentsAttribute("library", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The libraryName for this resource"));
-        outputStylesheetAttributesList.add(new ComponentsAttribute("name", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The resourceName for this resource. This attribute is required if the stylesheet is NOT inline"));
-        outputStylesheetAttributesList.add(new ComponentsAttribute("media", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The media type for this stylesheet. For example, media='screen' would cause the resource to be rendered with the media attribute of the link set to screen"));
+        outputStylesheetAttributes.add(new ComponentsAttribute("library", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The libraryName for this resource"));
+        outputStylesheetAttributes.add(new ComponentsAttribute("name", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The resourceName for this resource. This attribute is required if the stylesheet is NOT inline"));
+        outputStylesheetAttributes.add(new ComponentsAttribute("media", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The media type for this stylesheet. For example, media='screen' would cause the resource to be rendered with the media attribute of the link set to screen"));
     }
 }

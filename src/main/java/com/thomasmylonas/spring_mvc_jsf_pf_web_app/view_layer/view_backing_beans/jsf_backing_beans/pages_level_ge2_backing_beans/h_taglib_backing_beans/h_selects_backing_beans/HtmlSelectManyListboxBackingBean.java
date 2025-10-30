@@ -13,24 +13,24 @@ import java.util.List;
 @Getter
 public class HtmlSelectManyListboxBackingBean extends AbstractHtmlSelectManyBackingBean {
 
-    private List<ComponentsAttribute> selectManyListboxAttributesList;
+    private List<ComponentsAttribute> selectManyListboxAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
         initExamplesValues();
         initSelectItemsWithMapsAndArrays();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        selectManyListboxAttributesList = new ArrayList<>();
+        selectManyListboxAttributes = new ArrayList<>();
 
         // The common "SelectOne"/"SelectMany" Components' attributes
-        selectManyListboxAttributesList.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributesList());
+        selectManyListboxAttributes.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributes());
 
-        selectManyListboxAttributesList.add(new ComponentsAttribute("collectionType", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Optional attribute that is a literal string that is the fully qualified class name of a concrete class that implements java.util.Collection, or an EL expression that evaluates to either 1. such a String, or 2. the Class object itself"));
-        selectManyListboxAttributesList.add(new ComponentsAttribute("size", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "Number of available options to be shown at all times. If not specified, all available options are shown"));
-        selectManyListboxAttributesList.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
+        selectManyListboxAttributes.add(new ComponentsAttribute("collectionType", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Optional attribute that is a literal string that is the fully qualified class name of a concrete class that implements java.util.Collection, or an EL expression that evaluates to either 1. such a String, or 2. the Class object itself"));
+        selectManyListboxAttributes.add(new ComponentsAttribute("size", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "Number of available options to be shown at all times. If not specified, all available options are shown"));
+        selectManyListboxAttributes.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
     }
 }

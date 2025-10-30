@@ -13,25 +13,25 @@ import java.util.List;
 @Getter
 public class HtmlSelectOneRadioBackingBean extends AbstractHtmlSelectOneBackingBean {
 
-    private List<ComponentsAttribute> selectOneRadioAttributesList;
+    private List<ComponentsAttribute> selectOneRadioAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
         initExamplesValues();
         initSelectItemsWithMapsAndArrays();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        selectOneRadioAttributesList = new ArrayList<>();
+        selectOneRadioAttributes = new ArrayList<>();
 
         // The common "SelectOne"/"SelectMany" Components' attributes (Alternative attributes: "enabledClass", "disabledClass")
-        selectOneRadioAttributesList.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributesListWithFlags(true, true));
+        selectOneRadioAttributes.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributesWithFlags(true, true));
 
-        selectOneRadioAttributesList.add(new ComponentsAttribute("layout", false, "lineDirection", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Orientation of the options list to be created. Valid values are 'pageDirection' (list is laid out vertically), or 'lineDirection' (list is laid out horizontally). If not specified, the default value is 'lineDirection'. This attribute is ignored when 'group' attribute is specified"));
-        selectOneRadioAttributesList.add(new ComponentsAttribute("border", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "Width (in pixels) of the border to be drawn around the table containing the options list. This attribute is ignored when 'group' attribute is specified"));
-        selectOneRadioAttributesList.add(new ComponentsAttribute("group", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Specifies the name of the radio button group. Radio button components having the same group within a UIForm parent will uncheck all others when being checked. If the value attribute is absent then the one from first component of the group will be used. If the UISelectItem child is absent then the one from first component of the group will be used. When specified, the group attribute disables the default rendering of the 'table' element and any attribute related to the rendering of the 'table' element, such as 'border', is ignored"));
-        selectOneRadioAttributesList.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
+        selectOneRadioAttributes.add(new ComponentsAttribute("layout", false, "lineDirection", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Orientation of the options list to be created. Valid values are 'pageDirection' (list is laid out vertically), or 'lineDirection' (list is laid out horizontally). If not specified, the default value is 'lineDirection'. This attribute is ignored when 'group' attribute is specified"));
+        selectOneRadioAttributes.add(new ComponentsAttribute("border", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "Width (in pixels) of the border to be drawn around the table containing the options list. This attribute is ignored when 'group' attribute is specified"));
+        selectOneRadioAttributes.add(new ComponentsAttribute("group", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Specifies the name of the radio button group. Radio button components having the same group within a UIForm parent will uncheck all others when being checked. If the value attribute is absent then the one from first component of the group will be used. If the UISelectItem child is absent then the one from first component of the group will be used. When specified, the group attribute disables the default rendering of the 'table' element and any attribute related to the rendering of the 'table' element, such as 'border', is ignored"));
+        selectOneRadioAttributes.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
     }
 }

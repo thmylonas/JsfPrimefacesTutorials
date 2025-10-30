@@ -13,23 +13,23 @@ import java.util.List;
 @Getter
 public class HtmlOutputTextBackingBean extends AbstractHtmlOutputsBackingBean {
 
-    private List<ComponentsAttribute> outputTextAttributesList;
+    private List<ComponentsAttribute> outputTextAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        outputTextAttributesList = new ArrayList<>();
+        outputTextAttributes = new ArrayList<>();
 
         // The globally common Components' attributes
-        outputTextAttributesList.addAll(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList());
+        outputTextAttributes.addAll(commonHtmlAttributesService.initAndGetGloballyCommonAttributes());
 
         // The most common Components' attributes
-        outputTextAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
+        outputTextAttributes.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
-        outputTextAttributesList.add(new ComponentsAttribute("escape", false, "true", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that characters that are sensitive in HTML and XML markup must be escaped. This flag is set to 'true' by default"));
+        outputTextAttributes.add(new ComponentsAttribute("escape", false, "true", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that characters that are sensitive in HTML and XML markup must be escaped. This flag is set to 'true' by default"));
     }
 }

@@ -15,27 +15,27 @@ public class HtmlOutputLinkBackingBean extends AbstractHtmlOutputsBackingBean {
 
     private static final String[] EXCLUDED_EVENT_HANDLER_ATTRIBUTES = {"onselect", "onchange"};
 
-    private List<ComponentsAttribute> outputLinkAttributesList;
+    private List<ComponentsAttribute> outputLinkAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        outputLinkAttributesList = new ArrayList<>();
+        outputLinkAttributes = new ArrayList<>();
 
         // The globally common Components' attributes
-        outputLinkAttributesList.addAll(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList());
+        outputLinkAttributes.addAll(commonHtmlAttributesService.initAndGetGloballyCommonAttributes());
 
         // The attributes which are handling events
-        outputLinkAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
+        outputLinkAttributes.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
 
         // The most common Components' attributes
-        outputLinkAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
+        outputLinkAttributes.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         // The common "Links" Components' attributes (Alternative attributes: "disabled")
-        outputLinkAttributesList.addAll(commonHtmlAttributesService.getCommonLinksAttributes());
+        outputLinkAttributes.addAll(commonHtmlAttributesService.getCommonLinksAttributes());
     }
 }

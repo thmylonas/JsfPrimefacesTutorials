@@ -13,21 +13,21 @@ import java.util.List;
 @Getter
 public class HtmlInputSecretBackingBean extends AbstractHtmlInputsBackingBean {
 
-    private List<ComponentsAttribute> inputSecretAttributesList;
+    private List<ComponentsAttribute> inputSecretAttributes;
 
     @PostConstruct
     private void init() {
         initCommonHtmlInputsAttributes();
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        inputSecretAttributesList = new ArrayList<>();
+        inputSecretAttributes = new ArrayList<>();
 
         // These attributes are inherited from the superclass "AbstractHtmlUiInputsBackingBean"
-        inputSecretAttributesList.addAll(uiInputsAttributesList);
+        inputSecretAttributes.addAll(uiInputsAttributes);
 
-        inputSecretAttributesList.add(new ComponentsAttribute("redisplay", false, "false", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that any existing value in this field should be rendered when the form is created. Because this is a potential security risk, password values are not displayed by default"));
+        inputSecretAttributes.add(new ComponentsAttribute("redisplay", false, "false", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that any existing value in this field should be rendered when the form is created. Because this is a potential security risk, password values are not displayed by default"));
     }
 }

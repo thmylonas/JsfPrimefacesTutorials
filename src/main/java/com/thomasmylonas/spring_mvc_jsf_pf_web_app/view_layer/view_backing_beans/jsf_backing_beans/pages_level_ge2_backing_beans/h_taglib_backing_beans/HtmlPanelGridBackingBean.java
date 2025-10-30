@@ -16,29 +16,29 @@ public class HtmlPanelGridBackingBean extends HtmlTaglibBackingBean {
     private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"value", "converter"};
     private static final String[] EXCLUDED_EVENT_HANDLER_ATTRIBUTES = {"onfocus", "onblur", "onselect", "onchange"};
 
-    private List<ComponentsAttribute> panelGridAttributesList;
+    private List<ComponentsAttribute> panelGridAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        panelGridAttributesList = new ArrayList<>();
+        panelGridAttributes = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "rendered", "styleClass", "binding")
-        panelGridAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        panelGridAttributes.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributes(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
-        panelGridAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
+        panelGridAttributes.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
 
         // The most common Components' attributes
-        panelGridAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
+        panelGridAttributes.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         // The common "Panels"/"Tables" Components' attributes
-        panelGridAttributesList.addAll(commonHtmlAttributesService.getCommonPanelsTablesAttributes());
+        panelGridAttributes.addAll(commonHtmlAttributesService.getCommonPanelsTablesAttributes());
 
-        panelGridAttributesList.add(new ComponentsAttribute("columns", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "The number of columns to render before starting a new row"));
+        panelGridAttributes.add(new ComponentsAttribute("columns", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "The number of columns to render before starting a new row"));
     }
 }

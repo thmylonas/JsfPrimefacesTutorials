@@ -16,7 +16,7 @@ public class HtmlOutputLabelBackingBean extends AbstractHtmlOutputsBackingBean {
     private static final String[] EXCLUDED_INTERACTION_ACCESS_ATTRIBUTES = {"disabled"};
     private static final String[] EXCLUDED_EVENT_HANDLER_ATTRIBUTES = {"onselect", "onchange"};
 
-    private List<ComponentsAttribute> outputLabelAttributesList;
+    private List<ComponentsAttribute> outputLabelAttributes;
 
     // Text to be used in the 'value' attribute of <h:outputLabel>
     private final String outputLabelForWithBackingBean;
@@ -27,26 +27,26 @@ public class HtmlOutputLabelBackingBean extends AbstractHtmlOutputsBackingBean {
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        outputLabelAttributesList = new ArrayList<>();
+        outputLabelAttributes = new ArrayList<>();
 
         // The globally common Components' attributes
-        outputLabelAttributesList.addAll(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList());
+        outputLabelAttributes.addAll(commonHtmlAttributesService.initAndGetGloballyCommonAttributes());
 
         // The attributes which are handling events
-        outputLabelAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
+        outputLabelAttributes.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
 
         // The most common Components' attributes
-        outputLabelAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
+        outputLabelAttributes.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         // The attributes of components, with which we can interact
-        outputLabelAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetCommonInteractAccessAttributesList(), EXCLUDED_INTERACTION_ACCESS_ATTRIBUTES));
+        outputLabelAttributes.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetCommonInteractAccessAttributes(), EXCLUDED_INTERACTION_ACCESS_ATTRIBUTES));
 
-        outputLabelAttributesList.add(new ComponentsAttribute("for", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Search expression to the component for which this element is a label"));
-        outputLabelAttributesList.add(new ComponentsAttribute("escape", false, "true", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that characters that are sensitive in HTML and XML markup must be escaped. If omitted, this flag is assumed to be 'true'"));
+        outputLabelAttributes.add(new ComponentsAttribute("for", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Search expression to the component for which this element is a label"));
+        outputLabelAttributes.add(new ComponentsAttribute("escape", false, "true", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that characters that are sensitive in HTML and XML markup must be escaped. If omitted, this flag is assumed to be 'true'"));
     }
 }

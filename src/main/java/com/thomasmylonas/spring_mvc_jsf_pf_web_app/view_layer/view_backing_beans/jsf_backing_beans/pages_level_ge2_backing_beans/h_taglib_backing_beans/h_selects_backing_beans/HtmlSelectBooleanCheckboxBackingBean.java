@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @Setter
 public class HtmlSelectBooleanCheckboxBackingBean extends AbstractHtmlSelectsBackingBean {
 
-    private List<ComponentsAttribute> selectBooleanCheckboxAttributesList;
+    private List<ComponentsAttribute> selectBooleanCheckboxAttributes;
 
     // Variables used in the "value" attribute of "h:selectBooleanCheckbox" component
     private boolean agree;
@@ -28,16 +28,16 @@ public class HtmlSelectBooleanCheckboxBackingBean extends AbstractHtmlSelectsBac
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
         initExamplesValues();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        selectBooleanCheckboxAttributesList = new ArrayList<>();
+        selectBooleanCheckboxAttributes = new ArrayList<>();
 
         // The globally common Components' attributes (Alternative attributes: "value", "converter")
-        selectBooleanCheckboxAttributesList.addAll(commonHtmlAttributesService.initAndGetGloballyCommonAttributesListWithFlags(
+        selectBooleanCheckboxAttributes.addAll(commonHtmlAttributesService.initAndGetGloballyCommonAttributesWithFlags(
                         GloballyCommonAttributesFlags.builder()
                                 .idAlt(false)
                                 .valueAlt(true)
@@ -50,10 +50,10 @@ public class HtmlSelectBooleanCheckboxBackingBean extends AbstractHtmlSelectsBac
         );
 
         // The common "UIInput" Components' attributes
-        List<String> globallyCommonNameAttributesList = commonHtmlAttributesService.initAndGetGloballyCommonAttributesList().stream().map(ComponentsAttribute::getName).collect(Collectors.toList());
-        selectBooleanCheckboxAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonUiInputsAttributes(), HelperClass.transformListToArray(globallyCommonNameAttributesList, new GenericArray<>(String.class, 0))));
+        List<String> globallyCommonNameAttributes = commonHtmlAttributesService.initAndGetGloballyCommonAttributes().stream().map(ComponentsAttribute::getName).collect(Collectors.toList());
+        selectBooleanCheckboxAttributes.addAll(excludeAttributes(commonHtmlAttributesService.getCommonUiInputsAttributes(), HelperClass.transformListToArray(globallyCommonNameAttributes, new GenericArray<>(String.class, 0))));
 
-        selectBooleanCheckboxAttributesList.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
+        selectBooleanCheckboxAttributes.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
     }
 
     protected void initExamplesValues() {

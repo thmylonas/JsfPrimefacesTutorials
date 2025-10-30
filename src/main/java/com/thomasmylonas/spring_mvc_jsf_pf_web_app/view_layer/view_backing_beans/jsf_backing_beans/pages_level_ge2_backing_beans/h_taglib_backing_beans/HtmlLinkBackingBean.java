@@ -16,30 +16,30 @@ public class HtmlLinkBackingBean extends HtmlTaglibBackingBean {
     private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"converter"};
     private static final String[] EXCLUDED_EVENT_HANDLER_ATTRIBUTES = {"onselect", "onchange"};
 
-    private List<ComponentsAttribute> linkAttributesList;
+    private List<ComponentsAttribute> linkAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        linkAttributesList = new ArrayList<>();
+        linkAttributes = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "value", "rendered", "styleClass", "binding")
-        linkAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        linkAttributes.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributes(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
-        linkAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
+        linkAttributes.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
 
         // The most common Components' attributes
-        linkAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
+        linkAttributes.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         // The common "Links" Components' attributes (Alternative attributes: "disabled")
-        linkAttributesList.addAll(commonHtmlAttributesService.getCommonLinksAttributes());
+        linkAttributes.addAll(commonHtmlAttributesService.getCommonLinksAttributes());
 
         // The common "UIOutcomeTarget" Components' attributes
-        linkAttributesList.addAll(commonHtmlAttributesService.getCommonOutcomeTargetsAttributes());
+        linkAttributes.addAll(commonHtmlAttributesService.getCommonOutcomeTargetsAttributes());
     }
 }

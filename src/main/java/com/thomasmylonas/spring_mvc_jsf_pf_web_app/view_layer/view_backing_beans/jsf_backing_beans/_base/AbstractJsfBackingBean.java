@@ -11,25 +11,25 @@ import java.util.List;
 public abstract class AbstractJsfBackingBean extends AbstractBackingBean {
 
     /**
-     * This method excludes from the "attributesList" all the attributes "attrsNames[]"
+     * This method excludes from the "attributes" all the attributes "attrsNames[]"
      *
-     * @param attributesList The list to exclude from
+     * @param attributes The list to exclude from
      * @param attrsNames     The attribute name to exclude
-     * @return The modified "attributesList"
+     * @return The modified "attributes"
      */
-    protected List<ComponentsAttribute> excludeAttributes(List<ComponentsAttribute> attributesList, String... attrsNames) {
+    protected List<ComponentsAttribute> excludeAttributes(List<ComponentsAttribute> attributes, String... attrsNames) {
 
-        if (HelperClass.isListNullOrEmpty(attributesList)) {
+        if (HelperClass.isListNullOrEmpty(attributes)) {
             return Collections.emptyList();
         }
         if (HelperClass.isArrayNullOrEmpty(attrsNames)) {
-            return attributesList; // The list is returned unchanged
+            return attributes; // The list is returned unchanged
         }
-        List<ComponentsAttribute> resultList = new ArrayList<>(attributesList);
+        List<ComponentsAttribute> resultList = new ArrayList<>(attributes);
 
         for (String attrToExclude : attrsNames) {
-            // attributesList.removeIf(attr -> attrToExclude.equalsIgnoreCase(attr.getName()));
-            for (ComponentsAttribute attr : attributesList) {
+            // attributes.removeIf(attr -> attrToExclude.equalsIgnoreCase(attr.getName()));
+            for (ComponentsAttribute attr : attributes) {
                 if (attrToExclude.equalsIgnoreCase(attr.getName())) {
                     resultList.remove(attr);
                 }
@@ -40,19 +40,19 @@ public abstract class AbstractJsfBackingBean extends AbstractBackingBean {
     }
 
     @Deprecated
-    protected List<ComponentsAttribute> includeAttributes(List<ComponentsAttribute> attributesList, ComponentsAttribute... attrs) {
+    protected List<ComponentsAttribute> includeAttributes(List<ComponentsAttribute> attributes, ComponentsAttribute... attrs) {
 
-        if (attributesList == null) { // The condition "attributesList.isEmpty()" is acceptable
+        if (attributes == null) { // The condition "attributes.isEmpty()" is acceptable
             return Collections.emptyList();
         }
         if (HelperClass.isArrayNullOrEmpty(attrs)) {
-            return attributesList; // The list is returned unchanged
+            return attributes; // The list is returned unchanged
         }
-        List<ComponentsAttribute> resultList = new ArrayList<>(attributesList);
+        List<ComponentsAttribute> resultList = new ArrayList<>(attributes);
 
         boolean found = false;
         for (ComponentsAttribute attrToInclude : attrs) {
-            for (ComponentsAttribute attr : attributesList) {
+            for (ComponentsAttribute attr : attributes) {
                 if (attrToInclude.getName().equalsIgnoreCase(attr.getName())) {
                     found = true;
                     break;

@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 public class HtmlInputTextBackingBean extends AbstractHtmlInputsBackingBean {
 
-    private List<ComponentsAttribute> inputTextAttributesList;
+    private List<ComponentsAttribute> inputTextAttributes;
 
     private HtmlInputText htmlInputText;
     private boolean rendered = true;
@@ -24,16 +24,16 @@ public class HtmlInputTextBackingBean extends AbstractHtmlInputsBackingBean {
     @PostConstruct
     private void init() {
         initCommonHtmlInputsAttributes();
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
         htmlInputText = new HtmlInputText();
-        inputTextAttributesList = new ArrayList<>();
+        inputTextAttributes = new ArrayList<>();
 
         // These attributes are inherited from the superclass "AbstractHtmlUiInputsBackingBean"
-        inputTextAttributesList.addAll(uiInputsAttributesList);
+        inputTextAttributes.addAll(uiInputsAttributes);
     }
 
     public String hideDisplayInputText() {

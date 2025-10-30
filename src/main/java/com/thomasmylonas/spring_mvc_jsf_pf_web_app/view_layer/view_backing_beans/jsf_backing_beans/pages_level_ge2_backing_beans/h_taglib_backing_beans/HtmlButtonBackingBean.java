@@ -16,33 +16,33 @@ public class HtmlButtonBackingBean extends HtmlTaglibBackingBean {
     private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"converter"};
     private static final String[] EXCLUDED_EVENT_HANDLER_ATTRIBUTES = {"onselect", "onchange"};
 
-    private List<ComponentsAttribute> buttonAttributesList;
+    private List<ComponentsAttribute> buttonAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        buttonAttributesList = new ArrayList<>();
+        buttonAttributes = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "value", "rendered", "styleClass", "binding")
-        buttonAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        buttonAttributes.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributes(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The attributes which are handling events
-        buttonAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
+        buttonAttributes.addAll(excludeAttributes(commonHtmlAttributesService.getCommonEventHandlerAttributes(), EXCLUDED_EVENT_HANDLER_ATTRIBUTES));
 
         // The most common Components' attributes
-        buttonAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
+        buttonAttributes.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         // The attributes of components, with which we can interact
-        buttonAttributesList.addAll(commonHtmlAttributesService.initAndGetCommonInteractAccessAttributesList());
+        buttonAttributes.addAll(commonHtmlAttributesService.initAndGetCommonInteractAccessAttributes());
 
         // The common "UIOutcomeTarget" Components' attributes
-        buttonAttributesList.addAll(commonHtmlAttributesService.getCommonOutcomeTargetsAttributes());
+        buttonAttributes.addAll(commonHtmlAttributesService.getCommonOutcomeTargetsAttributes());
 
-        buttonAttributesList.add(new ComponentsAttribute("alt", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Alternate textual description of the element rendered by this component"));
-        buttonAttributesList.add(new ComponentsAttribute("image", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Absolute or relative URL of the image to be displayed for this button. If specified, this 'input' element will be of type 'image'. Otherwise, it will be of the type specified by the 'type' property with a label specified by the 'value' property. Note that if the value of this attribute starts with '/', the rendered value for this attribute will be prefixed with the context-root for this application"));
+        buttonAttributes.add(new ComponentsAttribute("alt", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Alternate textual description of the element rendered by this component"));
+        buttonAttributes.add(new ComponentsAttribute("image", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Absolute or relative URL of the image to be displayed for this button. If specified, this 'input' element will be of type 'image'. Otherwise, it will be of the type specified by the 'type' property with a label specified by the 'value' property. Note that if the value of this attribute starts with '/', the rendered value for this attribute will be prefixed with the context-root for this application"));
     }
 }

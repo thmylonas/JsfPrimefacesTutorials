@@ -10,19 +10,19 @@ public abstract class AbstractHtmlMessagesBackingBean extends HtmlTaglibBackingB
 
     private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"value", "converter"};
 
-    protected List<ComponentsAttribute> messagesComponentsAttributesList;
+    protected List<ComponentsAttribute> messagesComponentsAttributes;
 
     protected void initCommonHtmlMessagesAttributes() {
 
-        messagesComponentsAttributesList = new ArrayList<>();
+        messagesComponentsAttributes = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "rendered", "styleClass", "binding")
-        messagesComponentsAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        messagesComponentsAttributes.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributes(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
         // The most common Components' attributes
-        messagesComponentsAttributesList.addAll(commonHtmlAttributesService.getMostCommonAttributes());
+        messagesComponentsAttributes.addAll(commonHtmlAttributesService.getMostCommonAttributes());
 
         // The common "Messages" Components' attributes
-        messagesComponentsAttributesList.addAll(commonHtmlAttributesService.getCommonMessagesAttributes());
+        messagesComponentsAttributes.addAll(commonHtmlAttributesService.getCommonMessagesAttributes());
     }
 }

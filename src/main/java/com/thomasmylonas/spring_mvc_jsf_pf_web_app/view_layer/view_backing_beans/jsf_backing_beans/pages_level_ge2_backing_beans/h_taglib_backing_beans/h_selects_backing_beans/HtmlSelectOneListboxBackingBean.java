@@ -13,22 +13,22 @@ import java.util.List;
 @Getter
 public class HtmlSelectOneListboxBackingBean extends AbstractHtmlSelectOneBackingBean {
 
-    private List<ComponentsAttribute> selectOneListboxAttributesList;
+    private List<ComponentsAttribute> selectOneListboxAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
         initExamplesValues();
         initSelectItemsWithMapsAndArrays();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        selectOneListboxAttributesList = new ArrayList<>();
+        selectOneListboxAttributes = new ArrayList<>();
 
         // The common "SelectOne"/"SelectMany" Components' attributes
-        selectOneListboxAttributesList.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributesList());
+        selectOneListboxAttributes.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributes());
 
-        selectOneListboxAttributesList.add(new ComponentsAttribute("size", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "Number of available options to be shown at all times. If not specified, all available options are shown"));
+        selectOneListboxAttributes.add(new ComponentsAttribute("size", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "Number of available options to be shown at all times. If not specified, all available options are shown"));
     }
 }

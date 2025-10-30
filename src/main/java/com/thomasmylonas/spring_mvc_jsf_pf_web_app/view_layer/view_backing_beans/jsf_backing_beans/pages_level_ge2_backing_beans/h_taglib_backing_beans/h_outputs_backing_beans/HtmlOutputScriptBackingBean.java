@@ -15,22 +15,22 @@ public class HtmlOutputScriptBackingBean extends AbstractHtmlOutputsBackingBean 
 
     private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"styleClass"};
 
-    private List<ComponentsAttribute> outputScriptAttributesList;
+    private List<ComponentsAttribute> outputScriptAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        outputScriptAttributesList = new ArrayList<>();
+        outputScriptAttributes = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "value", "rendered", "converter", "binding")
-        outputScriptAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        outputScriptAttributes.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributes(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
-        outputScriptAttributesList.add(new ComponentsAttribute("library", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The libraryName for this resource"));
-        outputScriptAttributesList.add(new ComponentsAttribute("name", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The resourceName for this resource. This attribute is required if the script is NOT inline"));
-        outputScriptAttributesList.add(new ComponentsAttribute("target", false, "See Description...", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The target area for which this resource will be rendered. For example, target='head' would cause the resource to be rendered within the head element. If no value is specified, the script element is rendered at the same point in the view where the tag is located. Currently supported values for this attribute are 'head', 'body', and 'form'"));
+        outputScriptAttributes.add(new ComponentsAttribute("library", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The libraryName for this resource"));
+        outputScriptAttributes.add(new ComponentsAttribute("name", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The resourceName for this resource. This attribute is required if the script is NOT inline"));
+        outputScriptAttributes.add(new ComponentsAttribute("target", false, "See Description...", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The target area for which this resource will be rendered. For example, target='head' would cause the resource to be rendered within the head element. If no value is specified, the script element is rendered at the same point in the view where the tag is located. Currently supported values for this attribute are 'head', 'body', and 'form'"));
     }
 }

@@ -15,22 +15,22 @@ public class HtmlDoctypeBackingBean extends HtmlTaglibBackingBean {
 
     private static final String[] EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES = {"styleClass"};
 
-    private List<ComponentsAttribute> doctypeAttributesList;
+    private List<ComponentsAttribute> doctypeAttributes;
 
     @PostConstruct
     private void init() {
-        initComponentsAttributesList();
+        initComponentsAttributes();
     }
 
-    private void initComponentsAttributesList() {
+    private void initComponentsAttributes() {
 
-        doctypeAttributesList = new ArrayList<>();
+        doctypeAttributes = new ArrayList<>();
 
         // The globally common Components' attributes (Containing attributes: "id", "value", "rendered", "converter", "binding")
-        doctypeAttributesList.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributesList(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
+        doctypeAttributes.addAll(excludeAttributes(commonHtmlAttributesService.initAndGetGloballyCommonAttributes(), EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
-        doctypeAttributesList.add(new ComponentsAttribute("public", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Will be output as the public part of the DOCTYPE"));
-        doctypeAttributesList.add(new ComponentsAttribute("rootElement", true, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The root XML element"));
-        doctypeAttributesList.add(new ComponentsAttribute("system", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Will be output as the system part of the DOCTYPE"));
+        doctypeAttributes.add(new ComponentsAttribute("public", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Will be output as the public part of the DOCTYPE"));
+        doctypeAttributes.add(new ComponentsAttribute("rootElement", true, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "The root XML element"));
+        doctypeAttributes.add(new ComponentsAttribute("system", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Will be output as the system part of the DOCTYPE"));
     }
 }
