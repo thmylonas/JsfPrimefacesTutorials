@@ -17,6 +17,7 @@ public class HtmlInputTextareaBackingBean extends AbstractHtmlInputsBackingBean 
 
     @PostConstruct
     private void init() {
+        initCommonHtmlInputsAttributes();
         initComponentsAttributesList();
     }
 

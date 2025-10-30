@@ -16,8 +16,4 @@ public class HtmlTaglibBackingBean extends JsfBackingBean {
 
     @ManagedProperty(value = "#{commonHtmlAttributesService}")
     protected CommonHtmlAttributesService commonHtmlAttributesService;
-
-    @PostConstruct
-    private void init() {
-    }
 }

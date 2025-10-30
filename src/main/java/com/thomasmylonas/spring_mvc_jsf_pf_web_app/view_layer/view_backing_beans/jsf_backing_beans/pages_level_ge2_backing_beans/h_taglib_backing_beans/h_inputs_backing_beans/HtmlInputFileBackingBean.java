@@ -17,6 +17,7 @@ public class HtmlInputFileBackingBean extends AbstractHtmlInputsBackingBean {
 
     @PostConstruct
     private void init() {
+        initCommonHtmlInputsAttributes();
         initComponentsAttributesList();
     }
 

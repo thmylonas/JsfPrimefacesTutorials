@@ -17,6 +17,7 @@ public class HtmlMessagesBackingBean extends AbstractHtmlMessagesBackingBean {
 
     @PostConstruct
     private void init() {
+        initCommonHtmlMessagesAttributes();
         initComponentsAttributesList();
     }
 

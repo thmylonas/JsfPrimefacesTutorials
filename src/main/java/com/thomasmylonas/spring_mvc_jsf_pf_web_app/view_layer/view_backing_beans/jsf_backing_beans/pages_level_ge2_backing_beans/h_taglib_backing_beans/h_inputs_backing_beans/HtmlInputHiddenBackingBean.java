@@ -22,6 +22,7 @@ public class HtmlInputHiddenBackingBean extends AbstractHtmlInputsBackingBean {
 
     @PostConstruct
     private void init() {
+        initCommonHtmlInputsAttributes();
         initComponentsAttributesList();
     }
 
