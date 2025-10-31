@@ -8,9 +8,11 @@ import java.util.List;
 
 public abstract class AbstractHtmlInputsBackingBean extends HtmlTaglibBackingBean {
 
-    protected List<ComponentsAttribute> uiInputsAttributes = new ArrayList<>();
+    protected List<ComponentsAttribute> uiInputsAttributes;
 
     protected void initCommonHtmlInputsAttributes() {
+
+        uiInputsAttributes = new ArrayList<>();
 
         // The common "UIInput" Components' attributes
         uiInputsAttributes.addAll(commonHtmlAttributesService.getCommonUiInputsAttributes());
