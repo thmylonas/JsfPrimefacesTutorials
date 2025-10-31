@@ -13,7 +13,6 @@ public enum ImagesEnum {
     // "images/java_frameworks"
     JAVA_SERVER_FACES_IMAGE("JavaServerFaces", ".jpg", "JavaServer Faces", ImagesEnum.MAIN_IMAGES_DIR + ImagesEnum.MAIN_IMAGES_JAVA_FRAMEWORKS_DIR),
     PRIMEFACES_IMAGE("Primefaces", ".png", "Primefaces", ImagesEnum.MAIN_IMAGES_DIR + ImagesEnum.MAIN_IMAGES_JAVA_FRAMEWORKS_DIR),
-    SPRING_FRAMEWORK_IMAGE("SpringFramework", ".png", "Spring Framework", ImagesEnum.MAIN_IMAGES_DIR + ImagesEnum.MAIN_IMAGES_JAVA_FRAMEWORKS_DIR),
 
     // "images/social_media"
     FACEBOOK_IMAGE("Facebook", ".png", "Facebook", ImagesEnum.MAIN_IMAGES_DIR + ImagesEnum.MAIN_IMAGES_SOCIAL_MEDIA_DIR),
@@ -40,7 +39,6 @@ public enum ImagesEnum {
     // "images/menubar_icons/java_frameworks"
     MENUBAR_ICON_JAVA_SERVER_FACES_IMAGE("JavaServerFaces", ".png", "JavaServer Faces", ImagesEnum.MAIN_IMAGES_DIR + ImagesEnum.MAIN_IMAGES_MENUBAR_ICON_DIR + ImagesEnum.MAIN_IMAGES_JAVA_FRAMEWORKS_DIR),
     MENUBAR_ICON_PRIMEFACES_IMAGE("Primefaces", ".png", "Primefaces", ImagesEnum.MAIN_IMAGES_DIR + ImagesEnum.MAIN_IMAGES_MENUBAR_ICON_DIR + ImagesEnum.MAIN_IMAGES_JAVA_FRAMEWORKS_DIR),
-    MENUBAR_ICON_SPRING_FRAMEWORK_IMAGE("SpringFramework", ".png", "Spring Framework", ImagesEnum.MAIN_IMAGES_DIR + ImagesEnum.MAIN_IMAGES_MENUBAR_ICON_DIR + ImagesEnum.MAIN_IMAGES_JAVA_FRAMEWORKS_DIR),
 
     // "images/menubar_icons/about"
     MENUBAR_ICON_THOMAS_MYLONAS_IMAGE("ThomasMylonas", ".jpg", "Thomas Mylonas", ImagesEnum.MAIN_IMAGES_DIR + ImagesEnum.MAIN_IMAGES_MENUBAR_ICON_DIR + ImagesEnum.MAIN_IMAGES_ABOUT_DIR),
