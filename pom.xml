@@ -5,11 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.thomasmylonas</groupId>
-    <artifactId>SpringMvcJsfPfWebApp</artifactId>
+    <artifactId>jsf_primefaces_tutorials</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>Web Application with JSF, Primefaces, Hibernate/JPA, Maven (no archetype)</name>
+    <name>JsfPrimefacesTutorials</name>
+    <description>Web Application with JSF, Primefaces, Hibernate/JPA, Maven (no archetype)</description>
     <url>http://localhost:8080/SpringMvcJsfPfWebApp</url>
 
     <properties>
