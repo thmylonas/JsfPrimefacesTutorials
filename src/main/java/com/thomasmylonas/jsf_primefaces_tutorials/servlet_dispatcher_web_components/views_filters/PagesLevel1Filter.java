@@ -13,9 +13,9 @@ import java.io.IOException;
         value = {
                 "/",
                 "/facelets/home/*",
-                "/facelets/spring-framework/*",
                 "/facelets/jsf/*",
                 "/facelets/primefaces/*",
+                "/facelets/student-home/*",
                 "/facelets/about/*"
         }
 )

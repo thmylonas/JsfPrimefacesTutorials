@@ -26,13 +26,6 @@ public class MainMenubarModel extends AbstractMenubarModel {
         menuModel.getElements().add(item);
 
         /////////////////////////////////////////////////////////////////////////
-        // Item Level 1 - Spring Framework
-        /////////////////////////////////////////////////////////////////////////
-
-        item = DefaultMenuItem.builder().value("Spring Framework").url(WEBAPP_LINK + "facelets/spring-framework").build();
-        menuModel.getElements().add(item);
-
-        /////////////////////////////////////////////////////////////////////////
         // SubMenu Level 1 - JavaServer Faces
         /////////////////////////////////////////////////////////////////////////
 
@@ -42,6 +35,13 @@ public class MainMenubarModel extends AbstractMenubarModel {
         jsfSubmenu.getElements().add(item);
         item = buildDefaultMenuItem("Primefaces", "primefaces", WEBAPP_LINK + "facelets/primefaces");
         jsfSubmenu.getElements().add(item);
+
+        /////////////////////////////////////////////////////////////////////////
+        // Item Level 1 - JSF and JPA
+        /////////////////////////////////////////////////////////////////////////
+
+        item = DefaultMenuItem.builder().value("JSF and JPA").url(WEBAPP_LINK + "facelets/student-home").build();
+        menuModel.getElements().add(item);
 
         menuModel.getElements().add(jsfSubmenu);
 

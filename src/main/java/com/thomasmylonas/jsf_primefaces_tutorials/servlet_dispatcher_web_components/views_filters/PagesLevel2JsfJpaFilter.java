@@ -14,10 +14,10 @@ import java.io.IOException;
                 "/facelets/student-home/*"
         }
 )
-public class PagesLevel2SpringFrameworkFilter extends AbstractViewsFilter {
+public class PagesLevel2JsfJpaFilter extends AbstractViewsFilter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
-        super.doFilter(MAIN_SPRING_FRAMEWORK_DIR, this.getClass(), request, response, filterChain);
+        super.doFilter(MAIN_STUDENT_HOME_DIR, this.getClass(), request, response, filterChain);
     }
 }
