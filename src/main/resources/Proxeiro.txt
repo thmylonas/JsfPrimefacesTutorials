@@ -627,7 +627,7 @@ xmlns:cc="http://xmlns.jcp.org/jsf/composite"
 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 xmlns:p="http://primefaces.org/ui"
 
-SpringMvcJsfPfWebApp_war_exploded -> SpringMvcJsfPfWebApp
+JsfPrimefacesTutorials_war_exploded -> JsfPrimefacesTutorials
 ----------------------------------------
 @PersistenceContext
 private EntityManager EM;
@@ -655,10 +655,10 @@ How to add static CSS,JS files in the Spring MVC app (without Thymeleaf)
 ---------------------------------------------------------------------------
 <head>
     <!-- Stylesheets -->
-    <link href="/SpringMvcJsfPfWebApp/resources/css/styles_general/_styles_variables.css" rel="stylesheet"/>
-    <link href="/SpringMvcJsfPfWebApp/resources/css/styles_general/student_alt_home.css" rel="stylesheet"/>
+    <link href="/JsfPrimefacesTutorials/resources/css/styles_general/_styles_variables.css" rel="stylesheet"/>
+    <link href="/JsfPrimefacesTutorials/resources/css/styles_general/student_alt_home.css" rel="stylesheet"/>
     <!-- Stylesheets for Bootstrap -->
-    <link href="/SpringMvcJsfPfWebApp/resources/css/boostrap_css_libs/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/JsfPrimefacesTutorials/resources/css/boostrap_css_libs/bootstrap.min.css" rel="stylesheet"/>
 </head>
 
 public class WebConfig implements WebMvcConfigurer {
@@ -750,7 +750,7 @@ Legacy pom-build (copied from somewhere)
 --------------------------------------------
 
 <build>
-    <finalName>SpringMvcJsfPfWebApp</finalName>
+    <finalName>JsfPrimefacesTutorials</finalName>
     <pluginManagement> <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
         <plugins>
             <plugin>
