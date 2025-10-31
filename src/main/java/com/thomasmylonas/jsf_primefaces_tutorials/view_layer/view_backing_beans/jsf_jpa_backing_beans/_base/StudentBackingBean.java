@@ -1,10 +1,10 @@
-package com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.spring_framework_backing_beans._base;
+package com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_jpa_backing_beans._base;
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans._base.AbstractBackingBean;
-import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.spring_framework_backing_beans.DbStudentBackingBean;
-import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.spring_framework_backing_beans.InMemoryStudentBackingBean;
+import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_jpa_backing_beans.DbStudentBackingBean;
+import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_jpa_backing_beans.InMemoryStudentBackingBean;
 import lombok.Getter;
 import lombok.Setter;
 

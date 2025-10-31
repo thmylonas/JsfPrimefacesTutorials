@@ -25,11 +25,11 @@ public abstract class AbstractViewsFilter implements Filter {
     private static final String SPECIAL_LAST_URI_PART = "home";
 
     protected static final String MAIN_PAGES_LEVEL_1_DIR = "/pages_level_1/";
-    protected static final String MAIN_SPRING_FRAMEWORK_DIR = "/pages_level_2/spring_framework/";
     protected static final String MAIN_JSF_DIR = "/pages_level_2/jsf/";
     protected static final String MAIN_PRIMEFACES_DIR = "/pages_level_2/primefaces/";
     protected static final String MAIN_JSF_H_TAGLIB_DIR = "/pages_level_2/jsf/jsf_h_taglib/";
     protected static final String MAIN_JSF_TRICKS_OTHERS_DIR = "/pages_level_2/jsf/_jsf_tricks_others/";
+    protected static final String MAIN_STUDENT_HOME_DIR = "/pages_level_1/student_home/";
 
     public void doFilter(String parentDirPath, Class<?> filterSubClass, ServletRequest request,
                          ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
