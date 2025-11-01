@@ -29,7 +29,7 @@
     float: right;
 }
 
-.insert_data, .student_alt_reset_btn {
+.insert_data, .student_reset_btn {
     margin-left: 10px !important;
 }
 
@@ -37,23 +37,23 @@
     margin-left: 18px !important;
 }
 
-/* table_students_alt_list */
+/* table_students_list */
 
-.table_students_alt_list {
+.table_students_list {
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.table_students_alt_list > div {
+.table_students_list > div {
     color: blue;
     font-style: italic;
 }
 
-.table_students_alt_list thead th {
+.table_students_list thead th {
     color: blue !important;
     font-style: italic !important;
 }
 
-.table_students_alt_list tbody {
+.table_students_list tbody {
     font-weight: 100 !important;
 }
