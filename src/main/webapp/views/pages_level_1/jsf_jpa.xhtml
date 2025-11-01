@@ -27,7 +27,7 @@
         <ui:define name="center_section_content">
 
             <p>
-                <h:outputText value="The 'Student' table#{studentBackingBean.displayDataSource()}"
+                <h:outputText value="The 'Student' table#{jsfJpaBackingBean.fetchDataSource()}"
                               escape="false" styleClass="technology_topics_titles"/>
             </p>
 
@@ -35,7 +35,7 @@
                 <h:form>
                     <div>
                         <p:outputLabel for="dataSource" value="Select DataSource (In-Memory/Database):"/>
-                        <p:selectOneMenu id="dataSource" value="#{studentBackingBean.dataSource}"
+                        <p:selectOneMenu id="dataSource" value="#{jsfJpaBackingBean.jsfJpaService.dataSource}"
                                          styleClass="select_one_menu_input_field">
                             <f:selectItem itemLabel="Select DataSource" itemValue=""/>
                             <f:selectItem itemLabel="In-Memory DataSource" itemValue="InMemoryDS"/>
@@ -46,13 +46,13 @@
                     <div>
                         <p:commandButton type="button" value="Select DataSource">
                             <p:ajax process="@form" update="@all"
-                                    listener="#{studentBackingBean.selectDatasource()}"/>
+                                    listener="#{jsfJpaBackingBean.selectDatasource()}"/>
                         </p:commandButton>
                     </div>
                 </h:form>
             </div>
 
-            <dl class="technology_topics_list_wrapper #{studentBackingBean.displayApiForms()} ">
+            <dl class="technology_topics_list_wrapper #{jsfJpaBackingBean.displayDataFormsInView()} ">
                 <dt>Display a Student (given its ID)</dt>
                 <dd>
                     <h:form>
@@ -64,23 +64,23 @@
                         -->
                         <div class="data_insert_form">
                             <tm:input_text_label
-                                    input_value="#{studentBackingBean.generalJsfJpaBackingBean.studentId}"
+                                    input_value="#{jsfJpaBackingBean.jsfJpaService.studentId}"
                                     label="Enter the student's ID:" placeholder="ID"
                                     max_length="5" size="2" style_class="insert_data"/>
                         </div>
 
                         <tm:student_data_table title="Display the filtered Student"
-                                               studentList="#{studentBackingBean.generalJsfJpaBackingBean.studentsFilteredList}"
+                                               studentList="#{jsfJpaBackingBean.jsfJpaService.studentsFilteredList}"
                                                style_class="table_students_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Find student">
                                 <p:ajax process="@form" update="@form @(.table_students_list)"
-                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.displayStudentById()}"/>
+                                        listener="#{jsfJpaBackingBean.jsfJpaService.displayStudentById()}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.resetFetchByIdForm()}"/>
+                                        listener="#{jsfJpaBackingBean.resetFetchByIdForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
@@ -89,7 +89,7 @@
                 <dt>Display all the Students</dt>
                 <dd>
                     <tm:student_data_table title="Display all the Students"
-                                           studentList="#{studentBackingBean.generalJsfJpaBackingBean.fetchAllStudents()}"
+                                           studentList="#{jsfJpaBackingBean.jsfJpaService.fetchAllStudents()}"
                                            style_class="table_students_list"/>
                 </dd>
 
@@ -98,22 +98,22 @@
                     <h:form id="formWhichSavesNewStudent">
                         <div class="data_insert_form">
                             <tm:student_insert_data
-                                    model="#{studentBackingBean.generalJsfJpaBackingBean.saveFormStudent}"
+                                    model="#{jsfJpaBackingBean.jsfJpaService.saveFormStudent}"
                                     style_class="insert_data"/>
                         </div>
 
                         <tm:student_data_table title="Display all the Students"
-                                               studentList="#{studentBackingBean.generalJsfJpaBackingBean.fetchAllStudents()}"
+                                               studentList="#{jsfJpaBackingBean.jsfJpaService.fetchAllStudents()}"
                                                style_class="table_students_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Add student">
                                 <p:ajax process="@form" update="@form @(.table_students_list)"
-                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.saveNewStudent(studentBackingBean.generalJsfJpaBackingBean.saveFormStudent)}"/>
+                                        listener="#{jsfJpaBackingBean.jsfJpaService.saveNewStudent(jsfJpaBackingBean.jsfJpaService.saveFormStudent)}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.resetSaveForm()}"/>
+                                        listener="#{jsfJpaBackingBean.resetSaveForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
@@ -124,26 +124,26 @@
                     <h:form id="formWhichUpdatesStudent">
                         <div class="data_insert_form">
                             <tm:input_text_label
-                                    input_value="#{studentBackingBean.generalJsfJpaBackingBean.updateFormStudentId}"
+                                    input_value="#{jsfJpaBackingBean.jsfJpaService.updateFormStudentId}"
                                     label="Enter the student's ID:" placeholder="ID"
                                     max_length="5" size="2" style_class="insert_data"/>
                             <tm:student_insert_data
-                                    model="#{studentBackingBean.generalJsfJpaBackingBean.updateFormStudent}"
+                                    model="#{jsfJpaBackingBean.jsfJpaService.updateFormStudent}"
                                     style_class="insert_data"/>
                         </div>
 
                         <tm:student_data_table title="Display all the Students"
-                                               studentList="#{studentBackingBean.generalJsfJpaBackingBean.fetchAllStudents()}"
+                                               studentList="#{jsfJpaBackingBean.jsfJpaService.fetchAllStudents()}"
                                                style_class="table_students_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Update student">
                                 <p:ajax process="@form" update="@form @(.table_students_list)"
-                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.updateStudent(studentBackingBean.generalJsfJpaBackingBean.updateFormStudent, studentBackingBean.generalJsfJpaBackingBean.updateFormStudentId)}"/>
+                                        listener="#{jsfJpaBackingBean.jsfJpaService.updateStudent(jsfJpaBackingBean.jsfJpaService.updateFormStudent, jsfJpaBackingBean.jsfJpaService.updateFormStudentId)}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.resetUpdateForm()}"/>
+                                        listener="#{jsfJpaBackingBean.resetUpdateForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
@@ -154,23 +154,23 @@
                     <h:form id="formWhichDeletesStudentById">
                         <div class="data_insert_form">
                             <tm:input_text_label
-                                    input_value="#{studentBackingBean.generalJsfJpaBackingBean.deleteFormStudentId}"
+                                    input_value="#{jsfJpaBackingBean.jsfJpaService.deleteFormStudentId}"
                                     label="Enter the student's ID:" placeholder="ID"
                                     max_length="5" size="2" style_class="insert_data"/>
                         </div>
 
                         <tm:student_data_table title="Display all the Students"
-                                               studentList="#{studentBackingBean.generalJsfJpaBackingBean.fetchAllStudents()}"
+                                               studentList="#{jsfJpaBackingBean.jsfJpaService.fetchAllStudents()}"
                                                style_class="table_students_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Delete student">
                                 <p:ajax process="@form" update="@form @(.table_students_list)"
-                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.deleteStudent()}"/>
+                                        listener="#{jsfJpaBackingBean.jsfJpaService.deleteStudent()}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.resetDeleteForm()}"/>
+                                        listener="#{jsfJpaBackingBean.resetDeleteForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>

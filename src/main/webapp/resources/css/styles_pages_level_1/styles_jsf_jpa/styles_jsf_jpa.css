@@ -8,11 +8,11 @@
     margin-bottom: 35px;
 }
 
-.display_api_forms {
+.display_data_forms {
     display: block;
 }
 
-.not_display_api_forms {
+.not_display_data_forms {
     display: none;
 }
 
