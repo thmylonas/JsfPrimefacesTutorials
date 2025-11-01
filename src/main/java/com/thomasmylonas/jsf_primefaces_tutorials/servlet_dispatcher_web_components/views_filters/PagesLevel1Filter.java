@@ -15,7 +15,7 @@ import java.io.IOException;
                 "/facelets/home/*",
                 "/facelets/jsf/*",
                 "/facelets/primefaces/*",
-                "/facelets/student-home/*",
+                "/facelets/jsf-jpa/*",
                 "/facelets/about/*"
         }
 )

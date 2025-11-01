@@ -5,18 +5,18 @@ import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_alt_api_services.InMemoryStudentService;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_alt_api_services.StudentService;
-import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_jpa_backing_beans._base.StudentBackingBean;
+import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_jpa_backing_beans._base.JsfJpaBackingBean;
 
 import javax.faces.bean.ManagedBean;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "inMemoryStudentBackingBean")
-public class InMemoryStudentBackingBean extends StudentBackingBean {
+public class InMemoryJsfJpaBackingBean extends JsfJpaBackingBean {
 
     private final StudentService inMemoryStudentService;
 
-    public InMemoryStudentBackingBean() {
+    public InMemoryJsfJpaBackingBean() {
 
         inMemoryStudentService = new InMemoryStudentService();
 

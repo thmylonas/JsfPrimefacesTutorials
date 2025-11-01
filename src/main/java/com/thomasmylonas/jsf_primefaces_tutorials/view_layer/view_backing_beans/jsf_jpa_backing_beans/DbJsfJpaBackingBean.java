@@ -1,27 +1,22 @@
 package com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_jpa_backing_beans;
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
-import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.repositories.StudentDao;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_alt_api_services.DbStudentService;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_alt_api_services.StudentService;
-import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_jpa_backing_beans._base.StudentBackingBean;
+import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_jpa_backing_beans._base.JsfJpaBackingBean;
 
 import javax.faces.bean.ManagedBean;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "dbStudentBackingBean")
-public class DbStudentBackingBean extends StudentBackingBean {
+public class DbJsfJpaBackingBean extends JsfJpaBackingBean {
 
     private StudentService dbStudentService;
 //    private final StudentService dbStudentService;
 
-    public DbStudentBackingBean() {
+    public DbJsfJpaBackingBean() {
 
 //        EntityManagerFactory emf = Persistence.createEntityManagerFactory("StudentsPU_H2");
 //        EntityManager em = null;

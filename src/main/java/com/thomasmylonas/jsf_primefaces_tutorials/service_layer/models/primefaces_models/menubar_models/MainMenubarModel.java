@@ -40,7 +40,7 @@ public class MainMenubarModel extends AbstractMenubarModel {
         // Item Level 1 - JSF and JPA
         /////////////////////////////////////////////////////////////////////////
 
-        item = DefaultMenuItem.builder().value("JSF and JPA").url(WEBAPP_LINK + "facelets/student-home").build();
+        item = DefaultMenuItem.builder().value("JSF and JPA").url(WEBAPP_LINK + "facelets/jsf-jpa").build();
         menuModel.getElements().add(item);
 
         menuModel.getElements().add(jsfSubmenu);

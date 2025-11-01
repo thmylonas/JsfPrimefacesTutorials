@@ -3,20 +3,17 @@ package com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans._base.AbstractBackingBean;
-import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_jpa_backing_beans.DbStudentBackingBean;
-import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_jpa_backing_beans.InMemoryStudentBackingBean;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "studentBackingBean")
 @Getter
 @Setter
-public class StudentBackingBean extends AbstractBackingBean {
+public class JsfJpaBackingBean extends AbstractBackingBean {
 
     private String dataSource;
     private boolean displayApiForms;
@@ -32,7 +29,7 @@ public class StudentBackingBean extends AbstractBackingBean {
     protected Student saveFormStudent;
     protected Student updateFormStudent;
 
-    private StudentBackingBean generalStudentBackingBean;
+    private JsfJpaBackingBean generalJsfJpaBackingBean;
 
 //    @ManagedProperty(value = "#{inMemoryStudentBackingBean}")
 //    private InMemoryStudentBackingBean inMemoryStudentBackingBean;

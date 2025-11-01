@@ -13,15 +13,15 @@
     <ui:composition template="../templates/pages_level2_template.xhtml">
 
         <ui:define name="metadata_desc">
-            <meta name="description" content="JSF and JPA: Display Database data with JSF ('Student' table)"/>
+            <meta name="description" content="#{msg['page_level1.metadata_desc.jsf_jpa']}"/>
         </ui:define>
 
         <ui:define name="head_page_title">
-            <title>JSF and JPA: Display Database data with JSF ('Student' table)</title>
+            <title>#{msg['page_level1.head_page_title.jsf_jpa']}</title>
         </ui:define>
 
         <ui:define name="center_section_title">
-            <h:outputText value="JSF and JPA: Display Database data with JSF ('Student' table)"/>
+            <h:outputText value="#{msg['page_level1.center_section.title.jsf_jpa']}"/>
         </ui:define>
 
         <ui:define name="center_section_content">
@@ -64,23 +64,23 @@
                         -->
                         <div class="data_insert_form">
                             <tm:input_text_label
-                                    input_value="#{studentBackingBean.generalStudentBackingBean.studentId}"
+                                    input_value="#{studentBackingBean.generalJsfJpaBackingBean.studentId}"
                                     label="Enter the student's ID:" placeholder="ID"
                                     max_length="5" size="2" style_class="insert_data"/>
                         </div>
 
                         <tm:student_data_table title="Display the filtered Student"
-                                               studentList="#{studentBackingBean.generalStudentBackingBean.studentsFilteredList}"
+                                               studentList="#{studentBackingBean.generalJsfJpaBackingBean.studentsFilteredList}"
                                                style_class="table_students_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Find student">
                                 <p:ajax process="@form" update="@form @(.table_students_list)"
-                                        listener="#{studentBackingBean.generalStudentBackingBean.displayStudentById()}"/>
+                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.displayStudentById()}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{studentBackingBean.generalStudentBackingBean.resetFetchByIdForm()}"/>
+                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.resetFetchByIdForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
@@ -89,7 +89,7 @@
                 <dt>Display all the Students</dt>
                 <dd>
                     <tm:student_data_table title="Display all the Students"
-                                           studentList="#{studentBackingBean.generalStudentBackingBean.fetchAllStudents()}"
+                                           studentList="#{studentBackingBean.generalJsfJpaBackingBean.fetchAllStudents()}"
                                            style_class="table_students_list"/>
                 </dd>
 
@@ -98,22 +98,22 @@
                     <h:form id="formWhichSavesNewStudent">
                         <div class="data_insert_form">
                             <tm:student_insert_data
-                                    model="#{studentBackingBean.generalStudentBackingBean.saveFormStudent}"
+                                    model="#{studentBackingBean.generalJsfJpaBackingBean.saveFormStudent}"
                                     style_class="insert_data"/>
                         </div>
 
                         <tm:student_data_table title="Display all the Students"
-                                               studentList="#{studentBackingBean.generalStudentBackingBean.fetchAllStudents()}"
+                                               studentList="#{studentBackingBean.generalJsfJpaBackingBean.fetchAllStudents()}"
                                                style_class="table_students_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Add student">
                                 <p:ajax process="@form" update="@form @(.table_students_list)"
-                                        listener="#{studentBackingBean.generalStudentBackingBean.saveNewStudent(studentBackingBean.generalStudentBackingBean.saveFormStudent)}"/>
+                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.saveNewStudent(studentBackingBean.generalJsfJpaBackingBean.saveFormStudent)}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{studentBackingBean.generalStudentBackingBean.resetSaveForm()}"/>
+                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.resetSaveForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
@@ -124,26 +124,26 @@
                     <h:form id="formWhichUpdatesStudent">
                         <div class="data_insert_form">
                             <tm:input_text_label
-                                    input_value="#{studentBackingBean.generalStudentBackingBean.updateFormStudentId}"
+                                    input_value="#{studentBackingBean.generalJsfJpaBackingBean.updateFormStudentId}"
                                     label="Enter the student's ID:" placeholder="ID"
                                     max_length="5" size="2" style_class="insert_data"/>
                             <tm:student_insert_data
-                                    model="#{studentBackingBean.generalStudentBackingBean.updateFormStudent}"
+                                    model="#{studentBackingBean.generalJsfJpaBackingBean.updateFormStudent}"
                                     style_class="insert_data"/>
                         </div>
 
                         <tm:student_data_table title="Display all the Students"
-                                               studentList="#{studentBackingBean.generalStudentBackingBean.fetchAllStudents()}"
+                                               studentList="#{studentBackingBean.generalJsfJpaBackingBean.fetchAllStudents()}"
                                                style_class="table_students_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Update student">
                                 <p:ajax process="@form" update="@form @(.table_students_list)"
-                                        listener="#{studentBackingBean.generalStudentBackingBean.updateStudent(studentBackingBean.generalStudentBackingBean.updateFormStudent, studentBackingBean.generalStudentBackingBean.updateFormStudentId)}"/>
+                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.updateStudent(studentBackingBean.generalJsfJpaBackingBean.updateFormStudent, studentBackingBean.generalJsfJpaBackingBean.updateFormStudentId)}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{studentBackingBean.generalStudentBackingBean.resetUpdateForm()}"/>
+                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.resetUpdateForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
@@ -154,23 +154,23 @@
                     <h:form id="formWhichDeletesStudentById">
                         <div class="data_insert_form">
                             <tm:input_text_label
-                                    input_value="#{studentBackingBean.generalStudentBackingBean.deleteFormStudentId}"
+                                    input_value="#{studentBackingBean.generalJsfJpaBackingBean.deleteFormStudentId}"
                                     label="Enter the student's ID:" placeholder="ID"
                                     max_length="5" size="2" style_class="insert_data"/>
                         </div>
 
                         <tm:student_data_table title="Display all the Students"
-                                               studentList="#{studentBackingBean.generalStudentBackingBean.fetchAllStudents()}"
+                                               studentList="#{studentBackingBean.generalJsfJpaBackingBean.fetchAllStudents()}"
                                                style_class="table_students_list"/>
 
                         <div>
                             <p:commandButton type="button" value="Delete student">
                                 <p:ajax process="@form" update="@form @(.table_students_list)"
-                                        listener="#{studentBackingBean.generalStudentBackingBean.deleteStudent()}"/>
+                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.deleteStudent()}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_reset_btn">
                                 <p:ajax process="@form" update="@form"
-                                        listener="#{studentBackingBean.generalStudentBackingBean.resetDeleteForm()}"/>
+                                        listener="#{studentBackingBean.generalJsfJpaBackingBean.resetDeleteForm()}"/>
                             </p:commandButton>
                         </div>
                     </h:form>
