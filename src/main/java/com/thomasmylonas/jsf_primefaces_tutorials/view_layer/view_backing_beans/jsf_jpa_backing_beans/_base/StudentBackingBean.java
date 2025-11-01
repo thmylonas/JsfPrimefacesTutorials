@@ -34,11 +34,11 @@ public class StudentBackingBean extends AbstractBackingBean {
 
     private StudentBackingBean generalStudentBackingBean;
 
-    @ManagedProperty(value = "#{inMemoryStudentBackingBean}")
-    private InMemoryStudentBackingBean inMemoryStudentBackingBean;
-
-    @ManagedProperty(value = "#{dbStudentBackingBean}")
-    private DbStudentBackingBean dbStudentBackingBean;
+//    @ManagedProperty(value = "#{inMemoryStudentBackingBean}")
+//    private InMemoryStudentBackingBean inMemoryStudentBackingBean;
+//
+//    @ManagedProperty(value = "#{dbStudentBackingBean}")
+//    private DbStudentBackingBean dbStudentBackingBean;
 
     public String displayDataSource() {
 
@@ -59,10 +59,10 @@ public class StudentBackingBean extends AbstractBackingBean {
 
         if (dataSource.equalsIgnoreCase("InMemoryDS")) {
             displayApiForms = true;
-            generalStudentBackingBean = inMemoryStudentBackingBean;
+//            generalStudentBackingBean = inMemoryStudentBackingBean;
         } else if (dataSource.equalsIgnoreCase("DatabaseDS")) {
             displayApiForms = true;
-            generalStudentBackingBean = dbStudentBackingBean;
+//            generalStudentBackingBean = dbStudentBackingBean;
         } else {
             displayApiForms = false;
         }

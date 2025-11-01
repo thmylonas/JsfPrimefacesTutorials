@@ -18,27 +18,28 @@ import java.util.List;
 @ManagedBean(name = "dbStudentBackingBean")
 public class DbStudentBackingBean extends StudentBackingBean {
 
-    private final StudentService dbStudentService;
+    private StudentService dbStudentService;
+//    private final StudentService dbStudentService;
 
     public DbStudentBackingBean() {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("StudentsPU_H2");
-        EntityManager em = null;
-
-        try {
-            em = emf.createEntityManager(); // IllegalStateException
-            StudentDao studentDao = new StudentDao(em);
-            this.dbStudentService = new DbStudentService(studentDao);
-        } catch (Exception e) {
-            throw new RuntimeException("Error creating EntityManager", e);
-        } finally {
-            if (em != null) {
-                em.close();
-            }
-            // In the In-Memory H2-Database run cases, if "emf.close()", the tables/data in the H2-Database are deleted
-            LOGGER.warn("In the In-Memory H2-Database run cases, if 'emf.close()', the tables/data in the H2-Database are deleted");
-            //emf.close();
-        }
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("StudentsPU_H2");
+//        EntityManager em = null;
+//
+//        try {
+//            em = emf.createEntityManager(); // IllegalStateException
+//            StudentDao studentDao = new StudentDao(em);
+//            this.dbStudentService = new DbStudentService(studentDao);
+//        } catch (Exception e) {
+//            throw new RuntimeException("Error creating EntityManager", e);
+//        } finally {
+//            if (em != null) {
+//                em.close();
+//            }
+//            // In the In-Memory H2-Database run cases, if "emf.close()", the tables/data in the H2-Database are deleted
+//            LOGGER.warn("In the In-Memory H2-Database run cases, if 'emf.close()', the tables/data in the H2-Database are deleted");
+//            //emf.close();
+//        }
 
         studentsFilteredList = new ArrayList<>();
         saveFormStudent = new Student();
