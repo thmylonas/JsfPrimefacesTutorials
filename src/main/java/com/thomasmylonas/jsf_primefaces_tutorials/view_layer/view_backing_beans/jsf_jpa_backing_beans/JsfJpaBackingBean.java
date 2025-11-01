@@ -1,4 +1,4 @@
-package com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_jpa_backing_beans._base;
+package com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_jpa_backing_beans;
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;

@@ -1,11 +1,11 @@
-package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_alt_api_services;
+package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services;
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.enums.Status;
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.repositories.StudentDao;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_alt_api_services._base.AbstractStudentService;
+import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services._base.AbstractStudentService;
 import lombok.RequiredArgsConstructor;
 
 import javax.annotation.PostConstruct;

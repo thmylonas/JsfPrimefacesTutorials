@@ -1,9 +1,9 @@
-package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_alt_api_services._base;
+package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services._base;
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services._base.AbstractService;
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_alt_api_services.StudentService;
+import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services.StudentService;
 
 public abstract class AbstractStudentService extends AbstractService implements StudentService {
 
