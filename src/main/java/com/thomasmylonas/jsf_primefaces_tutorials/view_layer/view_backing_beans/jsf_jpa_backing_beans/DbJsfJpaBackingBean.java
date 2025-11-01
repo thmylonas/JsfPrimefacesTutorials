@@ -10,7 +10,7 @@ import javax.faces.bean.ManagedBean;
 import java.util.ArrayList;
 import java.util.List;
 
-@ManagedBean(name = "dbStudentBackingBean")
+@ManagedBean(name = "dbJsfJpaBackingBean")
 public class DbJsfJpaBackingBean extends JsfJpaBackingBean {
 
     private StudentService dbStudentService;

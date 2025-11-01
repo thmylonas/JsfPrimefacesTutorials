@@ -10,7 +10,7 @@ import javax.faces.bean.ManagedBean;
 import java.util.ArrayList;
 import java.util.List;
 
-@ManagedBean(name = "studentBackingBean")
+@ManagedBean(name = "jsfJpaBackingBean")
 @Getter
 @Setter
 public class JsfJpaBackingBean extends AbstractBackingBean {
@@ -31,11 +31,11 @@ public class JsfJpaBackingBean extends AbstractBackingBean {
 
     private JsfJpaBackingBean generalJsfJpaBackingBean;
 
-//    @ManagedProperty(value = "#{inMemoryStudentBackingBean}")
-//    private InMemoryStudentBackingBean inMemoryStudentBackingBean;
+//    @ManagedProperty(value = "#{inMemoryJsfJpaBackingBean}")
+//    private InMemoryJsfJpaBackingBean inMemoryJsfJpaBackingBean;
 //
-//    @ManagedProperty(value = "#{dbStudentBackingBean}")
-//    private DbStudentBackingBean dbStudentBackingBean;
+//    @ManagedProperty(value = "#{dbJsfJpaBackingBean}")
+//    private DbJsfJpaBackingBean dbJsfJpaBackingBean;
 
     public String displayDataSource() {
 
@@ -56,10 +56,10 @@ public class JsfJpaBackingBean extends AbstractBackingBean {
 
         if (dataSource.equalsIgnoreCase("InMemoryDS")) {
             displayApiForms = true;
-//            generalStudentBackingBean = inMemoryStudentBackingBean;
+//            generalJsfJpaBackingBean = inMemoryJsfJpaBackingBean;
         } else if (dataSource.equalsIgnoreCase("DatabaseDS")) {
             displayApiForms = true;
-//            generalStudentBackingBean = dbStudentBackingBean;
+//            generalJsfJpaBackingBean = dbJsfJpaBackingBean;
         } else {
             displayApiForms = false;
         }

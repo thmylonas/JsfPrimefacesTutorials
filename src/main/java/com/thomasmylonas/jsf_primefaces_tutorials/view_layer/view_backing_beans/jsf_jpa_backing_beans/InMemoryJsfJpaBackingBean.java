@@ -11,7 +11,7 @@ import javax.faces.bean.ManagedBean;
 import java.util.ArrayList;
 import java.util.List;
 
-@ManagedBean(name = "inMemoryStudentBackingBean")
+@ManagedBean(name = "inMemoryJsfJpaBackingBean")
 public class InMemoryJsfJpaBackingBean extends JsfJpaBackingBean {
 
     private final StudentService inMemoryStudentService;
