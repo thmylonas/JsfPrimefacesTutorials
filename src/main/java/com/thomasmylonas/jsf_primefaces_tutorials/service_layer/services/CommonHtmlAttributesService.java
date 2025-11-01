@@ -7,11 +7,13 @@ import lombok.Getter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "commonHtmlAttributesService")
+@ViewScoped
 @Getter
 public class CommonHtmlAttributesService extends AbstractService implements Serializable {
 
