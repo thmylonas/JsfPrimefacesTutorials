@@ -12,9 +12,6 @@ import java.util.List;
 @Setter
 public abstract class AbstractJsfJpaService extends AbstractService {
 
-    private String dataSource;
-    private boolean displayDataForms;
-
     protected List<Student> studentsFilteredList;
 
     // The "studentId" ID's collected from the user input
