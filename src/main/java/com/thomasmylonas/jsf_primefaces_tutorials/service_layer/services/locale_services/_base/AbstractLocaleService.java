@@ -4,7 +4,6 @@ import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services._base.A
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.annotation.PostConstruct;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -16,12 +15,18 @@ public abstract class AbstractLocaleService extends AbstractService {
     /**
      * The final EN_LOCALE (Locale.ENGLISH)
      */
-    protected static final Locale EN_LOCALE = new Locale("en", "US");
+    protected static final Locale EN_LOCALE = new Locale.Builder()
+            .setLanguage("en")
+            .setRegion("US")
+            .build();
 
     /**
      * The final GR_LOCALE
      */
-    protected static final Locale GR_LOCALE = new Locale("el", "GR");
+    protected static final Locale GR_LOCALE = new Locale.Builder()
+            .setLanguage("el")
+            .setRegion("GR")
+            .build();
 
     /**
      * The Map<String, Locale> of entries: (localeCode, Locale)
@@ -35,11 +40,6 @@ public abstract class AbstractLocaleService extends AbstractService {
      * The global current Locale in the application
      */
     protected Locale locale;
-
-    @PostConstruct
-    private void init() {
-        locale = EN_LOCALE;
-    }
 
     public String loadFlagCss() {
         return locale == EN_LOCALE ? "change_lang_en" : "change_lang_gr";

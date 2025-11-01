@@ -25,6 +25,7 @@ public class FaceletsLocaleService extends AbstractLocaleService {
 
     @PostConstruct
     private void init() {
+        locale = EN_LOCALE;
         english = true;
     }
 
