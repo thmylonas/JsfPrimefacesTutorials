@@ -1,9 +1,10 @@
-package com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_jpa_backing_beans;
+package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.jsf_jpa_services;
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services.StudentService;
+import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_jpa_backing_beans.JsfJpaBackingBean;
 
 import javax.faces.bean.ManagedBean;
 import java.util.ArrayList;
