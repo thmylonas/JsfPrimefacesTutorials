@@ -8,6 +8,7 @@ import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student
 
 import javax.faces.bean.ManagedBean;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @ManagedBean(name = "dbJsfJpaService")
@@ -61,6 +62,7 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
         List<Student> allStudentsList = dbStudentService.getAllStudents();
         if (HelperClass.isListNullOrEmpty(allStudentsList)) {
             // Display error message (somehow)
+            return Collections.emptyList();
         }
         return allStudentsList;
     }
