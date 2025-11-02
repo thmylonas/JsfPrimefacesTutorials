@@ -6,18 +6,22 @@ import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.repositories
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services._base.AbstractStudentService;
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import java.util.Calendar;
 import java.util.List;
 
-@ManagedBean(name = "dbStudentService")
-@RequiredArgsConstructor
+@ManagedBean(name = "dbStudentService", eager = true)
+@Getter
+@Setter
 public class DbStudentService extends AbstractStudentService {
 
-    private final StudentDao studentDao;
+    @ManagedProperty(value = "#{studentDao}")
+    private StudentDao studentDao;
 
     @PostConstruct
     private void init() {

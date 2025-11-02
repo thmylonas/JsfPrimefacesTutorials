@@ -3,21 +3,33 @@ package com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.repositorie
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequiredArgsConstructor
+@ManagedBean(name = "studentDao", eager = true)
+@Getter
+@Setter
 public class StudentDao {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(StudentDao.class.getSimpleName());
 
-    private final EntityManager em;
+    private EntityManager em;
+
+    @PostConstruct
+    private void init() {
+        em = createEntityManager();
+    }
 
     public Student findById(Long id) {
 
@@ -126,6 +138,16 @@ public class StudentDao {
         } catch (Exception e) {
             em.getTransaction().rollback();
             LOGGER.error("Because of an 'Exception': '{}', the transaction is rolled back!", e.getMessage());
+        }
+    }
+
+    private EntityManager createEntityManager() {
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("StudentPU_H2");
+        try {
+            return emf.createEntityManager(); // IllegalStateException
+        } catch (Exception e) {
+            throw new RuntimeException("Error creating EntityManager", e);
         }
     }
 }
