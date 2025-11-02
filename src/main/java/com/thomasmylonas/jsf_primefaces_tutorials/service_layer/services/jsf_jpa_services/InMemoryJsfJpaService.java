@@ -7,16 +7,20 @@ import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.jsf_jpa
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services.InMemoryStudentService;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services.StudentService;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "inMemoryJsfJpaService")
+@ViewScoped
 public class InMemoryJsfJpaService extends AbstractJsfJpaService {
 
-    private final StudentService inMemoryStudentService;
+    private StudentService inMemoryStudentService;
 
-    public InMemoryJsfJpaService() {
+    @PostConstruct
+    private void init() {
 
         inMemoryStudentService = new InMemoryStudentService();
 

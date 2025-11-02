@@ -11,11 +11,13 @@ import lombok.Setter;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@ManagedBean(name = "dbJsfJpaService", eager = true)
+@ManagedBean(name = "dbJsfJpaService")
+@ViewScoped
 @Getter
 @Setter
 public class DbJsfJpaService extends AbstractJsfJpaService {

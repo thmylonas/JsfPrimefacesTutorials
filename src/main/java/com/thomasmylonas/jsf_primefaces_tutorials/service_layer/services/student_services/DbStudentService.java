@@ -12,10 +12,12 @@ import lombok.Setter;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import java.util.Calendar;
 import java.util.List;
 
-@ManagedBean(name = "dbStudentService", eager = true)
+@ManagedBean(name = "dbStudentService")
+@ViewScoped
 @Getter
 @Setter
 public class DbStudentService extends AbstractStudentService {
