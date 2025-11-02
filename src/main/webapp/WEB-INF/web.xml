@@ -86,9 +86,18 @@
     Without this, the DataSource cannot be found in JNDI
     -->
     <resource-ref>
-        <description>A database for Schools</description>
+        <description>A Student_DB</description>
+        <res-ref-name>jdbc/studentdb</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <!--
+    <resource-ref>
+        <description>A Student_DB</description>
         <res-ref-name>jdbc/oracledb</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
     </resource-ref>
+    -->
 </web-app>

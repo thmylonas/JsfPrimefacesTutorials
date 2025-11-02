@@ -21,12 +21,12 @@
 
     <dependencies>
         <!-- H2-Database -->
-        <!--<dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>2.1.214</version>
-            &lt;!&ndash;<scope>runtime</scope> &lt;!&ndash; test &ndash;&gt;&ndash;&gt;
-        </dependency>-->
+            <!--<scope>runtime</scope>--> <!-- test -->
+        </dependency>
 
         <!--
         com.oracle.ojdbc8
