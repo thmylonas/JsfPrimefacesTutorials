@@ -4,39 +4,27 @@ import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Stu
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.jsf_jpa_services._base.AbstractJsfJpaService;
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services.StudentService;
+import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services.DbStudentService;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@ManagedBean(name = "dbJsfJpaService")
+@ManagedBean(name = "dbJsfJpaService", eager = true)
+@Getter
+@Setter
 public class DbJsfJpaService extends AbstractJsfJpaService {
 
-    private StudentService dbStudentService;
-//    private final StudentService dbStudentService;
+    @ManagedProperty(value = "#{dbStudentService}")
+    private DbStudentService dbStudentService;
 
-    public DbJsfJpaService() {
-
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("StudentsPU_H2");
-//        EntityManager em = null;
-//
-//        try {
-//            em = emf.createEntityManager(); // IllegalStateException
-//            StudentDao studentDao = new StudentDao(em);
-//            this.dbStudentService = new DbStudentService(studentDao);
-//        } catch (Exception e) {
-//            throw new RuntimeException("Error creating EntityManager", e);
-//        } finally {
-//            if (em != null) {
-//                em.close();
-//            }
-//            // In the In-Memory H2-Database run cases, if "emf.close()", the tables/data in the H2-Database are deleted
-//            LOGGER.warn("In the In-Memory H2-Database run cases, if 'emf.close()', the tables/data in the H2-Database are deleted");
-//            //emf.close();
-//        }
-
+    @PostConstruct
+    private void init() {
         studentsFilteredList = new ArrayList<>();
         saveFormStudent = new Student();
         updateFormStudent = new Student();
