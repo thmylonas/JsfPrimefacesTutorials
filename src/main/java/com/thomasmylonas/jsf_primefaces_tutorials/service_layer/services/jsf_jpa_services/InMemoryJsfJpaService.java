@@ -5,25 +5,27 @@ import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.jsf_jpa_services._base.AbstractJsfJpaService;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services.InMemoryStudentService;
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services.StudentService;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "inMemoryJsfJpaService")
 @ViewScoped
+@Getter
+@Setter
 public class InMemoryJsfJpaService extends AbstractJsfJpaService {
 
-    private StudentService inMemoryStudentService;
+    @ManagedProperty(value = "#{inMemoryStudentService}")
+    private InMemoryStudentService inMemoryStudentService;
 
     @PostConstruct
     private void init() {
-
-        inMemoryStudentService = new InMemoryStudentService();
-
         studentsFilteredList = new ArrayList<>();
         saveFormStudent = new Student();
         updateFormStudent = new Student();
