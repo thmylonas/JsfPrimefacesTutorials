@@ -13,6 +13,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @ManagedBean(name = "inMemoryJsfJpaService")
@@ -43,6 +44,7 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
         List<Student> allStudentsList = inMemoryStudentService.getAllStudents();
         if (HelperClass.isListNullOrEmpty(allStudentsList)) {
             // Display error message (somehow)
+            return Collections.emptyList();
         }
         return allStudentsList;
     }
@@ -56,7 +58,7 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
         if (HelperClass.isListNullOrEmpty(allStudentsList)) {
             student.setId(1L);
         } else {
-            student.setId((long) allStudentsList.size());
+            student.setId((long) (allStudentsList.size() + 1));
         }
         inMemoryStudentService.saveStudent(student);
     }

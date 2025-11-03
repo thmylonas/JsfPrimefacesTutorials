@@ -40,6 +40,15 @@ public class InMemoryStudentService extends AbstractStudentService {
         if (student == null) {
             return null;
         }
+        /*Student.builder()
+                .id(student.getId())
+                .lastName(student.getLastName())
+                .firstName(student.getFirstName())
+                .dateOfBirth(student.getDateOfBirth())
+                .absences(student.getAbsences())
+                .departmentId(student.getDepartmentId())
+                .status(student.getStatus())
+                .build()*/
         inMemoryStudentsList.add(student);
         return student;
     }
