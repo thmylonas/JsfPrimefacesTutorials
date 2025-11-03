@@ -7,11 +7,14 @@ import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
 
 @ManagedBean(name = "jsfJpaBackingBean")
+@ViewScoped
 @Getter
 @Setter
 public class JsfJpaBackingBean extends AbstractBackingBean {
@@ -26,6 +29,11 @@ public class JsfJpaBackingBean extends AbstractBackingBean {
 
     @ManagedProperty(value = "#{dbJsfJpaService}")
     private DbJsfJpaService dbJsfJpaService;
+
+    @PostConstruct
+    private void init() {
+        jsfJpaService = inMemoryJsfJpaService;
+    }
 
     public String fetchDataSource() {
 
@@ -52,6 +60,7 @@ public class JsfJpaBackingBean extends AbstractBackingBean {
             jsfJpaService = dbJsfJpaService;
         } else {
             displayDataForms = false;
+            jsfJpaService = inMemoryJsfJpaService;
         }
     }
 

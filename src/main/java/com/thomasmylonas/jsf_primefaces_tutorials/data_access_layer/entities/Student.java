@@ -15,6 +15,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
@@ -28,8 +29,16 @@ import java.time.LocalDate;
 @Builder
 public class Student {
 
+    /**
+     * Attention:
+     * In this case, with the "AutoConfiguration" of H2, the
+     * - @GeneratedValue(strategy = GenerationType.IDENTITY)
+     * Fails to insert a row, with the error:
+     * - ERROR SqlExceptionHelper - NULL not allowed for column "ID"; SQL statement: "..."
+     */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Students_Sequence_Generator")
+    @SequenceGenerator(name = "Students_Sequence_Generator", sequenceName = "Students_Sequence", allocationSize = 1)
     @Column(name = "Id")
     private Long id;
 
