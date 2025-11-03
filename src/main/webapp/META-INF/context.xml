@@ -7,7 +7,7 @@
             type="javax.sql.DataSource"
             auth="Container"
             driverClassName="org.h2.Driver"
-            url="jdbc:h2:mem:studentdb;DB_CLOSE_DELAY=-1"
+            url="jdbc:h2:~/studentdb;DB_CLOSE_DELAY=-1"
             username="sa"
             password=""
             maxTotal="20"
@@ -17,6 +17,7 @@
             maxPoolSize="60"
             initialPoolSize="15"
             autoCommit="false"/>
+    <!-- url="jdbc:h2:mem:studentdb;DB_CLOSE_DELAY=-1" -->
 
     <!--
     <Resource
