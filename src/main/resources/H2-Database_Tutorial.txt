@@ -1,6 +1,9 @@
 H2-Database without "Java-Based_Control_Of_H2-Database"
 -----------------------------------------------------------
 
+Links:
+- https://stackoverflow.com/questions/76822656/h2-general-error-the-write-format-3-is-larger-than-the-supported-format-2-2
+
 Info:
 The "Java-Based_Control_Of_H2-Database" is the Java code I copy everywhere, to control the "H2-Database"
 
