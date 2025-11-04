@@ -10,11 +10,11 @@ import lombok.Setter;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 
 @ManagedBean(name = "jsfJpaBackingBean")
-@ViewScoped
+@SessionScoped
 @Getter
 @Setter
 public class JsfJpaBackingBean extends AbstractBackingBean {

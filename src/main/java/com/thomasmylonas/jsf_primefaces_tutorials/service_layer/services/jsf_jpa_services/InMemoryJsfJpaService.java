@@ -11,13 +11,13 @@ import lombok.Setter;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 @ManagedBean(name = "inMemoryJsfJpaService")
-@ViewScoped
+@SessionScoped
 @Getter
 @Setter
 public class InMemoryJsfJpaService extends AbstractJsfJpaService {

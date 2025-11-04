@@ -8,13 +8,13 @@ import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 @ManagedBean(name = "inMemoryStudentService")
-@ViewScoped
+@SessionScoped
 public class InMemoryStudentService extends AbstractStudentService {
 
     private List<Student> inMemoryStudentsList;

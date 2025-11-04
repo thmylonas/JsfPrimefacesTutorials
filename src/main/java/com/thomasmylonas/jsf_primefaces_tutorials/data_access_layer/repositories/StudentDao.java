@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "studentDao")
-@ViewScoped
+@SessionScoped
 @Getter
 @Setter
 public class StudentDao {
