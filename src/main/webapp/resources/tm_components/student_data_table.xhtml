@@ -23,7 +23,8 @@
 
         <cc:implementation>
 
-            <p:dataTable value="#{cc.attrs.studentList}" var="student" border="1" resizableColumns="true"
+            <p:dataTable value="#{cc.attrs.studentList}" var="student"
+                         scrollable="true" stickyHeader="true" resizableColumns="true" border="1"
                          styleClass="#{cc.attrs.style_class}">
                 <f:facet name="header">#{cc.attrs.title}</f:facet>
                 <p:column>
