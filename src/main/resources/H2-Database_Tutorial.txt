@@ -76,6 +76,12 @@ To do that, append ";AUTO_SERVER=TRUE" to the database URL.
 We can use the same database URL independent of whether the database is already open or not.
 This feature doesn't work with in-memory databases.
 
+Database not found, either pre-create it or allow remote database creation
+------------------------------------------------------------------------------
+The previous ways to Start the "H2_Server" cannot create the database.
+If the database does not exist, in the browser WebApp "H2 Console", the next error appears:
+    Database not found, either pre-create it or allow remote database creation (not recommended in secure environments)
+
 H2-Database URLs
 --------------------
 - "jdbc:h2:./src/main/resources/db_files/h2_db_files/h2_databases/studentdb"
