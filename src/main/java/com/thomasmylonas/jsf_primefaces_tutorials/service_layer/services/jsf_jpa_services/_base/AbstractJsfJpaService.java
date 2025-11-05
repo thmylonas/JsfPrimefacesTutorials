@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 public abstract class AbstractJsfJpaService extends AbstractService {
 
-    protected List<Student> studentsFilteredList;
+    protected List<Student> studentsFiltered;
 
     // The "studentId" ID's collected from the user input
     protected Long studentId;

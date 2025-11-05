@@ -78,7 +78,7 @@ public class JsfJpaBackingBean extends AbstractBackingBean {
         if (jsfJpaService == null) {
             return;
         }
-        jsfJpaService.setStudentsFilteredList(new ArrayList<>());
+        jsfJpaService.setStudentsFiltered(new ArrayList<>());
         jsfJpaService.setStudentId(null);
     }
 

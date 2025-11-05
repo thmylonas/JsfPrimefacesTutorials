@@ -2,7 +2,6 @@ package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.jsf_jp
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.jsf_jpa_services._base.AbstractJsfJpaService;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services.DbStudentService;
 import lombok.Getter;
@@ -27,7 +26,7 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
 
     @PostConstruct
     private void init() {
-        studentsFilteredList = new ArrayList<>();
+        studentsFiltered = new ArrayList<>();
         saveFormStudent = new Student();
         updateFormStudent = new Student();
     }
@@ -37,24 +36,24 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
         if (studentId == null) {
             return;
         }
-        // Reset the "studentsFilteredList"
-        studentsFilteredList = new ArrayList<>();
-        // Populate the "studentsFilteredList" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
+        // Reset the "studentsFiltered"
+        studentsFiltered = new ArrayList<>();
+        // Populate the "studentsFiltered" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
         try {
-            studentsFilteredList.add(dbStudentService.getStudentById(studentId));
-        } catch (ResourceNotFoundException e) {
+            studentsFiltered.add(dbStudentService.getStudentById(studentId));
+        } catch (Exception e) {
             LOGGER.error("There is no student with id {}", studentId);
         }
     }
 
     public List<Student> fetchAllStudents() {
 
-        List<Student> allStudentsList = dbStudentService.getAllStudents();
-        if (HelperClass.isListNullOrEmpty(allStudentsList)) {
+        List<Student> allStudents = dbStudentService.getAllStudents();
+        if (HelperClass.isListNullOrEmpty(allStudents)) {
             LOGGER.error("There are no students");
             return Collections.emptyList();
         }
-        return allStudentsList;
+        return allStudents;
     }
 
     public void saveNewStudent(Student student) {
@@ -72,7 +71,7 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
         }
         try {
             dbStudentService.updateStudent(student, id);
-        } catch (ResourceNotFoundException e) {
+        } catch (Exception e) {
             LOGGER.error("There is no student with id {}, to update", id);
         }
     }
@@ -84,7 +83,7 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
         }
         try {
             dbStudentService.deleteStudent(deleteFormStudentId);
-        } catch (ResourceNotFoundException e) {
+        } catch (Exception e) {
             LOGGER.error("There is no student with id {}, to delete", deleteFormStudentId);
         }
     }

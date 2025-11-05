@@ -27,26 +27,30 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
 
     @PostConstruct
     private void init() {
-        studentsFilteredList = new ArrayList<>();
+        studentsFiltered = new ArrayList<>();
         saveFormStudent = new Student();
         updateFormStudent = new Student();
     }
 
     public void displayStudentById() {
-        // Reset the "studentsFilteredList"
-        studentsFilteredList = new ArrayList<>();
-        // Populate the "studentsFilteredList" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
-        studentsFilteredList.add(inMemoryStudentService.getStudentById(studentId));
+
+        if (studentId == null) {
+            return;
+        }
+        // Reset the "studentsFiltered"
+        studentsFiltered = new ArrayList<>();
+        // Populate the "studentsFiltered" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
+        studentsFiltered.add(inMemoryStudentService.getStudentById(studentId));
     }
 
     public List<Student> fetchAllStudents() {
 
-        List<Student> allStudentsList = inMemoryStudentService.getAllStudents();
-        if (HelperClass.isListNullOrEmpty(allStudentsList)) {
-            // Display error message (somehow)
+        List<Student> allStudents = inMemoryStudentService.getAllStudents();
+        if (HelperClass.isListNullOrEmpty(allStudents)) {
+            LOGGER.error("There are no students");
             return Collections.emptyList();
         }
-        return allStudentsList;
+        return allStudents;
     }
 
     public void saveNewStudent(Student student) {
@@ -58,7 +62,7 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
         if (HelperClass.isListNullOrEmpty(allStudentsList)) {
             student.setId(1L);
         } else {
-            student.setId((long) (allStudentsList.size() + 1));
+            student.setId((long) (allStudentsList.size()));
         }
         inMemoryStudentService.saveStudent(student);
     }
@@ -71,15 +75,19 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
         try {
             inMemoryStudentService.updateStudent(student, id);
         } catch (ResourceNotFoundException e) {
-            // Display error message (somehow)
+            LOGGER.error("There is no student with id {}, to update", id);
         }
     }
 
     public void deleteStudent() {
+
+        if (deleteFormStudentId == null) {
+            return;
+        }
         try {
             inMemoryStudentService.deleteStudent(deleteFormStudentId);
         } catch (ResourceNotFoundException e) {
-            // Display error message (somehow)
+            LOGGER.error("There is no student with id {}, to delete", deleteFormStudentId);
         }
     }
 }
