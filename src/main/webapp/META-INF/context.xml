@@ -7,7 +7,7 @@
             type="javax.sql.DataSource"
             auth="Container"
             driverClassName="org.h2.Driver"
-            url="jdbc:h2:~/Documents/0.BitBucket_Projects/JavaEE_Projects/JsfPrimefacesTutorials/src/main/resources/db_files/h2_db_files/h2_databases/studentdb;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1"
+            url="jdbc:h2:~/studentdb;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1"
             username="sa"
             password=""
             maxTotal="20"
@@ -20,7 +20,7 @@
     <!--
     url="jdbc:h2:mem:studentdb;DB_CLOSE_DELAY=-1"
     url="jdbc:h2:~/studentdb;DB_CLOSE_DELAY=-1"
-    url="jdbc:h2:~/studentdb;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1"
+    url="jdbc:h2:~/Documents/0.BitBucket_Projects/JavaEE_Projects/JsfPrimefacesTutorials/src/main/resources/db_files/h2_db_files/h2_databases/studentdb;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1"
     -->
 
     <!--
