@@ -25,8 +25,12 @@ public class InMemoryStudentService extends StudentDao implements StudentService
     }
 
     @Override
-    public Student getStudentById(Long id) throws ResourceNotFoundException {
-        return filterInMemoryStudentsListById(id);
+    public Student getStudentById(Long id) {
+
+        if (id == null || id < 0) {
+            throw new IllegalArgumentException("The id is not valid!");
+        }
+        return filterInMemoryStudentsListById(id); // ResourceNotFoundException
     }
 
     @Override
@@ -38,7 +42,7 @@ public class InMemoryStudentService extends StudentDao implements StudentService
     public Student saveStudent(Student student) {
 
         if (student == null) {
-            return null;
+            throw new IllegalArgumentException("The student is not valid (is null)!");
         }
         /*Student studentToSave = Student.builder()
                 .id(student.getId())
@@ -54,34 +58,27 @@ public class InMemoryStudentService extends StudentDao implements StudentService
     }
 
     @Override
-    public void updateStudent(Student student, Long id) throws ResourceNotFoundException {
+    public void updateStudent(Student student, Long id) {
 
-        if (id == null || student == null) {
-            return;
+        if (id == null || id < 0 || student == null) {
+            throw new IllegalArgumentException("The arguments are not valid!");
         }
-        Student studentToBeUpdated = getStudentById(id); // This might throw a "ResourceNotFoundException"
+        Student studentToBeUpdated = getStudentById(id); // IllegalArgumentException, ResourceNotFoundException
         updateStudentWithGivenObject(studentToBeUpdated, student);
     }
 
     @Override
     public void deleteStudent(Long id) throws ResourceNotFoundException {
-
-        Student studentToDelete = getStudentById(id); // This might throw a "ResourceNotFoundException"
-        if (studentToDelete == null) {
-            return;
-        }
+        Student studentToDelete = getStudentById(id); // IllegalArgumentException, ResourceNotFoundException
         inMemoryStudentsList.remove(studentToDelete);
     }
 
     private Student filterInMemoryStudentsListById(Long id) {
-
-        // Filter the "inMemoryStudentsList" by ID
-        return id == null ? null :
-                inMemoryStudentsList
-                        .stream()
-                        .filter(student -> student.getId().equals(id))
-                        .findAny()
-                        .orElseThrow(() -> new ResourceNotFoundException(Student.class.getSimpleName(), id));
+        return inMemoryStudentsList
+                .stream()
+                .filter(student -> student.getId().equals(id))
+                .findAny()
+                .orElseThrow(() -> new ResourceNotFoundException(Student.class.getSimpleName(), id));
     }
 
     private void initInMemoryStudentsList() {

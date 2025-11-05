@@ -5,7 +5,6 @@ import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.enu
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.repositories.StudentDao;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services._base.AbstractService;
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,8 +30,8 @@ public class DbStudentService extends AbstractService implements StudentService 
     }
 
     @Override
-    public Student getStudentById(Long id) throws ResourceNotFoundException {
-        return studentDao.findById(id);
+    public Student getStudentById(Long id) {
+        return studentDao.findById(id); // IllegalArgumentException, ResourceNotFoundException
     }
 
     @Override
@@ -55,17 +54,17 @@ public class DbStudentService extends AbstractService implements StudentService 
                 .departmentId(student.getDepartmentId())
                 .status(student.getStatus())
                 .build();
-        return studentDao.save(studentToSave);
+        return studentDao.save(studentToSave);  // IllegalArgumentException
     }
 
     @Override
-    public void updateStudent(Student student, Long id) throws ResourceNotFoundException {
-        studentDao.update(student, id);
+    public void updateStudent(Student student, Long id) {
+        studentDao.update(student, id); // IllegalArgumentException, ResourceNotFoundException
     }
 
     @Override
-    public void deleteStudent(Long id) throws ResourceNotFoundException {
-        studentDao.deleteById(id);
+    public void deleteStudent(Long id) {
+        studentDao.deleteById(id); // IllegalArgumentException, ResourceNotFoundException
     }
 
     private void initStudentsList() {

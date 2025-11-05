@@ -15,7 +15,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "studentDao")
@@ -25,12 +24,13 @@ import java.util.List;
 public class StudentDao {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(StudentDao.class.getSimpleName());
+    private static final String PERSISTENCE_UNIT_NAME = "StudentPU_H2";
 
     private EntityManager em;
 
     @PostConstruct
     private void init() {
-        em = createEntityManager();
+        em = createEntityManager(PERSISTENCE_UNIT_NAME);
     }
 
     public Student findById(Long id) {
@@ -92,7 +92,7 @@ public class StudentDao {
         try {
             em.getTransaction().begin();
 
-            Student studentToUpdate = findById(id);
+            Student studentToUpdate = findById(id); // IllegalArgumentException, ResourceNotFoundException
             updateStudentWithGivenObject(studentToUpdate, student);
 
             em.getTransaction().commit();
@@ -110,7 +110,7 @@ public class StudentDao {
         try {
             em.getTransaction().begin();
 
-            Student entityToDelete = findById(id);
+            Student entityToDelete = findById(id); // IllegalArgumentException, ResourceNotFoundException
             em.remove(entityToDelete);
 
             em.getTransaction().commit();
@@ -120,9 +120,9 @@ public class StudentDao {
         }
     }
 
-    private EntityManager createEntityManager() {
+    private EntityManager createEntityManager(String persistenceUnitName) {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("StudentPU_H2");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnitName);
         try {
             return emf.createEntityManager(); // IllegalStateException
         } catch (Exception e) {
