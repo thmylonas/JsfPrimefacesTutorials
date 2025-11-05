@@ -32,7 +32,7 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
         updateFormStudent = new Student();
     }
 
-    public void displayStudentById() {
+    public void findStudentById() {
 
         if (studentId == null) {
             return;
@@ -40,12 +40,12 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
         // Reset the "studentsFiltered"
         studentsFiltered = new ArrayList<>();
         // Populate the "studentsFiltered" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
-        studentsFiltered.add(inMemoryStudentService.getStudentById(studentId));
+        studentsFiltered.add(inMemoryStudentService.findStudentById(studentId));
     }
 
-    public List<Student> fetchAllStudents() {
+    public List<Student> findAllStudents() {
 
-        List<Student> allStudents = inMemoryStudentService.getAllStudents();
+        List<Student> allStudents = inMemoryStudentService.findAllStudents();
         if (HelperClass.isListNullOrEmpty(allStudents)) {
             LOGGER.error("There are no students");
             return Collections.emptyList();
@@ -58,7 +58,7 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
         if (isStudentEmpty(student)) {
             return;
         }
-        List<Student> allStudentsList = fetchAllStudents();
+        List<Student> allStudentsList = findAllStudents();
         if (HelperClass.isListNullOrEmpty(allStudentsList)) {
             student.setId(1L);
         } else {

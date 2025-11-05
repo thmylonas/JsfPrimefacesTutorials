@@ -23,9 +23,9 @@ public abstract class AbstractJsfJpaService extends AbstractService {
     protected Student saveFormStudent;
     protected Student updateFormStudent;
 
-    public abstract void displayStudentById();
+    public abstract void findStudentById();
 
-    public abstract List<Student> fetchAllStudents();
+    public abstract List<Student> findAllStudents();
 
     public abstract void saveNewStudent(Student student);
 

@@ -76,7 +76,7 @@
                         <div>
                             <p:commandButton type="button" value="Find student">
                                 <p:ajax process="@form" update="@form @(.table_students_list)"
-                                        listener="#{jsfJpaBackingBean.jsfJpaService.displayStudentById()}"/>
+                                        listener="#{jsfJpaBackingBean.jsfJpaService.findStudentById()}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_reset_btn">
                                 <p:ajax process="@form" update="@form"
@@ -89,7 +89,7 @@
                 <dt>Display all the Students</dt>
                 <dd>
                     <tm:student_data_table title="Display all the Students"
-                                           studentList="#{jsfJpaBackingBean.jsfJpaService.fetchAllStudents()}"
+                                           studentList="#{jsfJpaBackingBean.jsfJpaService.findAllStudents()}"
                                            style_class="table_students_list"/>
                 </dd>
 
@@ -103,7 +103,7 @@
                         </div>
 
                         <tm:student_data_table title="Display all the Students"
-                                               studentList="#{jsfJpaBackingBean.jsfJpaService.fetchAllStudents()}"
+                                               studentList="#{jsfJpaBackingBean.jsfJpaService.findAllStudents()}"
                                                style_class="table_students_list"/>
 
                         <div>
@@ -133,7 +133,7 @@
                         </div>
 
                         <tm:student_data_table title="Display all the Students"
-                                               studentList="#{jsfJpaBackingBean.jsfJpaService.fetchAllStudents()}"
+                                               studentList="#{jsfJpaBackingBean.jsfJpaService.findAllStudents()}"
                                                style_class="table_students_list"/>
 
                         <div>
@@ -160,7 +160,7 @@
                         </div>
 
                         <tm:student_data_table title="Display all the Students"
-                                               studentList="#{jsfJpaBackingBean.jsfJpaService.fetchAllStudents()}"
+                                               studentList="#{jsfJpaBackingBean.jsfJpaService.findAllStudents()}"
                                                style_class="table_students_list"/>
 
                         <div>

@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface StudentService {
 
-    Student getStudentById(Long id) throws ResourceNotFoundException;
+    Student findStudentById(Long id) throws ResourceNotFoundException;
 
-    List<Student> getAllStudents();
+    List<Student> findAllStudents();
 
     Student saveStudent(Student student);
 

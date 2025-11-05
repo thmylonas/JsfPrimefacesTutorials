@@ -31,7 +31,7 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
         updateFormStudent = new Student();
     }
 
-    public void displayStudentById() {
+    public void findStudentById() {
 
         if (studentId == null) {
             return;
@@ -40,15 +40,15 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
         studentsFiltered = new ArrayList<>();
         // Populate the "studentsFiltered" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
         try {
-            studentsFiltered.add(dbStudentService.getStudentById(studentId));
+            studentsFiltered.add(dbStudentService.findStudentById(studentId));
         } catch (Exception e) {
             LOGGER.error("There is no student with id {}", studentId);
         }
     }
 
-    public List<Student> fetchAllStudents() {
+    public List<Student> findAllStudents() {
 
-        List<Student> allStudents = dbStudentService.getAllStudents();
+        List<Student> allStudents = dbStudentService.findAllStudents();
         if (HelperClass.isListNullOrEmpty(allStudents)) {
             LOGGER.error("There are no students");
             return Collections.emptyList();

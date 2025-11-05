@@ -29,12 +29,12 @@ public class DbStudentService extends AbstractService implements StudentService 
     }
 
     @Override
-    public Student getStudentById(Long id) {
+    public Student findStudentById(Long id) {
         return studentDao.findById(id); // IllegalArgumentException, ResourceNotFoundException
     }
 
     @Override
-    public List<Student> getAllStudents() {
+    public List<Student> findAllStudents() {
         return studentDao.findAll();
     }
 

@@ -23,7 +23,7 @@ public class InMemoryStudentService extends StudentDao implements StudentService
     }
 
     @Override
-    public Student getStudentById(Long id) {
+    public Student findStudentById(Long id) {
 
         if (id == null || id < 0) {
             throw new IllegalArgumentException("The id is not valid!");
@@ -32,7 +32,7 @@ public class InMemoryStudentService extends StudentDao implements StudentService
     }
 
     @Override
-    public List<Student> getAllStudents() {
+    public List<Student> findAllStudents() {
         return inMemoryStudentsList;
     }
 
@@ -61,13 +61,13 @@ public class InMemoryStudentService extends StudentDao implements StudentService
         if (id == null || id < 0 || student == null) {
             throw new IllegalArgumentException("The arguments are not valid!");
         }
-        Student studentToBeUpdated = getStudentById(id); // IllegalArgumentException, ResourceNotFoundException
+        Student studentToBeUpdated = findStudentById(id); // IllegalArgumentException, ResourceNotFoundException
         updateStudentWithGivenObject(studentToBeUpdated, student);
     }
 
     @Override
     public void deleteStudent(Long id) throws ResourceNotFoundException {
-        Student studentToDelete = getStudentById(id); // IllegalArgumentException, ResourceNotFoundException
+        Student studentToDelete = findStudentById(id); // IllegalArgumentException, ResourceNotFoundException
         inMemoryStudentsList.remove(studentToDelete);
     }
 
