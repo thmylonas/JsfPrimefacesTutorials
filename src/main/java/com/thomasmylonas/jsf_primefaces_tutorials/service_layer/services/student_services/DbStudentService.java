@@ -1,9 +1,8 @@
 package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services;
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
-import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.enums.Status;
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.repositories.StudentDao;
-import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
+import com.thomasmylonas.jsf_primefaces_tutorials.helpers.TestDataProvider;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services._base.AbstractService;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +11,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "dbStudentService")
@@ -68,46 +67,6 @@ public class DbStudentService extends AbstractService implements StudentService 
     }
 
     private void initStudentsList() {
-
-        studentDao.save(Student.builder()
-                .lastName("DB_Mylonas")
-                .firstName("DB_Thomas")
-                .dateOfBirth(HelperClass.buildDate(1972, Calendar.SEPTEMBER, 24))
-                .absences(1)
-                .departmentId("Dept1")
-                .status(Status.ADVANCED_STUDENT)
-                .build());
-        studentDao.save(Student.builder()
-                .lastName("DB_Lorem")
-                .firstName("DB_Ipsum")
-                .dateOfBirth(HelperClass.buildDate(1979, Calendar.APRIL, 30))
-                .absences(5)
-                .departmentId("Dept1")
-                .status(Status.JUNIOR_STUDENT)
-                .build());
-        studentDao.save(Student.builder()
-                .lastName("DB_Chan")
-                .firstName("DB_Jacky")
-                .dateOfBirth(HelperClass.buildDate(1982, Calendar.MAY, 9))
-                .absences(3)
-                .departmentId("Dept2")
-                .status(Status.JUNIOR_STUDENT)
-                .build());
-        studentDao.save(Student.builder()
-                .lastName("DB_Parker")
-                .firstName("DB_Peter")
-                .dateOfBirth(HelperClass.buildDate(1990, Calendar.OCTOBER, 15))
-                .absences(7)
-                .departmentId("Dept3")
-                .status(Status.MEDIUM_STUDENT)
-                .build());
-        studentDao.save(Student.builder()
-                .lastName("DB_Murdock")
-                .firstName("DB_Matt")
-                .dateOfBirth(HelperClass.buildDate(2000, Calendar.FEBRUARY, 2))
-                .absences(2)
-                .departmentId("Dept4")
-                .status(Status.ADVANCED_STUDENT)
-                .build());
+        studentDao.saveAll(new ArrayList<>(TestDataProvider.generateDBStudents()));
     }
 }
