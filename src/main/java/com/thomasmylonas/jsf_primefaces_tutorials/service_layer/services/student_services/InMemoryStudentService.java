@@ -2,9 +2,9 @@ package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.studen
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.enums.Status;
+import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.repositories.StudentDao;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services._base.AbstractStudentService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @ManagedBean(name = "inMemoryStudentService")
 @SessionScoped
-public class InMemoryStudentService extends AbstractStudentService {
+public class InMemoryStudentService extends StudentDao implements StudentService {
 
     private List<Student> inMemoryStudentsList;
 
@@ -40,7 +40,7 @@ public class InMemoryStudentService extends AbstractStudentService {
         if (student == null) {
             return null;
         }
-        /*Student.builder()
+        /*Student studentToSave = Student.builder()
                 .id(student.getId())
                 .lastName(student.getLastName())
                 .firstName(student.getFirstName())
@@ -48,20 +48,19 @@ public class InMemoryStudentService extends AbstractStudentService {
                 .absences(student.getAbsences())
                 .departmentId(student.getDepartmentId())
                 .status(student.getStatus())
-                .build()*/
+                .build();*/
         inMemoryStudentsList.add(student);
         return student;
     }
 
     @Override
-    public Student updateStudent(Student student, Long id) throws ResourceNotFoundException {
+    public void updateStudent(Student student, Long id) throws ResourceNotFoundException {
 
         if (id == null || student == null) {
-            return null;
+            return;
         }
         Student studentToBeUpdated = getStudentById(id); // This might throw a "ResourceNotFoundException"
         updateStudentWithGivenObject(studentToBeUpdated, student);
-        return studentToBeUpdated;
     }
 
     @Override

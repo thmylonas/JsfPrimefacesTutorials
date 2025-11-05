@@ -4,8 +4,8 @@ import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Stu
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.enums.Status;
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.repositories.StudentDao;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
+import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services._base.AbstractService;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services._base.AbstractStudentService;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +20,7 @@ import java.util.List;
 @SessionScoped
 @Getter
 @Setter
-public class DbStudentService extends AbstractStudentService {
+public class DbStudentService extends AbstractService implements StudentService {
 
     @ManagedProperty(value = "#{studentDao}")
     private StudentDao studentDao;
@@ -50,18 +50,25 @@ public class DbStudentService extends AbstractStudentService {
         if (student == null) {
             return null;
         }
-        return studentDao.save(student);
+        Student studentToSave = Student.builder()
+                .id(student.getId())
+                .lastName(student.getLastName())
+                .firstName(student.getFirstName())
+                .dateOfBirth(student.getDateOfBirth())
+                .absences(student.getAbsences())
+                .departmentId(student.getDepartmentId())
+                .status(student.getStatus())
+                .build();
+        return studentDao.save(studentToSave);
     }
 
     @Override
-    public Student updateStudent(Student student, Long id) throws ResourceNotFoundException {
+    public void updateStudent(Student student, Long id) throws ResourceNotFoundException {
 
         if (id == null || student == null) {
-            return null;
+            return;
         }
-        Student studentToBeUpdated = studentDao.findById(id);
-        updateStudentWithGivenObject(studentToBeUpdated, student);
-        return studentDao.save(studentToBeUpdated);
+        studentDao.update(student, id);
     }
 
     @Override

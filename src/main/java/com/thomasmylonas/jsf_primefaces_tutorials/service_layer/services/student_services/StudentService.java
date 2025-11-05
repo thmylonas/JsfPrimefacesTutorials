@@ -13,7 +13,7 @@ public interface StudentService {
 
     Student saveStudent(Student student);
 
-    Student updateStudent(Student student, Long id) throws ResourceNotFoundException;
+    void updateStudent(Student student, Long id) throws ResourceNotFoundException;
 
     void deleteStudent(Long id) throws ResourceNotFoundException;
 }

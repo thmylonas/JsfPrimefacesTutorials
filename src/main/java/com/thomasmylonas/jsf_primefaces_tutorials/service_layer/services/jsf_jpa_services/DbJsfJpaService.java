@@ -43,7 +43,7 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
         try {
             studentsFilteredList.add(dbStudentService.getStudentById(studentId));
         } catch (ResourceNotFoundException e) {
-            // Display error message (somehow)
+            LOGGER.error("There is no student with id {}", studentId);
         }
     }
 
@@ -51,7 +51,7 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
 
         List<Student> allStudentsList = dbStudentService.getAllStudents();
         if (HelperClass.isListNullOrEmpty(allStudentsList)) {
-            // Display error message (somehow)
+            LOGGER.error("There are no students");
             return Collections.emptyList();
         }
         return allStudentsList;
@@ -73,7 +73,7 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
         try {
             dbStudentService.updateStudent(student, id);
         } catch (ResourceNotFoundException e) {
-            // Display error message (somehow)
+            LOGGER.error("There is no student with id {}, to update", id);
         }
     }
 
@@ -85,7 +85,7 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
         try {
             dbStudentService.deleteStudent(deleteFormStudentId);
         } catch (ResourceNotFoundException e) {
-            // Display error message (somehow)
+            LOGGER.error("There is no student with id {}, to delete", deleteFormStudentId);
         }
     }
 }

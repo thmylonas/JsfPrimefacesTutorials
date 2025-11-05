@@ -96,24 +96,7 @@ public class StudentDao {
             if (studentToUpdate == null) {
                 throw new ResourceNotFoundException(Student.class.getSimpleName(), id);
             }
-            if (!HelperClass.isStringNullOrEmpty(student.getLastName())) {
-                studentToUpdate.setLastName(student.getLastName());
-            }
-            if (!HelperClass.isStringNullOrEmpty(student.getFirstName())) {
-                studentToUpdate.setFirstName(student.getFirstName());
-            }
-            if (student.getDateOfBirth() != null) {
-                studentToUpdate.setDateOfBirth(student.getDateOfBirth());
-            }
-            if (student.getAbsences() != null) {
-                studentToUpdate.setAbsences(student.getAbsences());
-            }
-            if (!HelperClass.isStringNullOrEmpty(student.getDepartmentId())) {
-                studentToUpdate.setDepartmentId(student.getDepartmentId());
-            }
-            if (student.getStatus() != null) {
-                studentToUpdate.setStatus(student.getStatus());
-            }
+            updateStudentWithGivenObject(studentToUpdate, student);
 
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -150,6 +133,31 @@ public class StudentDao {
             return emf.createEntityManager(); // IllegalStateException
         } catch (Exception e) {
             throw new RuntimeException("Error creating EntityManager", e);
+        }
+    }
+
+    protected void updateStudentWithGivenObject(Student studentToUpdate, Student student) {
+
+        if (studentToUpdate == null || student == null) {
+            return;
+        }
+        if (!HelperClass.isStringNullOrEmpty(student.getLastName())) {
+            studentToUpdate.setLastName(student.getLastName());
+        }
+        if (!HelperClass.isStringNullOrEmpty(student.getFirstName())) {
+            studentToUpdate.setFirstName(student.getFirstName());
+        }
+        if (student.getDateOfBirth() != null) {
+            studentToUpdate.setDateOfBirth(student.getDateOfBirth());
+        }
+        if (student.getAbsences() != null) {
+            studentToUpdate.setAbsences(student.getAbsences());
+        }
+        if (!HelperClass.isStringNullOrEmpty(student.getDepartmentId())) {
+            studentToUpdate.setDepartmentId(student.getDepartmentId());
+        }
+        if (student.getStatus() != null) {
+            studentToUpdate.setStatus(student.getStatus());
         }
     }
 }
