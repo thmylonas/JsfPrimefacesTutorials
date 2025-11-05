@@ -42,7 +42,7 @@ public class InMemoryStudentService extends StudentDao implements StudentService
         if (student == null) {
             throw new IllegalArgumentException("The student is not valid (is null)!");
         }
-        /*Student studentToSave = Student.builder()
+        Student studentToSave = Student.builder()
                 .id(student.getId())
                 .lastName(student.getLastName())
                 .firstName(student.getFirstName())
@@ -50,9 +50,9 @@ public class InMemoryStudentService extends StudentDao implements StudentService
                 .absences(student.getAbsences())
                 .departmentId(student.getDepartmentId())
                 .status(student.getStatus())
-                .build();*/
-        inMemoryStudentsList.add(student);
-        return student;
+                .build();
+        inMemoryStudentsList.add(studentToSave);
+        return studentToSave;
     }
 
     @Override

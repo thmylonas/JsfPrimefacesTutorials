@@ -52,7 +52,7 @@ public class DbStudentService extends AbstractService implements StudentService 
                 .departmentId(student.getDepartmentId())
                 .status(student.getStatus())
                 .build();
-        return studentDao.save(studentToSave);  // IllegalArgumentException
+        return studentDao.save(studentToSave); // IllegalArgumentException
     }
 
     @Override
