@@ -32,10 +32,6 @@ public class DbStudentService extends AbstractService implements StudentService 
 
     @Override
     public Student getStudentById(Long id) throws ResourceNotFoundException {
-
-        if (id == null) {
-            return null;
-        }
         return studentDao.findById(id);
     }
 
@@ -48,7 +44,7 @@ public class DbStudentService extends AbstractService implements StudentService 
     public Student saveStudent(Student student) {
 
         if (student == null) {
-            return null;
+            throw new IllegalArgumentException("The student is not valid (is null)!");
         }
         Student studentToSave = Student.builder()
                 .id(student.getId())
@@ -64,19 +60,11 @@ public class DbStudentService extends AbstractService implements StudentService 
 
     @Override
     public void updateStudent(Student student, Long id) throws ResourceNotFoundException {
-
-        if (id == null || student == null) {
-            return;
-        }
         studentDao.update(student, id);
     }
 
     @Override
     public void deleteStudent(Long id) throws ResourceNotFoundException {
-
-        if (id == null) {
-            return;
-        }
         studentDao.deleteById(id);
     }
 

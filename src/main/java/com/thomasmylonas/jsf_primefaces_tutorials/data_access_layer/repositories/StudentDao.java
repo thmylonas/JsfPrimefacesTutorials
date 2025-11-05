@@ -36,7 +36,7 @@ public class StudentDao {
     public Student findById(Long id) {
 
         if (id == null || id < 0) {
-            return null;
+            throw new IllegalArgumentException("The id is not valid!");
         }
         Student entityResult = em.find(Student.class, id);
         if (entityResult == null) {
@@ -52,6 +52,9 @@ public class StudentDao {
 
     public Student save(Student student) {
 
+        if (student == null) {
+            throw new IllegalArgumentException("The student is not valid (is null)!");
+        }
         try {
             em.getTransaction().begin();
 
@@ -65,15 +68,13 @@ public class StudentDao {
         return student;
     }
 
-    public List<Student> saveAll(List<Student> entities) {
+    public void saveAll(List<Student> entities) {
 
-        List<Student> savedEntities = new ArrayList<>();
         try {
             em.getTransaction().begin();
 
             entities.forEach(r -> {
                 em.persist(r);
-                savedEntities.add(r);
             });
 
             em.getTransaction().commit();
@@ -81,21 +82,17 @@ public class StudentDao {
             em.getTransaction().rollback();
             LOGGER.error("Because of an 'Exception': '{}', the transaction is rolled back!", e.getMessage());
         }
-        return savedEntities;
     }
 
     public void update(Student student, Long id) {
 
         if (id == null || id < 0 || student == null) {
-            return;
+            throw new IllegalArgumentException("The arguments are not valid!");
         }
         try {
             em.getTransaction().begin();
 
             Student studentToUpdate = findById(id);
-            if (studentToUpdate == null) {
-                throw new ResourceNotFoundException(Student.class.getSimpleName(), id);
-            }
             updateStudentWithGivenObject(studentToUpdate, student);
 
             em.getTransaction().commit();
@@ -108,15 +105,12 @@ public class StudentDao {
     public void deleteById(Long id) {
 
         if (id == null || id < 0) {
-            return;
+            throw new IllegalArgumentException("The id is not valid!");
         }
         try {
             em.getTransaction().begin();
 
             Student entityToDelete = findById(id);
-            if (entityToDelete == null) {
-                throw new ResourceNotFoundException(Student.class.getSimpleName(), id);
-            }
             em.remove(entityToDelete);
 
             em.getTransaction().commit();
@@ -138,9 +132,6 @@ public class StudentDao {
 
     protected void updateStudentWithGivenObject(Student studentToUpdate, Student student) {
 
-        if (studentToUpdate == null || student == null) {
-            return;
-        }
         if (!HelperClass.isStringNullOrEmpty(student.getLastName())) {
             studentToUpdate.setLastName(student.getLastName());
         }
