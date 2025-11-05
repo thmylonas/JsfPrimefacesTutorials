@@ -45,7 +45,6 @@ public class DbStudentService extends AbstractService implements StudentService 
             throw new IllegalArgumentException("The student is not valid (is null)!");
         }
         Student studentToSave = Student.builder()
-                .id(student.getId())
                 .lastName(student.getLastName())
                 .firstName(student.getFirstName())
                 .dateOfBirth(student.getDateOfBirth())

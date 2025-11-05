@@ -73,7 +73,7 @@ public class StudentDao {
         try {
             em.getTransaction().begin();
 
-            entities.forEach(this::save); // "r -> this.save(r)"
+            entities.forEach(em::persist); // "student -> em.persist(student)"
 
             em.getTransaction().commit();
         } catch (Exception e) {

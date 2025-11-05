@@ -23,7 +23,7 @@ public class TestDataProvider {
                     .firstName("Ipsum")
                     .dateOfBirth(HelperClass.buildDate(1979, Calendar.APRIL, 30))
                     .absences(5)
-                    .departmentId("Dept1")
+                    .departmentId("Dept2")
                     .status(Status.JUNIOR_STUDENT)
                     .build(),
             Student.builder()
@@ -31,7 +31,7 @@ public class TestDataProvider {
                     .firstName("Jacky")
                     .dateOfBirth(HelperClass.buildDate(1982, Calendar.MAY, 9))
                     .absences(3)
-                    .departmentId("Dept2")
+                    .departmentId("Dept3")
                     .status(Status.JUNIOR_STUDENT)
                     .build(),
             Student.builder()
@@ -39,7 +39,7 @@ public class TestDataProvider {
                     .firstName("Peter")
                     .dateOfBirth(HelperClass.buildDate(1990, Calendar.OCTOBER, 15))
                     .absences(7)
-                    .departmentId("Dept3")
+                    .departmentId("Dept4")
                     .status(Status.MEDIUM_STUDENT)
                     .build(),
             Student.builder()
@@ -47,7 +47,7 @@ public class TestDataProvider {
                     .firstName("Matt")
                     .dateOfBirth(HelperClass.buildDate(2000, Calendar.FEBRUARY, 2))
                     .absences(2)
-                    .departmentId("Dept4")
+                    .departmentId("Dept5")
                     .status(Status.ADVANCED_STUDENT)
                     .build()
     );
