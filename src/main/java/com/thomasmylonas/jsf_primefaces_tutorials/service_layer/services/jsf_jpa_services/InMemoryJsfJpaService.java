@@ -58,12 +58,6 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
         if (isStudentEmpty(student)) {
             return;
         }
-        List<Student> allStudentsList = findAllStudents();
-        if (HelperClass.isListNullOrEmpty(allStudentsList)) {
-            student.setId(1L);
-        } else {
-            student.setId((long) (allStudentsList.size()));
-        }
         inMemoryStudentService.saveStudent(student);
     }
 

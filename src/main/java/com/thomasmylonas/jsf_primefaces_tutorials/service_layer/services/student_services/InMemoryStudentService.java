@@ -42,8 +42,11 @@ public class InMemoryStudentService extends StudentDao implements StudentService
         if (student == null) {
             throw new IllegalArgumentException("The student is not valid (is null)!");
         }
+        if (inMemoryStudentsList == null) {
+            inMemoryStudentsList = new ArrayList<>();
+        }
         Student studentToSave = Student.builder()
-                .id(student.getId())
+                .id(inMemoryStudentsList.getLast().getId() + 1)
                 .lastName(student.getLastName())
                 .firstName(student.getFirstName())
                 .dateOfBirth(student.getDateOfBirth())
