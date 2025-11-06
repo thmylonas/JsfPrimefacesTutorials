@@ -16,9 +16,11 @@ import java.util.List;
 public class InMemoryStudentService extends StudentDao implements StudentService {
 
     private List<Student> inMemoryStudentsList;
+    private TestDataProvider testDataProvider;
 
     @PostConstruct
     private void init() {
+        testDataProvider = new TestDataProvider();
         initInMemoryStudentsList();
     }
 
@@ -83,6 +85,6 @@ public class InMemoryStudentService extends StudentDao implements StudentService
     }
 
     private void initInMemoryStudentsList() {
-        inMemoryStudentsList = new ArrayList<>(TestDataProvider.generateInMemoryStudents());
+        inMemoryStudentsList = testDataProvider.generateInMemoryStudents();
     }
 }

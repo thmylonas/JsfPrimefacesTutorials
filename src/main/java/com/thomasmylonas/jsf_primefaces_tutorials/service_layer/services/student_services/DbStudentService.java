@@ -11,7 +11,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "dbStudentService")
@@ -23,8 +22,11 @@ public class DbStudentService extends AbstractService implements StudentService 
     @ManagedProperty(value = "#{studentDao}")
     private StudentDao studentDao;
 
+    private TestDataProvider testDataProvider;
+
     @PostConstruct
     private void init() {
+        testDataProvider = new TestDataProvider();
         initStudentsList();
     }
 
@@ -66,6 +68,7 @@ public class DbStudentService extends AbstractService implements StudentService 
     }
 
     private void initStudentsList() {
-        studentDao.saveAll(new ArrayList<>(TestDataProvider.generateDBStudents()));
+        List<Student> students = testDataProvider.generateDBStudents();
+        studentDao.saveAll(students);
     }
 }

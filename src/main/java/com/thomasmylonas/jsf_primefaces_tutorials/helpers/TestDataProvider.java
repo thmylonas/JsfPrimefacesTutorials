@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TestDataProvider {
 
-    private static final List<Student> STUDENTS = List.of(
+    private final List<Student> STUDENTS = List.of(
             Student.builder()
                     .lastName("Mylonas")
                     .firstName("Thomas")
@@ -52,7 +52,7 @@ public class TestDataProvider {
                     .build()
     );
 
-    public static List<Student> generateDBStudents() {
+    public List<Student> generateDBStudents() {
         return STUDENTS.stream()
                 .map(student -> {
                     student.setId(null);
@@ -62,7 +62,7 @@ public class TestDataProvider {
                 }).toList();
     }
 
-    public static List<Student> generateInMemoryStudents() {
+    public List<Student> generateInMemoryStudents() {
 
         List<Student> students = new ArrayList<>(STUDENTS);
         for (int i = 0; i < students.size(); i++) {
