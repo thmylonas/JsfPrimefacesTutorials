@@ -40,9 +40,6 @@ public class HtmlColumnBackingBean extends HtmlTaglibBackingBean {
                 ),
                 EXCLUDED_GLOBALLY_COMMON_ATTRIBUTES));
 
-        // The attributes which are handling events
-        columnAttributes.addAll(commonHtmlAttributesService.getCommonEventHandlerAttributes());
-
         columnAttributes.add(new ComponentsAttribute("headerClass", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Space-separated list of CSS style class(es) that will be applied to any column header generated for this table"));
         columnAttributes.add(new ComponentsAttribute("footerClass", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Space-separated list of CSS style class(es) that will be applied to any column footer generated for this table"));
         columnAttributes.add(new ComponentsAttribute("footerClass", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "Space-separated list of CSS style class(es) that will be applied to the 'td' of this column")); // Specific feature of JSF 2.3
