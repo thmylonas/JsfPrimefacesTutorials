@@ -30,5 +30,6 @@ public class HtmlSelectOneListboxBackingBean extends AbstractHtmlSelectOneBackin
         selectOneListboxAttributes.addAll(commonHtmlAttributesService.initAndGetCommonSelectsAttributes());
 
         selectOneListboxAttributes.add(new ComponentsAttribute("size", false, "No default value", "javax.el.ValueExpression (must evaluate to int)", "Number of available options to be shown at all times. If not specified, all available options are shown"));
+        selectOneListboxAttributes.add(new ComponentsAttribute("immediate", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase"));
     }
 }
