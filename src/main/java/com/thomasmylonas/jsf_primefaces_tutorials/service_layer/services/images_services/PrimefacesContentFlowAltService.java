@@ -10,7 +10,7 @@ import javax.faces.bean.ManagedBean;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@ManagedBean(name = "_alt_primefacesContentFlowService")
+@ManagedBean(name = "primefacesContentFlowAltService")
 @ViewScoped
 @Getter
 public class PrimefacesContentFlowAltService extends ImagesService {

@@ -65,13 +65,13 @@
                               styleClass="technology_topics_titles"/>
             </p>
 
-            <p:contentFlow value="#{_alt_primefacesContentFlowService.listOfImagesNamesFilteredByIndexes}"
+            <p:contentFlow value="#{primefacesContentFlowAltService.listOfImagesNamesFilteredByIndexes}"
                            var="imageName" styleClass="content_flow">
                 <p:graphicImage
-                        value="#{resource[_alt_primefacesContentFlowService.getImageFullNameWithPathForName(imageName)]}"
+                        value="#{resource[primefacesContentFlowAltService.getImageFullNameWithPathForName(imageName)]}"
                         height="33%" styleClass="content"/>
                 <div class="content_flow_image_names">
-                    <h:outputText value="#{_alt_primefacesContentFlowService.getImageDescriptionForName(imageName)}"/>
+                    <h:outputText value="#{primefacesContentFlowAltService.getImageDescriptionForName(imageName)}"/>
                 </div>
             </p:contentFlow>
 
