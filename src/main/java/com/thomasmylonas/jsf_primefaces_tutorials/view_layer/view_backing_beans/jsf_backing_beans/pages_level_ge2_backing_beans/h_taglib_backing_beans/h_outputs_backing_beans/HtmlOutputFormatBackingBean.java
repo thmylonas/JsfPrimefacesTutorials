@@ -50,7 +50,7 @@ public class HtmlOutputFormatBackingBean extends AbstractHtmlOutputsBackingBean 
         htmlInput = "<input type=\"{0}\" {1}/>";
         escapeTrue = "\"true\"";
         escapeFalse = "\"false\"";
-        lessGreaterThanSpecialChars = "&lt; &gt;";
+        lessGreaterThanSpecialChars = "'&lt;', '&gt;'";
         lessThan = "<";
         greaterThan = ">";
     }
