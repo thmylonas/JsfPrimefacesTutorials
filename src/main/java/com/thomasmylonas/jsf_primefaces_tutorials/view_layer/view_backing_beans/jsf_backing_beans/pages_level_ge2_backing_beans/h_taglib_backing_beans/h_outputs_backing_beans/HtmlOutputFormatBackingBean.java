@@ -32,7 +32,7 @@ public class HtmlOutputFormatBackingBean extends AbstractHtmlOutputsBackingBean 
     // Useful Strings to escape the special characters
     private final String escapeTrue;
     private final String escapeFalse;
-    private final String egSpecialChars;
+    private final String lessGreaterThanSpecialChars;
     private final String lessThan;
     private final String greaterThan;
 
@@ -50,7 +50,7 @@ public class HtmlOutputFormatBackingBean extends AbstractHtmlOutputsBackingBean 
         htmlInput = "<input type=\"{0}\" {1}/>";
         escapeTrue = "\"true\"";
         escapeFalse = "\"false\"";
-        egSpecialChars = "&lt; &gt;";
+        lessGreaterThanSpecialChars = "&lt; &gt;";
         lessThan = "<";
         greaterThan = ">";
     }
