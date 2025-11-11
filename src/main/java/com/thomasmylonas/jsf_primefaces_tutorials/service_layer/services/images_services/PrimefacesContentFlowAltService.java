@@ -1,4 +1,4 @@
-package com.thomasmylonas.jsf_primefaces_tutorials._alt_copies_not_used._alt._alt_services._alt_images_services;
+package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.images_services;
 
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer._enums.ImagesEnum;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.images_services._base.ImagesService;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @ManagedBean(name = "_alt_primefacesContentFlowService")
 @ViewScoped
 @Getter
-public class _alt_PrimefacesContentFlowService extends ImagesService {
+public class PrimefacesContentFlowAltService extends ImagesService {
 
     private static final Integer[] IMAGES_INDEXES_ARRAY = new Integer[]{1, 2, 0};
 
