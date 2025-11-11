@@ -85,11 +85,11 @@
                                 notes="The 'action' attribute...."
                                 header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
-                <h:form id="formId1">
+                <h:form id="hideDisplayOutputTextForm1">
                     <h:commandButton value="Hide/Display 'h:inputText'"
-                                     action="#{htmlCommandButtonBackingBean.hideDisplayInputText}"
+                                     action="#{htmlCommandButtonBackingBean.hideDisplayInputText()}"
                                      styleClass="hide_display_btn">
-                        <f:ajax render="formId"/>
+                        <f:ajax render="hideDisplayOutputTextForm1"/>
                     </h:commandButton>
                     <h:inputText id="inputId" value="text text text text"
                                  rendered="#{htmlCommandButtonBackingBean.rendered}"/>
@@ -97,13 +97,14 @@
                 </h:form>
             </div>
             <div class="examples_contents">
-                <h:form id="hideDisplayOutputTextForm">
+                <h:form id="hideDisplayOutputTextForm2">
                     <h:commandButton value="Hide/Display 'Text'"
-                                     action="#{htmlCommandButtonBackingBean.hideDisplayInputText}"
+                                     action="#{htmlCommandButtonBackingBean.hideDisplayInputText()}"
                                      styleClass="hide_display_btn">
-                        <f:ajax render="hideDisplayOutputTextForm"/>
+                        <f:ajax render="hideDisplayOutputTextForm2"/>
                     </h:commandButton>
-                    <h:outputText id="outputId" value="Text Text Text Text"/> <!-- value="#{htmlInputText.value} -->
+                    <h:outputText id="outputId" value="Text Text Text Text"
+                                  rendered="#{htmlCommandButtonBackingBean.rendered}"/> <!-- value="#{htmlInputText.value} -->
                     <!--<h:outputText id="outputId" value="Text Text Text Text"
                                   rendered="#{htmlCommandButtonBackingBean.rendered}"
                                   binding="#{htmlCommandButtonBackingBean.htmlInputText}"/>-->
