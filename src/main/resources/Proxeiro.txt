@@ -423,7 +423,7 @@ Some different combinations are (I don't know what is the meaning of these):
 Getters-Setters in BackingBeans
 ----------------------------------
 Site: "https://stackoverflow.com/questions/7580167/are-both-getters-and-setters-mandatory-in-jsfs-managed-beans"
-BackingBean properties which are binded with JSF component attributes that are:
+BackingBean properties which are bound with JSF component attributes that are:
 - "read-only", need only (mandatory) the getters (like: "rendered" attribute and others)
 - "read-write", need (mandatory) and the getters and setters (like: "binding" attribute and others)
 
