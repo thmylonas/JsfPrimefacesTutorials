@@ -80,36 +80,36 @@
                 <h:outputText value="&lt;h:outputFormat&gt; examples:" styleClass="h_taglib_subtitles"/>
             </p>
 
-            <tm:examples_header title="Without the use of BackingBean"
+            <tm:examples_header title="Without the use of the BackingBean"
                                 render_link="false"
-                                notes="In this case we use in attribute 'value', a String with the {0}, {1} as parameters."
+                                notes="In this case we use in attribute 'value', a String with the '#{htmlOutputFormatBackingBean.param1}', '#{htmlOutputFormatBackingBean.param2}' as parameters."
                                 header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
-                <h:outputFormat value="parameter 1: {0}, parameter 2: {1}" styleClass="output_format_style">
-                    <f:param value="Item 1"/>
-                    <f:param value="Item 2"/>
+                <h:outputFormat value="Parameter_1: {0}, Parameter_2: {1}" styleClass="output_format_style">
+                    <f:param value="#{htmlOutputFormatBackingBean.param1}"/>
+                    <f:param value="#{htmlOutputFormatBackingBean.param2}"/>
                 </h:outputFormat>
             </div>
 
             <hr/>
 
-            <tm:examples_header title="With the use of BackingBean"
+            <tm:examples_header title="With the use of the BackingBean"
                                 render_link="false"
-                                notes="In this case we bind the attribute 'value', with a String field in a BackingBean as: #{htmlOutputFormatBackingBean.fieldValue} (the String field contains the {0}, {1} as parameters)."
+                                notes="In this case we bind the attribute 'value', with a String field 'htmlOutputFormatBackingBean::textWith2Params' in the BackingBean."
                                 header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:outputFormat value="#{htmlOutputFormatBackingBean.textWith2Params}"
                                 styleClass="output_format_style">
-                    <f:param value="Item 1"/>
-                    <f:param value="Item 2"/>
+                    <f:param value="#{htmlOutputFormatBackingBean.param1}"/>
+                    <f:param value="#{htmlOutputFormatBackingBean.param2}"/>
                 </h:outputFormat>
             </div>
 
             <hr/>
 
-            <tm:examples_header title="With the use of BackingBean, and styled parameters"
+            <tm:examples_header title="With the use of the BackingBean, and styled parameters"
                                 render_link="false"
-                                notes="In this case we bind the attribute 'value', with a String field in a BackingBean as: #{htmlOutputFormatBackingBean.fieldValue} (the String field contains the {0}, {1} as parameters). In this case also the parameters are in CSS-style also. The CSS can be put in the parameters in the String field of the BackingBean."
+                                notes="In this case we bind the attribute 'value', with a String field 'htmlOutputFormatBackingBean::textWith2StyledParams' in the BackingBean. In this case also the parameters are in CSS-style also. The CSS can be put in the parameters in the String field of the BackingBean."
                                 header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:outputFormat value="#{htmlOutputFormatBackingBean.textWith2StyledParams}"
@@ -122,13 +122,12 @@
 
             <hr/>
 
-            <tm:examples_header title="With the use of BackingBean and 1 parameter"
+            <tm:examples_header title="With the use of the BackingBean and 1 parameter"
                                 render_link="false"
-                                notes="In this case we bind the attribute 'value', with a String field in a BackingBean as: #{htmlOutputFormatBackingBean.fieldValue} (the String field contains the {0} as parameter)."
+                                notes="In this case we bind the attribute 'value', with a String field 'htmlOutputFormatBackingBean::textHello' in the BackingBean."
                                 header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
-                <h:outputFormat value="#{htmlOutputFormatBackingBean.textHello}"
-                                styleClass="output_format_style">
+                <h:outputFormat value="#{htmlOutputFormatBackingBean.textHello}" styleClass="output_format_style">
                     <f:param value="Thomas Mylonas"/>
                 </h:outputFormat>
             </div>

@@ -3,6 +3,7 @@ package com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.models.jsf_models.ComponentsAttribute;
 import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_backing_beans.pages_level_ge2_backing_beans.h_taglib_backing_beans.h_outputs_backing_beans._base.AbstractHtmlOutputsBackingBean;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -11,9 +12,14 @@ import java.util.List;
 
 @ManagedBean(name = "htmlOutputFormatBackingBean")
 @Getter
+@Setter
 public class HtmlOutputFormatBackingBean extends AbstractHtmlOutputsBackingBean {
 
     private List<ComponentsAttribute> outputFormatAttributes;
+
+    // Parameters to be used in the 'value' attribute of <f:param>
+    private final String param1;
+    private final String param2;
 
     // Text with parameters to be used in the 'value' attribute of <h:outputFormat>
     private final String textWith2Params;
@@ -24,7 +30,6 @@ public class HtmlOutputFormatBackingBean extends AbstractHtmlOutputsBackingBean 
     private final String htmlInput;
 
     // Useful Strings to escape the special characters
-    private final String fieldValue;
     private final String escapeTrue;
     private final String escapeFalse;
     private final String egSpecialChars;
@@ -33,15 +38,16 @@ public class HtmlOutputFormatBackingBean extends AbstractHtmlOutputsBackingBean 
 
     public HtmlOutputFormatBackingBean() {
 
-        textWith2Params = "parameter 1: {0}, parameter 2: {1}";
-        textWith2StyledParams = "parameter 1: " + highlightingSpan("{0}", COLOR_DEEP_PINK, "normal") +
-                ", parameter 2: " + highlightingSpan("{1}", COLOR_BLUE, "bold");
-        //textWith2StyledParams = "parameter 1: <span style=\"color:" + COLOR_DEEP_PINK + "\">{0}</span>, parameter 2: <span style=\"color:" + COLOR_BLUE + "; font-weight:bold\">{1}</span>";
+        param1 = "Item 1";
+        param2 = "Item 2";
+        textWith2Params = "Parameter_1: {0}, Parameter_2: {1}";
+        textWith2StyledParams = "Parameter_1: " + highlightingSpan("{0}", COLOR_DEEP_PINK, "normal") +
+                ", Parameter_2: " + highlightingSpan("{1}", COLOR_BLUE, "bold");
+        //textWith2StyledParams = "Parameter_1: <span style=\"color:" + COLOR_DEEP_PINK + "\">{0}</span>, Parameter_2: <span style=\"color:" + COLOR_BLUE + "; font-weight:bold\">{1}</span>";
         textHello = "Hello {0}";
         textHelloEscaped = "With escape=\"true\": Hello &lt;span style=\"color:" + COLOR_DEEP_PINK + "\"&gt;{0}&lt;/span&gt;";
         textHelloNotEscaped = "With escape=\"false\": Hello &lt;span style=\"color:" + COLOR_DEEP_PINK + "\"&gt;{0}&lt;/span&gt;";
         htmlInput = "<input type=\"{0}\" {1}/>";
-        fieldValue = "#{field_value}";
         escapeTrue = "\"true\"";
         escapeFalse = "\"false\"";
         egSpecialChars = "&lt; &gt;";
