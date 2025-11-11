@@ -157,7 +157,7 @@
 
             <tm:examples_header title="Not rendering the HTML 'input' tag (text type), escaping characters"
                                 render_link="false"
-                                notes="The attribute escape=#{htmlOutputFormatBackingBean.escapeTrue} (or attribute 'escape' is skipped) means that the special characters will be escaped, which means that they will be displayed as exactly they are, and NOT what they mean! E.g. all the characters in the following example if escaped they will be displayed as they are, and they will NOT render the 'input' tag (text type), that in HTML they mean."
+                                notes="The attribute 'escape=#{htmlOutputFormatBackingBean.escapeTrue}' (or attribute 'escape' is skipped) means that the special characters will be escaped, which means that they will be displayed as exactly they are, and NOT what they mean! E.g. all the characters in the following example if escaped they will be displayed as they are, and they will NOT render the 'input' tag (text type), that in HTML they mean."
                                 header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:outputFormat value="#{htmlOutputFormatBackingBean.htmlInput}"
@@ -171,7 +171,7 @@
 
             <tm:examples_header title="Rendering the HTML 'input' tag (text type), NOT escaping characters"
                                 render_link="false"
-                                notes="The attribute escape=#{htmlOutputFormatBackingBean.escapeFalse} means that the special characters will NOT be escaped, which means that they will NOT be displayed as exactly they are, but they will display what they mean! E.g. all the characters in the following example if NOT escaped they will be combined and they will render the 'input' tag (text type), that in HTML they mean."
+                                notes="The attribute 'escape=#{htmlOutputFormatBackingBean.escapeFalse}' means that the special characters will NOT be escaped, which means that they will NOT be displayed as exactly they are, but they will display what they mean! E.g. all the characters in the following example if NOT escaped they will be combined and they will render the 'input' tag (text type), that in HTML they mean."
                                 header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:outputFormat value="#{htmlOutputFormatBackingBean.htmlInput}"
@@ -180,20 +180,21 @@
                     <f:param value="text"/>
                     <f:param value="size='30'"/>
                 </h:outputFormat>
+                (Do not insert anything - Just for demo not escaping characters)
             </div>
 
             <hr/>
 
             <tm:examples_header title="Rendering the HTML 'input' tag (button type), NOT escaping characters"
                                 render_link="false"
-                                notes="The attribute escape=#{htmlOutputFormatBackingBean.escapeFalse} means that the special characters will NOT be escaped, which means that they will NOT be displayed as exactly they are, but they will display what they mean! E.g. all the characters in the following example if NOT escaped they will be combined and they will render the 'input' tag (button type), that in HTML they mean."
+                                notes="The attribute 'escape=#{htmlOutputFormatBackingBean.escapeFalse}' means that the special characters will NOT be escaped, which means that they will NOT be displayed as exactly they are, but they will display what they mean! E.g. all the characters in the following example if NOT escaped they will be combined and they will render the 'input' tag (button type), that in HTML they mean."
                                 header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
                 <h:outputFormat value="#{htmlOutputFormatBackingBean.htmlInput}"
                                 styleClass="output_format_style"
                                 escape="false">
                     <f:param value="button"/>
-                    <f:param value="value='Click Me'"/>
+                    <f:param value="value='Do not click me - Just for demo not escaping characters'"/>
                 </h:outputFormat>
             </div>
 
