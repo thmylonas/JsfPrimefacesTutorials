@@ -83,7 +83,7 @@
 
         <ui:define name="right_section_image">
             <c:set var="pathToJavaServerFacesJpg"
-                   value="#{imagesService.getImagesEnum('JAVA_SERVER_FACES_IMAGE').imageFullNameWithPath}"/>
+                   value="#{imagesService.fetchAppImage('JAVA_SERVER_FACES_IMAGE').fetchImageFullNameWithPath()}"/>
             <!--pathToJavaServerFacesJpg == 'images/java_frameworks/JavaServerFaces.jpg'-->
             <p:graphicImage value="#{resource[pathToJavaServerFacesJpg]}"
                             alt="#{msg['page_level1.right_section.image_alt.jsf']}"

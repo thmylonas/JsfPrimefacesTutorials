@@ -63,7 +63,7 @@
 
         <ui:define name="right_section_image">
             <c:set var="pathToThomasMylonasJpg"
-                   value="#{imagesService.getImagesEnum('THOMAS_MYLONAS_IMAGE').imageFullNameWithPath}"/>
+                   value="#{imagesService.fetchAppImage('THOMAS_MYLONAS_IMAGE').fetchImageFullNameWithPath()}"/>
             <!--pathToThomasMylonasJpg == 'images/about/ThomasMylonas.jpg'-->
             <p:graphicImage value="#{resource[pathToThomasMylonasJpg]}"
                             alt="#{msg['page_level1.right_section.image_alt.home']}"

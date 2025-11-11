@@ -16,7 +16,7 @@
 
     <!-- Favicon -->
     <c:set var="pathToThomasMylonasJpg"
-           value="#{imagesService.getImagesEnum('MENUBAR_ICON_THOMAS_MYLONAS_IMAGE').imageFullNameWithPath}"/>
+           value="#{imagesService.fetchAppImage('MENUBAR_ICON_THOMAS_MYLONAS_IMAGE').fetchImageFullNameWithPath()}"/>
     <!--pathToThomasMylonasJpg == 'images/menubar_icons/about/ThomasMylonas.jpg'-->
     <link rel="shortcut icon" href="#{resource[pathToThomasMylonasJpg]}"/>
 
