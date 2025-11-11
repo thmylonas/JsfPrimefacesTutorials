@@ -95,7 +95,7 @@
             <div class="examples_contents">
                 <h:inputText value="text text text text" styleClass="input_text_style"
                              title="'Title' is a tooltip!"
-                             tabindex="1"/>
+                             tabindex="10"/>
             </div>
 
             <hr/>
@@ -107,7 +107,7 @@
             <div class="examples_contents">
                 <h:form id="hideDisplayInputTextForm">
                     <h:commandButton value="Hide/Display 'h:inputText'"
-                                     action="#{htmlInputTextBackingBean.hideDisplayInputText}"
+                                     action="#{htmlInputTextBackingBean.hideDisplayInputText()}"
                                      styleClass="rendered_hide_display_btn">
                         <f:ajax render="hideDisplayInputTextForm"/>
                     </h:commandButton>
@@ -231,10 +231,10 @@
 
             <tm:examples_header title="Example for 'onfocus' &amp; 'onblur' attributes"
                                 render_link="false"
-                                notes="On 'onfocus' an alert popup displays the action. On 'onblur' an alert popup displays the action."
+                                notes="On 'onfocus' (element gains focus) an alert popup displays the action. On 'onblur' (element loses focus) an alert popup displays the action."
                                 header_style="examples_header_wrapper,examples_header_title,examples_header_link,examples_header_notes"/>
             <div class="examples_contents">
-                <h:inputText value="text text text text" styleClass="input_text_style" tabindex="8"
+                <h:inputText value="text text text text" styleClass="input_text_style"
                              onfocus="window.alert('The input has gained focus')"
                              onblur="window.alert('The input has lost focus')"/>
             </div>

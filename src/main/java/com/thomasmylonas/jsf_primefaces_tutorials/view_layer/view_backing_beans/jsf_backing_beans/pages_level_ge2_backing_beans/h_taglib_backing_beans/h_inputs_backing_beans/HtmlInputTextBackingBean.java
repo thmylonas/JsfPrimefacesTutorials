@@ -7,11 +7,13 @@ import lombok.Setter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.component.html.HtmlInputText;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "htmlInputTextBackingBean")
+@ViewScoped
 @Getter
 @Setter
 public class HtmlInputTextBackingBean extends AbstractHtmlInputsBackingBean {
