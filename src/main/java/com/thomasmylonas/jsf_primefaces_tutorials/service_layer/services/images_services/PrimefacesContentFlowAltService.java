@@ -1,6 +1,6 @@
 package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.images_services;
 
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer._enums.ImagesEnum;
+import com.thomasmylonas.jsf_primefaces_tutorials.service_layer._enums.AppImage;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.images_services._base.ImagesService;
 import lombok.Getter;
 
@@ -17,15 +17,15 @@ public class PrimefacesContentFlowAltService extends ImagesService {
 
     private static final Integer[] IMAGES_INDEXES_ARRAY = new Integer[]{1, 2, 0};
 
-    private List<String> listOfImagesNamesFilteredByIndexes;
+    private List<String> imagesNamesFilteredByIndexes;
 
     @PostConstruct
     private void init() {
-        listOfImagesNamesFilteredByIndexes = initializeListOfImagesNamesFilteredByIndexes();
+        imagesNamesFilteredByIndexes = initializeImagesNamesFilteredByIndexes();
     }
 
-    private List<String> initializeListOfImagesNamesFilteredByIndexes() {
-        return filterListOfImagesByIndexes(LIST_OF_IMAGES_ENUMS, IMAGES_INDEXES_ARRAY).
-                stream().map(ImagesEnum::getImageName).collect(Collectors.toList());
+    private List<String> initializeImagesNamesFilteredByIndexes() {
+        return filterImagesByIndexes(APP_IMAGES, IMAGES_INDEXES_ARRAY).stream()
+                .map(AppImage::getImageName).collect(Collectors.toList());
     }
 }

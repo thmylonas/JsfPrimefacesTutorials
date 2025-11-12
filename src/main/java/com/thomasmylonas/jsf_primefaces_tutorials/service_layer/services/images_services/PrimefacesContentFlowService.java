@@ -1,7 +1,8 @@
 package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.images_services;
 
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer._enums.ImagesEnum;
+import com.thomasmylonas.jsf_primefaces_tutorials.service_layer._enums.AppImage;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.images_services._base.ImagesService;
+import lombok.Getter;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -10,21 +11,18 @@ import java.util.List;
 
 @ManagedBean(name = "primefacesContentFlowService")
 @ViewScoped
+@Getter
 public class PrimefacesContentFlowService extends ImagesService {
 
-    private final Integer[] IMAGES_INDEXES_ARRAY = new Integer[]{1, 2, 0};
-    private List<ImagesEnum> listOfImagesFilteredByIndexes;
+    private static final Integer[] IMAGES_INDEXES_ARRAY = new Integer[]{1, 2, 0};
+    private List<AppImage> imagesFilteredByIndexes;
 
     @PostConstruct
     private void init() {
-        listOfImagesFilteredByIndexes = initializeListOfImagesFilteredByIndexes();
+        imagesFilteredByIndexes = initializeImagesFilteredByIndexes();
     }
 
-    private List<ImagesEnum> initializeListOfImagesFilteredByIndexes() {
-        return filterListOfImagesByIndexes(LIST_OF_IMAGES_ENUMS, IMAGES_INDEXES_ARRAY);
-    }
-
-    public List<ImagesEnum> getListOfImagesFilteredByIndexes() {
-        return listOfImagesFilteredByIndexes;
+    private List<AppImage> initializeImagesFilteredByIndexes() {
+        return filterImagesByIndexes(APP_IMAGES, IMAGES_INDEXES_ARRAY);
     }
 }
