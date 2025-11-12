@@ -733,7 +733,7 @@ Change the:
 Delete _ExampleManagedBean
 Lombok
 Lombok - Builders
-Enum names
+[DONE] Enum names
 StudentAlt -> Student
 Change loggers to slf4j
 LOGGER.error("@@@")
