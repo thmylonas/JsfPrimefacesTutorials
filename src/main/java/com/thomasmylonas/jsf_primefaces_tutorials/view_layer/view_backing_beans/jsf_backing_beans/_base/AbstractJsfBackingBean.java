@@ -14,7 +14,7 @@ public abstract class AbstractJsfBackingBean extends AbstractBackingBean {
      * This method excludes from the "attributes" all the attributes "attrsNames[]"
      *
      * @param attributes The list to exclude from
-     * @param attrsNames     The attribute name to exclude
+     * @param attrsNames The attribute name to exclude
      * @return The modified "attributes"
      */
     protected List<ComponentsAttribute> excludeAttributes(List<ComponentsAttribute> attributes, String... attrsNames) {
@@ -35,7 +35,7 @@ public abstract class AbstractJsfBackingBean extends AbstractBackingBean {
                 }
             }
         }
-        //resultList.forEach(attr -> System.out.print(attr.getName() + " "));
+        //resultList.forEach(attr -> LOGGER.info(attr.getName()));
         return resultList;
     }
 
@@ -64,7 +64,7 @@ public abstract class AbstractJsfBackingBean extends AbstractBackingBean {
             }
             resultList.add(attrToInclude);
         }
-        //resultList.forEach(attr -> System.out.print(attr.getName() + " "));
+        //resultList.forEach(attr -> LOGGER.info(attr.getName()));
         return resultList;
     }
 }
