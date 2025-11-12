@@ -83,7 +83,7 @@
     </welcome-file-list>
 
     <!--
-    Without this, the DataSource cannot be found in JNDI
+    Without this, the Datasource cannot be found in JNDI
     -->
     <resource-ref>
         <description>A Student_DB</description>

@@ -41,9 +41,9 @@ public class JsfJpaBackingBean extends AbstractBackingBean {
             return "";
         } else {
             if (datasource.equalsIgnoreCase("InMemoryDS")) {
-                return " (Using an " + highlightingSpan("'In-Memory DataSource'", COLOR_BLUE, "bold") + ")";
+                return " (Using an " + highlightingSpan("'In-Memory Datasource'", COLOR_BLUE, "bold") + ")";
             } else if (datasource.equalsIgnoreCase("DatabaseDS")) {
-                return " (Using an " + highlightingSpan("'Database DataSource'", COLOR_BLUE, "bold") + ")";
+                return " (Using an " + highlightingSpan("'Database Datasource'", COLOR_BLUE, "bold") + ")";
             } else {
                 return "";
             }
