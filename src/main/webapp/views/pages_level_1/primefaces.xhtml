@@ -52,9 +52,10 @@
                               styleClass="technology_topics_titles"/>
             </p>
 
-            <p:contentFlow value="#{primefacesContentFlowService.listOfImagesFilteredByIndexes}"
+            <p:contentFlow value="#{primefacesContentFlowService.imagesFilteredByIndexes}"
                            var="image" styleClass="content_flow">
-                <p:graphicImage value="#{resource[image.imageFullNameWithPath]}" height="33%" styleClass="content"/>
+                <p:graphicImage value="#{resource[image.fetchImageFullNameWithPath()]}"
+                                height="33%" styleClass="content"/>
                 <div class="content_flow_image_names">
                     <h:outputText value="#{image.imageDescription}"/>
                 </div>
@@ -65,13 +66,13 @@
                               styleClass="technology_topics_titles"/>
             </p>
 
-            <p:contentFlow value="#{primefacesContentFlowAltService.listOfImagesNamesFilteredByIndexes}"
+            <p:contentFlow value="#{primefacesContentFlowAltService.imagesNamesFilteredByIndexes}"
                            var="imageName" styleClass="content_flow">
                 <p:graphicImage
-                        value="#{resource[primefacesContentFlowAltService.getImageFullNameWithPathForName(imageName)]}"
+                        value="#{resource[primefacesContentFlowAltService.fetchImageFullNameWithPathForName(imageName)]}"
                         height="33%" styleClass="content"/>
                 <div class="content_flow_image_names">
-                    <h:outputText value="#{primefacesContentFlowAltService.getImageDescriptionForName(imageName)}"/>
+                    <h:outputText value="#{primefacesContentFlowAltService.fetchImageDescriptionForName(imageName)}"/>
                 </div>
             </p:contentFlow>
 
@@ -83,7 +84,7 @@
 
         <ui:define name="right_section_image">
             <c:set var="pathToPrimefacesPng"
-                   value="#{imagesService.getImagesEnum('PRIMEFACES_IMAGE').imageFullNameWithPath}"/>
+                   value="#{imagesService.fetchAppImage('PRIMEFACES_IMAGE').fetchImageFullNameWithPath()}"/>
             <!--pathToPrimefacesPng == 'images/java_frameworks/Primefaces.png'-->
             <p:graphicImage value="#{resource[pathToPrimefacesPng]}"
                             alt="#{msg['page_level1.right_section.image_alt.primefaces']}"
