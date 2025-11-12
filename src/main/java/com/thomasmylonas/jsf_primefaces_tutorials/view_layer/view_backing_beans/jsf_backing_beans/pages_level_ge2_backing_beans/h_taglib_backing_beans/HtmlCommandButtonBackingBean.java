@@ -55,12 +55,12 @@ public class HtmlCommandButtonBackingBean extends HtmlTaglibBackingBean {
 
     public void hideDisplayInputText() {
 
-        System.out.println("The BackingBean method from 'action' attribute is invoked");
-//        String value = (String) htmlInputText.getValue();
-//        System.out.println(value);
+        LOGGER.info("The BackingBean method from 'action' attribute is invoked");
+        //String value = (String) htmlInputText.getValue();
+        //LOGGER.info(value);
 
-//        htmlInputText.setValue("QWERTY");
+        //htmlInputText.setValue("QWERTY");
         rendered = !rendered;
-        System.out.println(rendered);
+        LOGGER.info("{}", rendered);
     }
 }

@@ -733,7 +733,6 @@ Change the:
 Delete _ExampleManagedBean
 Lombok
 Lombok - Builders
-Change loggers to slf4j
 Change the name/path
 StudentService/StudentDao method names
 new Locale(...) - 'Locale(java.lang.String, java.lang.String)' is deprecated since version 19

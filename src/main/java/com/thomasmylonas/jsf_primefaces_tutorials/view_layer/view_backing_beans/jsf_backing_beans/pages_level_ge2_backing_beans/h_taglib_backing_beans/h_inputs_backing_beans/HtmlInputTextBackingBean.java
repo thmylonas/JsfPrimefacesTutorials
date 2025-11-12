@@ -40,14 +40,14 @@ public class HtmlInputTextBackingBean extends AbstractHtmlInputsBackingBean {
 
     public String hideDisplayInputText() {
 
-        System.out.println("The BackingBean method from 'action' attribute is invoked");
-//        String value = (String) htmlInputText.getValue();
-//        System.out.println(value);
+        LOGGER.info("The BackingBean method from 'action' attribute is invoked");
+        //String value = (String) htmlInputText.getValue();
+        //LOGGER.info(value);
 
-//        htmlInputText.setValue("QWERTY");
+        //htmlInputText.setValue("QWERTY");
         rendered = !rendered;
-        System.out.println(rendered);
-//        return "WEB-INF/views/pages_level_2/jsf/jsf_h_taglib/jsf_h_input_text.xhtml";
+        LOGGER.info("{}", rendered);
+        //return "WEB-INF/views/pages_level_2/jsf/jsf_h_taglib/jsf_h_input_text.xhtml";
         return null;
     }
 }
