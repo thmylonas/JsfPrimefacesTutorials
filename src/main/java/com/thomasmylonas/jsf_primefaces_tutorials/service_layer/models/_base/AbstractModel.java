@@ -22,8 +22,8 @@ public abstract class AbstractModel {
         try {
             propertyValue = HelperClass.fetchPropertyValueFromProperties(propertiesPath, propertyName);
         } catch (IOException e) {
-            LOGGER.error("@@@ In 'AbstractModel': " + errorMessage +
-                    " (because 'HelperClass::getPropertyValueFromProperties' throws 'IOException') @@@");
+            LOGGER.error("In 'AbstractModel': " + errorMessage +
+                    " (because 'HelperClass::getPropertyValueFromProperties' throws 'IOException')");
         }
         return propertyValue;
     }

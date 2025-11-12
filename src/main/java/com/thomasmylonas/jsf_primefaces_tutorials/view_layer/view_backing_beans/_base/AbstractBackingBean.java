@@ -32,8 +32,8 @@ public abstract class AbstractBackingBean implements Serializable {
         try {
             propertyValue = HelperClass.fetchPropertyValueFromProperties(propertiesPath, propertyName);
         } catch (IOException e) {
-            LOGGER.error("@@@ In 'AbstractBackingBean': " + errorMessage +
-                    " (because 'HelperClass::getPropertyValueFromProperties' throws 'IOException') @@@");
+            LOGGER.error("In 'AbstractBackingBean': " + errorMessage +
+                    " (because 'HelperClass::getPropertyValueFromProperties' throws 'IOException')");
         }
         return propertyValue;
     }
