@@ -19,7 +19,7 @@ import java.util.ArrayList;
 @Setter
 public class JsfJpaBackingBean extends AbstractBackingBean {
 
-    private String dataSource;
+    private String datasource;
     private boolean displayDataForms;
 
     private AbstractJsfJpaService jsfJpaService;
@@ -35,14 +35,14 @@ public class JsfJpaBackingBean extends AbstractBackingBean {
         jsfJpaService = inMemoryJsfJpaService;
     }
 
-    public String fetchDataSource() {
+    public String fetchDatasource() {
 
-        if (dataSource == null) {
+        if (datasource == null) {
             return "";
         } else {
-            if (dataSource.equalsIgnoreCase("InMemoryDS")) {
+            if (datasource.equalsIgnoreCase("InMemoryDS")) {
                 return " (Using an " + highlightingSpan("'In-Memory DataSource'", COLOR_BLUE, "bold") + ")";
-            } else if (dataSource.equalsIgnoreCase("DatabaseDS")) {
+            } else if (datasource.equalsIgnoreCase("DatabaseDS")) {
                 return " (Using an " + highlightingSpan("'Database DataSource'", COLOR_BLUE, "bold") + ")";
             } else {
                 return "";
@@ -52,10 +52,10 @@ public class JsfJpaBackingBean extends AbstractBackingBean {
 
     public void selectDatasource() {
 
-        if (dataSource.equalsIgnoreCase("InMemoryDS")) {
+        if (datasource.equalsIgnoreCase("InMemoryDS")) {
             displayDataForms = true;
             jsfJpaService = inMemoryJsfJpaService;
-        } else if (dataSource.equalsIgnoreCase("DatabaseDS")) {
+        } else if (datasource.equalsIgnoreCase("DatabaseDS")) {
             displayDataForms = true;
             jsfJpaService = dbJsfJpaService;
         } else {

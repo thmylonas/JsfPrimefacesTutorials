@@ -27,24 +27,24 @@
         <ui:define name="center_section_content">
 
             <p>
-                <h:outputText value="The 'Student' table#{jsfJpaBackingBean.fetchDataSource()}"
+                <h:outputText value="The 'Student' table#{jsfJpaBackingBean.fetchDatasource()}"
                               escape="false" styleClass="technology_topics_titles"/>
             </p>
 
             <div class="select_datasource">
                 <h:form>
                     <div>
-                        <p:outputLabel for="dataSource" value="Select DataSource (In-Memory/Database):"/>
-                        <p:selectOneMenu id="dataSource" value="#{jsfJpaBackingBean.dataSource}"
+                        <p:outputLabel for="datasource" value="Select Datasource (In-Memory/Database):"/>
+                        <p:selectOneMenu id="datasource" value="#{jsfJpaBackingBean.datasource}"
                                          styleClass="select_one_menu_input_field">
-                            <f:selectItem itemLabel="Select DataSource" itemValue=""/>
-                            <f:selectItem itemLabel="In-Memory DataSource" itemValue="InMemoryDS"/>
-                            <f:selectItem itemLabel="Database DataSource" itemValue="DatabaseDS"/>
+                            <f:selectItem itemLabel="Select Datasource" itemValue=""/>
+                            <f:selectItem itemLabel="In-Memory Datasource" itemValue="InMemoryDS"/>
+                            <f:selectItem itemLabel="Database Datasource" itemValue="DatabaseDS"/>
                         </p:selectOneMenu>
                     </div>
                     <br/>
                     <div>
-                        <p:commandButton type="button" value="Select DataSource">
+                        <p:commandButton type="button" value="Select Datasource">
                             <p:ajax process="@form" update="@all"
                                     listener="#{jsfJpaBackingBean.selectDatasource()}"/>
                         </p:commandButton>
