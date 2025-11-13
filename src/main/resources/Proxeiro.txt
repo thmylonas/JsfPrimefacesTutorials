@@ -3,6 +3,37 @@ Significant notes:
 Before running this project, install the plugin:
 - Jakarta EE: Server Faces (JSF)
 
+Run/Debug Configurations
+----------------------------
+
+Tomcat Server > Tomcat_v9.x.xx
+Name: Tomcat_v9.x.xx
+
+Server Tab
+--------------
+Application server: Tomcat_v9.x.xx
+Open browser:
+    - After launch > Default
+    - URL: http://localhost:8080/JsfPrimefacesTutorials
+On 'Update' action: Update resources [Appears only with: "war_exploded_artifact"]
+On frame deactivation: Update resources [Appears only with: "war_exploded_artifact"]
+JRE: xxx
+Tomcat Server Settings:
+    HTTP port: 8080
+Before launch:
+    - Run Maven Goal 'JsfPrimefacesTutorials: clean'
+    - Build
+    - Build 'jsf_primefaces_tutorials:war exploded' artifact
+
+Deployment Tab
+------------------
+Deploy at the server startup
+    - jsf_primefaces_tutorials:war exploded
+Application context: /JsfPrimefacesTutorials [Hidden at the end of Tab]
+                    [Default value: "/JsfPrimefacesTutorials_war" or "/JsfPrimefacesTutorials_war_exploded"]
+
+========================================================================================================================
+
 CDI Named beans to be available we need the dependency: "javax/javaee-api":
 <dependency>
     <groupId>javax</groupId>
@@ -671,37 +702,6 @@ git rm -r --cached .idea/
 git commit -m ".idea/ removed"
 git rm -r --cached target
 git commit -m 'target removed'
-
-========================================================================================================================
-
-Run/Debug Configurations
-----------------------------
-
-Tomcat Server > Tomcat_v9.x.xx
-Name: Tomcat_v9.x.xx
-
-Server Tab
---------------
-Application server: Tomcat_v9.x.xx
-Open browser:
-    - After launch > Default
-    - URL: http://localhost:8080/JsfPrimefacesTutorials
-On 'Update' action: Update resources [Appears only with: "war_exploded_artifact"]
-On frame deactivation: Update resources [Appears only with: "war_exploded_artifact"]
-JRE: xxx
-Tomcat Server Settings:
-    HTTP port: 8080
-Before launch:
-    - Run Maven Goal 'JsfPrimefacesTutorials: clean'
-    - Build
-    - Build 'jsf_primefaces_tutorials:war exploded' artifact
-
-Deployment Tab
-------------------
-Deploy at the server startup
-    - jsf_primefaces_tutorials:war exploded
-Application context: /JsfPrimefacesTutorials [Hidden at the end of Tab]
-                    [Default value: "/JsfPrimefacesTutorials_war" or "/JsfPrimefacesTutorials_war_exploded"]
 
 ========================================================================================================================
 
