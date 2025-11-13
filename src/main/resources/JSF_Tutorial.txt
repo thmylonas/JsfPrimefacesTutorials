@@ -355,3 +355,41 @@ public void onload(AjaxBehaviourEvent event) {
 }
 
 ========================================================================================================================
+
+3 Efforts
+-------------
+
+<h:form>
+    <h:inputText id="inputId" value="text text text text" styleClass="input_text_style" rendered="true"/>
+    <h:commandButton value="Hide/Display 'h:inputText'" action="#{htmlInputTextBackingBean.hideDisplayInputText}"/>
+</h:form>
+<h:form id="formId">
+    <h:inputText id="inputId" value="text text text text" styleClass="input_text_style"
+                 rendered="#{htmlInputTextBackingBean.rendered}" binding="#{htmlInputTextBackingBean.htmlInputText}"/>
+    <h:commandButton value="Hide/Display 'h:inputText'" action="#{htmlInputTextBackingBean.hideDisplayInputText}"
+                     immediate="true">
+        <f:ajax execute="@form" render="inputId"/>
+    </h:commandButton>
+</h:form>
+
+Some different combinations are (I don't know what is the meaning of these):
+
+<f:ajax execute="@form" render="inputId"/>
+<f:ajax execute="@this" render="inputId formId"/>
+<f:ajax render="inputId formId"/>
+<f:ajax execute="@form" render=":inputId :formId"/>
+<f:ajax execute="@this" render="@this"/>
+<f:ajax execute="@form" render=":inputId"/>
+
+<h:form>
+    <h:inputText id="inputId" value="text text text text" styleClass="input_text_style"
+                 rendered="#{htmlInputTextBackingBean.rendered}"
+                 binding="#{htmlInputTextBackingBean.htmlInputText}"/>
+    <h:commandButton value="Hide/Display 'h:inputText'" action="#{htmlInputTextBackingBean.hideDisplayInputText}"
+                     immediate="true">
+        <f:ajax event="click" listener="#{htmlInputTextBackingBean.hideDisplayInputText}"/>
+    </h:commandButton>
+    <input type="hidden" name="change" value="#{htmlInputTextBackingBean.hideDisplayInputText}"/>
+</h:form>
+
+========================================================================================================================
