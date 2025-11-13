@@ -351,7 +351,7 @@ BackingBean initialization as follows inside the page <ui:composition>:
     <f:event type="postAddToView" listener="#{JavaFrameworksBackingBean.init}"/>
 </f:metadata>
 -----------------------
-https://stackoverflow.com/questions/5522702/execute-managebean-method-from-javascript-onload-event/5523717#5523717
+Link: https://stackoverflow.com/questions/5522702/execute-managebean-method-from-javascript-onload-event/5523717#5523717
 <h:body>
     <f:ajax event="load" listener="#{bean.onload}" />
 </h:body>
