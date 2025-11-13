@@ -87,12 +87,6 @@ JSF and Spring Beans
 
 ========================================================================================================================
 
-Difference between:
-- import javax.faces.bean.ViewScoped;
-- import javax.faces.view.ViewScoped; (I do not use)
-
-========================================================================================================================
-
 /// All Components: 34 ///
 h:column
 h:commandButton
@@ -129,7 +123,7 @@ h:link
 h:button
 h:outputText
 
-======================================================
+========================================================================================================================
 
 ------- pages_level_3 - #34 -------
 jsf_h_body.xhtml
@@ -167,7 +161,7 @@ jsf_h_select_one_listbox.xhtml
 jsf_h_select_one_menu.xhtml
 jsf_h_select_one_radio.xhtml
 
-======================================================
+========================================================================================================================
 
 1. When we use a Primefaces CSS-Grid, we never make the rows with fixed height.
 We make the content element fixed and we let the row to wrap the content.
@@ -280,7 +274,7 @@ Because I commented the contents of the "MenubarBackingBean", everytime the "Men
 by the @Component annotation, it was giving error that the "MainMenubarModelBuilder" property
 is not existing in the "MenubarBackingBean".
 
-======================================================
+========================================================================================================================
 
 TO_DO
 
@@ -300,10 +294,10 @@ inserted to the mainMenubar.xhtml
     <scope>provided</scope>
 </dependency>
 
-======================================================
+========================================================================================================================
 
 Comments in JSF
-----------------
+-------------------
 https://mkyong.com/jsf2/how-to-use-comments-in-jsf-2-0/
 web.xml:
 Context initialization parameter 'facelets.SKIP_COMMENTS' is deprecated.
@@ -321,7 +315,7 @@ Use the option 'javax.faces.FACELETS_SKIP_COMMENTS'.
 =====================================================
 
 Problems on "action" attribute
----------------------------------
+----------------------------------
 
 If in "h:commandButton" we do not use "f:ajax", everytime we press the "h:commandButton" the whole page will be loaded.
 <h:form>
@@ -330,7 +324,7 @@ If in "h:commandButton" we do not use "f:ajax", everytime we press the "h:comman
 </h:form>
 
 Problem 1
-------------
+-------------
 If we don not follow the next solutions, this:
 <h:form>
     <h:inputText .../>
@@ -351,7 +345,7 @@ Everytime we press the "h:commandButton" the whole page will be loaded, but the 
 is not in directories under the "webapp" directory.
 
 Problem 2
-------------
+-------------
 If we don not follow the next solutions, this:
 <h:form>
     <h:inputText .../>
@@ -364,10 +358,10 @@ A possible explanation is that:
 Everytime we reload the page, with the load of the page the form is re-posted.
 
 Solutions
-------------
+-------------
 
 JSF views have to be in directories under the "webapp" directory
--------------------------------------------------------------------
+--------------------------------------------------------------------
 The JSF can work fully (display page, invoke BackingBean methods from "action" attribute by EL) ONLY if the JSF views
 are in directories under the "webapp" directory.
 If the JSF vies are in directories under the "WEB-INF" directory, then the only that will work from JSF is to display the
@@ -375,15 +369,15 @@ page only. Other more deep in JSF functionalities (like invoke the BackingBean m
 WILL NOT work.
 
 FacesServlet have to render the JSF views (not DispatcherServlet)
---------------------------------------------------------------------
+---------------------------------------------------------------------
 Spring Controllers must not resolve the views (that means that DispatcherServlet must not be involved).
 JSF views have to be found by FacesServlet, after they are put in directories under the "webapp" directory.
 We can use Filters to filter the URI the client types, and transform it to the real path to the JSF view.
 
-======================================================
+========================================================================================================================
 
 3 Efforts
------------
+-------------
 
 <h:form>
     <h:inputText id="inputId" value="text text text text" styleClass="input_text_style" rendered="true"/>
@@ -418,21 +412,21 @@ Some different combinations are (I don't know what is the meaning of these):
     <input type="hidden" name="change" value="#{htmlInputTextBackingBean.hideDisplayInputText}"/>
 </h:form>
 
-=====================================================
+========================================================================================================================
 
 Getters-Setters in BackingBeans
-----------------------------------
+-----------------------------------
 Site: "https://stackoverflow.com/questions/7580167/are-both-getters-and-setters-mandatory-in-jsfs-managed-beans"
 BackingBean properties which are bound with JSF component attributes that are:
 - "read-only", need only (mandatory) the getters (like: "rendered" attribute and others)
 - "read-write", need (mandatory) and the getters and setters (like: "binding" attribute and others)
 
-=====================================================
+========================================================================================================================
 
 JSF backing bean should be serializable?
--------------------------------------------
+--------------------------------------------
 https://stackoverflow.com/questions/3372687/jsf-backing-bean-should-be-serializable
---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 Yes, you understood it correctly. The view is basically stored in the session scope.
 The session scope is in JSF backed by the Servlet's HttpSession. All session attributes are supposed to implement
 Serializable, this because the average ServletContainer may persist session data to hard disk among others to be able
@@ -443,7 +437,7 @@ The ServletContainer manages this all transparently, you actually don't need to 
 JSF is just giving a warning so that you understand the risks.
 
 https://suhasjavablog.wordpress.com/2014/05/08/jsf-managedbean-must-implement-serializable-or-not/
------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
 JSF MANAGEDBEAN MUST IMPLEMENT SERIALIZABLE OR NOT ?
 Recently I was reading about serialization and I noticed that all the ManagedBean in my JSF project implements Serializable interface.
 
@@ -461,21 +455,43 @@ Some containers will require you to explicitly disable session serialization (or
 Tomcat by default enables persisting session through server restart.
 
 https://docs.oracle.com/javaee/6/tutorial/doc/gjbbk.html
------------------------------------------------------------
+------------------------------------------------------------
 Beans that use session, application, or conversation scope must be serializable, but beans that use request scope
 do not have to be serializable.
 
-=====================================================
+========================================================================================================================
 
 ManagedBean scopes
----------------------
+----------------------
 All these scopes are making the "action" attribute method be invoked (due to all the following solutions are applied)
-@RequestScoped
 @javax.faces.bean.ViewScoped
-@javax.faces.view.ViewScoped
-@SessionScoped
+@javax.faces.bean.RequestScoped
+@javax.faces.bean.SessionScoped
 
-=====================================================
+[I do no know where it is used] @javax.faces.view.ViewScoped; (I do not use)
+
+========================================================================================================================
+
+@javax.faces.bean.ManagedBean(name = "exampleManagedBean")
+@javax.faces.bean.ViewScoped
+//@javax.faces.bean.RequestScoped
+//@javax.faces.bean.SessionScoped
+public class ExampleManagedBean implements Serializable {
+
+    @javax.faces.bean.ManagedProperty(value = "#{example1Service}")
+    private Example1Service example1Service;
+
+    @javax.faces.bean.ManagedProperty(value = "#{example2Service}")
+    private Example2Service example2Service;
+
+    @javax.annotation.PostConstruct
+    private void init() {
+        // Initialization code
+    }
+    // In ManagedBeans the ManagedProperties must have Getters-Setters (mandatory)
+}
+
+========================================================================================================================
 
 The "action" attribute method is invoked (due to all the following solutions are applied), using
 or:
@@ -498,7 +514,7 @@ public class ExampleBackingBean implements Serializable {
 
 or:
 
-The combination proposed by the online tutorial in the link (Spring MVC integrated with JSF v2.2 example):
+The combination proposed by the online tutorial in the link (SpringMVC integrated with JSF_v2.2 example):
 http://javaonlineguide.net/2015/07/jsf-2-2-spring4-integration-example-using-spring-annotations.html
 
 @Component(value = "exampleBackingBean")
@@ -509,7 +525,7 @@ public class ExampleBackingBean implements Serializable {
     private void init() { /*Initialization code*/ }
 }
 
-=====================================================
+========================================================================================================================
 
 If we need to implement our own 'Sorting/Filtering' code for a <p:column> (by SortViewBackingBean.sortByIdMethod()),
 we need to use "f:facet" tag in this column.
@@ -547,7 +563,8 @@ https://stackoverflow.com/questions/5522702/execute-managebean-method-from-javas
 public void onload(AjaxBehaviourEvent event) {
     // ...
 }
-=====================================================
+
+========================================================================================================================
 
 BackingBean methods from "action" attribute can be invoked, in all the following cases:
 public String backingBeanActionMethod() {
@@ -562,14 +579,14 @@ public void backingBeanActionMethod() {
     // Code
 }
 
-=====================================================
+========================================================================================================================
 
 BackingBean methods from "action" attribute can be invoked, with whatever value of "immediate" attribute.
 That means in all the following cases:
 <h:commandButton ...immediate="true"/>
 <h:commandButton ...immediate="false"/>
 
-=====================================================
+========================================================================================================================
 
 TO_DO
 1. No empty lines in between
