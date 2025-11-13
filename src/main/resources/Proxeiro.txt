@@ -629,9 +629,6 @@ ResourceNotFoundException
 </dependency>
 The following is for @Valid annotation on @RequestBody
 
-git rm -r --cached target
-git commit -m 'target removed'
-
 xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://xmlns.jcp.org/jsf/html"
 xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -640,7 +637,6 @@ xmlns:cc="http://xmlns.jcp.org/jsf/composite"
 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 xmlns:p="http://primefaces.org/ui"
 
-JsfPrimefacesTutorials_war_exploded -> JsfPrimefacesTutorials
 ----------------------------------------
 @PersistenceContext
 private EntityManager EM;
@@ -661,13 +657,41 @@ Caused by: java.lang.NullPointerException: inStream parameter is null
 
 git rm -r --cached .idea/
 git commit -m ".idea/ removed"
+git rm -r --cached target
+git commit -m 'target removed'
 
 ========================================================================================================================
 
-About OracleDB
-Change the:
-- "webapp/META-INF/context.xml"
-- web.xml: <web-app ...><resource-ref></resource-ref></web-app>
+Run/Debug Configurations
+----------------------------
+
+Tomcat Server > Tomcat_v9.x.xx
+Name: Tomcat_v9.x.xx
+
+Server Tab
+--------------
+Application server: Tomcat_v9.x.xx
+Open browser:
+    - After launch > Default
+    - URL: http://localhost:8080/JsfPrimefacesTutorials
+On 'Update' action: Update resources [Appears only with: "war_exploded_artifact"]
+On frame deactivation: Update resources [Appears only with: "war_exploded_artifact"]
+JRE: xxx
+Tomcat Server Settings:
+    HTTP port: 8080
+Before launch:
+    - Run Maven Goal 'JsfPrimefacesTutorials: clean'
+    - Build
+    - Build 'jsf_primefaces_tutorials:war exploded' artifact
+
+Deployment Tab
+------------------
+Deploy at the server startup
+    - jsf_primefaces_tutorials:war exploded
+Application context: /JsfPrimefacesTutorials [Hidden at the end of Tab]
+                    [Default value: "/JsfPrimefacesTutorials_war" or "/JsfPrimefacesTutorials_war_exploded"]
+
+========================================================================================================================
 
 Delete _ExampleManagedBean
 Lombok
