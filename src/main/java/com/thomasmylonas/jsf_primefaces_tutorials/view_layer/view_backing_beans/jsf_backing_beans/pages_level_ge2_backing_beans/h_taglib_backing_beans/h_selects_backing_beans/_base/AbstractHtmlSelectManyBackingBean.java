@@ -1,6 +1,5 @@
 package com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_backing_beans.pages_level_ge2_backing_beans.h_taglib_backing_beans.h_selects_backing_beans._base;
 
-import com.thomasmylonas.jsf_primefaces_tutorials.helpers.DisplayConstants;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,7 +38,7 @@ public abstract class AbstractHtmlSelectManyBackingBean extends AbstractHtmlSele
     }
 
     public String displayItemValues(String[] itemValues) {
-        return itemValues == null ? "[ ]" : HelperClass.displayStringListAsString(itemValues, DisplayConstants.DISPLAY_INLINE_IN_CONSOLE);
+        return itemValues == null ? "[ ]" : HelperClass.displayStringListAsString(itemValues, HelperClass.DISPLAY_INLINE_IN_CONSOLE);
     }
 
     public void resetValues() {

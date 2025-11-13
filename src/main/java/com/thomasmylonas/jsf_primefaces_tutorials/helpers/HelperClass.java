@@ -19,6 +19,15 @@ import java.util.stream.Collectors;
 public abstract class HelperClass {
 
     /**
+     * A String[] with the pattern: [delimiter, prefix, suffix], where:
+     * delimiter: ", ",
+     * prefix: "[",
+     * suffix: "]"
+     * This array is for simple uses like: [object1, object2, ..., object_n]
+     */
+    public static final String[] DISPLAY_INLINE_IN_CONSOLE = {", ", "[", "]"};
+
+    /**
      * The method checks if a String is "null" or "empty"
      *
      * @param string The String we check if it is "null" or "empty"

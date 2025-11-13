@@ -123,7 +123,6 @@ inserted to the mainMenubar.xhtml
 </dependency>
 
 The meta in all pages, all projects
-ResourceNotFoundException
 
 =====================================================
 
@@ -134,14 +133,11 @@ git commit -m 'target removed'
 
 ========================================================================================================================
 
-Delete _ExampleManagedBean
 Lombok
 Lombok - Builders
 Change the name/path
 StudentService/StudentDao method names
 new Locale(...) - 'Locale(java.lang.String, java.lang.String)' is deprecated since version 19
-DisplayConstants delete/keep
-_ExampleManagedBean delete at the end or keep
 
 I think that records cannot be used inside the jsf views. Maybe because of getters names (???)
 
