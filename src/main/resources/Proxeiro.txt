@@ -62,6 +62,17 @@ public class MyBean implements Serializable { // For some scopes the "@Serializa
 
 ========================================================================================================================
 
+About the "@javax.persistence.PersistenceContext"
+-----------------------------------------------------
+
+It seems (I am not sure why) that the next does not work:
+    @javax.persistence.PersistenceContext
+    private EntityManager em;
+I guess because the "EntityManager em" becomes a Bean, and this cannot be created/managed from the "@javax.faces.bean.ManagedBean".
+It seems that (I am not sure) it needs a CDI Beans management
+
+========================================================================================================================
+
 JSF and Spring Beans
 ------------------------
 
@@ -637,9 +648,6 @@ xmlns:cc="http://xmlns.jcp.org/jsf/composite"
 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 xmlns:p="http://primefaces.org/ui"
 
-----------------------------------------
-@PersistenceContext
-private EntityManager EM;
 ----------------------------------------
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'commonHtmlAttributesService': Invocation of init method failed; nested exception is java.lang.NullPointerException: inStream parameter is null
 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160) ~[spring-beans-5.3.19.jar:5.3.19]
