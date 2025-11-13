@@ -616,6 +616,9 @@ inserted to the mainMenubar.xhtml
     <scope>provided</scope>
 </dependency>
 
+The meta in all pages, all projects
+ResourceNotFoundException
+
 =====================================================
 
 <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
@@ -677,11 +680,6 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 }
-========================================================================================================================
-
-TO-DOs
-The meta in all pages, all projects
-ResourceNotFoundException
 
 ========================================================================================================================
 
