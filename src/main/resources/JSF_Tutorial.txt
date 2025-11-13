@@ -116,9 +116,9 @@ JSF ManagedBean MUST IMPLEMENT SERIALIZABLE OR NOT ?
 Recently I was reading about serialization and I noticed that all the ManagedBean in my JSF project implements Serializable interface.
 
 Normally, we use Serialization to send an object over the network or if the state of an object needs to be persisted to a flat file or a database.
-But my managedBean was just a means to value bind the UI components. I digged deep into this topic and I think its useful to share my findings with you all.
+But my managedBean was just a means to value bind the UI components. I dug deep into this topic and I think it is useful to share my findings with you all.
 
-We need not make every ManagedBean serializable. It depends upon the Scope the MBean. If you don’t want to serialize your MBean, make sure the scope is ‘request’.
+We need not make every ManagedBean serializable. It depends upon the Scope the ManagedBean. If you don’t want to serialize your ManagedBean, make sure the scope is ‘request’.
 
 Instead, if you are dealing with ‘session’ scope or ‘view’ scope (even view scope is using session scope). The session scope is backed by the Servlet’s HttpSession.
 All session attributes are supposed to implement Serializable because the servlet container tries to persist session data to file system

@@ -112,7 +112,7 @@ jsf_h_select_one_radio.xhtml
 
 TO_DO
 1. No empty lines in between
-<html><h:head><h:body></h:body></h:head></html>
+<html><h:head></h:head><h:body></h:body></html>
 2. Make the name/shortDescription the same pattern
 <cc:interface>
     <cc:attribute name="back_to_home_rendered" type="java.lang.Boolean" required="true"
