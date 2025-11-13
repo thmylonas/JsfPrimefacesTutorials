@@ -34,79 +34,42 @@ Application context: /JsfPrimefacesTutorials [Hidden at the end of Tab]
 
 ========================================================================================================================
 
-/// All Components: 34 ///
-h:column
-h:commandButton
-h:dataTable
-h:form
-h:graphicImage
-h:inputFile
-h:inputHidden
-h:inputSecret
-h:inputTextarea
-h:inputText
-h:outputFormat
-h:outputLabel
-h:panelGrid
-h:panelGroup
-h:selectBooleanCheckbox
-h:selectManyCheckbox
-h:selectManyListbox
-h:selectManyMenu
-h:selectOneListbox
-h:selectOneMenu
-h:selectOneRadio
-h:doctype
-h:outputStylesheet
-h:outputScript
-h:commandScript
-h:message
-h:messages
-h:head
-h:body
-h:outputLink
-h:commandLink
-h:link
-h:button
-h:outputText
+------- pages_level_3 - #34 (All Components: 34) -------
 
-========================================================================================================================
-
-------- pages_level_3 - #34 -------
-jsf_h_body.xhtml
-jsf_h_button.xhtml
-jsf_h_column.xhtml
-jsf_h_command_button.xhtml
-jsf_h_command_link.xhtml
-jsf_h_command_script.xhtml
-jsf_h_data_table.xhtml
-jsf_h_doctype.xhtml
-jsf_h_form.xhtml
-jsf_h_graphic_image.xhtml
-jsf_h_head.xhtml
-jsf_h_input_file.xhtml
-jsf_h_input_hidden.xhtml
-jsf_h_input_secret.xhtml
-jsf_h_input_text.xhtml
-jsf_h_input_text_area.xhtml
-jsf_h_link.xhtml
-jsf_h_message.xhtml
-jsf_h_messages.xhtml
-jsf_h_output_format.xhtml
-jsf_h_output_label.xhtml
-jsf_h_output_link.xhtml
-jsf_h_output_script.xhtml
-jsf_h_output_stylesheet.xhtml
-jsf_h_output_text.xhtml
-jsf_h_panel_grid.xhtml
-jsf_h_panel_group.xhtml
-jsf_h_select_boolean_checkbox.xhtml
-jsf_h_select_many_checkbox.xhtml
-jsf_h_select_many_listbox.xhtml
-jsf_h_select_many_menu.xhtml
-jsf_h_select_one_listbox.xhtml
-jsf_h_select_one_menu.xhtml
-jsf_h_select_one_radio.xhtml
+jsf_h_body.xhtml (h:body)
+jsf_h_button.xhtml (h:button)
+jsf_h_column.xhtml (h:column)
+jsf_h_command_button.xhtml (h:commandButton)
+jsf_h_command_link.xhtml (h:commandLink)
+jsf_h_command_script.xhtml (h:commandScript)
+jsf_h_data_table.xhtml (h:dataTable)
+jsf_h_doctype.xhtml (h:doctype)
+jsf_h_form.xhtml (h:form)
+jsf_h_graphic_image.xhtml (h:graphicImage)
+jsf_h_head.xhtml (h:head)
+jsf_h_input_file.xhtml (h:inputFile)
+jsf_h_input_hidden.xhtml (h:inputHidden)
+jsf_h_input_secret.xhtml (h:inputSecret)
+jsf_h_input_text.xhtml (h:inputText)
+jsf_h_input_text_area.xhtml (h:inputTextarea)
+jsf_h_link.xhtml (h:link)
+jsf_h_message.xhtml (h:message)
+jsf_h_messages.xhtml (h:messages)
+jsf_h_output_format.xhtml (h:outputFormat)
+jsf_h_output_label.xhtml (h:outputLabel)
+jsf_h_output_link.xhtml (h:outputLink)
+jsf_h_output_script.xhtml (h:outputScript)
+jsf_h_output_stylesheet.xhtml (h:outputStylesheet)
+jsf_h_output_text.xhtml (h:outputText)
+jsf_h_panel_grid.xhtml (h:panelGrid)
+jsf_h_panel_group.xhtml (h:panelGroup)
+jsf_h_select_boolean_checkbox.xhtml (h:selectBooleanCheckbox)
+jsf_h_select_many_checkbox.xhtml (h:selectManyCheckbox)
+jsf_h_select_many_listbox.xhtml (h:selectManyListbox)
+jsf_h_select_many_menu.xhtml (h:selectManyMenu)
+jsf_h_select_one_listbox.xhtml (h:selectOneListbox)
+jsf_h_select_one_menu.xhtml (h:selectOneMenu)
+jsf_h_select_one_radio.xhtml (h:selectOneRadio)
 
 ========================================================================================================================
 
