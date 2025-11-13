@@ -365,8 +365,8 @@ Spring Controllers must not resolve the views (that means that DispatcherServlet
 JSF views have to be found by FacesServlet, after they are put in directories under the "webapp" directory.
 We can use Filters to filter the URI the client types, and transform it to the real path to the JSF view.
 
-When the "action" attribute method is invoked
--------------------------------------------------
+When the "action" attribute method is invoked (A)
+-----------------------------------------------------
 
 The "action" attribute method is invoked (due to all the following solutions are applied), using
 or:
@@ -390,7 +390,7 @@ public class ExampleBackingBean implements Serializable {
 or:
 
 The combination proposed by the online tutorial in the link (SpringMVC integrated with JSF_v2.2 example):
-http://javaonlineguide.net/2015/07/jsf-2-2-spring4-integration-example-using-spring-annotations.html
+Link: http://javaonlineguide.net/2015/07/jsf-2-2-spring4-integration-example-using-spring-annotations.html
 
 @Component(value = "exampleBackingBean")
 @ManagedBean(name = "exampleBackingBean")
@@ -398,6 +398,22 @@ http://javaonlineguide.net/2015/07/jsf-2-2-spring4-integration-example-using-spr
 public class ExampleBackingBean implements Serializable {
     @PostConstruct
     private void init() { /*Initialization code*/ }
+}
+
+When the "action" attribute method is invoked (B)
+-----------------------------------------------------
+
+BackingBean methods from "action" attribute can be invoked, in all the following cases:
+public String backingBeanActionMethod() {
+    // Code
+    return null;
+}
+public String backingBeanActionMethod() {
+    // Code
+    return "";
+}
+public void backingBeanActionMethod() {
+    // Code
 }
 
 ========================================================================================================================
@@ -550,21 +566,6 @@ https://stackoverflow.com/questions/5522702/execute-managebean-method-from-javas
 </h:body>
 public void onload(AjaxBehaviourEvent event) {
     // ...
-}
-
-========================================================================================================================
-
-BackingBean methods from "action" attribute can be invoked, in all the following cases:
-public String backingBeanActionMethod() {
-    // Code
-    return null;
-}
-public String backingBeanActionMethod() {
-    // Code
-    return "";
-}
-public void backingBeanActionMethod() {
-    // Code
 }
 
 ========================================================================================================================
