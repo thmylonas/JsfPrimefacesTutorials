@@ -1,3 +1,6 @@
+About CDI Beans management
+------------------------------
+
 CDI Named beans to be available we need the dependency: "javax/javaee-api":
 <dependency>
     <groupId>javax</groupId>
@@ -173,8 +176,10 @@ Link: "https://docs.spring.io/spring-webflow/docs/current/reference/html/spring-
 Comments in JSF
 -------------------
 
-https://mkyong.com/jsf2/how-to-use-comments-in-jsf-2-0/
-web.xml:
+Link: https://mkyong.com/jsf2/how-to-use-comments-in-jsf-2-0/
+
+"WEB-INF/web.xml"
+
 Context initialization parameter 'facelets.SKIP_COMMENTS' is deprecated.
 <context-param>
     <param-name>facelets.SKIP_COMMENTS</param-name>
