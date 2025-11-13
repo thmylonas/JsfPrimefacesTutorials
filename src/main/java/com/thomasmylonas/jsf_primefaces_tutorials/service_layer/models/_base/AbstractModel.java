@@ -1,14 +1,12 @@
 package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.models._base;
 
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 
+@Slf4j
 public abstract class AbstractModel {
-
-    protected static final Logger LOGGER = LoggerFactory.getLogger(AbstractModel.class.getSimpleName());
 
     // Constants of directories of Properties files
     protected static final String PROPERTIES_FILE_1_DIR = "resource_bundles/messages.properties";
@@ -22,7 +20,7 @@ public abstract class AbstractModel {
         try {
             propertyValue = HelperClass.fetchPropertyValueFromProperties(propertiesPath, propertyName);
         } catch (IOException e) {
-            LOGGER.error("In 'AbstractModel': " + errorMessage +
+            log.error("In 'AbstractModel': " + errorMessage +
                     " (because 'HelperClass::getPropertyValueFromProperties' throws 'IOException')");
         }
         return propertyValue;

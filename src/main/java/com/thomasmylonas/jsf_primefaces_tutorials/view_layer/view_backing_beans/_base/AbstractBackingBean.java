@@ -1,15 +1,13 @@
 package com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans._base;
 
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.io.Serializable;
 
+@Slf4j
 public abstract class AbstractBackingBean implements Serializable {
-
-    protected static final Logger LOGGER = LoggerFactory.getLogger(AbstractBackingBean.class.getSimpleName());
 
     // Constants of directories of Properties files
     protected static final String PROPERTIES_FILE_1_DIR = "resource_bundles/messages.properties";
@@ -32,7 +30,7 @@ public abstract class AbstractBackingBean implements Serializable {
         try {
             propertyValue = HelperClass.fetchPropertyValueFromProperties(propertiesPath, propertyName);
         } catch (IOException e) {
-            LOGGER.error("In 'AbstractBackingBean': " + errorMessage +
+            log.error("In 'AbstractBackingBean': " + errorMessage +
                     " (because 'HelperClass::getPropertyValueFromProperties' throws 'IOException')");
         }
         return propertyValue;

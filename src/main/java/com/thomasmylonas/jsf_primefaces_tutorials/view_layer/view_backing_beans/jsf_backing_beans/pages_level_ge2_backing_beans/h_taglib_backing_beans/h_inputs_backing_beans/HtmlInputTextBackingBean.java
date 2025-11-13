@@ -4,6 +4,7 @@ import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.models.jsf_model
 import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans.jsf_backing_beans.pages_level_ge2_backing_beans.h_taglib_backing_beans.h_inputs_backing_beans._base.AbstractHtmlInputsBackingBean;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -16,6 +17,7 @@ import java.util.List;
 @ViewScoped
 @Getter
 @Setter
+@Slf4j
 public class HtmlInputTextBackingBean extends AbstractHtmlInputsBackingBean {
 
     private List<ComponentsAttribute> inputTextAttributes;
@@ -40,13 +42,13 @@ public class HtmlInputTextBackingBean extends AbstractHtmlInputsBackingBean {
 
     public String hideDisplayInputText() {
 
-        LOGGER.info("The BackingBean method from 'action' attribute is invoked");
+        log.info("The BackingBean method from 'action' attribute is invoked");
         //String value = (String) htmlInputText.getValue();
-        //LOGGER.info(value);
+        //log.info(value);
 
         //htmlInputText.setValue("QWERTY");
         rendered = !rendered;
-        LOGGER.info("{}", rendered);
+        log.info("{}", rendered);
         //return "WEB-INF/views/pages_level_2/jsf/jsf_h_taglib/jsf_h_input_text.xhtml";
         return null;
     }

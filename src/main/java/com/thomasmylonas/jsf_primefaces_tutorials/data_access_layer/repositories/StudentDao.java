@@ -5,8 +5,7 @@ import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
 import lombok.Getter;
 import lombok.Setter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -21,9 +20,9 @@ import java.util.List;
 @SessionScoped
 @Getter
 @Setter
+@Slf4j
 public class StudentDao {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(StudentDao.class.getSimpleName());
     private static final String PERSISTENCE_UNIT_NAME = "StudentPU_H2";
 
     private EntityManager em;
@@ -63,7 +62,7 @@ public class StudentDao {
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            LOGGER.error("Because of an 'Exception': '{}', the transaction is rolled back!", e.getMessage());
+            log.error("Because of an 'Exception': '{}', the transaction is rolled back!", e.getMessage());
         }
         return student;
     }
@@ -78,7 +77,7 @@ public class StudentDao {
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            LOGGER.error("Because of an 'Exception': '{}', the transaction is rolled back!", e.getMessage());
+            log.error("Because of an 'Exception': '{}', the transaction is rolled back!", e.getMessage());
         }
     }
 
@@ -96,7 +95,7 @@ public class StudentDao {
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            LOGGER.error("Because of an 'Exception': '{}', the transaction is rolled back!", e.getMessage());
+            log.error("Because of an 'Exception': '{}', the transaction is rolled back!", e.getMessage());
         }
     }
 
@@ -114,7 +113,7 @@ public class StudentDao {
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            LOGGER.error("Because of an 'Exception': '{}', the transaction is rolled back!", e.getMessage());
+            log.error("Because of an 'Exception': '{}', the transaction is rolled back!", e.getMessage());
         }
     }
 

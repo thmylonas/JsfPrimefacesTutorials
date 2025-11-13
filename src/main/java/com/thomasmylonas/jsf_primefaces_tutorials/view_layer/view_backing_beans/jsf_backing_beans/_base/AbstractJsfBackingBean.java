@@ -3,11 +3,13 @@ package com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.models.jsf_models.ComponentsAttribute;
 import com.thomasmylonas.jsf_primefaces_tutorials.view_layer.view_backing_beans._base.AbstractBackingBean;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Slf4j
 public abstract class AbstractJsfBackingBean extends AbstractBackingBean {
 
     /**
@@ -35,7 +37,7 @@ public abstract class AbstractJsfBackingBean extends AbstractBackingBean {
                 }
             }
         }
-        //resultList.forEach(attr -> LOGGER.info(attr.getName()));
+        //resultList.forEach(attr -> log.info(attr.getName()));
         return resultList;
     }
 
@@ -64,7 +66,7 @@ public abstract class AbstractJsfBackingBean extends AbstractBackingBean {
             }
             resultList.add(attrToInclude);
         }
-        //resultList.forEach(attr -> LOGGER.info(attr.getName()));
+        //resultList.forEach(attr -> log.info(attr.getName()));
         return resultList;
     }
 }

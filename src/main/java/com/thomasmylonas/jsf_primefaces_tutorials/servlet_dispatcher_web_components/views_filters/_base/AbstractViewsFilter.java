@@ -1,7 +1,6 @@
 package com.thomasmylonas.jsf_primefaces_tutorials.servlet_dispatcher_web_components.views_filters._base;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -17,9 +16,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.stream.Stream;
 
+@Slf4j
 public abstract class AbstractViewsFilter implements Filter {
-
-    protected static final Logger LOGGER = LoggerFactory.getLogger(AbstractViewsFilter.class.getSimpleName());
 
     private static final String MAIN_VIEWS_DIR = "/views";
     private static final String SPECIAL_LAST_URI_PART = "home";
@@ -69,10 +67,10 @@ public abstract class AbstractViewsFilter implements Filter {
                 return null;
             }
         } catch (InvocationTargetException | IllegalAccessException e) {
-            LOGGER.error("'HelperClass::getWebFilterPathPatterns' throws 'InvocationTargetException,IllegalAccessException'");
+            log.error("'HelperClass::getWebFilterPathPatterns' throws 'InvocationTargetException,IllegalAccessException'");
         }
 
-        if (lastUriPart.equals("")) {
+        if (lastUriPart.isEmpty()) {
             lastUriPart = SPECIAL_LAST_URI_PART;
         }
         for (String webFilterPathPattern : webFilterPathPatterns) {

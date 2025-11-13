@@ -6,6 +6,7 @@ import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.jsf_jpa
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services.DbStudentService;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -19,6 +20,7 @@ import java.util.List;
 @SessionScoped
 @Getter
 @Setter
+@Slf4j
 public class DbJsfJpaService extends AbstractJsfJpaService {
 
     @ManagedProperty(value = "#{dbStudentService}")
@@ -42,7 +44,7 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
         try {
             studentsFiltered.add(dbStudentService.findStudentById(studentId));
         } catch (Exception e) {
-            LOGGER.error("There is no student with id {}", studentId);
+            log.error("There is no student with id {}", studentId);
         }
     }
 
@@ -50,7 +52,7 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
 
         List<Student> allStudents = dbStudentService.findAllStudents();
         if (HelperClass.isListNullOrEmpty(allStudents)) {
-            LOGGER.error("There are no students");
+            log.error("There are no students");
             return Collections.emptyList();
         }
         return allStudents;
@@ -72,7 +74,7 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
         try {
             dbStudentService.updateStudent(student, id);
         } catch (Exception e) {
-            LOGGER.error("There is no student with id {}, to update", id);
+            log.error("There is no student with id {}, to update", id);
         }
     }
 
@@ -84,7 +86,7 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
         try {
             dbStudentService.deleteStudent(deleteFormStudentId);
         } catch (Exception e) {
-            LOGGER.error("There is no student with id {}, to delete", deleteFormStudentId);
+            log.error("There is no student with id {}, to delete", deleteFormStudentId);
         }
     }
 }
