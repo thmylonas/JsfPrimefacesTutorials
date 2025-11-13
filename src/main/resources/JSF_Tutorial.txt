@@ -132,52 +132,6 @@ do not have to be serializable.
 
 ========================================================================================================================
 
-About the 'Sorting/Filtering' in <p:dataTable>/<p:column>
--------------------------------------------------------------
-
-Case_A:
------------
-
-If we need to implement our own 'Sorting/Filtering' code for a <p:column> (by SortViewBackingBean.sortByIdMethod()),
-we need to use "f:facet" tag in this column.
-In this case, the header text from the "f:facet" tag, overrides the "headerText" attribute.
-
-<h:form>
-    <p:dataTable var="car" value="#{sortViewBackingBean.cars}">
-        <f:facet name="header">
-             Implementing our own 'Sorting/Filtering' code
-        </f:facet>
-        <p:column headerText="ID" sortBy="#{car.id}">
-            <f:facet name="header">
-                <h:commandLink value="ID" action="#{sortViewBackingBean.sortByIdMethod}"/>
-            </f:facet>
-            <h:outputText value="#{car.id}"/>
-        </p:column>
-        <!-- Other columns -->
-    </p:dataTable>
-</h:form>
-
-Case_B:
------------
-
-In Googling they were writing that to make the Sorting/Filtering in <p:dataTable> work we have to run the
-BackingBean initialization as follows inside the page <ui:composition>:
-
-<f:metadata>
-    <f:event type="preRenderView" listener="#{JavaFrameworksBackingBean.init}"/>
-    <f:event type="postAddToView" listener="#{JavaFrameworksBackingBean.init}"/>
-</f:metadata>
------------------------
-https://stackoverflow.com/questions/5522702/execute-managebean-method-from-javascript-onload-event/5523717#5523717
-<h:body>
-    <f:ajax event="load" listener="#{bean.onload}" />
-</h:body>
-public void onload(AjaxBehaviourEvent event) {
-    // ...
-}
-
-========================================================================================================================
-
 About the "@javax.persistence.PersistenceContext"
 -----------------------------------------------------
 
@@ -353,5 +307,51 @@ BackingBean methods from "action" attribute can be invoked, with whatever value 
 That means in all the following cases:
 <h:commandButton ...immediate="true"/>
 <h:commandButton ...immediate="false"/>
+
+========================================================================================================================
+
+About the 'Sorting/Filtering' in <p:dataTable>/<p:column>
+-------------------------------------------------------------
+
+Case_A:
+-----------
+
+If we need to implement our own 'Sorting/Filtering' code for a <p:column> (by SortViewBackingBean.sortByIdMethod()),
+we need to use "f:facet" tag in this column.
+In this case, the header text from the "f:facet" tag, overrides the "headerText" attribute.
+
+<h:form>
+    <p:dataTable var="car" value="#{sortViewBackingBean.cars}">
+        <f:facet name="header">
+             Implementing our own 'Sorting/Filtering' code
+        </f:facet>
+        <p:column headerText="ID" sortBy="#{car.id}">
+            <f:facet name="header">
+                <h:commandLink value="ID" action="#{sortViewBackingBean.sortByIdMethod}"/>
+            </f:facet>
+            <h:outputText value="#{car.id}"/>
+        </p:column>
+        <!-- Other columns -->
+    </p:dataTable>
+</h:form>
+
+Case_B:
+-----------
+
+In Googling they were writing that to make the Sorting/Filtering in <p:dataTable> work we have to run the
+BackingBean initialization as follows inside the page <ui:composition>:
+
+<f:metadata>
+    <f:event type="preRenderView" listener="#{JavaFrameworksBackingBean.init}"/>
+    <f:event type="postAddToView" listener="#{JavaFrameworksBackingBean.init}"/>
+</f:metadata>
+-----------------------
+https://stackoverflow.com/questions/5522702/execute-managebean-method-from-javascript-onload-event/5523717#5523717
+<h:body>
+    <f:ajax event="load" listener="#{bean.onload}" />
+</h:body>
+public void onload(AjaxBehaviourEvent event) {
+    // ...
+}
 
 ========================================================================================================================
