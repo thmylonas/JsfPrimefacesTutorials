@@ -393,3 +393,141 @@ Some different combinations are (I don't know what is the meaning of these):
 </h:form>
 
 ========================================================================================================================
+
+JSF_Tutorial Notes:
+-----------------------
+
+Note_1:
+-----------
+When we use a Primefaces CSS-Grid, we never make the rows with fixed height.
+We make the content element fixed, and we let the row so it will wrap the content.
+
+Note_2:
+-----------
+All the <h:outputStylesheet> in the <h:head> of the mainTemplate.xhtml file.
+Because they do not contain <ui:composition>, and in the other pages they contain <ui:composition>,
+everything out of it, it will be ignored.
+
+Note_3:
+-----------
+#{resource['images/java_frameworks/Java.jpg']
+
+Note_4:
+-----------
+In pages, the <ui:define> will be in this order:
+head-metadata, head-title
+top_section, center_section, right_section, leftSection, bottom_section
+
+Note_5:
+-----------
+In the CSS entry: ".ui-menuitem-icon.icon_name", can have whatever name it wants.
+To solve the problem that the menuitem is not displayed, we have to change the dimensions of the
+icon itself with image editors.
+
+Note_6:
+-----------
+Add JSTL Library: xmlns:c="http://java.sun.com/jsp/jstl/core", or xmlns:c="http://xmlns.jcp.org/jsp/jstl/core",
+and Maven[javax.servlet, jstl, 1.x]
+
+Note_7:
+-----------
+ui-menubar CSS Selectors:
+.ui-menubar
+.ui-menu-list
+.ui-menuitem
+.ui-menuitem-link
+.ui-menuitem-text
+
+Example:
+.ui-menubar, .ui-menu-list  {
+    border: 1px solid blue !important;
+    background: blue url(path/to/myImage.png) 50% 50% repeat-x !important;
+    color: blue !important;
+    font-weight: bolder !important;
+    background-color: yellow !important;
+}
+
+Note_8:
+-----------
+Primeicons
+<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+
+Note_9:
+-----------
+A lot of the primefaces components have their own style. To override it we have to add "!important"
+A good example is the styling of the <p:commandButton>
+
+Note_10:
+------------
+Change from "java.sun.com" to "xmlns.jcp.org"
+I changed in every xhtml file the:
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:cc="http://java.sun.com/jsf/composite"
+    xmlns:tm="http://java.sun.com/jsf/composite/tm_components"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+to
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+    xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+
+Exception to this are the following files (the "ns" cannot be changed here):
+"web.xml"
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+    id="WebApp_ID" version="3.0">...</<web-app>
+"faces-config.xml"
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+    http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+Note_11:
+------------
+This is the full collection of xmlns in JSF/Primefaces
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components"
+      xmlns:p="http://primefaces.org/ui">
+
+Note_12:
+------------
+Primefaces v8.0 : Error solved
+I had this error before:
+    com.sun.faces.config.ConfigureListener.contextInitialized Initializing Mojarra 2.2.20
+        (20190731-0757 59754ac80c05d61848a08939ddd11a324f2345ac) for context '/MyWebsiteWebApp'
+    com.sun.faces.spi.InjectionProviderFactory.createInstance JSF1048:
+        PostConstruct/PreDestroy annotations present.  ManagedBeans methods marked with these annotations will
+        have said annotations processed.
+    com.sun.faces.config.ConfigureListener.contextInitialized Critical error during deployment:
+        java.lang.InstantiationError: org.primefaces.util.Lazy
+            at org.primefaces.csp.CspPhaseListener.<init>(CspPhaseListener.java:48)
+            at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+            at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+            at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+            at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+            at java.lang.Class.newInstance(Class.java:442)
+
+The reason was [I strongly think 99%] because with the Primefaces 8.0, the "DefaultSubMenu" changed,
+and errors appeared in the "MainMenubarModelBuilder" classes.
+Due to commenting this code, these classes could not be loaded in the "MenubarBackingBean" in the
+"@PostConstruct private void init()", as the error log says!
+
+Another issue here...
+Because I commented the contents of the "MenubarBackingBean", everytime the "MenubarBackingBean" was created
+by the @Component annotation, it was giving error that the "MainMenubarModelBuilder" property
+is not existing in the "MenubarBackingBean".
+
+========================================================================================================================
