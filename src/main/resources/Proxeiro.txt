@@ -312,7 +312,7 @@ Use the option 'javax.faces.FACELETS_SKIP_COMMENTS'.
     <param-value>true</param-value>
 </context-param>
 
-=====================================================
+========================================================================================================================
 
 Problems on "action" attribute
 ----------------------------------
@@ -373,6 +373,41 @@ FacesServlet have to render the JSF views (not DispatcherServlet)
 Spring Controllers must not resolve the views (that means that DispatcherServlet must not be involved).
 JSF views have to be found by FacesServlet, after they are put in directories under the "webapp" directory.
 We can use Filters to filter the URI the client types, and transform it to the real path to the JSF view.
+
+When the "action" attribute method is invoked
+-------------------------------------------------
+
+The "action" attribute method is invoked (due to all the following solutions are applied), using
+or:
+
+@Component(value = "exampleBackingBean")
+//@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+//@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+public class ExampleBackingBean implements Serializable {
+}
+
+or:
+
+@ManagedBean(name = "exampleBackingBean")
+@RequestScoped
+public class ExampleBackingBean implements Serializable {
+    @ManagedProperty(value = "#{commonHtmlAttributesService}")
+    private CommonHtmlAttributesService commonHtmlAttributesService;
+    // In ManagedBeans the ManagedProperties have to have Getters-Setters (mandatory)
+}
+
+or:
+
+The combination proposed by the online tutorial in the link (SpringMVC integrated with JSF_v2.2 example):
+http://javaonlineguide.net/2015/07/jsf-2-2-spring4-integration-example-using-spring-annotations.html
+
+@Component(value = "exampleBackingBean")
+@ManagedBean(name = "exampleBackingBean")
+@RequestScoped
+public class ExampleBackingBean implements Serializable {
+    @PostConstruct
+    private void init() { /*Initialization code*/ }
+}
 
 ========================================================================================================================
 
@@ -486,40 +521,6 @@ Link: https://docs.oracle.com/javaee/6/tutorial/doc/gjbbk.html
 
 Beans that use session, application, or conversation scope must be serializable, but beans that use request scope
 do not have to be serializable.
-
-========================================================================================================================
-
-The "action" attribute method is invoked (due to all the following solutions are applied), using
-or:
-
-@Component(value = "exampleBackingBean")
-//@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
-//@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class ExampleBackingBean implements Serializable {
-}
-
-or:
-
-@ManagedBean(name = "exampleBackingBean")
-@RequestScoped
-public class ExampleBackingBean implements Serializable {
-    @ManagedProperty(value = "#{commonHtmlAttributesService}")
-    private CommonHtmlAttributesService commonHtmlAttributesService;
-    // In ManagedBeans the ManagedProperties have to have Getters-Setters (mandatory)
-}
-
-or:
-
-The combination proposed by the online tutorial in the link (SpringMVC integrated with JSF_v2.2 example):
-http://javaonlineguide.net/2015/07/jsf-2-2-spring4-integration-example-using-spring-annotations.html
-
-@Component(value = "exampleBackingBean")
-@ManagedBean(name = "exampleBackingBean")
-@RequestScoped
-public class ExampleBackingBean implements Serializable {
-    @PostConstruct
-    private void init() { /*Initialization code*/ }
-}
 
 ========================================================================================================================
 
