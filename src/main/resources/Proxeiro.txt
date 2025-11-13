@@ -414,63 +414,8 @@ Some different combinations are (I don't know what is the meaning of these):
 
 ========================================================================================================================
 
-Getters-Setters in BackingBeans
------------------------------------
-Site: "https://stackoverflow.com/questions/7580167/are-both-getters-and-setters-mandatory-in-jsfs-managed-beans"
-BackingBean properties which are bound with JSF component attributes that are:
-- "read-only", need only (mandatory) the getters (like: "rendered" attribute and others)
-- "read-write", need (mandatory) and the getters and setters (like: "binding" attribute and others)
-
-========================================================================================================================
-
-JSF backing bean should be serializable?
---------------------------------------------
-https://stackoverflow.com/questions/3372687/jsf-backing-bean-should-be-serializable
----------------------------------------------------------------------------------------
-Yes, you understood it correctly. The view is basically stored in the session scope.
-The session scope is in JSF backed by the Servlet's HttpSession. All session attributes are supposed to implement
-Serializable, this because the average ServletContainer may persist session data to hard disk among others to be able
-to share with other servers in a cluster, or to survive heavy load, or to revive sessions during server restart.
-Storing raw Java objects on hard disk is only possible if the respective class implements Serializable.
-Then ObjectOutputStream can be used to write them to hard disk and ObjectInputStream to read them from hard disk.
-The ServletContainer manages this all transparently, you actually don't need to worry about it.
-JSF is just giving a warning so that you understand the risks.
-
-https://suhasjavablog.wordpress.com/2014/05/08/jsf-managedbean-must-implement-serializable-or-not/
-------------------------------------------------------------------------------------------------------
-JSF MANAGEDBEAN MUST IMPLEMENT SERIALIZABLE OR NOT ?
-Recently I was reading about serialization and I noticed that all the ManagedBean in my JSF project implements Serializable interface.
-
-Normally, we use Serialization to send an object over the network or if the state of an object needs to be persisted to a flat file or a database.
-But my managedBean was just a means to value bind the UI components. I digged deep into this topic and I think its useful to share my findings with you all.
-
-We need not make every ManagedBean serializable. It depends upon the Scope the MBean. If you don’t want to serialize your MBean, make sure the scope is ‘request’.
-
-Instead, if you are dealing with ‘session’ scope or ‘view’ scope (even view scope is using session scope). The session scope is backed by the Servlet’s HttpSession.
-All session attributes are supposed to implement Serializable because the servlet container tries to persist session data to file system
-to be able to survive heavy load and/or reviving sessions during server restart.
-
-Sometimes you might have noticed that your post contructs in your MBean get executed on server restart. Why ?
-Some containers will require you to explicitly disable session serialization (or else they will be generating exceptions).
-Tomcat by default enables persisting session through server restart.
-
-https://docs.oracle.com/javaee/6/tutorial/doc/gjbbk.html
-------------------------------------------------------------
-Beans that use session, application, or conversation scope must be serializable, but beans that use request scope
-do not have to be serializable.
-
-========================================================================================================================
-
-ManagedBean scopes
+About ManagedBeans
 ----------------------
-All these scopes are making the "action" attribute method be invoked (due to all the following solutions are applied)
-@javax.faces.bean.ViewScoped
-@javax.faces.bean.RequestScoped
-@javax.faces.bean.SessionScoped
-
-[I do no know where it is used] @javax.faces.view.ViewScoped; (I do not use)
-
-========================================================================================================================
 
 @javax.faces.bean.ManagedBean(name = "exampleManagedBean")
 @javax.faces.bean.ViewScoped
@@ -490,6 +435,57 @@ public class ExampleManagedBean implements Serializable {
     }
     // In ManagedBeans the ManagedProperties must have Getters-Setters (mandatory)
 }
+
+ManagedBean scopes
+----------------------
+@javax.faces.bean.ViewScoped
+@javax.faces.bean.RequestScoped
+@javax.faces.bean.SessionScoped
+[I do no know where it is used] @javax.faces.view.ViewScoped; (I do not use)
+
+Getters-Setters in BackingBeans
+-----------------------------------
+Site: "https://stackoverflow.com/questions/7580167/are-both-getters-and-setters-mandatory-in-jsfs-managed-beans"
+BackingBean properties which are bound with JSF component attributes that are:
+- "read-only", need only (mandatory) the getters (like: "rendered" attribute and others)
+- "read-write", need (mandatory) and the getters and setters (like: "binding" attribute and others)
+
+JSF backing bean should be serializable?
+--------------------------------------------
+
+Link: https://stackoverflow.com/questions/3372687/jsf-backing-bean-should-be-serializable
+
+Yes, you understood it correctly. The view is basically stored in the session scope.
+The session scope is in JSF backed by the Servlet's HttpSession. All session attributes are supposed to implement
+Serializable, this because the average ServletContainer may persist session data to hard disk among others to be able
+to share with other servers in a cluster, or to survive heavy load, or to revive sessions during server restart.
+Storing raw Java objects on hard disk is only possible if the respective class implements Serializable.
+Then ObjectOutputStream can be used to write them to hard disk and ObjectInputStream to read them from hard disk.
+The ServletContainer manages this all transparently, you actually don't need to worry about it.
+JSF is just giving a warning so that you understand the risks.
+
+Link: https://suhasjavablog.wordpress.com/2014/05/08/jsf-managedbean-must-implement-serializable-or-not/
+
+JSF MANAGEDBEAN MUST IMPLEMENT SERIALIZABLE OR NOT ?
+Recently I was reading about serialization and I noticed that all the ManagedBean in my JSF project implements Serializable interface.
+
+Normally, we use Serialization to send an object over the network or if the state of an object needs to be persisted to a flat file or a database.
+But my managedBean was just a means to value bind the UI components. I digged deep into this topic and I think its useful to share my findings with you all.
+
+We need not make every ManagedBean serializable. It depends upon the Scope the MBean. If you don’t want to serialize your MBean, make sure the scope is ‘request’.
+
+Instead, if you are dealing with ‘session’ scope or ‘view’ scope (even view scope is using session scope). The session scope is backed by the Servlet’s HttpSession.
+All session attributes are supposed to implement Serializable because the servlet container tries to persist session data to file system
+to be able to survive heavy load and/or reviving sessions during server restart.
+
+Sometimes you might have noticed that your PostConstructs in your ManagedBean get executed on server restart. Why ?
+Some containers will require you to explicitly disable session serialization (or else they will be generating exceptions).
+Tomcat by default enables persisting session through server restart.
+
+Link: https://docs.oracle.com/javaee/6/tutorial/doc/gjbbk.html
+
+Beans that use session, application, or conversation scope must be serializable, but beans that use request scope
+do not have to be serializable.
 
 ========================================================================================================================
 
