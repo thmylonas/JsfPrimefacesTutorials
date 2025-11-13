@@ -112,7 +112,7 @@ JSF is just giving a warning so that you understand the risks.
 
 Link: https://suhasjavablog.wordpress.com/2014/05/08/jsf-managedbean-must-implement-serializable-or-not/
 
-JSF MANAGEDBEAN MUST IMPLEMENT SERIALIZABLE OR NOT ?
+JSF ManagedBean MUST IMPLEMENT SERIALIZABLE OR NOT ?
 Recently I was reading about serialization and I noticed that all the ManagedBean in my JSF project implements Serializable interface.
 
 Normally, we use Serialization to send an object over the network or if the state of an object needs to be persisted to a flat file or a database.
