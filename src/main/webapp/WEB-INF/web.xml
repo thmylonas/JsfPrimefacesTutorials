@@ -10,10 +10,7 @@
         Web Application with JSF, Primefaces, Hibernate/JPA, Maven (no archetype)
     </display-name>
 
-    <!--
-    ***************************** Initialization of FacesServlet *****************************
-    Link: "https://docs.spring.io/spring-webflow/docs/current/reference/html/spring-faces.html"
-    -->
+    <!-- Initialization of FacesServlet -->
 
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>

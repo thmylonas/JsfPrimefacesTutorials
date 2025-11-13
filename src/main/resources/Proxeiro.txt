@@ -76,6 +76,8 @@ It seems that (I am not sure) it needs a CDI Beans management
 JSF and Spring Beans
 ------------------------
 
+Link: "https://docs.spring.io/spring-webflow/docs/current/reference/html/spring-faces.html"
+
 "WEB-INF/web.xml"
 
 <web-app ...>
