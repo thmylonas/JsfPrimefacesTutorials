@@ -416,6 +416,14 @@ public void backingBeanActionMethod() {
     // Code
 }
 
+When the "action" attribute method is invoked (C)
+-----------------------------------------------------
+
+BackingBean methods from "action" attribute can be invoked, with whatever value of "immediate" attribute.
+That means in all the following cases:
+<h:commandButton ...immediate="true"/>
+<h:commandButton ...immediate="false"/>
+
 ========================================================================================================================
 
 3 Efforts
@@ -567,13 +575,6 @@ https://stackoverflow.com/questions/5522702/execute-managebean-method-from-javas
 public void onload(AjaxBehaviourEvent event) {
     // ...
 }
-
-========================================================================================================================
-
-BackingBean methods from "action" attribute can be invoked, with whatever value of "immediate" attribute.
-That means in all the following cases:
-<h:commandButton ...immediate="true"/>
-<h:commandButton ...immediate="false"/>
 
 ========================================================================================================================
 
