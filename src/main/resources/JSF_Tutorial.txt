@@ -599,6 +599,17 @@ I guess (I am not sure), that the dependency "javax.naming/jndi" is covered by t
     <scope>test</scope>
 </dependency>
 
+Dependency_5:
+-----------------
+
+The dependency "org.apache.tomcat/tomcat-dbcp" is removed from "pom.xml" file, because I do not know what it is used for.
+
+<dependency> <!-- Removed -->
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>tomcat-dbcp</artifactId>
+    <version>9.0.30</version>
+</dependency>
+
 ========================================================================================================================
 
 Questions/Problems/Issues
