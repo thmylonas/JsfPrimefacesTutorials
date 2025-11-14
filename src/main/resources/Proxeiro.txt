@@ -73,59 +73,6 @@ jsf_h_select_one_radio.xhtml (h:selectOneRadio)
 
 ========================================================================================================================
 
-TO_DO
-2. Make the name/shortDescription the same pattern
-<cc:interface>
-    <cc:attribute name="back_to_home_rendered" type="java.lang.Boolean" required="true"
-                  shortDescription="Controls if 'BackToHome' button will be rendered or not"/>
-</cc:interface>
-3.Attention:
-@PostConstruct private void init() {initComponentsAttributes();} in AbstractBackingBeans
-(AbstractHtmlMessagesBackingBean, AbstractHtmlInputsBackingBean, AbstractHtmlOutputsBackingBean)
-4. Change images to this:
-
-<ui:define name="right_section_image">
-    <div class="right_section_image_wrapper">
-        <p:graphicImage value="#{resource['images/cs_topics/Electronics.jpg']}"
-                        alt="Electronics" styleClass="right_section_image electronics_image"/>
-    </div>
-</ui:define>
-
-.right_section_image_wrapper {
-    border-radius: 5px;
-    box-shadow: 8px 5px 5px blue;
-    height: 100%;
-    width: 100%;
-}
-
-.right_section_image {
-    border-radius: 5px;
-    box-shadow: 8px 5px 5px blue;
-    height: 100%;
-    width: 100%;
-    /*padding: 10px;*/
-}
---------
-How "options" work in "MainMenubarModelBuilder". It is inserted in the "pagesLevel1Template.xhtml", as it is.
-The model controls the submenus/menuitems, and the options are controlled by the parameter
-inserted to the mainMenubar.xhtml
-
-<f:metadata>
-    <f:event type="preRenderView" listener="#{sortViewBackingBean.init}"/>
-    <f:event type="postAddToView" listener="#{sortViewBackingBean.init}"/>
-</f:metadata>
-
-<dependency>
-    <groupId>javax.faces</groupId>
-    <artifactId>javax.faces-api</artifactId>
-    <version>2.2</version>
-    <scope>provided</scope>
-</dependency>
-
-The meta in all pages, all projects
-
-=====================================================
-
 git rm -r --cached .idea/
 git commit -m ".idea/ removed"
 git rm -r --cached target
@@ -135,9 +82,5 @@ git commit -m 'target removed'
 
 Lombok
 Lombok - Builders
-Change the name/path
-StudentService/StudentDao method names
-
-I think that records cannot be used inside the jsf views. Maybe because of getters names (???)
 
 ========================================================================================================================

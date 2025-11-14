@@ -536,3 +536,36 @@ by the @Component annotation, it was giving error that the "MainMenubarModelBuil
 is not existing in the "MenubarBackingBean".
 
 ========================================================================================================================
+
+Questions/Problems/Issues
+-----------------------------
+
+Issue_1:
+------------
+May records cannot be used inside the JSF-views.
+- Maybe because of getters names
+- Maybe this version of JSF (2.2.6) is old and does not know Java_17
+
+Issue_2:
+------------
+How "options" work in "MainMenubarModelBuilder". It is inserted in the "pagesLevel1Template.xhtml", as it is.
+The model controls the submenus/menuitems, and the options are controlled by the parameter
+inserted to the mainMenubar.xhtml
+
+Issue_3:
+------------
+<f:metadata>
+    <f:event type="preRenderView" listener="#{sortViewBackingBean.init}"/>
+    <f:event type="postAddToView" listener="#{sortViewBackingBean.init}"/>
+</f:metadata>
+
+Issue_4:
+------------
+<dependency>
+    <groupId>javax.faces</groupId>
+    <artifactId>javax.faces-api</artifactId>
+    <version>2.2</version>
+    <scope>provided</scope>
+</dependency>
+
+========================================================================================================================
