@@ -565,6 +565,18 @@ The dependency "javax.servlet/javax.servlet-api" is removed from pom, because it
     <scope>provided</scope>
 </dependency>
 
+Dependency_3:
+-----------------
+
+The dependency "javax.servlet/jstl" is removed from pom, because it is covered from:
+- the dependency "com.sun.faces/jsf-impl" (exists in this dependency's pom - "javax.servlet.jsp.jstl/jstl-api/1.2/provided")
+
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+
 ========================================================================================================================
 
 Questions/Problems/Issues

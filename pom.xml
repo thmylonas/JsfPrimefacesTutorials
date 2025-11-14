@@ -65,13 +65,6 @@
             <!-- The latest version: "5.6.1.Final", 6.0.0.Final, fail to start the WebApp -->
         </dependency>
 
-        <!-- jstl Library -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
-
         <!-- com.sun.faces/jsf-api, com.sun.faces/jsf-impl -->
         <dependency>
             <groupId>com.sun.faces</groupId>
