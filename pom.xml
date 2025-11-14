@@ -121,21 +121,6 @@
             <version>2.18.0</version>
         </dependency>
 
-        <!-- JUnit API: org.junit.jupiter/junit-jupiter-engine -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.9.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/javax.el/javax.el-api -->
-        <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>3.0.1-b06</version>
-        </dependency>
-
         <!-- Other tools -->
         <dependency>
             <groupId>org.projectlombok</groupId>
