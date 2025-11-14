@@ -590,7 +590,7 @@ it seems (I am not sure) that is used from Tomcat server. Especially the tags:
 - <Resource .../>, in the "context.xml" file
 - <resource-ref/>, in the "web.xml" file
 are based in "JNDI", so the DB reference name can be found.
-I guess (I am not sure), that this dependency is covered by the dependency "org.apache.tomcat/tomcat-catalina/9.0.58".
+I guess (I am not sure), that the dependency "javax.naming/jndi" is covered by the dependency "org.apache.tomcat/tomcat-catalina/9.0.58".
 
 <dependency> <!-- Removed -->
     <groupId>directory-naming</groupId>
