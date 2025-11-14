@@ -50,12 +50,12 @@
             <artifactId>tomcat-dbcp</artifactId>
             <version>9.0.30</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>directory-naming</groupId>
             <artifactId>naming-java</artifactId>
             <version>0.8</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
 
         <!-- org.hibernate -->
         <dependency>

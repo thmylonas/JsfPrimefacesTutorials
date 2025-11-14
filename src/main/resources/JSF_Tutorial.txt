@@ -545,8 +545,9 @@ Dependency_1:
 
 The dependency "javax.el/javax.el-api" is removed from pom, because it is covered from:
 - the dependency "com.sun.faces/jsf-api" (exists in this dependency's pom)
+- the dependency "com.sun.faces/jsf-impl" (exists in this dependency's pom)
 
-<dependency>
+<dependency> <!-- Removed -->
     <groupId>javax.el</groupId>
     <artifactId>javax.el-api</artifactId>
     <version>3.0.1-b06</version>
@@ -556,9 +557,10 @@ Dependency_2:
 -----------------
 
 The dependency "javax.servlet/javax.servlet-api" is removed from pom, because it is covered from:
+- the dependency "com.sun.faces/jsf-api" (exists in this dependency's pom - version: 3.0.1)
 - the dependency "com.sun.faces/jsf-impl" (exists in this dependency's pom - version: 3.0.1)
 
-<dependency>
+<dependency> <!-- Removed -->
     <groupId>javax.servlet</groupId>
     <artifactId>javax.servlet-api</artifactId>
     <version>4.0.1</version>
@@ -569,9 +571,10 @@ Dependency_3:
 -----------------
 
 The dependency "javax.servlet/jstl" is removed from pom, because it is covered from:
+- the dependency "com.sun.faces/jsf-api" (exists in this dependency's pom - "javax.servlet.jsp.jstl/jstl-api/1.2/provided")
 - the dependency "com.sun.faces/jsf-impl" (exists in this dependency's pom - "javax.servlet.jsp.jstl/jstl-api/1.2/provided")
 
-<dependency>
+<dependency> <!-- Removed -->
     <groupId>javax.servlet</groupId>
     <artifactId>jstl</artifactId>
     <version>1.2</version>
