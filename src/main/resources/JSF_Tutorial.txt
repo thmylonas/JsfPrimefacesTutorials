@@ -537,6 +537,12 @@ is not existing in the "MenubarBackingBean".
 
 ========================================================================================================================
 
+About Not_Used/Removed dependencies
+---------------------------------------
+
+Dependency_1:
+-----------------
+
 The dependency "javax.el/javax.el-api" is removed from pom, because it is covered from:
 - the dependency "com.sun.faces/jsf-api" (exists in this dependency's pom)
 
@@ -544,6 +550,19 @@ The dependency "javax.el/javax.el-api" is removed from pom, because it is covere
     <groupId>javax.el</groupId>
     <artifactId>javax.el-api</artifactId>
     <version>3.0.1-b06</version>
+</dependency>
+
+Dependency_2:
+-----------------
+
+The dependency "javax.servlet/javax.servlet-api" is removed from pom, because it is covered from:
+- the dependency "com.sun.faces/jsf-impl" (exists in this dependency's pom - version: 3.0.1)
+
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>4.0.1</version>
+    <scope>provided</scope>
 </dependency>
 
 ========================================================================================================================
