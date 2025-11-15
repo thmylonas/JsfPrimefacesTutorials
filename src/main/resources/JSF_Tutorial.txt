@@ -1,6 +1,8 @@
 About CDI Beans management
 ------------------------------
 
+Attention: Unfortunately this does not work with JSF_V2.2
+
 CDI Named beans to be available we need the dependency: "javax/javaee-api":
 <dependency>
     <groupId>javax</groupId>
@@ -15,6 +17,7 @@ The "javax/javaee-api" dependency, contains the "javax.inject/javax.inject", so,
     <version>1</version>
 </dependency>
 
+Links:
 - https://github.com/eclipse-ee4j/mojarra/issues/4264
 - https://coderanch.com/t/513343/java/ManagedBean-works-Named-doesn
 - https://jpguilleron.wordpress.com/2014/07/06/migrating-from-jsf-injection-to-cdi
@@ -142,7 +145,7 @@ It seems (I am not sure why) that the next does not work:
     @javax.persistence.PersistenceContext
     private EntityManager em;
 I guess because the "EntityManager em" becomes a Bean, and this cannot be created/managed from the "@javax.faces.bean.ManagedBean".
-It seems that (I am not sure) it needs a CDI Beans management
+It seems that (I am not sure) it needs a CDI Beans management.
 
 ========================================================================================================================
 

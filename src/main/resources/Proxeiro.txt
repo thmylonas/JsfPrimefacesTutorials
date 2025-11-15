@@ -47,7 +47,7 @@ Application context: /JsfPrimefacesTutorials [Hidden at the end of Tab]
 Start the project, create the DB and the "Students" table [*]
 -----------------------------------------------------------------
 
-This can be done by:
+This can be done with the next steps:
 - Start the project, by starting the "Tomcat_v9.x.xx" server
 - Enter the menu: "JSF and JPA"
 
@@ -78,7 +78,7 @@ Create a new Data Source with the next configuration:
 [Step_5]
 
 Start the "H2_Server" in the browser WebApp "H2 Console" ("In-Disk-H2_Database")
--------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 
 This step does not create the DB and the "Students" table (see [*])
 
