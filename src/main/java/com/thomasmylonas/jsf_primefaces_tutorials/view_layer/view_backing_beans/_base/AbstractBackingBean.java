@@ -28,10 +28,10 @@ public abstract class AbstractBackingBean implements Serializable {
 
         String propertyValue = "No '" + propertyName + "' value found!";
         try {
-            propertyValue = HelperClass.fetchPropertyValueFromProperties(propertiesPath, propertyName);
+            propertyValue = HelperClass.fetchPropertyValueFromProperties(propertiesPath, propertyName); // IOException
         } catch (IOException e) {
             log.error("In 'AbstractBackingBean': " + errorMessage +
-                    " (because 'HelperClass::getPropertyValueFromProperties' throws 'IOException')");
+                    " (because 'HelperClass::fetchPropertyValueFromProperties' throws 'IOException')");
         }
         return propertyValue;
     }

@@ -38,7 +38,7 @@ public abstract class AbstractViewsFilter implements Filter {
         String relativeRequestUri = httpRequest.getRequestURI().substring(httpRequest.getContextPath().length());
         String lastUriPart = extractLastUriPart(relativeRequestUri);
 
-        String pageFullRealPath = getPageFullRealPath(parentDirPath, filterSubClass, lastUriPart);
+        String pageFullRealPath = buildPageFullRealPath(parentDirPath, filterSubClass, lastUriPart);
 
         if (pageFullRealPath != null) {
             httpRequest.getRequestDispatcher(pageFullRealPath).forward(httpRequest, httpResponse);
@@ -57,17 +57,17 @@ public abstract class AbstractViewsFilter implements Filter {
         return relativeRequestUri.substring(relativeRequestUri.lastIndexOf("/") + 1);
     }
 
-    private String getPageFullRealPath(String parentDirPath, Class<?> filterSubClass, String lastUriPart) {
+    private String buildPageFullRealPath(String parentDirPath, Class<?> filterSubClass, String lastUriPart) {
 
         String result = null;
         String[] webFilterPathPatterns = new String[0];
         try {
-            webFilterPathPatterns = getWebFilterPathPatterns(filterSubClass);
+            webFilterPathPatterns = buildWebFilterPathPatterns(filterSubClass); // InvocationTargetException, IllegalAccessException
             if (webFilterPathPatterns == null) {
                 return null;
             }
         } catch (InvocationTargetException | IllegalAccessException e) {
-            log.error("'HelperClass::getWebFilterPathPatterns' throws 'InvocationTargetException,IllegalAccessException'");
+            log.error("'AbstractViewsFilter::buildWebFilterPathPatterns' throws 'InvocationTargetException,IllegalAccessException'");
         }
 
         if (lastUriPart.isEmpty()) {
@@ -83,14 +83,14 @@ public abstract class AbstractViewsFilter implements Filter {
     }
 
     /**
-     * This method gets all the WebFilter path patterns for mapping
+     * This method builds all the WebFilter path patterns for mapping
      *
      * @param clazz The SubClass of the filter
      * @return The WebFilter path patterns for mapping
      * @throws InvocationTargetException "Method::invoke" throws "InvocationTargetException"
      * @throws IllegalAccessException    "Method::invoke" throws "IllegalAccessException"
      */
-    public static String[] getWebFilterPathPatterns(Class<?> clazz) throws InvocationTargetException, IllegalAccessException {
+    private static String[] buildWebFilterPathPatterns(Class<?> clazz) throws InvocationTargetException, IllegalAccessException {
 
         if (clazz == null) {
             return null;
