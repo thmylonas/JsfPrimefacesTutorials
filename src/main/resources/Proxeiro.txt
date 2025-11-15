@@ -1,7 +1,15 @@
-Significant notes:
-----------------------
+========================================================================================================================
+========================================= Significant Steps to run the project =========================================
+========================================================================================================================
+
+[Step_1]
+
 Before running this project, install the plugin:
 - Jakarta EE: Server Faces (JSF)
+
+========================================================================================================================
+
+[Step_2]
 
 Run/Debug Configurations
 ----------------------------
@@ -31,6 +39,51 @@ Deploy at the server startup
     - jsf_primefaces_tutorials:war exploded
 Application context: /JsfPrimefacesTutorials [Hidden at the end of Tab]
                     [Default value: "/JsfPrimefacesTutorials_war" or "/JsfPrimefacesTutorials_war_exploded"]
+
+========================================================================================================================
+
+[Step_3]
+
+Start the project, create the DB and the "Students" table [*]
+-----------------------------------------------------------------
+
+This can be done by:
+- Start the project, by starting the "Tomcat_v9.x.xx" server
+- Enter the menu: "JSF and JPA"
+
+The database "studentdb.mv.db" will be created in the user's home directory:
+- C:/Users/%user_name%/studentdb.mv.db
+
+========================================================================================================================
+
+[Step_4]
+
+Start the "H2_Server" through the IntelliJ_Database_Tools ("In-Disk-H2_Database")
+-------------------------------------------------------------------------------------
+
+This step does not create the DB and the "Students" table (see [*])
+
+Create a new Data Source with the next configuration:
+- Name: "<DB_Name>"
+- Connection type: "Embedded"
+- Driver: "H2"
+- Path: "~/xxx.mv.db"
+- Authentication: "User & Password"
+- User: sa
+- Password:
+- URL: "jdbc:h2:~/mydb;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1"
+
+========================================================================================================================
+
+[Step_5]
+
+Start the "H2_Server" in the browser WebApp "H2 Console" ("In-Disk-H2_Database")
+-------------------------------------------------------------------------------------
+
+This step does not create the DB and the "Students" table (see [*])
+
+Run the script:
+- resources/db_files/h2_db_files/h2_scripts/Start_H2_InDisk_Database.bat
 
 ========================================================================================================================
 
