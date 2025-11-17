@@ -71,7 +71,7 @@ Create a new Data Source with the next configuration:
 - Authentication: "User & Password"
 - User: sa
 - Password:
-- URL: "jdbc:h2:~/mydb;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1"
+- URL: "jdbc:h2:~/studentdb;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1"
 
 ========================================================================================================================
 
