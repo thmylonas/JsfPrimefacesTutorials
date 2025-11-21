@@ -178,24 +178,20 @@ Link: "https://docs.spring.io/spring-webflow/docs/current/reference/html/spring-
 
 WebConfig.java
 ---------------
-@Configuration
-@ComponentScan(basePackages = {"com.thomasmylonas.spring_rest.controllers"},
-        excludeFilters = {
-                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class)
-        }
-)
-@EnableWebMvc
-public class WebConfig implements WebMvcConfigurer {
+@org.springframework.context.annotation.Configuration
+@org.springframework.context.annotation.ComponentScan(basePackages = {"path.to.controllers"})
+@org.springframework.web.servlet.config.annotation.EnableWebMvc
+public class WebConfig implements org.springframework.web.servlet.config.annotation.WebMvcConfigurer {
 
     /**
-     * This method replaces fully the configuration in "web.xml"
+     * This method replaces fully the configuration in "web.xml".
      * To enable the configuration with this class, we have to add in the "WebConfig" class the following annotation:
-     * "@ServletComponentScan(basePackages = {"com.thomasmylonas.spring_mvc_jsf_pf_web_app"})"
+     * "@org.springframework.boot.web.servlet.ServletComponentScan(basePackages = {"com.thomasmylonas.jsf_primefaces_tutorials"})"
      *
      * @param servletContext The ServletContext
      * @return The ServletRegistrationBean
      */
-    //@Bean
+    //@org.springframework.context.annotation.Bean // Comment this if "web.xml" exists
     ServletRegistrationBean<FacesServlet> facesServletRegistration(javax.servlet.ServletContext servletContext) {
 
         // Spring Boot works only, if this is set
