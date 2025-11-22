@@ -11,7 +11,7 @@ public interface StudentService {
 
     List<Student> findAllStudents();
 
-    Student saveStudent(Student student);
+    void saveStudent(Student student);
 
     void updateStudent(Student student, Long id) throws RequestedResourceNotFoundException;
 

@@ -41,7 +41,7 @@ public class DbStudentService extends AbstractService implements StudentService 
     }
 
     @Override
-    public Student saveStudent(Student student) {
+    public void saveStudent(Student student) {
 
         if (student == null) {
             throw new IllegalArgumentException("The student is not valid (is null)!");
@@ -54,7 +54,7 @@ public class DbStudentService extends AbstractService implements StudentService 
                 .departmentId(student.getDepartmentId())
                 .status(student.getStatus())
                 .build();
-        return studentDao.save(studentToSave); // IllegalArgumentException
+        studentDao.save(studentToSave); // IllegalArgumentException
     }
 
     @Override
@@ -64,7 +64,7 @@ public class DbStudentService extends AbstractService implements StudentService 
 
     @Override
     public void deleteStudent(Long id) {
-        studentDao.deleteById(id); // IllegalArgumentException, RequestedResourceNotFoundException
+        studentDao.deleteById(id); // IllegalArgumentException
     }
 
     private void initStudentsList() {
