@@ -176,39 +176,44 @@ Link: "https://docs.spring.io/spring-webflow/docs/current/reference/html/spring-
 
 ========================================================================================================================
 
-WebConfig.java
----------------
+Programmatic alternative of the "WEB-INF/web.xml"
+-----------------------------------------------------
+
+"WebConfig.java"
+
 @org.springframework.context.annotation.Configuration
 @org.springframework.context.annotation.ComponentScan(basePackages = {"path.to.controllers"})
 @org.springframework.web.servlet.config.annotation.EnableWebMvc
 public class WebConfig implements org.springframework.web.servlet.config.annotation.WebMvcConfigurer {
 
     /**
-     * This method replaces fully the configuration in "web.xml".
+     * This method replaces fully the configuration in "WEB-INF/web.xml".
      * To enable the configuration with this class, we have to add in the "WebConfig" class the following annotation:
      * "@org.springframework.boot.web.servlet.ServletComponentScan(basePackages = {"com.thomasmylonas.jsf_primefaces_tutorials"})"
      *
-     * @param servletContext The ServletContext
-     * @return The ServletRegistrationBean
+     * @param servletContext The "javax.servlet.ServletContext"
+     * @return The "org.springframework.boot.web.servlet.ServletRegistrationBean"
      */
-    //@org.springframework.context.annotation.Bean // Comment this if "web.xml" exists
-    ServletRegistrationBean<FacesServlet> facesServletRegistration(javax.servlet.ServletContext servletContext) {
+    //@org.springframework.context.annotation.Bean // Comment this if "WEB-INF/web.xml" exists
+    org.springframework.boot.web.servlet.ServletRegistrationBean<javax.faces.webapp.FacesServlet> facesServletRegistration(javax.servlet.ServletContext servletContext) {
 
-        // Spring Boot works only, if this is set
+        // SpringBoot works only, if this is set
         servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
         servletContext.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", Boolean.TRUE.toString());
+
         // Use JSF view templates saved as *.xhtml, for use with Facelets
         servletContext.setInitParameter("javax.faces.DEFAULT_SUFFIX", ".xhtml");
         servletContext.setInitParameter("javax.faces.CONFIG_FILES", "/WEB-INF/faces-config.xml");
 
         // This parameter enables better error messages, including in the client-side JavaScript, at the cost of some performance
         //servletContext.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
+
         // State saving method: 'client' or 'server' (=default)
         //servletContext.setInitParameter("javax.faces.STATE_SAVING_METHOD", "client");
 
-        // FacesServlet registration
-        ServletRegistrationBean<FacesServlet> servletRegistrationBean = new ServletRegistrationBean<>();
-        servletRegistrationBean.setServlet(new FacesServlet());
+        // The "javax.faces.webapp.FacesServlet" registration
+        org.springframework.boot.web.servlet.ServletRegistrationBean<javax.faces.webapp.FacesServlet> servletRegistrationBean = new org.springframework.boot.web.servlet.ServletRegistrationBean<>();
+        servletRegistrationBean.setServlet(new javax.faces.webapp.FacesServlet());
         servletRegistrationBean.setUrlMappings(Arrays.asList("*.xhtml", "*.jsf", "/faces/*", "*.faces"));
         servletRegistrationBean.setLoadOnStartup(1);
         return servletRegistrationBean;
@@ -525,7 +530,7 @@ to
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 
 Exception to this are the following files (the "ns" cannot be changed here):
-"web.xml"
+"WEB-INF/web.xml"
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://java.sun.com/xml/ns/javaee"
     xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
@@ -632,7 +637,7 @@ The right dependency which should be used is "javax.naming/jndi".
 Although the dependency "javax.naming/jndi" is part of Java_EE dependencies,
 it seems (I am not sure) that is used from Tomcat server. Especially the tags:
 - <Resource .../>, in the "context.xml" file
-- <resource-ref/>, in the "web.xml" file
+- <resource-ref/>, in the "WEB-INF/web.xml" file
 are based in "JNDI", so the DB reference name can be found.
 I guess (I am not sure), that the dependency "javax.naming/jndi" is covered by the dependency "org.apache.tomcat/tomcat-catalina/9.0.58".
 
