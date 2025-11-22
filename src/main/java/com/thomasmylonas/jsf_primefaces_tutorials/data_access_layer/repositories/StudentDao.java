@@ -2,7 +2,7 @@ package com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.repositorie
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
+import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.RequestedResourceNotFoundException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +39,7 @@ public class StudentDao {
         }
         Student entityResult = em.find(Student.class, id);
         if (entityResult == null) {
-            throw new ResourceNotFoundException(Student.class.getSimpleName(), id);
+            throw new RequestedResourceNotFoundException(Student.class.getSimpleName(), id);
         }
         return entityResult;
     }
@@ -89,7 +89,7 @@ public class StudentDao {
         try {
             em.getTransaction().begin();
 
-            Student studentToUpdate = findById(id); // IllegalArgumentException, ResourceNotFoundException
+            Student studentToUpdate = findById(id); // IllegalArgumentException, RequestedResourceNotFoundException
             updateStudentWithGivenObject(studentToUpdate, student);
 
             em.getTransaction().commit();
@@ -107,7 +107,7 @@ public class StudentDao {
         try {
             em.getTransaction().begin();
 
-            Student entityToDelete = findById(id); // IllegalArgumentException, ResourceNotFoundException
+            Student entityToDelete = findById(id); // IllegalArgumentException, RequestedResourceNotFoundException
             em.remove(entityToDelete);
 
             em.getTransaction().commit();

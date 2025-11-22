@@ -2,7 +2,7 @@ package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.jsf_jp
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
+import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.RequestedResourceNotFoundException;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.jsf_jpa_services._base.AbstractJsfJpaService;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services.InMemoryStudentService;
 import lombok.Getter;
@@ -70,7 +70,7 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
         }
         try {
             inMemoryStudentService.updateStudent(student, id);
-        } catch (ResourceNotFoundException e) {
+        } catch (RequestedResourceNotFoundException e) {
             log.error("There is no student with id {}, to update", id);
         }
     }
@@ -82,7 +82,7 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
         }
         try {
             inMemoryStudentService.deleteStudent(deleteFormStudentId);
-        } catch (ResourceNotFoundException e) {
+        } catch (RequestedResourceNotFoundException e) {
             log.error("There is no student with id {}, to delete", deleteFormStudentId);
         }
     }

@@ -3,7 +3,7 @@ package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.studen
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.repositories.StudentDao;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.TestDataProvider;
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.ResourceNotFoundException;
+import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.RequestedResourceNotFoundException;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -30,7 +30,7 @@ public class InMemoryStudentService extends StudentDao implements StudentService
         if (id == null || id < 0) {
             throw new IllegalArgumentException("The id is not valid!");
         }
-        return filterInMemoryStudentsListById(id); // ResourceNotFoundException
+        return filterInMemoryStudentsListById(id); // RequestedResourceNotFoundException
     }
 
     @Override
@@ -66,13 +66,13 @@ public class InMemoryStudentService extends StudentDao implements StudentService
         if (id == null || id < 0 || student == null) {
             throw new IllegalArgumentException("The arguments are not valid!");
         }
-        Student studentToBeUpdated = findStudentById(id); // IllegalArgumentException, ResourceNotFoundException
+        Student studentToBeUpdated = findStudentById(id); // IllegalArgumentException, RequestedResourceNotFoundException
         updateStudentWithGivenObject(studentToBeUpdated, student);
     }
 
     @Override
-    public void deleteStudent(Long id) throws ResourceNotFoundException {
-        Student studentToDelete = findStudentById(id); // IllegalArgumentException, ResourceNotFoundException
+    public void deleteStudent(Long id) throws RequestedResourceNotFoundException {
+        Student studentToDelete = findStudentById(id); // IllegalArgumentException, RequestedResourceNotFoundException
         inMemoryStudentsList.remove(studentToDelete);
     }
 
@@ -81,7 +81,7 @@ public class InMemoryStudentService extends StudentDao implements StudentService
                 .stream()
                 .filter(student -> student.getId().equals(id))
                 .findAny()
-                .orElseThrow(() -> new ResourceNotFoundException(Student.class.getSimpleName(), id));
+                .orElseThrow(() -> new RequestedResourceNotFoundException(Student.class.getSimpleName(), id));
     }
 
     private void initInMemoryStudentsList() {

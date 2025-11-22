@@ -32,7 +32,7 @@ public class DbStudentService extends AbstractService implements StudentService 
 
     @Override
     public Student findStudentById(Long id) {
-        return studentDao.findById(id); // IllegalArgumentException, ResourceNotFoundException
+        return studentDao.findById(id); // IllegalArgumentException, RequestedResourceNotFoundException
     }
 
     @Override
@@ -59,12 +59,12 @@ public class DbStudentService extends AbstractService implements StudentService 
 
     @Override
     public void updateStudent(Student student, Long id) {
-        studentDao.update(student, id); // IllegalArgumentException, ResourceNotFoundException
+        studentDao.update(student, id); // IllegalArgumentException, RequestedResourceNotFoundException
     }
 
     @Override
     public void deleteStudent(Long id) {
-        studentDao.deleteById(id); // IllegalArgumentException, ResourceNotFoundException
+        studentDao.deleteById(id); // IllegalArgumentException, RequestedResourceNotFoundException
     }
 
     private void initStudentsList() {
