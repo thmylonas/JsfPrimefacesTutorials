@@ -176,8 +176,8 @@ Link: "https://docs.spring.io/spring-webflow/docs/current/reference/html/spring-
 
 ========================================================================================================================
 
-Programmatic alternative of the "WEB-INF/web.xml"
------------------------------------------------------
+Programmatic alternative (by Spring) of the "WEB-INF/web.xml"
+-----------------------------------------------------------------
 
 "WebConfig.java"
 
