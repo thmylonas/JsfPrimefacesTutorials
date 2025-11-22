@@ -23,33 +23,56 @@ import java.util.List;
 @Slf4j
 public class StudentDao {
 
+    private static final String ROLLBACK_MESSAGE = "Because of an 'Exception': '{}', the transaction is rolled back!";
     private static final String PERSISTENCE_UNIT_NAME = "StudentPU_H2";
 
-    private EntityManager em;
+    private EntityManager em; // Created into "StudentDao::init"
 
     @PostConstruct
     private void init() {
         em = createEntityManager(PERSISTENCE_UNIT_NAME);
     }
 
-    public Student findById(Long id) {
+    /**
+     * The method finds a Student with ID "id"
+     *
+     * @param id The ID of the Student to find
+     * @return The Student with ID "id"
+     * @throws IllegalArgumentException           If the "id" is not valid
+     * @throws RequestedResourceNotFoundException If the Student with ID "id", is not found
+     */
+    public Student findById(Long id) throws IllegalArgumentException, RequestedResourceNotFoundException {
 
         if (id == null || id < 0) {
             throw new IllegalArgumentException("The id is not valid!");
         }
-        Student entityResult = em.find(Student.class, id);
-        if (entityResult == null) {
+        Student student = em.find(Student.class, id); // IllegalArgumentException
+        if (student == null) {
             throw new RequestedResourceNotFoundException(Student.class.getSimpleName(), id);
         }
-        return entityResult;
+        return student; // It can never be null
     }
 
+    /**
+     * The method finds all the Students
+     *
+     * @return All the Students
+     */
     public List<Student> findAll() {
         TypedQuery<Student> query = em.createQuery("select s from Student s", Student.class);
         return query.getResultList();
     }
 
-    public Student save(Student student) {
+    /**
+     * The method saves a Student in the DB
+     * If "EntityTransaction::commit" happens, the saved "student" (containing the auto-generated "id", after "EntityManager::persist/EntityManager::flush") is returned
+     * If "EntityTransaction::rollback" happens, the initial "student" (without "id") is returned
+     *
+     * @param student The "student" to save
+     * @return The saved "student" which contains the auto-generated "id" or the initial "student" (without "id")
+     * @throws IllegalArgumentException If the "student" is not valid
+     */
+    public Student save(Student student) throws IllegalArgumentException {
 
         if (student == null) {
             throw new IllegalArgumentException("The student is not valid (is null)!");
@@ -57,32 +80,57 @@ public class StudentDao {
         try {
             em.getTransaction().begin();
 
-            em.persist(student); // After "EntityManager::persist" the "entity" contains the "ID" with which is persisted
+            em.persist(student); // After "EntityManager::persist" the "student" contains the "ID" with which is persisted
+            em.flush();
 
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            log.error("Because of an 'Exception': '{}', the transaction is rolled back!", e.getMessage());
+            log.error(ROLLBACK_MESSAGE, e.getMessage());
         }
-        return student;
+        return student; // see method's documentation
     }
 
-    public void saveAll(List<Student> entities) {
+    /**
+     * The method saves a list of Students in the DB
+     * If "EntityTransaction::commit" happens, the saved "students" (containing the auto-generated "ids", after "EntityManager::persist/EntityManager::flush") are returned
+     * If "EntityTransaction::rollback" happens, the initial "students" (without "ids") are returned
+     *
+     * @param students The "students" to save
+     * @return The saved "students" which contain the auto-generated "ids" or the initial "students" (without "ids")
+     * @throws IllegalArgumentException If the "students" are not valid
+     */
+    public List<Student> saveAll(List<Student> students) throws IllegalArgumentException {
 
+        if (students == null || students.isEmpty()) {
+            throw new IllegalArgumentException("The students are not valid!");
+        }
         try {
             em.getTransaction().begin();
 
-            entities.forEach(em::persist); // "student -> em.persist(student)"
+            students.forEach(em::persist); // "student -> em.persist(student)"
+            em.flush();
 
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            log.error("Because of an 'Exception': '{}', the transaction is rolled back!", e.getMessage());
+            log.error(ROLLBACK_MESSAGE, e.getMessage());
         }
+        return students; // see method's documentation
     }
 
-    public void update(Student student, Long id) {
+    /**
+     * The method updates a Student with ID "id", with the "student"
+     *
+     * @param student The "student" used to update, the Student with ID "id"
+     * @param id      The ID of the Student to update
+     * @return The updated Student
+     * @throws IllegalArgumentException           If the "id" or "student" are not valid
+     * @throws RequestedResourceNotFoundException If the Student with ID "id", is not found
+     */
+    public Student update(Student student, Long id) throws IllegalArgumentException, RequestedResourceNotFoundException {
 
+        Student updatedStudent = null;
         if (id == null || id < 0 || student == null) {
             throw new IllegalArgumentException("The arguments are not valid!");
         }
@@ -90,16 +138,27 @@ public class StudentDao {
             em.getTransaction().begin();
 
             Student studentToUpdate = findById(id); // IllegalArgumentException, RequestedResourceNotFoundException
-            updateStudentWithGivenObject(studentToUpdate, student);
+            updatedStudent = updateStudentWithGivenObject(studentToUpdate, student);
 
             em.getTransaction().commit();
+        } catch (RequestedResourceNotFoundException e) {
+            em.getTransaction().rollback();
+            log.error(ROLLBACK_MESSAGE + " - The Student to update, is not found", e.getMessage());
+            throw new RequestedResourceNotFoundException(Student.class.getSimpleName(), id);
         } catch (Exception e) {
             em.getTransaction().rollback();
-            log.error("Because of an 'Exception': '{}', the transaction is rolled back!", e.getMessage());
+            log.error(ROLLBACK_MESSAGE, e.getMessage());
         }
+        return updatedStudent; // It can never be null
     }
 
-    public void deleteById(Long id) {
+    /**
+     * The method deletes a Student with ID "id"
+     *
+     * @param id The ID of the Student to delete
+     * @throws IllegalArgumentException If the "id" is not valid
+     */
+    public void deleteById(Long id) throws IllegalArgumentException {
 
         if (id == null || id < 0) {
             throw new IllegalArgumentException("The id is not valid!");
@@ -107,27 +166,27 @@ public class StudentDao {
         try {
             em.getTransaction().begin();
 
-            Student entityToDelete = findById(id); // IllegalArgumentException, RequestedResourceNotFoundException
-            em.remove(entityToDelete);
+            Student studentToDelete = findById(id); // IllegalArgumentException, RequestedResourceNotFoundException
+            em.remove(studentToDelete);
 
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            log.error("Because of an 'Exception': '{}', the transaction is rolled back!", e.getMessage());
+            log.error(ROLLBACK_MESSAGE, e.getMessage());
         }
     }
 
     private EntityManager createEntityManager(String persistenceUnitName) {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnitName);
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(persistenceUnitName);
         try {
-            return emf.createEntityManager(); // IllegalStateException
+            return entityManagerFactory.createEntityManager(); // IllegalStateException
         } catch (Exception e) {
             throw new RuntimeException("Error creating EntityManager", e);
         }
     }
 
-    protected void updateStudentWithGivenObject(Student studentToUpdate, Student student) {
+    protected Student updateStudentWithGivenObject(Student studentToUpdate, Student student) {
 
         if (!HelperClass.isStringNullOrEmpty(student.getLastName())) {
             studentToUpdate.setLastName(student.getLastName());
@@ -147,5 +206,6 @@ public class StudentDao {
         if (student.getStatus() != null) {
             studentToUpdate.setStatus(student.getStatus());
         }
+        return studentToUpdate; // The updated Student
     }
 }
