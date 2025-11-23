@@ -43,9 +43,6 @@ public class DbStudentService extends AbstractService implements StudentService 
     @Override
     public void saveStudent(Student student) {
 
-        if (student == null) {
-            throw new IllegalArgumentException("The student is not valid (is null)!");
-        }
         Student studentToSave = Student.builder()
                 .lastName(student.getLastName())
                 .firstName(student.getFirstName())

@@ -35,7 +35,8 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
 
     public void findStudentById() {
 
-        if (studentId == null) {
+        if (studentId == null || studentId < 0) {
+            log.error("The id is not valid!");
             return;
         }
         // Reset the "studentsFiltered"
@@ -60,7 +61,8 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
 
     public void saveNewStudent(Student student) {
 
-        if (isStudentEmpty(student)) {
+        if (student == null || isStudentEmpty(student)) {
+            log.error("The student is not valid (is null)!");
             return;
         }
         dbStudentService.saveStudent(student);
@@ -68,7 +70,8 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
 
     public void updateStudent(Student student, Long id) {
 
-        if (id == null || isStudentEmpty(student)) {
+        if (id == null || id < 0 || student == null || isStudentEmpty(student)) {
+            log.error("The arguments are not valid!");
             return;
         }
         try {
@@ -80,7 +83,8 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
 
     public void deleteStudent() {
 
-        if (deleteFormStudentId == null) {
+        if (deleteFormStudentId == null || deleteFormStudentId < 0) {
+            log.error("The id is not valid!");
             return;
         }
         try {

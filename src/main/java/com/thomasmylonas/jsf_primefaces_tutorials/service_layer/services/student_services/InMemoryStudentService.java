@@ -4,6 +4,7 @@ import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Stu
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.repositories.StudentDao;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.TestDataProvider;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.RequestedResourceNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @ManagedBean(name = "inMemoryStudentService")
 @SessionScoped
+@Slf4j
 public class InMemoryStudentService extends StudentDao implements StudentService {
 
     private List<Student> inMemoryStudentsList;
@@ -26,10 +28,6 @@ public class InMemoryStudentService extends StudentDao implements StudentService
 
     @Override
     public Student findStudentById(Long id) {
-
-        if (id == null || id < 0) {
-            throw new IllegalArgumentException("The id is not valid!");
-        }
         return filterInMemoryStudentsListById(id); // RequestedResourceNotFoundException
     }
 
@@ -41,9 +39,6 @@ public class InMemoryStudentService extends StudentDao implements StudentService
     @Override
     public void saveStudent(Student student) {
 
-        if (student == null) {
-            throw new IllegalArgumentException("The student is not valid (is null)!");
-        }
         if (inMemoryStudentsList == null) {
             inMemoryStudentsList = new ArrayList<>();
         }
@@ -61,18 +56,19 @@ public class InMemoryStudentService extends StudentDao implements StudentService
 
     @Override
     public void updateStudent(Student student, Long id) {
-
-        if (id == null || id < 0 || student == null) {
-            throw new IllegalArgumentException("The arguments are not valid!");
-        }
         Student studentToBeUpdated = findStudentById(id); // IllegalArgumentException, RequestedResourceNotFoundException
         updateStudentWithGivenObject(studentToBeUpdated, student);
     }
 
     @Override
     public void deleteStudent(Long id) throws RequestedResourceNotFoundException {
-        Student studentToDelete = findStudentById(id); // IllegalArgumentException, RequestedResourceNotFoundException
-        inMemoryStudentsList.remove(studentToDelete);
+
+        try {
+            Student studentToDelete = findStudentById(id); // IllegalArgumentException, RequestedResourceNotFoundException
+            inMemoryStudentsList.remove(studentToDelete);
+        } catch (Exception e) {
+            log.error("The Student to delete, is not found");
+        }
     }
 
     private Student filterInMemoryStudentsListById(Long id) {
