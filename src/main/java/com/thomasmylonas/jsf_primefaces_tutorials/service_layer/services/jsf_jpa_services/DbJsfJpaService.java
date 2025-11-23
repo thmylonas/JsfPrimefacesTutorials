@@ -33,10 +33,11 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
         updateFormStudent = new Student();
     }
 
+    @Override
     public void findStudentById() {
 
         if (studentId == null || studentId < 0) {
-            log.error("The id is not valid!");
+            log.error("Database Datasource: The id is not valid!");
             return;
         }
         // Reset the "studentsFiltered"
@@ -45,46 +46,50 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
             // Populate the "studentsFiltered" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
             studentsFiltered.add(dbStudentService.findStudentById(studentId));
         } catch (Exception e) {
-            log.error("There is no student with id {}", studentId);
+            log.error("Database Datasource: There is no student with id {}", studentId);
         }
     }
 
+    @Override
     public List<Student> findAllStudents() {
 
         List<Student> allStudents = dbStudentService.findAllStudents();
         if (HelperClass.isListNullOrEmpty(allStudents)) {
-            log.error("There are no students");
+            log.error("Database Datasource: There are no students");
             return Collections.emptyList();
         }
         return allStudents;
     }
 
+    @Override
     public void saveNewStudent(Student student) {
 
         if (student == null || isStudentEmpty(student)) {
-            log.error("The student is not valid (is null)!");
+            log.error("Database Datasource: The student is not valid (is null)!");
             return;
         }
         dbStudentService.saveStudent(student);
     }
 
+    @Override
     public void updateStudent(Student student, Long id) {
 
         if (id == null || id < 0 || student == null || isStudentEmpty(student)) {
-            log.error("The arguments are not valid!");
+            log.error("Database Datasource: The arguments are not valid!");
             return;
         }
         try {
             dbStudentService.updateStudent(student, id);
         } catch (Exception e) {
-            log.error("There is no student with id {}, to update", id);
+            log.error("Database Datasource: There is no student with id {}, to update", id);
         }
     }
 
+    @Override
     public void deleteStudent() {
 
         if (deleteFormStudentId == null || deleteFormStudentId < 0) {
-            log.error("The id is not valid!");
+            log.error("Database Datasource: The id is not valid!");
             return;
         }
         dbStudentService.deleteStudent(deleteFormStudentId);
