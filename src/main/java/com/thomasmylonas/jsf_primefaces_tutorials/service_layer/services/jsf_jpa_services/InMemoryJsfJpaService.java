@@ -44,7 +44,7 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
         studentsFiltered = new ArrayList<>();
         try {
             // Populate the "studentsFiltered" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
-            studentsFiltered.add(inMemoryStudentService.findStudentById(studentId));
+            studentsFiltered.add(inMemoryStudentService.findStudentById(studentId)); // RequestedResourceNotFoundException
         } catch (Exception e) {
             log.error("In-Memory Datasource: There is no student with id {}", studentId);
         }
@@ -79,7 +79,7 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
             return;
         }
         try {
-            inMemoryStudentService.updateStudent(student, id);
+            inMemoryStudentService.updateStudent(student, id); // RequestedResourceNotFoundException
         } catch (Exception e) {
             log.error("In-Memory Datasource: There is no student with id {}, to update", id);
         }

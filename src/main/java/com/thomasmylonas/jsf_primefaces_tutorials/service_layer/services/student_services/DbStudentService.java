@@ -4,6 +4,7 @@ import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Stu
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.repositories.StudentDao;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.TestDataProvider;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services._base.AbstractService;
+import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.RequestedResourceNotFoundException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,7 +32,7 @@ public class DbStudentService extends AbstractService implements StudentService 
     }
 
     @Override
-    public Student findStudentById(Long id) {
+    public Student findStudentById(Long id) throws RequestedResourceNotFoundException {
         return studentDao.findById(id); // IllegalArgumentException, RequestedResourceNotFoundException
     }
 
@@ -55,7 +56,7 @@ public class DbStudentService extends AbstractService implements StudentService 
     }
 
     @Override
-    public void updateStudent(Student student, Long id) {
+    public void updateStudent(Student student, Long id) throws RequestedResourceNotFoundException {
         studentDao.update(student, id); // IllegalArgumentException, RequestedResourceNotFoundException
     }
 

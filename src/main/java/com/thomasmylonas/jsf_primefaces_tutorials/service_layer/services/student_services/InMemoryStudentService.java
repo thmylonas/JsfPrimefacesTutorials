@@ -27,7 +27,7 @@ public class InMemoryStudentService extends StudentDao implements StudentService
     }
 
     @Override
-    public Student findStudentById(Long id) {
+    public Student findStudentById(Long id) throws RequestedResourceNotFoundException {
         return filterInMemoryStudentsListById(id); // RequestedResourceNotFoundException
     }
 
@@ -55,13 +55,13 @@ public class InMemoryStudentService extends StudentDao implements StudentService
     }
 
     @Override
-    public void updateStudent(Student student, Long id) {
+    public void updateStudent(Student student, Long id) throws RequestedResourceNotFoundException {
         Student studentToBeUpdated = findStudentById(id); // IllegalArgumentException, RequestedResourceNotFoundException
         updateStudentWithGivenObject(studentToBeUpdated, student);
     }
 
     @Override
-    public void deleteStudent(Long id) throws RequestedResourceNotFoundException {
+    public void deleteStudent(Long id) {
 
         try {
             Student studentToDelete = findStudentById(id); // IllegalArgumentException, RequestedResourceNotFoundException
@@ -71,7 +71,7 @@ public class InMemoryStudentService extends StudentDao implements StudentService
         }
     }
 
-    private Student filterInMemoryStudentsListById(Long id) {
+    private Student filterInMemoryStudentsListById(Long id) throws RequestedResourceNotFoundException {
         return inMemoryStudentsList
                 .stream()
                 .filter(student -> student.getId().equals(id))

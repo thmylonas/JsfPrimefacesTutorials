@@ -15,5 +15,5 @@ public interface StudentService {
 
     void updateStudent(Student student, Long id) throws RequestedResourceNotFoundException;
 
-    void deleteStudent(Long id) throws RequestedResourceNotFoundException;
+    void deleteStudent(Long id);
 }
