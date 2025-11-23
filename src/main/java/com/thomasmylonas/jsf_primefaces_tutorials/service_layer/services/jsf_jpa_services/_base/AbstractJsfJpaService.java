@@ -39,7 +39,7 @@ public abstract class AbstractJsfJpaService extends AbstractService {
                 student.getDateOfBirth() == null &&
                 student.getAbsences() == null &&
                 HelperClass.isStringNullOrEmpty(student.getDepartmentId()) &&
-                HelperClass.isStringNullOrEmpty(student.getStatus().getValue());
+                HelperClass.isStringNullOrEmpty(student.getStatus() != null ? student.getStatus().getValue() : "");
     }
 
     public void resetStudent(Student student) {
