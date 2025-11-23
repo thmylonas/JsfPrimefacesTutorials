@@ -67,7 +67,7 @@ public class InMemoryStudentService extends StudentDao implements StudentService
             Student studentToDelete = findStudentById(id); // IllegalArgumentException, RequestedResourceNotFoundException
             inMemoryStudentsList.remove(studentToDelete);
         } catch (Exception e) {
-            log.error("The Student to delete, is not found");
+            log.error("The Student to delete, is not found!");
         }
     }
 

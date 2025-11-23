@@ -2,7 +2,6 @@ package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.jsf_jp
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
-import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.RequestedResourceNotFoundException;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.jsf_jpa_services._base.AbstractJsfJpaService;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.student_services.InMemoryStudentService;
 import lombok.Getter;
@@ -42,8 +41,12 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
         }
         // Reset the "studentsFiltered"
         studentsFiltered = new ArrayList<>();
-        // Populate the "studentsFiltered" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
-        studentsFiltered.add(inMemoryStudentService.findStudentById(studentId));
+        try {
+            // Populate the "studentsFiltered" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
+            studentsFiltered.add(inMemoryStudentService.findStudentById(studentId));
+        } catch (Exception e) {
+            log.error("There is no student with id {}", studentId);
+        }
     }
 
     public List<Student> findAllStudents() {
@@ -73,7 +76,7 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
         }
         try {
             inMemoryStudentService.updateStudent(student, id);
-        } catch (RequestedResourceNotFoundException e) {
+        } catch (Exception e) {
             log.error("There is no student with id {}, to update", id);
         }
     }
@@ -84,10 +87,6 @@ public class InMemoryJsfJpaService extends AbstractJsfJpaService {
             log.error("The id is not valid!");
             return;
         }
-        try {
-            inMemoryStudentService.deleteStudent(deleteFormStudentId);
-        } catch (RequestedResourceNotFoundException e) {
-            log.error("There is no student with id {}, to delete", deleteFormStudentId);
-        }
+        inMemoryStudentService.deleteStudent(deleteFormStudentId);
     }
 }

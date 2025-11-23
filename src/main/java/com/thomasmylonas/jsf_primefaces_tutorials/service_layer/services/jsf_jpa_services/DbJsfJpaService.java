@@ -41,8 +41,8 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
         }
         // Reset the "studentsFiltered"
         studentsFiltered = new ArrayList<>();
-        // Populate the "studentsFiltered" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
         try {
+            // Populate the "studentsFiltered" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
             studentsFiltered.add(dbStudentService.findStudentById(studentId));
         } catch (Exception e) {
             log.error("There is no student with id {}", studentId);
@@ -87,10 +87,6 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
             log.error("The id is not valid!");
             return;
         }
-        try {
-            dbStudentService.deleteStudent(deleteFormStudentId);
-        } catch (Exception e) {
-            log.error("There is no student with id {}, to delete", deleteFormStudentId);
-        }
+        dbStudentService.deleteStudent(deleteFormStudentId);
     }
 }
