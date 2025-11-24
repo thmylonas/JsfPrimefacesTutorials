@@ -56,15 +56,15 @@ public class InMemoryStudentService extends StudentDao implements StudentService
 
     @Override
     public void updateStudent(Student student, Long id) throws RequestedResourceNotFoundException {
-        Student studentToBeUpdated = findStudentById(id); // IllegalArgumentException, RequestedResourceNotFoundException
-        updateStudentWithGivenObject(studentToBeUpdated, student);
+        Student studentToUpdate = findStudentById(id); // RequestedResourceNotFoundException
+        updateStudentWithGivenObject(studentToUpdate, student);
     }
 
     @Override
     public void deleteStudent(Long id) {
 
         try {
-            Student studentToDelete = findStudentById(id); // IllegalArgumentException, RequestedResourceNotFoundException
+            Student studentToDelete = findStudentById(id); // RequestedResourceNotFoundException
             inMemoryStudentsList.remove(studentToDelete);
         } catch (Exception e) {
             log.error("The Student to delete, is not found!");
