@@ -16,6 +16,16 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+/**
+ * A basic implementation of an old "DAO" class, with the next features:
+ * - Based on "JPA/Hibernate v5.x.x" (or newer versions),
+ * - Without the use of "Spring_Data_JPA" ("org.springframework.data.jpa.repository.JpaRepository<T, ID>")
+ * - Only the basic "CRUD" operations are implemented (ideal for Restful_Services/APIs)
+ * <p>
+ * This class is used in the next projects:
+ * - The "SpringLegacyTutorials/SpringRest"
+ * - The "JsfPrimefacesTutorials"
+ */
 @ManagedBean(name = "studentDao")
 @SessionScoped
 @Getter
