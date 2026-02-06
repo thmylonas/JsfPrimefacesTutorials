@@ -15,7 +15,7 @@
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:studentdb;DB_CLOSE_DELAY=-1"/>-->
             <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:~/studentdb;DB_CLOSE_DELAY=-1"/>-->
-            <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:~/Documents/0.BitBucket_Projects/JavaEE_Projects/JsfPrimefacesTutorials/src/main/resources/db_files/h2_db_files/h2_databases/studentdb;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1"/>-->
+            <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:~/Documents/_GitHub_Projects/JavaEE_Projects/JsfPrimefacesTutorials/src/main/resources/db_files/h2_db_files/h2_databases/studentdb;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1"/>-->
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/studentdb;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
