@@ -448,6 +448,48 @@ Some different combinations are (I don't know what is the meaning of these):
 
 ========================================================================================================================
 
+About JSF versions "2.2.20" vs "2.2.6"
+------------------------------------------
+
+JSF 2.2.20 and 2.2.6 both share the same JSF 2.2 API.
+However, 2.2.20 is a significantly more mature release containing years of critical bug fixes, performance improvements,
+and major security patches (including fixes for multiple Cross-site Scripting [XSS] vulnerabilities) that were absent in 2.2.6
+
+========================================================================================================================
+
+[ERROR] JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool
+------------------------------------------------------------------------------------------------------------
+
+Links:
+- https://stackoverflow.com/questions/40971621/unknow-type-constant-pool-at-position-x-in-tomcat-logs-since-java-8
+- https://andy722.wordpress.com/2014/07/01/severe-unknow-type-constant-pool-in-jsf-2
+- https://forums.oracle.com/ords/apexds/post/java-8-error-message-unknow-type-constant-pool-18-in-mojarr-9330
+- https://github.com/eclipse-ee4j/mojarra/issues/3968
+- https://github.com/bleathem/mojarra/blob/master/jsf-ri/src/main/java/com/sun/faces/config/JavaClassScanningAnnotationScanner.java
+- https://stackoverflow.com/questions/46112218/spring-restful-service-error-severe-rmi-tcp-connection2-127-0-0-1-org-apach
+- https://github.com/eclipse-ee4j/mojarra/issues/3736
+
+Error logs:
+---------------
+SEVERE [RMI TCP Connection(4)-127.0.0.1] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation
+Unknow type constant pool ### at position ##
+
+This error appears in the JSF version 2.2.6:
+- "com.sun.faces/jsf-api/2.2.6" - "com.sun.faces/jsf-impl/2.2.6"
+
+Explanation:
+----------------
+When Java 8 features like streams are used with mojarra version 2.1.29,
+the annotation scanning in JavaClassScanningAnnotationScanner sometimes fails due to unknown constant pool entries.
+It seems that it was fixed in the latest version "2.2.20"
+
+Solution:
+-------------
+This error is solved in the JSF version 2.2.20:
+- "com.sun.faces/jsf-api/2.2.20 - com.sun.faces/jsf-impl/2.2.20"
+
+========================================================================================================================
+
 JSF_Tutorial Notes:
 -----------------------
 
