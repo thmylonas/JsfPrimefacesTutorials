@@ -710,7 +710,7 @@ Issue_1:
 ------------
 May records cannot be used inside the JSF-views.
 - Maybe because of getters names
-- Maybe this version of JSF (2.2.6) is old and does not know Java_17
+- Maybe this version of JSF (2.2.20/2.2.6) is old and does not know Java_17
 
 Issue_2:
 ------------
