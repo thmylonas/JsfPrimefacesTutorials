@@ -1,13 +1,13 @@
 package com.thomasmylonas.jsf_primefaces_tutorials.service_layer._enums;
 
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
 
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public enum AppImage {
 
     // "images/java_frameworks"

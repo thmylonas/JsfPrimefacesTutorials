@@ -1,10 +1,10 @@
 package com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.enums;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public enum Status {
 
     ADVANCED_STUDENT("Advanced Student"),
