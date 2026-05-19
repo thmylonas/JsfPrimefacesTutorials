@@ -206,7 +206,7 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         subsetUiInputsAttributes = new ArrayList<>();
 
         // The common attributes of the most of the Components
-        subsetUiInputsAttributes.addAll(getMostCommonAttributes());
+        subsetUiInputsAttributes.addAll(mostCommonAttributes);
 
         // The attributes of components, with which we can interact
         subsetUiInputsAttributes.addAll(initAndGetCommonInteractAccessAttributes());
@@ -223,10 +223,10 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         commonUiInputsAttributes.addAll(initAndGetGloballyCommonAttributes());
 
         // The attributes which are handling events
-        commonUiInputsAttributes.addAll(getCommonEventHandlerAttributes());
+        commonUiInputsAttributes.addAll(commonEventHandlerAttributes);
 
         // The subset of the "UIInput" Components' attributes
-        commonUiInputsAttributes.addAll(getSubsetUiInputsAttributes());
+        commonUiInputsAttributes.addAll(subsetUiInputsAttributes);
 
         commonUiInputsAttributes.add(new ComponentsAttribute("converterMessage", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "A ValueExpression enabled attribute that, if present, will be used as the text of the converter message, replacing any message that comes from the converter"));
         commonUiInputsAttributes.add(new ComponentsAttribute("required", false, "No default value", "javax.el.ValueExpression (must evaluate to boolean)", "Flag indicating that the user is required to provide a submitted value for this input component"));
@@ -249,7 +249,7 @@ public class CommonHtmlAttributesService extends AbstractService implements Seri
         commonSelectsAttributes = new ArrayList<>();
 
         // The common "UIInput" Components' attributes
-        commonSelectsAttributes.addAll(getCommonUiInputsAttributes());
+        commonSelectsAttributes.addAll(commonUiInputsAttributes);
 
         if (isEnabledClassAlt) { // Alternative "enabledClass" attribute value (The Description has more text)
             commonSelectsAttributes.add(new ComponentsAttribute("enabledClass", false, "No default value", "javax.el.ValueExpression (must evaluate to java.lang.String)", "CSS style class to apply to the rendered label on enabled options. This attribute is ignored when 'group' attribute is specified"));
