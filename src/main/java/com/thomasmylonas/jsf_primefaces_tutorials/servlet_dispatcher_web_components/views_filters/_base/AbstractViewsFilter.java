@@ -67,7 +67,7 @@ public abstract class AbstractViewsFilter implements Filter {
                 return null;
             }
         } catch (InvocationTargetException | IllegalAccessException e) {
-            log.error("'AbstractViewsFilter::buildWebFilterPathPatterns' throws 'InvocationTargetException,IllegalAccessException'");
+            log.error("'AbstractViewsFilter::buildWebFilterPathPatterns' throws 'InvocationTargetException,IllegalAccessException': {}", e.getMessage());
         }
 
         if (lastUriPart.isEmpty()) {
