@@ -37,8 +37,8 @@ public class Student {
      * - ERROR SqlExceptionHelper - NULL not allowed for column "ID"; SQL statement: "..."
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Students_Sequence_Generator")
-    @SequenceGenerator(name = "Students_Sequence_Generator", sequenceName = "Students_Sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Students_Id_Seq_Generator")
+    @SequenceGenerator(name = "Students_Id_Seq_Generator", sequenceName = "Students_Id_Seq", allocationSize = 1)
     @Column(name = "Id")
     private Long id;
 
