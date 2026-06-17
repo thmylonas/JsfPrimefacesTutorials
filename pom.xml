@@ -49,8 +49,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.4.24.Final</version>
-            <!-- The latest version: "5.6.1.Final", 6.0.0.Final, fail to start the WebApp -->
+            <version>5.6.1.Final</version> <!-- 5.4.3.Final -->
         </dependency>
 
         <!-- com.sun.faces/jsf-api, com.sun.faces/jsf-impl -->
