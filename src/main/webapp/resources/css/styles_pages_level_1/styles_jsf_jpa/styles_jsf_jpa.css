@@ -20,8 +20,9 @@
     border: 1px solid var(--deep_pink1);
     border-radius: 5px;
     box-shadow: 5px 5px 5px #dcdcfc;
-    width: fit-content;
-    padding: 10px 40px;
+    width: 100%;
+    padding: 10px 0;
+    margin: 10px 10px;
 }
 
 .data_insert_form label {
