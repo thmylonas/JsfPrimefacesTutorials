@@ -1,6 +1,7 @@
 package com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities;
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.enums.Status;
+import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.models._general_models.StatusConverter;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,9 +10,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +38,7 @@ public class Student {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Students_Id_Seq_Generator")
-    @SequenceGenerator(name = "Students_Id_Seq_Generator", sequenceName = "Students_Id_Seq", allocationSize = 1)
+    @SequenceGenerator(name = "Students_Id_Seq_Generator", sequenceName = "Students_Id_Seq", initialValue = 1, allocationSize = 1)
     @Column(name = "Id")
     private Long id;
 
@@ -54,10 +54,10 @@ public class Student {
     @Column(name = "Absences")
     private Integer absences;
 
-    @Column(name = "Department_Id", length = 10)
+    @Column(name = "Department_Id")
     private String departmentId;
 
-    @Enumerated(value = EnumType.STRING)
-    @Column(name = "Status", length = 20)
+    @Column(name = "Status")
+    @Convert(converter = StatusConverter.class)
     private Status status;
 }

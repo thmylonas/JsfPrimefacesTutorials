@@ -3,6 +3,8 @@ package com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.en
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Arrays;
+
 @Getter
 @RequiredArgsConstructor
 public enum Status {
@@ -12,4 +14,11 @@ public enum Status {
     JUNIOR_STUDENT("Junior Student");
 
     private final String value;
+
+    public static Status valueOfStatus(String status) {
+        return Arrays.stream(values())
+                .filter(s -> s.getValue().equalsIgnoreCase(status))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("The status argument in not valid!"));
+    }
 }
