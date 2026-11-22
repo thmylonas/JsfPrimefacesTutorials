@@ -2,6 +2,7 @@ package com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.repositorie
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Student;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
+import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.GeneralRollbackException;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.RequestedResourceNotFoundException;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,14 +34,13 @@ import java.util.List;
 @Slf4j
 public class StudentDao {
 
-    private static final String ROLLBACK_MESSAGE = "Because of an 'Exception': '{}', the transaction is rolled back!";
     private static final String PERSISTENCE_UNIT_NAME = "StudentPU_H2";
 
     private EntityManager em; // Created into "StudentDao::init"
 
     @PostConstruct
     private void init() {
-        em = createEntityManager(PERSISTENCE_UNIT_NAME);
+        em = createEntityManager(PERSISTENCE_UNIT_NAME); // IllegalStateException
     }
 
     /**
@@ -54,11 +54,11 @@ public class StudentDao {
     public Student findById(Long id) throws IllegalArgumentException, RequestedResourceNotFoundException {
 
         if (id == null || id < 0) {
-            throw new IllegalArgumentException("The id is not valid!");
+            throw new IllegalArgumentException("The id is not valid!"); // IllegalArgumentException
         }
         Student student = em.find(Student.class, id); // IllegalArgumentException
         if (student == null) {
-            throw new RequestedResourceNotFoundException(Student.class.getSimpleName(), id);
+            throw new RequestedResourceNotFoundException(Student.class.getSimpleName(), id); // RequestedResourceNotFoundException
         }
         return student; // It can never be null
     }
@@ -81,11 +81,12 @@ public class StudentDao {
      * @param student The "student" to save
      * @return The saved "student" which contains the auto-generated "id" or the initial "student" (without "id")
      * @throws IllegalArgumentException If the "student" is not valid
+     * @throws GeneralRollbackException If any other error occurs
      */
-    public Student save(Student student) throws IllegalArgumentException {
+    public Student save(Student student) throws IllegalArgumentException, GeneralRollbackException {
 
         if (student == null) {
-            throw new IllegalArgumentException("The student is not valid (is null)!");
+            throw new IllegalArgumentException("The student is not valid (is null)!"); // IllegalArgumentException
         }
         try {
             em.getTransaction().begin();
@@ -96,7 +97,8 @@ public class StudentDao {
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            log.error(ROLLBACK_MESSAGE, e.getMessage());
+            log.error(rollbackMessage("{}"), e.getMessage());
+            throw new GeneralRollbackException(rollbackMessage(e.getMessage()), e); // GeneralRollbackException
         }
         return student; // see method's documentation
     }
@@ -109,11 +111,12 @@ public class StudentDao {
      * @param students The "students" to save
      * @return The saved "students" which contain the auto-generated "ids" or the initial "students" (without "ids")
      * @throws IllegalArgumentException If the "students" are not valid
+     * @throws GeneralRollbackException If any other error occurs
      */
-    public List<Student> saveAll(List<Student> students) throws IllegalArgumentException {
+    public List<Student> saveAll(List<Student> students) throws IllegalArgumentException, GeneralRollbackException {
 
         if (students == null || students.isEmpty() || students.contains(null)) {
-            throw new IllegalArgumentException("The students are not valid!");
+            throw new IllegalArgumentException("The students are not valid!"); // IllegalArgumentException
         }
         try {
             em.getTransaction().begin();
@@ -124,7 +127,8 @@ public class StudentDao {
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            log.error(ROLLBACK_MESSAGE, e.getMessage());
+            log.error(rollbackMessage("{}"), e.getMessage());
+            throw new GeneralRollbackException(rollbackMessage(e.getMessage()), e); // GeneralRollbackException
         }
         return students; // see method's documentation
     }
@@ -137,12 +141,13 @@ public class StudentDao {
      * @return The updated Student
      * @throws IllegalArgumentException           If the "id" or "student" are not valid
      * @throws RequestedResourceNotFoundException If the Student with ID "id", is not found
+     * @throws GeneralRollbackException           If any other error occurs
      */
-    public Student update(Student student, Long id) throws IllegalArgumentException, RequestedResourceNotFoundException {
+    public Student update(Student student, Long id) throws IllegalArgumentException, RequestedResourceNotFoundException, GeneralRollbackException {
 
         Student updatedStudent = null;
         if (id == null || id < 0 || student == null) {
-            throw new IllegalArgumentException("The arguments are not valid!");
+            throw new IllegalArgumentException("The arguments are not valid!"); // IllegalArgumentException
         }
         try {
             em.getTransaction().begin();
@@ -153,11 +158,13 @@ public class StudentDao {
             em.getTransaction().commit();
         } catch (RequestedResourceNotFoundException e) {
             em.getTransaction().rollback();
-            log.error(ROLLBACK_MESSAGE + " - The Student to update, is not found!", e.getMessage());
-            throw new RequestedResourceNotFoundException(Student.class.getSimpleName(), id);
+            log.error(rollbackMessage("{}"), e.getMessage());
+            log.error("The Student to update, is not found!");
+            throw new RequestedResourceNotFoundException(Student.class.getSimpleName(), id); // RequestedResourceNotFoundException
         } catch (Exception e) {
             em.getTransaction().rollback();
-            log.error(ROLLBACK_MESSAGE, e.getMessage());
+            log.error(rollbackMessage("{}"), e.getMessage());
+            throw new GeneralRollbackException(rollbackMessage(e.getMessage()), e); // GeneralRollbackException
         }
         return updatedStudent; // It can never be null
     }
@@ -166,9 +173,11 @@ public class StudentDao {
      * The method deletes a Student with ID "id"
      *
      * @param id The ID of the Student to delete
-     * @throws IllegalArgumentException If the "id" is not valid
+     * @throws IllegalArgumentException           If the "id" is not valid
+     * @throws RequestedResourceNotFoundException If the Student with ID "id", is not found
+     * @throws GeneralRollbackException           If any other error occurs
      */
-    public void deleteById(Long id) throws IllegalArgumentException {
+    public void deleteById(Long id) throws IllegalArgumentException, RequestedResourceNotFoundException, GeneralRollbackException {
 
         if (id == null || id < 0) {
             throw new IllegalArgumentException("The id is not valid!");
@@ -180,13 +189,19 @@ public class StudentDao {
             em.remove(studentToDelete);
 
             em.getTransaction().commit();
+        } catch (RequestedResourceNotFoundException e) {
+            em.getTransaction().rollback();
+            log.error(rollbackMessage("{}"), e.getMessage());
+            log.error("The Student to delete, is not found!");
+            throw new RequestedResourceNotFoundException(Student.class.getSimpleName(), id); // RequestedResourceNotFoundException
         } catch (Exception e) {
             em.getTransaction().rollback();
-            log.error(ROLLBACK_MESSAGE + " - The Student to delete, is not found!", e.getMessage());
+            log.error(rollbackMessage("{}"), e.getMessage());
+            throw new GeneralRollbackException(rollbackMessage(e.getMessage()), e); // GeneralRollbackException
         }
     }
 
-    private EntityManager createEntityManager(String persistenceUnitName) {
+    private EntityManager createEntityManager(String persistenceUnitName) throws IllegalStateException {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(persistenceUnitName);
         try {
@@ -194,6 +209,10 @@ public class StudentDao {
         } catch (Exception e) {
             throw new RuntimeException("Error creating EntityManager!", e);
         }
+    }
+
+    private String rollbackMessage(String exceptionMessage) {
+        return String.format("Because of an 'Exception': '%s', the transaction is rolled back!", exceptionMessage);
     }
 
     protected Student updateStudentWithGivenObject(Student studentToUpdate, Student student) {
