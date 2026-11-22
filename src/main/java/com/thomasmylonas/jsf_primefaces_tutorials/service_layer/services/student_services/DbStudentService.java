@@ -4,6 +4,7 @@ import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.Stu
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.repositories.StudentDao;
 import com.thomasmylonas.jsf_primefaces_tutorials.helpers.TestDataProvider;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services._base.AbstractService;
+import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.GeneralRollbackException;
 import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services.exceptions.RequestedResourceNotFoundException;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,11 +29,11 @@ public class DbStudentService extends AbstractService implements StudentService 
     @PostConstruct
     private void init() {
         testDataProvider = new TestDataProvider();
-        initStudentsList();
+        initStudentsList(); // IllegalArgumentException, GeneralRollbackException
     }
 
     @Override
-    public Student findStudentById(Long id) throws RequestedResourceNotFoundException {
+    public Student findStudentById(Long id) throws IllegalArgumentException, RequestedResourceNotFoundException {
         return studentDao.findById(id); // IllegalArgumentException, RequestedResourceNotFoundException
     }
 
@@ -42,7 +43,7 @@ public class DbStudentService extends AbstractService implements StudentService 
     }
 
     @Override
-    public void saveStudent(Student student) {
+    public void saveStudent(Student student) throws IllegalArgumentException, GeneralRollbackException {
 
         Student studentToSave = Student.builder()
                 .lastName(student.getLastName())
@@ -52,21 +53,21 @@ public class DbStudentService extends AbstractService implements StudentService 
                 .departmentId(student.getDepartmentId())
                 .status(student.getStatus())
                 .build();
-        studentDao.save(studentToSave); // IllegalArgumentException
+        studentDao.save(studentToSave); // IllegalArgumentException, GeneralRollbackException
     }
 
     @Override
-    public void updateStudent(Student student, Long id) throws RequestedResourceNotFoundException {
-        studentDao.update(student, id); // IllegalArgumentException, RequestedResourceNotFoundException
+    public void updateStudent(Student student, Long id) throws IllegalArgumentException, RequestedResourceNotFoundException, GeneralRollbackException {
+        studentDao.update(student, id); // IllegalArgumentException, RequestedResourceNotFoundException, GeneralRollbackException
     }
 
     @Override
-    public void deleteStudent(Long id) {
-        studentDao.deleteById(id); // IllegalArgumentException
+    public void deleteStudent(Long id) throws IllegalArgumentException, RequestedResourceNotFoundException, GeneralRollbackException {
+        studentDao.deleteById(id); // IllegalArgumentException, RequestedResourceNotFoundException, GeneralRollbackException
     }
 
-    private void initStudentsList() {
+    private void initStudentsList() throws IllegalArgumentException, GeneralRollbackException {
         List<Student> students = testDataProvider.generateDBStudents();
-        studentDao.saveAll(students);
+        studentDao.saveAll(students); // IllegalArgumentException, GeneralRollbackException
     }
 }
