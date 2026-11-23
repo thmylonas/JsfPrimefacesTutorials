@@ -3,7 +3,7 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:tm="http://xmlns.jcp.org/jsf/composite/tm_components"
       xmlns:p="http://primefaces.org/ui">
@@ -61,11 +61,11 @@
                         - as "Long" with no-value assigned (null), the "p:inputText" will display the "placeholder" (not "null")
                         Alternatively, instead of "p:watermark", we can use "p:inputText"'s "placeholder" attribute
                         -->
-                        <div class="data_insert_form">
+                        <div class="display_student_form">
                             <tm:input_text_label
                                     input_value="#{jsfJpaBackingBean.jsfJpaService.studentId}"
                                     label="Enter the student's ID:" placeholder="ID"
-                                    max_length="19" size="40" style_class="insert_data"/>
+                                    max_length="19" size="40" style_class="display_student"/>
                         </div>
 
                         <tm:student_data_table title="Display the filtered Student"
@@ -95,8 +95,10 @@
                 <dt>Add a new Student</dt>
                 <dd>
                     <h:form id="formWhichSavesNewStudent">
-                        <div class="data_insert_form">
-                            <tm:student_insert_data
+                        <p:growl id="growl_insert_data" showDetail="true" sticky="true"/>
+
+                        <div class="insert_data_form">
+                            <tm:student_insert_update_data
                                     model="#{jsfJpaBackingBean.jsfJpaService.saveFormStudent}"
                                     style_class="insert_data"/>
                         </div>
@@ -107,7 +109,7 @@
 
                         <div>
                             <p:commandButton type="button" value="Add student">
-                                <p:ajax process="@form" update="@form @(.table_students_list)"
+                                <p:ajax process="@form" update="@form @(.table_students_list) growl_insert_data"
                                         listener="#{jsfJpaBackingBean.jsfJpaService.saveNewStudent(jsfJpaBackingBean.jsfJpaService.saveFormStudent)}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_reset_btn">
@@ -121,14 +123,16 @@
                 <dt>Update an existing Student</dt>
                 <dd>
                     <h:form id="formWhichUpdatesStudent">
-                        <div class="data_insert_form">
+                        <p:growl id="growl_update_data" showDetail="true" sticky="true"/>
+
+                        <div class="update_data_form">
                             <tm:input_text_label
                                     input_value="#{jsfJpaBackingBean.jsfJpaService.updateFormStudentId}"
                                     label="Enter the student's ID:" placeholder="ID"
-                                    max_length="19" size="40" style_class="insert_data"/>
-                            <tm:student_insert_data
+                                    max_length="19" size="40" style_class="update_data"/>
+                            <tm:student_insert_update_data
                                     model="#{jsfJpaBackingBean.jsfJpaService.updateFormStudent}"
-                                    style_class="insert_data"/>
+                                    style_class="update_data"/>
                         </div>
 
                         <tm:student_data_table title="Display all the Students"
@@ -137,7 +141,7 @@
 
                         <div>
                             <p:commandButton type="button" value="Update student">
-                                <p:ajax process="@form" update="@form @(.table_students_list)"
+                                <p:ajax process="@form" update="@form @(.table_students_list) growl_update_data"
                                         listener="#{jsfJpaBackingBean.jsfJpaService.updateStudent(jsfJpaBackingBean.jsfJpaService.updateFormStudent, jsfJpaBackingBean.jsfJpaService.updateFormStudentId)}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_reset_btn">
@@ -151,11 +155,11 @@
                 <dt>Delete a Student (given its ID)</dt>
                 <dd>
                     <h:form id="formWhichDeletesStudentById">
-                        <div class="data_insert_form">
+                        <div class="delete_data_form">
                             <tm:input_text_label
                                     input_value="#{jsfJpaBackingBean.jsfJpaService.deleteFormStudentId}"
                                     label="Enter the student's ID:" placeholder="ID"
-                                    max_length="19" size="40" style_class="insert_data"/>
+                                    max_length="19" size="40" style_class="delete_data"/>
                         </div>
 
                         <tm:student_data_table title="Display all the Students"

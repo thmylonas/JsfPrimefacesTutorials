@@ -16,7 +16,7 @@
     display: none;
 }
 
-.data_insert_form {
+.display_student_form, .insert_data_form, .update_data_form, .delete_data_form {
     border: 1px solid var(--deep_pink1);
     border-radius: 5px;
     box-shadow: 5px 5px 5px #dcdcfc;
@@ -25,12 +25,12 @@
     margin: 10px 10px;
 }
 
-.data_insert_form label {
+.display_student_form, .insert_data_form, .update_data_form, .delete_data_form label {
     font-weight: normal !important;
     float: right;
 }
 
-.insert_data, .student_reset_btn {
+.display_student, .insert_data, .update_data, .delete_data, .student_reset_btn {
     margin-left: 10px !important;
 }
 
