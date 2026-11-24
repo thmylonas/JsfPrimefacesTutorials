@@ -59,3 +59,19 @@
 .table_students_list tbody {
     font-weight: 100 !important;
 }
+
+/* Growl */
+
+.ui-growl {
+    position: fixed !important; /* Default */
+    top: 20px; /* Default */
+    right: 20px; /* Default */
+    width: fit-content !important;
+    z-index: 9999;
+}
+
+.ui-growl-message {
+    padding: 0 5px 5px 5px !important;
+    width: fit-content !important; /* Alternatives: 360px, 95% */
+    float: right !important; /* Default */
+}
