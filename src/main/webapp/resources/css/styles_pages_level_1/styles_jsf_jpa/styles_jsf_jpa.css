@@ -25,7 +25,7 @@
     margin: 10px 10px;
 }
 
-.display_student_form, .insert_data_form, .update_data_form, .delete_data_form label {
+.display_student_form label, .insert_data_form label, .update_data_form label, .delete_data_form label {
     font-weight: normal !important;
     float: right;
 }
