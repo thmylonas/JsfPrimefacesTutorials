@@ -6,6 +6,8 @@ import com.thomasmylonas.jsf_primefaces_tutorials.service_layer.services._base.A
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import java.util.List;
 
 @Getter
@@ -52,5 +54,22 @@ public abstract class AbstractJsfJpaService extends AbstractService {
             student.setDepartmentId(null);
             student.setStatus(null);
         }
+    }
+
+    protected String noStudentWithIdMessage(String datasource, String id, String action) {
+        return String.format("Database %s: There is no student with id %s, to %s!", datasource, id, action);
+    }
+
+    protected String inputDataNotValidMessage(String exceptionMessage) {
+        return String.format("Database Datasource: Input data are not valid! - %s", exceptionMessage);
+    }
+
+    protected String failureMessage(String exceptionMessage) {
+        return String.format("Database Datasource: Failure while processing this operation! - %s", exceptionMessage);
+    }
+
+    protected void displayFacesMessage(FacesMessage.Severity severity, String title, String message) {
+        FacesMessage facesMessage = new FacesMessage(severity, title, message);
+        FacesContext.getCurrentInstance().addMessage(null, facesMessage);
     }
 }
