@@ -55,7 +55,7 @@
                 <dt>Display a Student (given its ID)</dt>
                 <dd>
                     <h:form>
-                        <p:growl id="growl_display_student" showDetail="true" sticky="true"/>
+                        <p:growl id="growl_display_student" showDetail="true" sticky="false"/> <!-- sticky="true" -->
 
                         <!--
                         In the "p:inputText", if the "value" attribute is defined:
@@ -97,7 +97,7 @@
                 <dt>Add a new Student</dt>
                 <dd>
                     <h:form id="formWhichSavesNewStudent">
-                        <p:growl id="growl_insert_data" showDetail="true" sticky="true"/>
+                        <p:growl id="growl_insert_data" showDetail="true" sticky="false"/> <!-- sticky="true" -->
 
                         <div class="insert_data_form">
                             <tm:student_insert_update_data
@@ -125,7 +125,7 @@
                 <dt>Update an existing Student</dt>
                 <dd>
                     <h:form id="formWhichUpdatesStudent">
-                        <p:growl id="growl_update_data" showDetail="true" sticky="true"/>
+                        <p:growl id="growl_update_data" showDetail="true" sticky="false"/> <!-- sticky="true" -->
 
                         <div class="update_data_form">
                             <tm:input_text_label
@@ -157,7 +157,7 @@
                 <dt>Delete a Student (given its ID)</dt>
                 <dd>
                     <h:form id="formWhichDeletesStudentById">
-                        <p:growl id="growl_delete_data" showDetail="true" sticky="true"/>
+                        <p:growl id="growl_delete_data" showDetail="true" sticky="false"/> <!-- sticky="true" -->
 
                         <div class="delete_data_form">
                             <tm:input_text_label
