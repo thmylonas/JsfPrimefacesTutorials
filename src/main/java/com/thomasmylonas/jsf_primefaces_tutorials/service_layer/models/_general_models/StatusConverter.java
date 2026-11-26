@@ -1,6 +1,7 @@
 package com.thomasmylonas.jsf_primefaces_tutorials.service_layer.models._general_models;
 
 import com.thomasmylonas.jsf_primefaces_tutorials.data_access_layer.entities.enums.Status;
+import com.thomasmylonas.jsf_primefaces_tutorials.helpers.HelperClass;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
@@ -15,6 +16,6 @@ public class StatusConverter implements AttributeConverter<Status, String> {
 
     @Override
     public Status convertToEntityAttribute(String statusValue) {
-        return Status.valueOfStatus(statusValue);
+        return HelperClass.isStringNullOrEmpty(statusValue) ? null : Status.valueOfStatus(statusValue);
     }
 }
