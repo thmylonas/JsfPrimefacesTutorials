@@ -55,6 +55,8 @@
                 <dt>Display a Student (given its ID)</dt>
                 <dd>
                     <h:form>
+                        <p:growl id="growl_display_student" showDetail="true" sticky="true"/>
+
                         <!--
                         In the "p:inputText", if the "value" attribute is defined:
                         - as "long" with no-value assigned, the "p:inputText" will display "0" and not the "placeholder"
@@ -74,7 +76,7 @@
 
                         <div>
                             <p:commandButton type="button" value="Find student">
-                                <p:ajax process="@form" update="@form @(.table_students_list)"
+                                <p:ajax process="@form" update="@form @(.table_students_list) growl_display_student"
                                         listener="#{jsfJpaBackingBean.jsfJpaService.findStudentById()}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_reset_btn">
@@ -155,6 +157,8 @@
                 <dt>Delete a Student (given its ID)</dt>
                 <dd>
                     <h:form id="formWhichDeletesStudentById">
+                        <p:growl id="growl_delete_data" showDetail="true" sticky="true"/>
+
                         <div class="delete_data_form">
                             <tm:input_text_label
                                     input_value="#{jsfJpaBackingBean.jsfJpaService.deleteFormStudentId}"
@@ -168,7 +172,7 @@
 
                         <div>
                             <p:commandButton type="button" value="Delete student">
-                                <p:ajax process="@form" update="@form @(.table_students_list)"
+                                <p:ajax process="@form" update="@form @(.table_students_list) growl_delete_data"
                                         listener="#{jsfJpaBackingBean.jsfJpaService.deleteStudent()}"/>
                             </p:commandButton>
                             <p:commandButton value="Reset form" styleClass="student_reset_btn">

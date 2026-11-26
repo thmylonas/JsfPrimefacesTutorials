@@ -38,13 +38,15 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
     @Override
     public void findStudentById() {
 
-        if (studentId == null || studentId < 0) {
-            log.error("Database Datasource: The id is not valid!");
-            return;
-        }
-        // Reset the "studentsFiltered"
-        studentsFiltered = new ArrayList<>();
         try {
+            if (studentId == null || studentId < 0) {
+                log.error("Database Datasource: The id is not valid!");
+                throw new IllegalArgumentException("The id is not valid!");
+            }
+
+            // Reset the "studentsFiltered"
+            studentsFiltered = new ArrayList<>();
+
             // Populate the "studentsFiltered" with the only 1 entry (to use it in the "h:dataTable", "p:dataTable")
             studentsFiltered.add(dbStudentService.findStudentById(studentId)); // IllegalArgumentException, RequestedResourceNotFoundException
         } catch (RequestedResourceNotFoundException e) {
@@ -73,11 +75,11 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
     @Override
     public void saveNewStudent(Student student) {
 
-        if (student == null || isStudentEmpty(student)) {
-            log.error("Database Datasource: The student is not valid (is null)!");
-            return;
-        }
         try {
+            if (student == null || isStudentEmpty(student)) {
+                log.error("Database Datasource: The student is not valid (is null)!");
+                throw new IllegalArgumentException("The student is not valid (is null)!");
+            }
             dbStudentService.saveStudent(student); // IllegalArgumentException, GeneralRollbackException
         } catch (IllegalArgumentException e) {
             log.error(inputDataNotValidMessage("{}"), e.getMessage());
@@ -91,11 +93,11 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
     @Override
     public void updateStudent(Student student, Long id) {
 
-        if (id == null || id < 0 || student == null || isStudentEmpty(student)) {
-            log.error("Database Datasource: The arguments are not valid!");
-            return;
-        }
         try {
+            if (id == null || id < 0 || student == null || isStudentEmpty(student)) {
+                log.error("Database Datasource: The arguments are not valid!");
+                throw new IllegalArgumentException("The arguments are not valid!");
+            }
             dbStudentService.updateStudent(student, id); // IllegalArgumentException, RequestedResourceNotFoundException, GeneralRollbackException
         } catch (RequestedResourceNotFoundException e) {
             log.error(noStudentWithIdMessage("Datasource", "{}", "update"), id);
@@ -112,11 +114,11 @@ public class DbJsfJpaService extends AbstractJsfJpaService {
     @Override
     public void deleteStudent() {
 
-        if (deleteFormStudentId == null || deleteFormStudentId < 0) {
-            log.error("Database Datasource: The id is not valid!");
-            return;
-        }
         try {
+            if (deleteFormStudentId == null || deleteFormStudentId < 0) {
+                log.error("Database Datasource: The id is not valid!");
+                throw new IllegalArgumentException("The id is not valid!");
+            }
             dbStudentService.deleteStudent(deleteFormStudentId); // IllegalArgumentException, RequestedResourceNotFoundException, GeneralRollbackException
         } catch (RequestedResourceNotFoundException e) {
             log.error(noStudentWithIdMessage("Datasource", "{}", "delete"), deleteFormStudentId);
