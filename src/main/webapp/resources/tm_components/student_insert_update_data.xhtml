@@ -24,12 +24,12 @@
         <cc:implementation>
 
             <tm:input_text_label input_value="#{cc.attrs.model.lastName}"
-                                 label="Enter the student's Last Name:" placeholder="Last Name"
-                                 max_length="30" size="40" style_class="#{cc.attrs.style_class}"/>
+                                 label="Enter the student's Last Name:" placeholder="Last Name" size="40"
+                                 style_class="#{cc.attrs.style_class}"/> <!-- Removed: max_length="30" - Controlled by Error notifications/Growls -->
 
             <tm:input_text_label input_value="#{cc.attrs.model.firstName}"
-                                 label="Enter the student's First Name:" placeholder="First Name"
-                                 max_length="20" size="40" style_class="#{cc.attrs.style_class}"/>
+                                 label="Enter the student's First Name:" placeholder="First Name" size="40"
+                                 style_class="#{cc.attrs.style_class}"/> <!-- Removed: max_length="20" - Controlled by Error notifications/Growls -->
 
             <div class="ui-g">
                 <div class="ui-g-6">
@@ -44,8 +44,8 @@
             </div>
 
             <tm:input_text_label input_value="#{cc.attrs.model.absences}"
-                                 label="Enter the student's Absences:" placeholder="Absences"
-                                 max_length="10" size="40" style_class="#{cc.attrs.style_class}"/>
+                                 label="Enter the student's Absences:" placeholder="Absences" size="40"
+                                 style_class="#{cc.attrs.style_class}"/>
 
             <tm:input_text_label input_value="#{cc.attrs.model.departmentId}"
                                  label="Enter the student's Department ID:" placeholder="Department ID"
